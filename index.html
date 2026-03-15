@@ -269,7 +269,7 @@ img { max-width: 100%; display: block; }
   width: 100%;
   height: 100%;
   display: block;
-  filter: blur(60px);
+  filter: blur(35px);
 }
 
 /* Overlay gradient for depth */
@@ -1718,24 +1718,26 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
 
     getPosition(t) {
-      const mx = (mouseX - 0.5) * 80;
-      const my = (mouseY - 0.5) * 80;
+      const mx = (mouseX - 0.5) * 120;
+      const my = (mouseY - 0.5) * 120;
       return {
-        x: this.baseX * w + Math.sin(t * this.speed + this.phase) * w * 0.08 + mx * (this.speed * 0.3),
-        y: this.baseY * h + Math.cos(t * this.speed * 0.7 + this.phase + 1) * h * 0.06 + my * (this.speed * 0.2)
+        x: this.baseX * w + Math.sin(t * this.speed + this.phase) * w * 0.14 + mx * (this.speed * 0.4),
+        y: this.baseY * h + Math.cos(t * this.speed * 0.7 + this.phase + 1) * h * 0.10 + my * (this.speed * 0.3)
       };
     }
 
     draw(t) {
       const pos = this.getPosition(t);
-      const r = this.radius * Math.min(w, h);
+      // Breathing pulse — blobs grow/shrink rhythmically
+      const breathe = 1.0 + Math.sin(t * 0.8 + this.phase * 1.5) * 0.12;
+      const r = this.radius * Math.min(w, h) * breathe;
 
       // Create organic path using cardinal spline
       const pts = [];
       for (let i = 0; i < this.numPoints; i++) {
         const p = this.points[i];
-        const angle = p.angle + t * p.speed * 0.2;
-        const rOff = p.radiusOffset + Math.sin(t * 2 + p.phase) * 0.15;
+        const angle = p.angle + t * p.speed * 0.3;
+        const rOff = p.radiusOffset + Math.sin(t * 2.5 + p.phase) * 0.22;
         pts.push({
           x: pos.x + Math.cos(angle) * r * rOff,
           y: pos.y + Math.sin(angle) * r * rOff
@@ -1773,48 +1775,48 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   }
 
-  // Define blobs — high opacity since CSS blur(60px) will soften them
+  // Define blobs — vivid & large, CSS blur(35px) softens edges
   const blobs = [
     // Large purple blob — center-right (dominant)
-    new Blob(0.62, 0.42, 0.38, {
-      core: 'rgba(124, 58, 237, 0.85)',
-      mid:  'rgba(124, 58, 237, 0.35)',
+    new Blob(0.60, 0.40, 0.52, {
+      core: 'rgba(124, 58, 237, 1.0)',
+      mid:  'rgba(124, 58, 237, 0.50)',
       edge: 'rgba(124, 58, 237, 0.0)'
     }, 0.4, 0),
     // Cyan blob — left
-    new Blob(0.25, 0.55, 0.32, {
-      core: 'rgba(34, 209, 238, 0.65)',
-      mid:  'rgba(34, 209, 238, 0.22)',
+    new Blob(0.22, 0.52, 0.44, {
+      core: 'rgba(34, 209, 238, 0.90)',
+      mid:  'rgba(34, 209, 238, 0.35)',
       edge: 'rgba(34, 209, 238, 0.0)'
     }, 0.5, 2),
     // Pink blob — top-right
-    new Blob(0.78, 0.2, 0.24, {
-      core: 'rgba(244, 114, 182, 0.55)',
-      mid:  'rgba(244, 114, 182, 0.18)',
+    new Blob(0.78, 0.22, 0.34, {
+      core: 'rgba(244, 114, 182, 0.85)',
+      mid:  'rgba(244, 114, 182, 0.30)',
       edge: 'rgba(244, 114, 182, 0.0)'
     }, 0.6, 4),
     // Deep purple — bottom-left
-    new Blob(0.15, 0.78, 0.30, {
-      core: 'rgba(146, 91, 240, 0.60)',
-      mid:  'rgba(146, 91, 240, 0.20)',
+    new Blob(0.15, 0.75, 0.40, {
+      core: 'rgba(146, 91, 240, 0.90)',
+      mid:  'rgba(146, 91, 240, 0.35)',
       edge: 'rgba(146, 91, 240, 0.0)'
     }, 0.35, 1),
     // Cyan accent — center-top
-    new Blob(0.5, 0.28, 0.16, {
-      core: 'rgba(34, 209, 238, 0.50)',
-      mid:  'rgba(34, 209, 238, 0.15)',
+    new Blob(0.5, 0.25, 0.24, {
+      core: 'rgba(34, 209, 238, 0.80)',
+      mid:  'rgba(34, 209, 238, 0.25)',
       edge: 'rgba(34, 209, 238, 0.0)'
     }, 0.7, 3),
     // Large ambient purple — fills the canvas
-    new Blob(0.45, 0.5, 0.50, {
-      core: 'rgba(124, 58, 237, 0.25)',
-      mid:  'rgba(124, 58, 237, 0.08)',
+    new Blob(0.45, 0.48, 0.65, {
+      core: 'rgba(124, 58, 237, 0.40)',
+      mid:  'rgba(124, 58, 237, 0.15)',
       edge: 'rgba(124, 58, 237, 0.0)'
     }, 0.2, 5),
     // Extra pink — bottom-right
-    new Blob(0.82, 0.72, 0.22, {
-      core: 'rgba(244, 114, 182, 0.50)',
-      mid:  'rgba(244, 114, 182, 0.15)',
+    new Blob(0.82, 0.70, 0.32, {
+      core: 'rgba(244, 114, 182, 0.80)',
+      mid:  'rgba(244, 114, 182, 0.28)',
       edge: 'rgba(244, 114, 182, 0.0)'
     }, 0.45, 6),
   ];
@@ -1864,7 +1866,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
   // Grid overlay
   function drawGrid(t) {
-    ctx.strokeStyle = 'rgba(124, 58, 237, 0.03)';
+    ctx.strokeStyle = 'rgba(124, 58, 237, 0.05)';
     ctx.lineWidth = 0.5;
     const gridSize = 80;
     const offsetX = (Math.sin(t * 0.1) * 10) % gridSize;
@@ -1888,10 +1890,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   function drawMouseGlow(t) {
     const gx = mouseX * w;
     const gy = mouseY * h;
-    const pulseR = 200 + Math.sin(t * 2) * 40;
+    const pulseR = 280 + Math.sin(t * 2) * 60;
     const grad = ctx.createRadialGradient(gx, gy, 0, gx, gy, pulseR);
-    grad.addColorStop(0, 'rgba(124, 58, 237, 0.15)');
-    grad.addColorStop(0.4, 'rgba(34, 209, 238, 0.06)');
+    grad.addColorStop(0, 'rgba(124, 58, 237, 0.25)');
+    grad.addColorStop(0.3, 'rgba(34, 209, 238, 0.12)');
     grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, w, h);
@@ -1936,7 +1938,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     // Vignette
     const vigGrad = ctx.createRadialGradient(w/2, h/2, w * 0.3, w/2, h/2, w * 0.8);
     vigGrad.addColorStop(0, 'rgba(8, 6, 15, 0)');
-    vigGrad.addColorStop(1, 'rgba(8, 6, 15, 0.6)');
+    vigGrad.addColorStop(1, 'rgba(8, 6, 15, 0.35)');
     ctx.fillStyle = vigGrad;
     ctx.fillRect(0, 0, w, h);
 
