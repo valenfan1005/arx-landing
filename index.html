@@ -1,0 +1,1676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARX — Institutional-Grade Copy Trading on Hyperliquid</title>
+<meta name="description" content="Trade with conviction. Copy with confidence. ARX brings regime-aware signals, AI-powered confluence scoring, and elite wallet tracking to Hyperliquid.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="ARX — Copy Trading on Hyperliquid">
+<meta property="og:description" content="Trade with conviction. Copy with confidence.">
+<meta property="og:type" content="website">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================
+   DESIGN TOKENS — "The Keep" Palette
+   ============================================ */
+:root {
+  /* Backgrounds */
+  --bg-base: #08060F;
+  --bg-surface-1: #0F0B1A;
+  --bg-surface-2: #1A1425;
+  --bg-surface-3: #251E30;
+  --bg-surface-4: #302840;
+
+  /* Primary — Purple */
+  --primary: #7C3AED;
+  --primary-hover: #925BF0;
+  --primary-light: #A274F2;
+  --primary-lighter: #B38DF4;
+  --primary-glow: rgba(124, 58, 237, 0.3);
+
+  /* Accent — Moat Cyan */
+  --cyan: #22D1EE;
+  --cyan-dim: rgba(34, 209, 238, 0.15);
+  --cyan-glow: rgba(34, 209, 238, 0.3);
+
+  /* Accent — Sky Pink */
+  --pink: #F472B6;
+  --pink-dim: rgba(244, 114, 182, 0.15);
+
+  /* Text */
+  --text-primary: #FFFFFF;
+  --text-secondary: #A1A1AA;
+  --text-muted: #71717A;
+  --text-dim: #52525B;
+
+  /* Borders */
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-medium: rgba(255, 255, 255, 0.1);
+  --border-accent: rgba(124, 58, 237, 0.3);
+
+  /* Misc */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Tier colors */
+  --tier-bronze: #CD7F32;
+  --tier-silver: #C0C0C0;
+  --tier-gold: #FFD700;
+}
+
+/* ============================================
+   RESET & BASE
+   ============================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.mono { font-family: 'JetBrains Mono', monospace; font-feature-settings: 'tnum'; }
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* ============================================
+   LAYOUT
+   ============================================ */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: 120px 0;
+  position: relative;
+}
+
+/* ============================================
+   NAVBAR
+   ============================================ */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 16px 0;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(8, 6, 15, 0.8);
+  border-bottom: 1px solid var(--border-subtle);
+  transition: all 0.3s ease;
+}
+
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo svg { height: 28px; width: auto; }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--text-primary); }
+
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-full);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.nav-cta:hover {
+  background: var(--primary-hover);
+  box-shadow: 0 0 24px var(--primary-glow);
+}
+
+/* Mobile nav toggle */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.nav-toggle span {
+  width: 24px;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: var(--radius-full);
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border: none;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  box-shadow: 0 0 32px var(--primary-glow);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-medium);
+}
+
+.btn-secondary:hover {
+  border-color: var(--primary);
+  box-shadow: 0 0 24px var(--primary-glow);
+}
+
+.btn-cyan {
+  background: transparent;
+  color: var(--cyan);
+  border: 1px solid var(--cyan);
+}
+
+.btn-cyan:hover {
+  background: var(--cyan-dim);
+  box-shadow: 0 0 24px var(--cyan-glow);
+}
+
+.btn-lg {
+  padding: 18px 36px;
+  font-size: 18px;
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* Gradient mesh blobs */
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, transparent 70%);
+  animation: float 20s ease-in-out infinite;
+}
+
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  left: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(34, 209, 238, 0.08) 0%, transparent 70%);
+  animation: float 25s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -30px) scale(1.05); }
+  66% { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--cyan-dim);
+  border: 1px solid rgba(34, 209, 238, 0.2);
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 32px;
+}
+
+.hero-badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--cyan);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.hero h1 {
+  font-size: 72px;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+}
+
+.hero h1 .gradient-text {
+  background: linear-gradient(135deg, var(--primary-light), var(--cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: 20px;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+}
+
+.hero-ctas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.hero-proof {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.hero-proof .count {
+  color: var(--cyan);
+  font-weight: 600;
+}
+
+.hero-avatars {
+  display: flex;
+}
+
+.hero-avatars span {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--bg-base);
+  margin-left: -8px;
+  display: inline-block;
+}
+
+.hero-avatars span:first-child { margin-left: 0; }
+.hero-avatars span:nth-child(1) { background: var(--primary); }
+.hero-avatars span:nth-child(2) { background: var(--cyan); }
+.hero-avatars span:nth-child(3) { background: var(--pink); }
+.hero-avatars span:nth-child(4) { background: var(--primary-light); }
+
+/* ============================================
+   DUAL VALUE PROP
+   ============================================ */
+.dual-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.value-card {
+  background: var(--bg-surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 48px 40px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.value-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+}
+
+.value-card.trader::before {
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
+}
+
+.value-card.follower::before {
+  background: linear-gradient(90deg, var(--cyan), var(--pink));
+}
+
+.value-card:hover {
+  border-color: var(--border-accent);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.value-card .icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  font-size: 24px;
+}
+
+.value-card.trader .icon { background: rgba(124, 58, 237, 0.15); color: var(--primary-light); }
+.value-card.follower .icon { background: var(--cyan-dim); color: var(--cyan); }
+
+.value-card h3 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.value-card .subtitle {
+  font-size: 15px;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.value-card ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.value-card ul li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.value-card ul li .check {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  margin-top: 2px;
+}
+
+.value-card.trader ul li .check { background: rgba(124, 58, 237, 0.2); color: var(--primary-light); }
+.value-card.follower ul li .check { background: var(--cyan-dim); color: var(--cyan); }
+
+/* ============================================
+   HOW IT WORKS
+   ============================================ */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary-light);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.section-sub {
+  font-size: 18px;
+  color: var(--text-secondary);
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.section-header .section-sub { margin: 0 auto; }
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  position: relative;
+}
+
+/* Connecting line */
+.steps::before {
+  content: '';
+  position: absolute;
+  top: 36px;
+  left: calc(16.67% + 36px);
+  right: calc(16.67% + 36px);
+  height: 1px;
+  background: linear-gradient(90deg, var(--primary), var(--cyan), var(--pink));
+  opacity: 0.3;
+}
+
+.step {
+  text-align: center;
+  position: relative;
+}
+
+.step-number {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--bg-surface-1);
+  border: 1px solid var(--border-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 auto 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.step:nth-child(1) .step-number { color: var(--primary-light); }
+.step:nth-child(2) .step-number { color: var(--cyan); }
+.step:nth-child(3) .step-number { color: var(--pink); }
+
+.step h4 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.step p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   FEATURES GRID
+   ============================================ */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.feature-card {
+  background: var(--bg-surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  border-color: var(--border-accent);
+  background: var(--bg-surface-2);
+  transform: translateY(-2px);
+}
+
+.feature-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.feature-card:nth-child(1) .feature-icon { background: rgba(124, 58, 237, 0.15); }
+.feature-card:nth-child(2) .feature-icon { background: var(--cyan-dim); }
+.feature-card:nth-child(3) .feature-icon { background: var(--pink-dim); }
+.feature-card:nth-child(4) .feature-icon { background: rgba(124, 58, 237, 0.15); }
+.feature-card:nth-child(5) .feature-icon { background: var(--cyan-dim); }
+.feature-card:nth-child(6) .feature-icon { background: var(--pink-dim); }
+
+.feature-card h4 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.feature-card p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ============================================
+   REFERRAL PROGRAM
+   ============================================ */
+.referral-section {
+  background: var(--bg-surface-1);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.tiers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 64px;
+}
+
+.tier-card {
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.tier-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+}
+
+.tier-card.bronze::before { background: var(--tier-bronze); }
+.tier-card.silver::before { background: linear-gradient(90deg, #C0C0C0, #E8E8E8, #C0C0C0); }
+.tier-card.gold::before { background: linear-gradient(90deg, var(--primary), var(--tier-gold), var(--primary)); }
+
+.tier-card:hover {
+  border-color: var(--border-accent);
+  transform: translateY(-2px);
+}
+
+.tier-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.tier-card.bronze .tier-label { color: var(--tier-bronze); }
+.tier-card.silver .tier-label { color: var(--tier-silver); }
+.tier-card.gold .tier-label { color: var(--tier-gold); }
+
+.tier-percentage {
+  font-size: 56px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.tier-percentage span { font-size: 24px; }
+
+.tier-card.bronze .tier-percentage { color: var(--tier-bronze); }
+.tier-card.silver .tier-percentage { color: var(--tier-silver); }
+.tier-card.gold .tier-percentage { color: var(--primary-light); }
+
+.tier-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.tier-req {
+  font-size: 13px;
+  color: var(--text-secondary);
+  padding-top: 16px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.ref-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-bottom: 64px;
+}
+
+.ref-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.ref-feature-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: rgba(124, 58, 237, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.ref-feature h5 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.ref-feature p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Waitlist rewards */
+.waitlist-rewards {
+  background: var(--bg-base);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+}
+
+.waitlist-rewards h4 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.reward-tiers {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.reward-item {
+  text-align: center;
+  padding: 24px 16px;
+  background: var(--bg-surface-1);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+}
+
+.reward-count {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--primary-light);
+  margin-bottom: 4px;
+}
+
+.reward-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+}
+
+.reward-text {
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* ============================================
+   WALLET CLAIM
+   ============================================ */
+.claim-card {
+  background: var(--bg-surface-1);
+  border: 1px solid rgba(34, 209, 238, 0.15);
+  border-radius: var(--radius-xl);
+  padding: 64px;
+  position: relative;
+  overflow: hidden;
+}
+
+.claim-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+}
+
+.claim-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.claim-text h3 {
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.claim-text h3 .cyan { color: var(--cyan); }
+
+.claim-text p {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.claim-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.claim-stat {
+  text-align: center;
+  padding: 24px;
+  background: var(--bg-surface-2);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+}
+
+.claim-stat .number {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--cyan);
+  margin-bottom: 4px;
+}
+
+.claim-stat .label {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ============================================
+   FINAL CTA
+   ============================================ */
+.final-cta {
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.final-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(124, 58, 237, 0.12) 0%, transparent 70%);
+}
+
+.final-cta .container {
+  position: relative;
+  z-index: 1;
+}
+
+.final-cta h2 {
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+}
+
+.final-cta .section-sub {
+  margin: 0 auto 48px;
+}
+
+.signup-form {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.form-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.form-input {
+  flex: 1;
+  padding: 16px 20px;
+  background: var(--bg-surface-1);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-full);
+  color: var(--text-primary);
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.form-input::placeholder { color: var(--text-dim); }
+
+.form-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-glow);
+}
+
+.form-input.mono {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+}
+
+.form-hint {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
+.form-ref {
+  margin-top: 12px;
+}
+
+.form-ref input {
+  width: 100%;
+  padding: 12px 20px;
+  background: var(--bg-surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-family: 'JetBrains Mono', monospace;
+  outline: none;
+}
+
+.form-ref input:focus {
+  border-color: var(--primary);
+}
+
+/* Success state (hidden by default) */
+.signup-success {
+  display: none;
+  text-align: center;
+  padding: 32px;
+  background: var(--bg-surface-1);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-lg);
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.signup-success.show { display: block; }
+
+.signup-success h4 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--primary-light);
+}
+
+.signup-success p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+.ref-link-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: var(--bg-base);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  margin-bottom: 20px;
+}
+
+.ref-link-box input {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--cyan);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  outline: none;
+}
+
+.ref-link-box button {
+  padding: 6px 12px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.share-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.share-btn {
+  padding: 10px 20px;
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.share-btn:hover {
+  border-color: var(--border-medium);
+  color: var(--text-primary);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  padding: 64px 0 32px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 48px;
+}
+
+.footer-brand svg { height: 24px; width: auto; margin-bottom: 16px; }
+.footer-tagline { font-size: 14px; color: var(--text-muted); max-width: 280px; }
+
+.footer-links {
+  display: flex;
+  gap: 64px;
+}
+
+.footer-col h5 {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+.footer-col a {
+  font-size: 14px;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+}
+
+.footer-col a:hover { color: var(--text-primary); }
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+.footer-legal {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-legal a { color: var(--text-dim); }
+.footer-legal a:hover { color: var(--text-secondary); }
+
+/* ============================================
+   SCROLL REVEAL ANIMATION
+   ============================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1024px) {
+  .hero h1 { font-size: 56px; }
+  .section-title { font-size: 40px; }
+  .features-grid { grid-template-columns: repeat(2, 1fr); }
+  .claim-content { grid-template-columns: 1fr; }
+  .claim-stats { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .section { padding: 80px 0; }
+  .hero h1 { font-size: 40px; }
+  .hero-sub { font-size: 17px; }
+  .section-title { font-size: 32px; }
+  .section-sub { font-size: 16px; }
+
+  .nav-links { display: none; }
+  .nav-toggle { display: flex; }
+
+  .dual-cards { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr; gap: 48px; }
+  .steps::before { display: none; }
+  .features-grid { grid-template-columns: 1fr; }
+  .tiers { grid-template-columns: 1fr; }
+  .ref-features { grid-template-columns: 1fr; }
+  .reward-tiers { grid-template-columns: repeat(2, 1fr); }
+  .claim-card { padding: 32px; }
+  .claim-stats { grid-template-columns: 1fr; }
+
+  .form-row { flex-direction: column; }
+  .hero-ctas { flex-direction: column; }
+
+  .footer-content { flex-direction: column; gap: 48px; }
+  .footer-links { gap: 32px; flex-wrap: wrap; }
+  .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+}
+
+/* ============================================
+   DIVIDER
+   ============================================ */
+.gradient-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary), var(--cyan), transparent);
+  opacity: 0.3;
+  margin: 0;
+  border: none;
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================
+     NAVBAR
+     ============================================ -->
+<nav class="navbar">
+  <div class="container">
+    <a href="#" class="nav-logo">
+      <svg viewBox="0 0 100 27.4" height="28">
+        <path fill="#FFFFFF" fill-rule="evenodd" d="M 5.7 0.2 L 0 27.4 L 5.4 27.4 L 25.5 8.1 L 30.0 27.4 L 35.2 27.4 L 29.3 0 Z M 21.7 4.6 L 7.0 19.4 L 10.1 4.8 Z"/>
+        <path fill="#FFFFFF" d="M 45.2 0 L 39.3 27.4 L 44.5 27.4 L 49.4 4.6 L 68.6 4.6 L 68.6 0 Z"/>
+        <path fill="#FFFFFF" d="M 72.7 0 L 72.7 4.6 L 82.9 14.3 L 72.7 24.6 L 72.7 27.4 L 76.1 27.4 L 86.5 17.6 L 96.8 27.4 L 100 27.4 L 100 24.5 L 89.9 14.5 L 100 4.8 L 100 0 L 97.5 0 L 86.5 11.1 L 75.2 0 Z"/>
+      </svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#referral">Referral Program</a></li>
+      <li><a href="#claim">Wallet Claim</a></li>
+      <li><a href="#waitlist" class="nav-cta">Join Waitlist</a></li>
+    </ul>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ============================================
+     HERO
+     ============================================ -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Institutional-grade copy trading on Hyperliquid</div>
+    <h1>
+      Trade with conviction.<br>
+      <span class="gradient-text">Copy with confidence.</span>
+    </h1>
+    <p class="hero-sub">
+      Regime-aware signals, AI-powered confluence scoring, and elite wallet tracking — built for traders who demand more.
+    </p>
+    <div class="hero-ctas">
+      <a href="#waitlist" class="btn btn-primary btn-lg">Join the Waitlist</a>
+      <a href="#features" class="btn btn-secondary btn-lg">Learn More ↓</a>
+    </div>
+    <div class="hero-proof">
+      <div class="hero-avatars">
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <span><span class="count mono">2,847</span> traders on the waitlist</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     DUAL VALUE PROP
+     ============================================ -->
+<section class="section" id="for-you">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Built for two types of traders</div>
+      <h2 class="section-title">Your edge, your way.</h2>
+      <p class="section-sub">Whether you trade actively or prefer to follow proven wallets, ARX gives you the tools to win.</p>
+    </div>
+    <div class="dual-cards reveal">
+      <div class="value-card trader">
+        <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+        <h3>Trade Smarter</h3>
+        <p class="subtitle">For active traders who want an edge</p>
+        <ul>
+          <li><span class="check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> 5 market regime states — know the environment before you trade</li>
+          <li><span class="check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> P1-P5 confluence signal scoring with confidence spectrum</li>
+          <li><span class="check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Position sizing with built-in risk gates and drawdown protection</li>
+          <li><span class="check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Trade journal with regime-tagged performance analytics</li>
+        </ul>
+        <a href="#waitlist" class="btn btn-primary">Start Trading →</a>
+      </div>
+      <div class="value-card follower">
+        <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Copy the Best</h3>
+        <p class="subtitle">For followers who want vetted, set-and-forget alpha</p>
+        <ul>
+          <li><span class="check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Verified top Hyperliquid wallets with full track records</li>
+          <li><span class="check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> 6-type wallet classification — All-Weather, Specialist, and more</li>
+          <li><span class="check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> One-click copy with adjustable position sizing</li>
+          <li><span class="check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Real-time P&L tracking and portfolio dashboard</li>
+        </ul>
+        <a href="#waitlist" class="btn btn-cyan">Start Copying →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="gradient-divider">
+
+<!-- ============================================
+     HOW IT WORKS
+     ============================================ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">How it works</div>
+      <h2 class="section-title">Three steps to smarter trading</h2>
+      <p class="section-sub">Get from zero to your first trade in under two minutes.</p>
+    </div>
+    <div class="steps reveal">
+      <div class="step">
+        <div class="step-number mono">1</div>
+        <h4>Connect</h4>
+        <p>Link your Hyperliquid wallet in seconds. No KYC, no friction.</p>
+      </div>
+      <div class="step">
+        <div class="step-number mono">2</div>
+        <h4>Discover</h4>
+        <p>Browse regime-filtered signals or find top-performing wallets to follow.</p>
+      </div>
+      <div class="step">
+        <div class="step-number mono">3</div>
+        <h4>Execute</h4>
+        <p>Trade with conviction or auto-copy elite traders. Your edge, automated.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="gradient-divider">
+
+<!-- ============================================
+     FEATURES GRID
+     ============================================ -->
+<section class="section" id="features">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Features</div>
+      <h2 class="section-title">Everything you need.<br>Nothing you don't.</h2>
+    </div>
+    <div class="features-grid reveal">
+      <div class="feature-card">
+        <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c2-3 4-5 6-5s4 4 6 4 4-5 6-5"/><path d="M2 18c2-3 4-5 6-5s4 4 6 4 4-5 6-5" opacity=".5"/><path d="M2 6c2-3 4-5 6-5s4 4 6 4 4-5 6-5" opacity=".5"/></svg></div>
+        <h4>Regime Detection</h4>
+        <p>5 market states — Trending, Range-Bound, Transition, Compression, Crisis. Know the environment before you size up.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+        <h4>Confluence Scoring</h4>
+        <p>P1-P5 signal quality ratings with 0-100% confidence spectrum. More confluence, more conviction.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--pink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h.01M10 8h.01M14 8h.01"/><path d="M6 12h12"/><path d="M6 16h8"/></svg></div>
+        <h4>Wallet Intelligence</h4>
+        <p>6 wallet classifications — All-Weather, Specialist, Unproven, Cooling Down, and more. Copy the right traders.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h4>Risk Gates</h4>
+        <p>Position limits, leverage caps, and drawdown circuit breakers built into every trade. Survive first, profit second.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="13" height="13" rx="2"/><path d="M16 16v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3"/></svg></div>
+        <h4>Copy Trading</h4>
+        <p>One-click copy with proportional or fixed sizing. Real-time sync with the wallets you trust.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--pink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg></div>
+        <h4>Performance Analytics</h4>
+        <p>Trade journal, P&L curves, and regime-tagged performance breakdowns. Learn from every trade.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="gradient-divider">
+
+<!-- ============================================
+     REFERRAL PROGRAM
+     ============================================ -->
+<section class="section referral-section" id="referral">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Referral Program</div>
+      <h2 class="section-title">Earn while you grow the network</h2>
+      <p class="section-sub">Permanent on-chain fee share. The earlier you join, the more you earn.</p>
+    </div>
+
+    <!-- Tier Cards -->
+    <div class="tiers reveal">
+      <div class="tier-card bronze">
+        <div class="tier-label">Tier 1</div>
+        <div class="tier-percentage mono">10<span>%</span></div>
+        <div class="tier-desc">of referral taker fees</div>
+        <div class="tier-req">0 – 9 referrals</div>
+      </div>
+      <div class="tier-card silver">
+        <div class="tier-label">Tier 2</div>
+        <div class="tier-percentage mono">15<span>%</span></div>
+        <div class="tier-desc">of referral taker fees</div>
+        <div class="tier-req">10 – 49 referrals</div>
+      </div>
+      <div class="tier-card gold">
+        <div class="tier-label">Tier 3</div>
+        <div class="tier-percentage mono">20<span>%</span></div>
+        <div class="tier-desc">of referral taker fees</div>
+        <div class="tier-req">50+ referrals</div>
+      </div>
+    </div>
+
+    <!-- Key callouts -->
+    <div class="ref-features reveal">
+      <div class="ref-feature">
+        <div class="ref-feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+        <div>
+          <h5>Permanent Attribution</h5>
+          <p>Your referrals are yours forever. On-chain, immutable, no expiry.</p>
+        </div>
+      </div>
+      <div class="ref-feature">
+        <div class="ref-feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <div>
+          <h5>First-Touch Model</h5>
+          <p>You get credit even if they sign up days later. No lost referrals.</p>
+        </div>
+      </div>
+      <div class="ref-feature">
+        <div class="ref-feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <div>
+          <h5>Paid in USDC</h5>
+          <p>Real yield, no token shenanigans. Withdraw anytime.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Waitlist Rewards -->
+    <div class="waitlist-rewards reveal">
+      <h4>Waitlist Rewards — Start Earning Before Launch</h4>
+      <div class="reward-tiers">
+        <div class="reward-item">
+          <div class="reward-count mono">3</div>
+          <div class="reward-label">Referrals</div>
+          <div class="reward-text">Priority Access</div>
+        </div>
+        <div class="reward-item">
+          <div class="reward-count mono">10</div>
+          <div class="reward-label">Referrals</div>
+          <div class="reward-text">Founding Trader Badge</div>
+        </div>
+        <div class="reward-item">
+          <div class="reward-count mono">25</div>
+          <div class="reward-label">Referrals</div>
+          <div class="reward-text">30 Days Fee-Free</div>
+        </div>
+        <div class="reward-item">
+          <div class="reward-count mono">50+</div>
+          <div class="reward-label">Referrals</div>
+          <div class="reward-text">Auto Tier 2 Status</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 48px;" class="reveal">
+      <a href="#waitlist" class="btn btn-primary btn-lg">Get Your Referral Link</a>
+    </div>
+  </div>
+</section>
+
+<hr class="gradient-divider">
+
+<!-- ============================================
+     WALLET CLAIM
+     ============================================ -->
+<section class="section" id="claim">
+  <div class="container">
+    <div class="claim-card reveal">
+      <div class="claim-content">
+        <div class="claim-text">
+          <div class="section-label">For Top Traders</div>
+          <h3>Top trader?<br><span class="cyan">Claim your wallet.</span></h3>
+          <p>We index elite Hyperliquid wallets. If yours qualifies, claim your profile and earn 15-20% fee share every time someone copies your trades. No token lockups. No strings.</p>
+          <a href="#waitlist" class="btn btn-cyan">Check If You Qualify</a>
+        </div>
+        <div class="claim-stats">
+          <div class="claim-stat">
+            <div class="number mono">$2.4B+</div>
+            <div class="label">Tracked Volume</div>
+          </div>
+          <div class="claim-stat">
+            <div class="number mono">1,200+</div>
+            <div class="label">Indexed Wallets</div>
+          </div>
+          <div class="claim-stat">
+            <div class="number mono">15-20%</div>
+            <div class="label">Fee Share</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="gradient-divider">
+
+<!-- ============================================
+     FINAL CTA — WAITLIST
+     ============================================ -->
+<section class="section final-cta" id="waitlist">
+  <div class="container">
+    <div class="reveal">
+      <h2 class="section-title">The waitlist is filling up.</h2>
+      <p class="section-sub">Join now. Refer friends. Earn your spot.</p>
+    </div>
+
+    <div class="signup-form reveal" id="signup-form">
+      <div class="form-row">
+        <input type="text" class="form-input mono" id="wallet-input" placeholder="0x... or email address" autocomplete="off">
+        <button class="btn btn-primary" onclick="handleSignup()" id="submit-btn">Secure My Spot</button>
+      </div>
+      <div class="form-ref">
+        <input type="text" id="ref-input" placeholder="Referral code (optional)" autocomplete="off">
+      </div>
+      <p class="form-hint" style="text-align: center; margin-top: 16px;">
+        <span class="mono" style="color: var(--cyan);">2,847</span> traders already on the waitlist
+      </p>
+    </div>
+
+    <!-- Success state -->
+    <div class="signup-success" id="signup-success">
+      <h4>You're in! 🎉</h4>
+      <p>Share your referral link to climb the waitlist and unlock rewards.</p>
+      <div class="ref-link-box">
+        <input type="text" value="arx.trade/ref/0xYOUR...WALLET" readonly id="ref-link">
+        <button onclick="copyRefLink()">Copy</button>
+      </div>
+      <div class="share-buttons">
+        <button class="share-btn" onclick="shareTwitter()">𝕏 Share on Twitter</button>
+        <button class="share-btn" onclick="shareTelegram()">✈ Share on Telegram</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <svg viewBox="0 0 100 27.4" height="24">
+          <path fill="#71717A" fill-rule="evenodd" d="M 5.7 0.2 L 0 27.4 L 5.4 27.4 L 25.5 8.1 L 30.0 27.4 L 35.2 27.4 L 29.3 0 Z M 21.7 4.6 L 7.0 19.4 L 10.1 4.8 Z"/>
+          <path fill="#71717A" d="M 45.2 0 L 39.3 27.4 L 44.5 27.4 L 49.4 4.6 L 68.6 4.6 L 68.6 0 Z"/>
+          <path fill="#71717A" d="M 72.7 0 L 72.7 4.6 L 82.9 14.3 L 72.7 24.6 L 72.7 27.4 L 76.1 27.4 L 86.5 17.6 L 96.8 27.4 L 100 27.4 L 100 24.5 L 89.9 14.5 L 100 4.8 L 100 0 L 97.5 0 L 86.5 11.1 L 75.2 0 Z"/>
+        </svg>
+        <p class="footer-tagline">Institutional-grade copy trading on Hyperliquid. Trade with conviction. Copy with confidence.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Product</h5>
+          <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#referral">Referral Program</a></li>
+            <li><a href="#claim">Wallet Claim</a></li>
+            <li><a href="#">Docs</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Community</h5>
+          <ul>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Discord</a></li>
+            <li><a href="#">Telegram</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Risk Disclosure</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 ARX. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="#">Terms</a>
+        <a href="#">Privacy</a>
+        <a href="#">Risk</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================
+     SCRIPTS
+     ============================================ -->
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Parse referral from URL
+const urlParams = new URLSearchParams(window.location.search);
+const refCode = urlParams.get('ref');
+if (refCode) {
+  const refInput = document.getElementById('ref-input');
+  if (refInput) {
+    refInput.value = refCode;
+    // Store first-touch
+    if (!localStorage.getItem('arx_ref')) {
+      localStorage.setItem('arx_ref', refCode);
+    }
+  }
+}
+
+// Signup handler (mock — replace with real API)
+function handleSignup() {
+  const wallet = document.getElementById('wallet-input').value.trim();
+  if (!wallet) {
+    document.getElementById('wallet-input').style.borderColor = '#EF4444';
+    document.getElementById('wallet-input').focus();
+    return;
+  }
+
+  // Generate mock ref link
+  const slug = wallet.startsWith('0x')
+    ? wallet.slice(0, 6) + '...' + wallet.slice(-4)
+    : wallet.split('@')[0];
+
+  document.getElementById('ref-link').value = `arx.trade/ref/${slug}`;
+
+  // Show success
+  document.getElementById('signup-form').style.display = 'none';
+  document.getElementById('signup-success').classList.add('show');
+}
+
+// Copy ref link
+function copyRefLink() {
+  const input = document.getElementById('ref-link');
+  navigator.clipboard.writeText(input.value);
+  const btn = input.nextElementSibling;
+  btn.textContent = 'Copied!';
+  setTimeout(() => btn.textContent = 'Copy', 2000);
+}
+
+// Share handlers
+function shareTwitter() {
+  const link = document.getElementById('ref-link').value;
+  const text = encodeURIComponent(`I just joined the @araborx waitlist. Institutional-grade copy trading on Hyperliquid is coming.\n\nJoin me: ${link}`);
+  window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank');
+}
+
+function shareTelegram() {
+  const link = document.getElementById('ref-link').value;
+  const text = encodeURIComponent(`Join me on the ARX waitlist — institutional-grade copy trading on Hyperliquid: ${link}`);
+  window.open(`https://t.me/share/url?url=${encodeURIComponent(link)}&text=${text}`, '_blank');
+}
+
+// Navbar background on scroll
+window.addEventListener('scroll', () => {
+  const navbar = document.querySelector('.navbar');
+  if (window.scrollY > 50) {
+    navbar.style.background = 'rgba(8, 6, 15, 0.95)';
+  } else {
+    navbar.style.background = 'rgba(8, 6, 15, 0.8)';
+  }
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
