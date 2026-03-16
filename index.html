@@ -951,6 +951,26 @@ img { max-width: 100%; display: block; }
   margin-top: 8px;
 }
 
+.form-optional {
+  margin-top: 12px;
+}
+
+.form-optional input {
+  width: 100%;
+  padding: 12px 20px;
+  background: var(--bg-surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-family: 'JetBrains Mono', monospace;
+  outline: none;
+}
+
+.form-optional input:focus {
+  border-color: var(--primary);
+}
+
 .form-ref {
   margin-top: 12px;
 }
@@ -1051,6 +1071,60 @@ img { max-width: 100%; display: block; }
 .share-btn:hover {
   border-color: var(--border-medium);
   color: var(--text-primary);
+}
+
+.ref-rewards {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-subtle);
+  text-align: left;
+}
+
+.ref-rewards h5 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.reward-tiers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.reward-tier {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 14px;
+  background: var(--bg-base);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+}
+
+.reward-count {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--cyan);
+}
+
+.reward-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.ref-note {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.ref-note strong {
+  color: var(--primary-light);
 }
 
 /* ============================================
@@ -1489,8 +1563,11 @@ img { max-width: 100%; display: block; }
 
     <div class="signup-form reveal" id="signup-form">
       <div class="form-row">
-        <input type="text" class="form-input mono" id="wallet-input" placeholder="0x... or email address" autocomplete="off">
+        <input type="email" class="form-input" id="email-input" placeholder="Your email address" autocomplete="email">
         <button class="btn btn-primary" onclick="handleSignup()" id="submit-btn">Secure My Spot</button>
+      </div>
+      <div class="form-optional">
+        <input type="text" class="mono" id="wallet-input" placeholder="Wallet address — optional (0x...)" autocomplete="off">
       </div>
       <div class="form-ref">
         <input type="text" id="ref-input" placeholder="Referral code (optional)" autocomplete="off">
@@ -1502,15 +1579,37 @@ img { max-width: 100%; display: block; }
 
     <!-- Success state -->
     <div class="signup-success" id="signup-success">
-      <h4>You're in! 🎉</h4>
+      <h4>You're in!</h4>
       <p>Share your referral link to climb the waitlist and unlock rewards.</p>
       <div class="ref-link-box">
-        <input type="text" value="arx.trade/ref/0xYOUR...WALLET" readonly id="ref-link">
+        <input type="text" value="" readonly id="ref-link">
         <button onclick="copyRefLink()">Copy</button>
       </div>
       <div class="share-buttons">
         <button class="share-btn" onclick="shareTwitter()">𝕏 Share on Twitter</button>
         <button class="share-btn" onclick="shareTelegram()">✈ Share on Telegram</button>
+      </div>
+      <div class="ref-rewards">
+        <h5>Unlock Rewards by Referring</h5>
+        <div class="reward-tiers">
+          <div class="reward-tier">
+            <span class="reward-count mono">3 refs</span>
+            <span class="reward-label">Priority access at launch</span>
+          </div>
+          <div class="reward-tier">
+            <span class="reward-count mono">10 refs</span>
+            <span class="reward-label">Founding Trader badge</span>
+          </div>
+          <div class="reward-tier">
+            <span class="reward-count mono">25 refs</span>
+            <span class="reward-label">Fee-free trading for 30 days</span>
+          </div>
+          <div class="reward-tier">
+            <span class="reward-count mono">50+ refs</span>
+            <span class="reward-label">Auto Tier 2 — skip $100K volume req</span>
+          </div>
+        </div>
+        <p class="ref-note">Every referral becomes a <strong>permanent fee-share</strong> at launch. You earn 10% of their trading fees. Forever.</p>
       </div>
     </div>
   </div>
@@ -1599,21 +1698,49 @@ if (refCode) {
   }
 }
 
+// Capture ref code from URL on page load
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  const ref = params.get('ref');
+  if (ref) {
+    localStorage.setItem('arx_ref', ref);
+    const refInput = document.getElementById('ref-input');
+    if (refInput) refInput.value = ref;
+  } else {
+    const stored = localStorage.getItem('arx_ref');
+    if (stored) {
+      const refInput = document.getElementById('ref-input');
+      if (refInput) refInput.value = stored;
+    }
+  }
+})();
+
 // Signup handler (mock — replace with real API)
 function handleSignup() {
+  const email = document.getElementById('email-input').value.trim();
   const wallet = document.getElementById('wallet-input').value.trim();
-  if (!wallet) {
+  const refCode = document.getElementById('ref-input').value.trim();
+
+  // Validate email
+  if (!email || !email.includes('@') || !email.includes('.')) {
+    document.getElementById('email-input').style.borderColor = '#EF4444';
+    document.getElementById('email-input').focus();
+    return;
+  }
+
+  // Validate wallet format if provided
+  if (wallet && !wallet.startsWith('0x')) {
     document.getElementById('wallet-input').style.borderColor = '#EF4444';
     document.getElementById('wallet-input').focus();
     return;
   }
 
-  // Generate mock ref link
-  const slug = wallet.startsWith('0x')
-    ? wallet.slice(0, 6) + '...' + wallet.slice(-4)
-    : wallet.split('@')[0];
+  // Generate mock ref link from email
+  const slug = email.split('@')[0].replace(/[^a-zA-Z0-9]/g, '').slice(0, 12);
+  document.getElementById('ref-link').value = `arx.trade?ref=${slug}`;
 
-  document.getElementById('ref-link').value = `arx.trade/ref/${slug}`;
+  // Clear stored ref code after signup
+  localStorage.removeItem('arx_ref');
 
   // Show success
   document.getElementById('signup-form').style.display = 'none';
@@ -1632,13 +1759,13 @@ function copyRefLink() {
 // Share handlers
 function shareTwitter() {
   const link = document.getElementById('ref-link').value;
-  const text = encodeURIComponent(`I just joined the @araborx waitlist. Institutional-grade copy trading on Hyperliquid is coming.\n\nJoin me: ${link}`);
+  const text = encodeURIComponent(`I just joined the @araborx waitlist. Institutional-grade copy trading on Hyperliquid is coming.\n\nJoin me: https://${link}`);
   window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank');
 }
 
 function shareTelegram() {
   const link = document.getElementById('ref-link').value;
-  const text = encodeURIComponent(`Join me on the ARX waitlist — institutional-grade copy trading on Hyperliquid: ${link}`);
+  const text = encodeURIComponent(`Join me on the ARX waitlist — institutional-grade copy trading on Hyperliquid: https://${link}`);
   window.open(`https://t.me/share/url?url=${encodeURIComponent(link)}&text=${text}`, '_blank');
 }
 
