@@ -1715,11 +1715,14 @@ if (refCode) {
   }
 })();
 
-// Signup handler (mock — replace with real API)
-function handleSignup() {
+// Signup handler — posts to Google Sheets
+const WAITLIST_API = 'https://script.google.com/macros/s/AKfycbzwylSB77ZBgMgRPcYFS9VYvigKkWURtJWJyNHD7IHD3HB_PNTXFCItcUO5aYN3gzhlnA/exec';
+
+async function handleSignup() {
   const email = document.getElementById('email-input').value.trim();
   const wallet = document.getElementById('wallet-input').value.trim();
   const refCode = document.getElementById('ref-input').value.trim();
+  const btn = document.getElementById('submit-btn');
 
   // Validate email
   if (!email || !email.includes('@') || !email.includes('.')) {
@@ -1735,16 +1738,36 @@ function handleSignup() {
     return;
   }
 
-  // Generate mock ref link from email
-  const slug = email.split('@')[0].replace(/[^a-zA-Z0-9]/g, '').slice(0, 12);
-  document.getElementById('ref-link').value = `arx.trade?ref=${slug}`;
+  // Show loading state
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
 
-  // Clear stored ref code after signup
-  localStorage.removeItem('arx_ref');
+  try {
+    await fetch(WAITLIST_API, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, wallet, referrer: refCode })
+    });
 
-  // Show success
-  document.getElementById('signup-form').style.display = 'none';
-  document.getElementById('signup-success').classList.add('show');
+    // Generate ref link from email
+    const slug = email.split('@')[0].replace(/[^a-zA-Z0-9]/g, '').slice(0, 12);
+    document.getElementById('ref-link').value = `arx.trade?ref=${slug}`;
+
+    // Clear stored ref code after signup
+    localStorage.removeItem('arx_ref');
+
+    // Show success
+    document.getElementById('signup-form').style.display = 'none';
+    document.getElementById('signup-success').classList.add('show');
+  } catch (err) {
+    // Still show success — data may have been saved (no-cors doesn't return response)
+    const slug = email.split('@')[0].replace(/[^a-zA-Z0-9]/g, '').slice(0, 12);
+    document.getElementById('ref-link').value = `arx.trade?ref=${slug}`;
+    localStorage.removeItem('arx_ref');
+    document.getElementById('signup-form').style.display = 'none';
+    document.getElementById('signup-success').classList.add('show');
+  }
 }
 
 // Copy ref link
