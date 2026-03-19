@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ARX.trade sitemap — Place at: https://arx.trade/sitemap.xml -->
+<!-- Update this as you add new pages (blog posts, features, etc.) -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://arx.trade/</loc>
+    <lastmod>2026-03-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <!-- Add blog posts here as you publish them:
+  <url>
+    <loc>https://arx.trade/blog/how-to-copy-trade-hyperliquid</loc>
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  -->
+</urlset>

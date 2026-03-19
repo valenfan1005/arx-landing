@@ -1,0 +1,9 @@
+# ARX.trade robots.txt
+# Place this file at: https://arx.trade/robots.txt
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+
+Sitemap: https://arx.trade/sitemap.xml
