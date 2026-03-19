@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Is Market Regime Detection? How It Gives Traders an Edge &mdash; ARX</title>
+<meta name="description" content="Market regime detection identifies 5 states — Trending, Range-Bound, Transition, Compression, Crisis — so you trade the right strategy at the right time.">
+
+<!-- SEO -->
+<link rel="canonical" href="https://arx.trade/blog/what-is-market-regime-detection/" />
+<meta name="robots" content="index, follow" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="What Is Market Regime Detection? How It Gives Traders an Edge — ARX">
+<meta property="og:description" content="Market regime detection identifies 5 states — Trending, Range-Bound, Transition, Compression, Crisis — so you trade the right strategy at the right time.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://arx.trade/blog/what-is-market-regime-detection/" />
+<meta property="og:image" content="https://arx.trade/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="ARX" />
+<meta property="article:published_time" content="2026-03-19T00:00:00+00:00" />
+<meta property="article:author" content="ARX Team" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@ARX_TRADE" />
+<meta name="twitter:title" content="What Is Market Regime Detection? How It Gives Traders an Edge" />
+<meta name="twitter:description" content="Market regime detection identifies 5 states — Trending, Range-Bound, Transition, Compression, Crisis — so you trade the right strategy at the right time." />
+<meta name="twitter:image" content="https://arx.trade/og-image.png" />
+
+<!-- Additional Meta -->
+<meta name="keywords" content="market regime detection, regime detection trading, market regimes crypto, trading regime classification, market state detection, adaptive trading strategy" />
+<meta name="theme-color" content="#7C3AED" />
+<meta name="author" content="ARX Team" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+<!-- Structured Data: Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "What Is Market Regime Detection? How It Gives Traders an Edge",
+  "description": "Market regime detection identifies 5 states — Trending, Range-Bound, Transition, Compression, Crisis — so you trade the right strategy at the right time.",
+  "author": {
+    "@type": "Organization",
+    "name": "ARX",
+    "url": "https://arx.trade"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ARX",
+    "url": "https://arx.trade",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://arx.trade/logo.png"
+    }
+  },
+  "datePublished": "2026-03-19",
+  "dateModified": "2026-03-19",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://arx.trade/blog/what-is-market-regime-detection/"
+  },
+  "image": "https://arx.trade/og-image.png",
+  "url": "https://arx.trade/blog/what-is-market-regime-detection/"
+}
+</script>
+
+<!-- Structured Data: FAQ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is market regime detection?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Market regime detection is the process of classifying the current market environment into a distinct behavioral state — such as Trending, Range-Bound, Transition, Compression, or Crisis. By identifying the active regime, traders can select the strategy that fits current conditions instead of applying the same approach regardless of market behavior."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many market regimes does ARX detect?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ARX detects 5 market regimes: Trending (sustained directional moves), Range-Bound (price oscillating between support and resistance), Transition (regime is shifting), Compression (volatility squeeze before a breakout), and Crisis (extreme volatility with liquidation cascades). Each regime triggers different strategy adjustments and position sizing rules."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can regime detection work for crypto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Crypto markets are particularly well-suited for regime detection because they exhibit more extreme regime shifts than traditional markets. Higher baseline volatility, 24/7 trading, and frequent liquidation cascades make regime awareness even more valuable. Crypto can shift from calm compression to full crisis in hours — detection systems that catch these transitions early give traders a meaningful edge."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to understand regime detection to use ARX?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. ARX applies regime detection automatically to signal scoring and copy trading. When you copy a trader through ARX, the system factors in the current market regime when evaluating signal quality, adjusting confidence scores, and managing risk. You benefit from regime-aware trading without needing to perform the analysis yourself."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================
+   DESIGN TOKENS — "The Keep" Palette
+   ============================================ */
+:root {
+  --bg-base: #08060F;
+  --bg-surface-1: #0F0B1A;
+  --bg-surface-2: #1A1425;
+  --bg-surface-3: #251E30;
+  --bg-surface-4: #302840;
+
+  --primary: #7C3AED;
+  --primary-hover: #925BF0;
+  --primary-light: #A274F2;
+  --primary-glow: rgba(124, 58, 237, 0.3);
+
+  --cyan: #22D1EE;
+  --cyan-dim: rgba(34, 209, 238, 0.15);
+  --cyan-glow: rgba(34, 209, 238, 0.3);
+
+  --pink: #F472B6;
+  --pink-dim: rgba(244, 114, 182, 0.15);
+
+  --text-primary: #FFFFFF;
+  --text-secondary: #A1A1AA;
+  --text-muted: #71717A;
+  --text-dim: #52525B;
+
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-medium: rgba(255, 255, 255, 0.1);
+  --border-accent: rgba(124, 58, 237, 0.3);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+}
+
+/* ============================================
+   RESET & BASE
+   ============================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.mono { font-family: 'JetBrains Mono', monospace; font-feature-settings: 'tnum'; }
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* ============================================
+   LAYOUT
+   ============================================ */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ============================================
+   NAVBAR
+   ============================================ */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 16px 0;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(8, 6, 15, 0.8);
+  border-bottom: 1px solid var(--border-subtle);
+  transition: all 0.3s ease;
+}
+
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo svg { height: 28px; width: auto; }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--text-primary); }
+
+.nav-links a.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: var(--primary);
+  color: #FFFFFF;
+  border: none;
+  border-radius: var(--radius-full);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.nav-cta:hover {
+  background: var(--primary-hover);
+  box-shadow: 0 0 24px var(--primary-glow);
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.nav-toggle span {
+  width: 24px;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* ============================================
+   ARTICLE LAYOUT
+   ============================================ */
+.article-header {
+  padding: 140px 0 48px;
+  text-align: center;
+  position: relative;
+}
+
+.article-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(124, 58, 237, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+  position: relative;
+}
+
+.breadcrumb a {
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+
+.breadcrumb a:hover { color: var(--primary-light); }
+
+.breadcrumb .sep { color: var(--text-dim); }
+
+.article-header h1 {
+  font-size: 44px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  max-width: 720px;
+  margin: 0 auto 20px;
+  position: relative;
+}
+
+.article-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  font-size: 13px;
+  color: var(--text-muted);
+  position: relative;
+}
+
+.article-meta .dot {
+  width: 3px;
+  height: 3px;
+  background: var(--text-dim);
+  border-radius: 50%;
+}
+
+.article-meta span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+}
+
+/* Table of Contents */
+.toc {
+  max-width: 720px;
+  margin: 0 auto 48px;
+  padding: 28px 32px;
+  background: var(--bg-surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.toc-title {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.toc ol {
+  list-style: none;
+  counter-reset: toc-counter;
+}
+
+.toc ol li {
+  counter-increment: toc-counter;
+  margin-bottom: 8px;
+}
+
+.toc ol li a {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+  line-height: 1.5;
+}
+
+.toc ol li a::before {
+  content: counter(toc-counter, decimal-leading-zero);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-dim);
+  min-width: 20px;
+}
+
+.toc ol li a:hover { color: var(--primary-light); }
+
+/* Article Body */
+.article-body {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+.article-body h2 {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin: 56px 0 20px;
+  padding-top: 8px;
+}
+
+.article-body h3 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 40px 0 16px;
+  color: var(--primary-light);
+}
+
+.article-body p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+.article-body strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.article-body a {
+  color: var(--primary-light);
+  text-decoration: underline;
+  text-decoration-color: rgba(162, 116, 242, 0.3);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.2s;
+}
+
+.article-body a:hover {
+  text-decoration-color: var(--primary-light);
+}
+
+.article-body ul,
+.article-body ol {
+  margin: 0 0 24px 0;
+  padding-left: 24px;
+}
+
+.article-body li {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.article-body ol {
+  list-style: decimal;
+}
+
+.article-body ul {
+  list-style: disc;
+}
+
+.article-body li::marker {
+  color: var(--primary-light);
+}
+
+/* Blockquote */
+.article-body blockquote {
+  margin: 32px 0;
+  padding: 20px 24px;
+  border-left: 3px solid var(--primary);
+  background: var(--bg-surface-1);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.article-body blockquote p {
+  color: var(--text-primary);
+  font-size: 15px;
+  margin-bottom: 0;
+  font-style: italic;
+}
+
+/* Inline code / mono numbers */
+.article-body code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  padding: 2px 7px;
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  color: var(--cyan);
+}
+
+/* Step boxes */
+.step-box {
+  margin: 24px 0 32px;
+  padding: 28px 32px;
+  background: var(--bg-surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  position: relative;
+}
+
+.step-box::before {
+  content: attr(data-step);
+  position: absolute;
+  top: -12px;
+  left: 24px;
+  padding: 2px 12px;
+  background: var(--primary);
+  border-radius: var(--radius-full);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.step-box h3 {
+  margin-top: 4px;
+  margin-bottom: 12px;
+}
+
+.step-box p {
+  margin-bottom: 12px;
+}
+
+.step-box p:last-child {
+  margin-bottom: 0;
+}
+
+/* Author section */
+.article-author {
+  max-width: 720px;
+  margin: 0 auto 48px;
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: var(--bg-surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.author-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--cyan));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.author-info .author-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.author-info .author-date {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* CTA Banner */
+.article-cta {
+  max-width: 720px;
+  margin: 0 auto 80px;
+  padding: 48px;
+  text-align: center;
+  background: var(--bg-surface-1);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.article-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--cyan));
+}
+
+.article-cta h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+}
+
+.article-cta p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: var(--radius-full);
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border: none;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  box-shadow: 0 0 32px var(--primary-glow);
+  transform: translateY(-1px);
+}
+
+/* FAQ Section */
+.faq-section {
+  margin: 56px 0 32px;
+}
+
+.faq-item {
+  margin-bottom: 24px;
+  padding: 24px 28px;
+  background: var(--bg-surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.faq-item h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 10px;
+}
+
+.faq-item p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  padding: 64px 0 32px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 48px;
+}
+
+.footer-brand svg { height: 24px; width: auto; margin-bottom: 16px; }
+.footer-tagline { font-size: 14px; color: var(--text-muted); max-width: 280px; }
+
+.footer-links {
+  display: flex;
+  gap: 64px;
+}
+
+.footer-col h5 {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+.footer-col a {
+  font-size: 14px;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+  text-decoration: none;
+}
+
+.footer-col a:hover { color: var(--text-primary); }
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+.footer-legal {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-legal a { color: var(--text-dim); text-decoration: none; }
+.footer-legal a:hover { color: var(--text-secondary); }
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .article-header { padding: 120px 0 32px; }
+  .article-header h1 { font-size: 30px; }
+  .article-meta { flex-wrap: wrap; justify-content: center; gap: 12px; }
+  .toc { margin: 0 24px 40px; }
+  .article-body { padding: 0 24px 60px; }
+  .article-body h2 { font-size: 22px; margin-top: 40px; }
+  .article-body h3 { font-size: 18px; }
+  .step-box { padding: 24px; }
+  .article-author { margin: 0 24px 40px; padding: 20px; flex-direction: column; text-align: center; }
+  .article-cta { margin: 0 24px 60px; padding: 32px 24px; }
+  .article-cta h3 { font-size: 20px; }
+  .faq-item { padding: 20px; }
+
+  .nav-links { display: none; }
+  .nav-links.show {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(8, 6, 15, 0.95);
+    backdrop-filter: blur(20px);
+    padding: 24px;
+    border-bottom: 1px solid var(--border-subtle);
+    gap: 16px;
+  }
+  .nav-toggle { display: flex; }
+
+  .footer-content { flex-direction: column; gap: 48px; }
+  .footer-links { gap: 32px; flex-wrap: wrap; }
+  .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================
+     NAVBAR
+     ============================================ -->
+<nav class="navbar">
+  <div class="container">
+    <a href="/" class="nav-logo">
+      <svg viewBox="0 0 100 27.4" height="28">
+        <path fill="#FFFFFF" fill-rule="evenodd" d="M 5.7 0.2 L 0 27.4 L 5.4 27.4 L 25.5 8.1 L 30.0 27.4 L 35.2 27.4 L 29.3 0 Z M 21.7 4.6 L 7.0 19.4 L 10.1 4.8 Z"/>
+        <path fill="#FFFFFF" d="M 45.2 0 L 39.3 27.4 L 44.5 27.4 L 49.4 4.6 L 68.6 4.6 L 68.6 0 Z"/>
+        <path fill="#FFFFFF" d="M 72.7 0 L 72.7 4.6 L 82.9 14.3 L 72.7 24.6 L 72.7 27.4 L 76.1 27.4 L 86.5 17.6 L 96.8 27.4 L 100 27.4 L 100 24.5 L 89.9 14.5 L 100 4.8 L 100 0 L 97.5 0 L 86.5 11.1 L 75.2 0 Z"/>
+      </svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/#waitlist" class="nav-cta">Join Waitlist</a></li>
+    </ul>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ============================================
+     ARTICLE HEADER
+     ============================================ -->
+<header class="article-header">
+  <div class="container">
+    <nav class="breadcrumb">
+      <a href="/blog/">&larr; Back to Blog</a>
+    </nav>
+    <h1>What Is Market Regime Detection? How It Gives Traders an Edge</h1>
+    <div class="article-meta">
+      <span>ARX Team</span>
+      <span class="dot"></span>
+      <span>2026-03-19</span>
+      <span class="dot"></span>
+      <span>9 min read</span>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================
+     TABLE OF CONTENTS
+     ============================================ -->
+<nav class="toc">
+  <div class="toc-title">Table of Contents</div>
+  <ol>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#what-is-a-market-regime">What Is a Market Regime?</a></li>
+    <li><a href="#the-5-market-regimes">The 5 Market Regimes</a></li>
+    <li><a href="#why-traders-ignore-regime-detection">Why Most Traders Ignore Regime Detection</a></li>
+    <li><a href="#how-arx-uses-regime-detection">How ARX Uses Regime Detection</a></li>
+    <li><a href="#regime-detection-copy-trading">Regime Detection + Copy Trading</a></li>
+    <li><a href="#apply-regime-thinking">How to Apply Regime Thinking Today</a></li>
+    <li><a href="#faq">Frequently Asked Questions</a></li>
+  </ol>
+</nav>
+
+<!-- ============================================
+     ARTICLE BODY
+     ============================================ -->
+<article class="article-body">
+
+  <h2 id="introduction">Introduction</h2>
+
+  <p>Most traders apply the same strategy regardless of what the market is doing. They trend-follow in a range. They mean-revert in a breakout. They size up during a liquidation cascade. Then they wonder why their edge disappeared. The problem is not their strategy &mdash; it is that they are using the right strategy at the wrong time. Market regime detection solves this by classifying the current environment into a distinct state, so you can adapt your approach to what the market is actually doing, not what you hope it is doing.</p>
+
+  <p>Regime detection trading is not a new indicator or a magic signal. It is a framework &mdash; a way of thinking about markets that separates consistently profitable traders from everyone else. The core idea: before you decide <em>what</em> to trade, first determine <em>what kind of market</em> you are trading in.</p>
+
+  <p>This article breaks down the <code>5</code> market regimes, explains how to identify each one, and shows you how to use regime awareness to improve your trading &mdash; whether you are executing manually or <a href="/blog/how-to-copy-trade-on-hyperliquid/">copy trading on Hyperliquid</a>.</p>
+
+  <h2 id="what-is-a-market-regime">What Is a Market Regime?</h2>
+
+  <p>A market regime is the dominant behavioral pattern of a market at a given time. Think of it as the market&rsquo;s current &ldquo;mode.&rdquo; Just like weather has distinct patterns &mdash; sunny, stormy, transitional &mdash; markets cycle through distinct states that fundamentally change how price behaves.</p>
+
+  <p>This matters because different regimes favor different strategies. A trend-following system that prints money in a sustained directional move will get chopped to pieces in a range-bound environment. A mean-reversion strategy that thrives when price oscillates between support and resistance will get steamrolled by a genuine breakout.</p>
+
+  <p>The traders who consistently make money are not the ones with the best entries. They are the ones who know <em>which</em> strategy to deploy <em>when</em>. Regime detection is the tool that makes this possible.</p>
+
+  <p>Most technical analysis teaches you what to trade. Regime detection teaches you <strong>how to trade right now</strong>. It is the layer that sits above your indicators and tells you which indicators to trust in the current environment.</p>
+
+  <h2 id="the-5-market-regimes">The 5 Market Regimes</h2>
+
+  <p><a href="https://arx.trade/">ARX</a> classifies markets into <code>5</code> distinct regimes. Each one has unique characteristics, favored strategies, and measurable signals. Here is how to identify and trade each one.</p>
+
+  <h3>1. Trending</h3>
+
+  <p>A trending regime is characterized by sustained directional movement &mdash; either up or down. Price makes higher highs and higher lows (uptrend) or lower highs and lower lows (downtrend). This is where momentum strategies thrive. Traders who identify a trend early and ride it with proper risk management capture the largest moves in any market cycle.</p>
+
+  <p><strong>Key signals that confirm a Trending regime:</strong></p>
+
+  <ul>
+    <li><strong>ADX above <code>25</code></strong> &mdash; the Average Directional Index measures trend strength regardless of direction. Readings above <code>25</code> indicate a strong trend; above <code>40</code> suggests an exceptionally strong one.</li>
+    <li><strong>Price consistently above or below key moving averages</strong> &mdash; the <code>20 EMA</code> above the <code>50 EMA</code>, and price respecting these as dynamic support or resistance.</li>
+    <li><strong>Expanding Bollinger Bands</strong> &mdash; bandwidth widening indicates increasing volatility in one direction.</li>
+    <li><strong>Rising volume on moves with the trend</strong> &mdash; participation confirms conviction.</li>
+  </ul>
+
+  <p><strong>Favored strategies:</strong> Trend following, momentum entries on pullbacks, breakout continuation. Position sizing can be more aggressive because the market is rewarding directional bets.</p>
+
+  <h3>2. Range-Bound</h3>
+
+  <p>In a range-bound regime, price oscillates between defined support and resistance levels without establishing a directional trend. Buyers step in at the bottom of the range, sellers cap the top. This is mean-reversion territory &mdash; you buy low and sell high within the range, expecting price to rotate back to the mean.</p>
+
+  <p><strong>Key signals that confirm a Range-Bound regime:</strong></p>
+
+  <ul>
+    <li><strong>ADX below <code>20</code></strong> &mdash; low trend strength indicates a market going sideways.</li>
+    <li><strong>Flat moving averages</strong> &mdash; the <code>20 EMA</code> and <code>50 EMA</code> are nearly horizontal and intertwined.</li>
+    <li><strong>Contracting volatility</strong> &mdash; ATR is stable or declining. Price swings are predictable.</li>
+    <li><strong>Multiple touches of support and resistance</strong> &mdash; the more times a level holds, the more defined the range.</li>
+  </ul>
+
+  <p><strong>Favored strategies:</strong> Mean reversion, range fading, selling at resistance and buying at support. Position sizing should be moderate with tight stops just outside the range boundaries.</p>
+
+  <h3>3. Transition</h3>
+
+  <p>Transition is the most dangerous regime. The market is shifting from one state to another &mdash; perhaps from trending to range-bound, or from compression into a trend. The old regime&rsquo;s strategies stop working before the new regime&rsquo;s strategies start. Most trading losses happen here because traders are still operating on stale assumptions.</p>
+
+  <p><strong>Key signals that indicate a Transition regime:</strong></p>
+
+  <ul>
+    <li><strong>Divergences between price and momentum indicators</strong> &mdash; RSI or MACD diverging from price action suggests the current move is losing steam.</li>
+    <li><strong>Volume profile changes</strong> &mdash; volume patterns that no longer match the expected behavior of the current regime.</li>
+    <li><strong>Failed breakouts or breakdowns</strong> &mdash; price breaks a level but immediately reverses, trapping traders on the wrong side.</li>
+    <li><strong>Whipsawing around moving averages</strong> &mdash; price repeatedly crossing above and below the <code>20 EMA</code> without establishing direction.</li>
+  </ul>
+
+  <p><strong>Favored strategies:</strong> Reduce exposure. This is not the time to force trades. Tighten stops on existing positions. Wait for the new regime to establish itself before committing capital. The best trade in a transition is often no trade at all.</p>
+
+  <h3>4. Compression</h3>
+
+  <p>Compression is the calm before the storm. Volatility contracts to unusually low levels, price range narrows, and the market coils like a spring. The longer a compression lasts, the more violent the eventual breakout tends to be. This is where breakout strategies are prepared &mdash; not executed yet, but staged and ready.</p>
+
+  <p><strong>Key signals that confirm a Compression regime:</strong></p>
+
+  <ul>
+    <li><strong>Bollinger Band squeeze</strong> &mdash; bandwidth falls to its lowest level in <code>30+</code> days. The bands are nearly touching.</li>
+    <li><strong>Declining ATR</strong> &mdash; the <code>14-period</code> Average True Range is at or near its <code>30-day</code> low.</li>
+    <li><strong>Decreasing volume</strong> &mdash; participation drops as traders wait for a catalyst.</li>
+    <li><strong>Narrowing daily ranges</strong> &mdash; the difference between daily highs and lows shrinks over consecutive sessions.</li>
+  </ul>
+
+  <p><strong>Favored strategies:</strong> Prepare breakout entries in both directions. Set alerts, not orders. Wait for the breakout to confirm with volume before committing. Position sizing should account for the fact that post-compression moves are often explosive &mdash; use tighter initial risk with plans to scale in once direction is confirmed.</p>
+
+  <h3>5. Crisis</h3>
+
+  <p>A crisis regime is extreme volatility with correlation spikes, liquidation cascades, and panic-driven price action. Normal technical analysis breaks down because price movements are driven by forced selling, margin calls, and liquidity crises rather than rational market behavior. In crypto, this can mean <code>30%+</code> moves in hours, funding rate extremes, and cascading liquidations across exchanges.</p>
+
+  <p><strong>Key signals that confirm a Crisis regime:</strong></p>
+
+  <ul>
+    <li><strong>VIX spike equivalent</strong> &mdash; in crypto, implied volatility or realized volatility surging to <code>2x+</code> its <code>30-day</code> average.</li>
+    <li><strong>Funding rate extremes</strong> &mdash; rates hitting <code>-0.1%</code> or lower per <code>8 hours</code>, indicating heavy short pressure and liquidation risk.</li>
+    <li><strong>Massive liquidations</strong> &mdash; billions in liquidations across exchanges within a <code>24-hour</code> period.</li>
+    <li><strong>Correlation spikes</strong> &mdash; assets that normally trade independently start moving in lockstep (usually down).</li>
+  </ul>
+
+  <p><strong>Favored strategies:</strong> Capital preservation. Reduce position sizes by <code>50%</code> or more. Move to cash or stablecoins. If you must trade, use extremely tight stops and accept that slippage will be worse than normal. The goal is to survive the crisis with your capital intact so you can capitalize on the recovery.</p>
+
+  <h2 id="why-traders-ignore-regime-detection">Why Most Traders Ignore Regime Detection</h2>
+
+  <p>If regime detection is so valuable, why don&rsquo;t most traders use it? Three reasons.</p>
+
+  <p><strong>1. It is not a standard indicator.</strong> You will not find a &ldquo;regime detection&rdquo; button on TradingView, Binance, or any major platform. It is not a single indicator you overlay on a chart. It requires synthesizing multiple data points &mdash; trend strength, volatility, volume, and price structure &mdash; into a unified assessment. Most traders have never been taught to think this way.</p>
+
+  <p><strong>2. It requires admitting uncertainty.</strong> Regime detection forces you to acknowledge that you do not always know what the market is doing &mdash; and that the correct action in a Transition regime might be to do nothing. Most traders would rather take a bad trade than sit on their hands. Regime awareness demands discipline that most traders lack.</p>
+
+  <p><strong>3. It is hard to quantify manually.</strong> Checking ADX, comparing volatility to historical averages, monitoring volume profiles, and tracking failed breakouts across multiple timeframes is a lot of work. Without automation, regime detection is time-consuming and subjective. Two experienced traders looking at the same chart might disagree on the current regime.</p>
+
+  <p>The result: most traders default to one strategy and hope it works. They trend-follow in a range, mean-revert in a trend, and get caught flat-footed in transitions. Their strategy might be sound &mdash; it is just being deployed in the wrong environment.</p>
+
+  <h2 id="how-arx-uses-regime-detection">How ARX Uses Regime Detection</h2>
+
+  <p><a href="https://arx.trade/">ARX</a> automates what experienced traders do intuitively but inconsistently. The regime engine continuously classifies the current market state across multiple timeframes and feeds that classification into every downstream decision.</p>
+
+  <p><strong>Regime-adjusted signal confidence.</strong> A confluence signal &mdash; say, a P4 score where multiple tracked wallets are entering the same direction with technical alignment &mdash; means very different things depending on the active regime. A P4 in a Trending regime is a high-conviction setup: the market rewards directional bets, and multiple smart wallets agree on the direction. A P4 in a Crisis regime is a different animal entirely: even if the signal looks strong, the market environment is hostile to any directional exposure. ARX adjusts signal confidence scores based on regime context, so you are never seeing a signal in isolation.</p>
+
+  <p><strong>Dynamic position sizing.</strong> Regime context changes everything about how you should size positions. In a Trending regime, you might allocate full position size to a high-confluence signal. In a Transition regime, you might reduce to <code>50%</code>. In a Crisis, you might skip entirely or size down to <code>25%</code>. ARX encodes these adjustments so you do not have to make them manually under pressure &mdash; exactly when your judgment is most likely to fail.</p>
+
+  <p><strong>Regime shift alerts.</strong> The most valuable moment in regime detection is not when a regime is established &mdash; it is when a regime is changing. ARX monitors for early signals of regime transitions: divergences building, volatility compressing or expanding, volume drying up or spiking. These alerts give you time to adjust before the shift is obvious to everyone else.</p>
+
+  <h2 id="regime-detection-copy-trading">Regime Detection + Copy Trading</h2>
+
+  <p>If you are part of the growing number of traders who prefer to <a href="/blog/how-to-copy-trade-on-hyperliquid/">copy trade on Hyperliquid</a>, regime detection is still working for you &mdash; you just do not have to think about it.</p>
+
+  <p>Here is how it works in practice. When you copy a trader through ARX, the system does not blindly replicate every trade at full size. It evaluates each signal through the regime lens. A trader who is highly profitable in Trending regimes might have a mediocre track record during Transitions. ARX factors this in when scoring their signals. If the market is in a Transition regime and the trader&rsquo;s edge historically diminishes in that environment, the signal confidence adjusts downward &mdash; and your position sizing can adjust automatically.</p>
+
+  <p>For copy traders, this means three things:</p>
+
+  <ul>
+    <li><strong>You get regime-aware risk management without doing regime analysis.</strong> The engine runs in the background.</li>
+    <li><strong>Your exposure automatically adjusts to market conditions.</strong> You are not copying blindly during the most dangerous periods.</li>
+    <li><strong>You benefit from a trader&rsquo;s skill when conditions favor their style</strong> &mdash; and are protected when conditions do not.</li>
+  </ul>
+
+  <p>You do not need to understand ADX readings, Bollinger Band width, or ATR calculations. ARX handles the regime classification and translates it into actionable adjustments to your copy settings.</p>
+
+  <h2 id="apply-regime-thinking">How to Apply Regime Thinking Today</h2>
+
+  <p>Even without ARX, you can start applying regime thinking to your trading immediately. Here are four practical steps you can take before your next trade.</p>
+
+  <p><strong>1. Check ADX before entering any trade.</strong> Pull up the <code>14-period</code> ADX on your chart. If it is above <code>25</code>, the market is trending &mdash; favor momentum entries. If it is below <code>20</code>, the market is ranging &mdash; favor mean-reversion setups. If it is between <code>20</code> and <code>25</code>, you might be in a transition zone. Proceed with caution.</p>
+
+  <p><strong>2. Compare current volatility to the <code>30-day</code> average.</strong> Is ATR above or below its recent average? Rising ATR in a downtrend suggests potential crisis conditions. Falling ATR to multi-week lows suggests compression. This single comparison gives you immediate regime context.</p>
+
+  <p><strong>3. Ask yourself one question before every trade: &ldquo;Is this market trending, ranging, or transitioning?&rdquo;</strong> Force yourself to answer before you look at entries. If you cannot confidently identify the current regime, that is itself a signal &mdash; you are probably in a transition, and the best move is to reduce size or wait.</p>
+
+  <p><strong>4. Adjust position size based on regime.</strong> This is the single highest-impact change you can make. Full size in clear Trending or Range-Bound regimes where your strategy has edge. Half size in Transition regimes where the environment is ambiguous. Quarter size or flat in Crisis regimes where capital preservation trumps everything else.</p>
+
+  <blockquote>
+    <p>The best traders do not predict regimes. They detect them early and adapt fast. The market does not care about your strategy &mdash; it only rewards strategies that match current conditions.</p>
+  </blockquote>
+
+  <h2 id="faq">Frequently Asked Questions</h2>
+
+  <div class="faq-section">
+    <div class="faq-item">
+      <h3>What is market regime detection?</h3>
+      <p>Market regime detection is the process of classifying the current market environment into a distinct behavioral state &mdash; such as Trending, Range-Bound, Transition, Compression, or Crisis. By identifying the active regime, traders can select the strategy that fits current conditions instead of applying the same approach regardless of market behavior. It is not a single indicator but a framework that synthesizes trend strength, volatility, volume, and price structure into a unified market assessment.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How many market regimes does ARX detect?</h3>
+      <p>ARX detects <code>5</code> market regimes: Trending (sustained directional moves), Range-Bound (price oscillating between support and resistance), Transition (regime is shifting), Compression (volatility squeeze before a breakout), and Crisis (extreme volatility with liquidation cascades). Each regime triggers different strategy adjustments, signal confidence scoring, and position sizing rules within the ARX system.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Can regime detection work for crypto?</h3>
+      <p>Yes &mdash; and crypto is arguably where regime detection is most valuable. Crypto markets have higher baseline volatility, <code>24/7</code> trading with no circuit breakers, and frequent liquidation cascades that can shift the market from compression to crisis in hours. The speed and severity of crypto regime changes mean that traders who detect transitions early have a larger edge than in traditional markets where regime shifts tend to unfold over days or weeks.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Do I need to understand regime detection to use ARX?</h3>
+      <p>No. ARX applies regime detection automatically to signal scoring and copy trading. When you copy a trader through ARX, the system factors in the current market regime when evaluating signal quality, adjusting confidence scores, and managing risk. You benefit from regime-aware trading without needing to perform the analysis yourself. That said, understanding the basics &mdash; as outlined in this article &mdash; will make you a more informed trader regardless of what tools you use.</p>
+    </div>
+  </div>
+
+</article>
+
+<!-- ============================================
+     AUTHOR
+     ============================================ -->
+<div class="article-author">
+  <div class="author-avatar">A</div>
+  <div class="author-info">
+    <div class="author-name">ARX Team</div>
+    <div class="author-date">Published March 19, 2026</div>
+  </div>
+</div>
+
+<!-- ============================================
+     CTA BANNER
+     ============================================ -->
+<div class="article-cta">
+  <h3>Trade the Right Strategy at the Right Time</h3>
+  <p>Regime-aware signals, confluence scoring, and adaptive risk controls &mdash; built for traders who refuse to use the same playbook in every market.</p>
+  <a href="/#waitlist" class="btn btn-primary">Join the ARX Waitlist</a>
+</div>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <svg viewBox="0 0 100 27.4" height="24">
+          <path fill="#71717A" fill-rule="evenodd" d="M 5.7 0.2 L 0 27.4 L 5.4 27.4 L 25.5 8.1 L 30.0 27.4 L 35.2 27.4 L 29.3 0 Z M 21.7 4.6 L 7.0 19.4 L 10.1 4.8 Z"/>
+          <path fill="#71717A" d="M 45.2 0 L 39.3 27.4 L 44.5 27.4 L 49.4 4.6 L 68.6 4.6 L 68.6 0 Z"/>
+          <path fill="#71717A" d="M 72.7 0 L 72.7 4.6 L 82.9 14.3 L 72.7 24.6 L 72.7 27.4 L 76.1 27.4 L 86.5 17.6 L 96.8 27.4 L 100 27.4 L 100 24.5 L 89.9 14.5 L 100 4.8 L 100 0 L 97.5 0 L 86.5 11.1 L 75.2 0 Z"/>
+        </svg>
+        <p class="footer-tagline">Institutional-grade copy trading on Hyperliquid. Trade with conviction. Copy with confidence.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Product</h5>
+          <ul>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#referral">Referral Program</a></li>
+            <li><a href="/blog/">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Community</h5>
+          <ul>
+            <li><a href="https://x.com/ARX_TRADE" target="_blank">X.com (Twitter)</a></li>
+            <li><a href="https://discord.gg/kNV6raqC" target="_blank">Discord</a></li>
+            <li><a href="https://t.me/ARX_Trade_Official" target="_blank">Telegram</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Risk Disclosure</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ARX. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="#">Terms</a>
+        <a href="#">Privacy</a>
+        <a href="#">Risk</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
