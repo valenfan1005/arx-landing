@@ -23,7 +23,7 @@
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@araborx" />
+<meta name="twitter:site" content="@ARX_TRADE" />
 <meta name="twitter:title" content="ARX — Institutional-Grade Copy Trading on Hyperliquid" />
 <meta name="twitter:description" content="Trade with conviction. Copy with confidence. Regime-aware signals, AI-powered confluence scoring, and elite wallet tracking." />
 <meta name="twitter:image" content="https://arx.trade/og-image.png" />
@@ -48,7 +48,7 @@
   "logo": "https://arx.trade/logo.png",
   "description": "Institutional-grade copy trading platform on Hyperliquid. Regime-aware signals, AI-powered confluence scoring, and elite wallet tracking.",
   "sameAs": [
-    "https://x.com/araborx",
+    "https://x.com/ARX_TRADE",
     "https://discord.com/channels/1477906214510657669",
     "https://t.me/ARX_Trade_Official"
   ],
@@ -1257,6 +1257,118 @@ img { max-width: 100%; display: block; }
 }
 
 /* ============================================
+   BLOG PREVIEW
+   ============================================ */
+.blog-preview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.blog-preview-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.blog-preview-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--cyan));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.blog-preview-card:hover {
+  border-color: var(--border-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(124, 58, 237, 0.1);
+}
+
+.blog-preview-card:hover::before {
+  opacity: 1;
+}
+
+.blog-preview-tag {
+  display: inline-block;
+  width: fit-content;
+  padding: 3px 10px;
+  background: var(--primary-glow);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--primary-light);
+  margin-bottom: 16px;
+}
+
+.blog-preview-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+
+.blog-preview-card p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 16px;
+  flex-grow: 1;
+}
+
+.blog-preview-link {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary-light);
+  transition: color 0.2s;
+}
+
+.blog-preview-card:hover .blog-preview-link {
+  color: var(--cyan);
+}
+
+.blog-preview-cta {
+  text-align: center;
+  margin-top: 32px;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 24px;
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-full);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: transparent;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  border-color: var(--primary);
+  color: var(--text-primary);
+}
+
+/* ============================================
    FOOTER
    ============================================ */
 .footer {
@@ -1364,6 +1476,9 @@ img { max-width: 100%; display: block; }
   .form-row { flex-direction: column; }
   .hero-ctas { flex-direction: column; }
 
+  .blog-preview-grid { grid-template-columns: 1fr; }
+  .blog-preview-card h3 { font-size: 18px; }
+
   .footer-content { flex-direction: column; gap: 48px; }
   .footer-links { gap: 32px; flex-wrap: wrap; }
   .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
@@ -1388,8 +1503,8 @@ img { max-width: 100%; display: block; }
      ============================================ -->
 <nav class="navbar">
   <div class="container">
-    <a href="#hero" class="nav-logo">
-      <svg viewBox="0 0 100 27.4" height="28">
+    <a href="#hero" class="nav-logo" aria-label="ARX Home">
+      <svg viewBox="0 0 100 27.4" height="28" role="img" aria-label="ARX logo">
         <path fill="#FFFFFF" fill-rule="evenodd" d="M 5.7 0.2 L 0 27.4 L 5.4 27.4 L 25.5 8.1 L 30.0 27.4 L 35.2 27.4 L 29.3 0 Z M 21.7 4.6 L 7.0 19.4 L 10.1 4.8 Z"/>
         <path fill="#FFFFFF" d="M 45.2 0 L 39.3 27.4 L 44.5 27.4 L 49.4 4.6 L 68.6 4.6 L 68.6 0 Z"/>
         <path fill="#FFFFFF" d="M 72.7 0 L 72.7 4.6 L 82.9 14.3 L 72.7 24.6 L 72.7 27.4 L 76.1 27.4 L 86.5 17.6 L 96.8 27.4 L 100 27.4 L 100 24.5 L 89.9 14.5 L 100 4.8 L 100 0 L 97.5 0 L 86.5 11.1 L 75.2 0 Z"/>
@@ -1746,13 +1861,43 @@ img { max-width: 100%; display: block; }
 </section>
 
 <!-- ============================================
+     FROM THE BLOG
+     ============================================ -->
+<section class="section blog-preview" id="blog">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag mono">INSIGHTS</span>
+      <h2>From the <span class="gradient-text">Blog</span></h2>
+      <p class="section-subtitle">Deep dives on copy trading, market regimes, and the Hyperliquid ecosystem.</p>
+    </div>
+    <div class="blog-preview-grid reveal">
+      <a href="/blog/how-to-copy-trade-on-hyperliquid/" class="blog-preview-card">
+        <span class="blog-preview-tag">Guide</span>
+        <h3>How to Copy Trade on Hyperliquid: Step-by-Step Guide (2026)</h3>
+        <p>From wallet setup to position sizing &mdash; everything you need to start following elite DeFi traders on-chain.</p>
+        <span class="blog-preview-link">Read article &rarr;</span>
+      </a>
+      <a href="/blog/what-is-market-regime-detection/" class="blog-preview-card">
+        <span class="blog-preview-tag">Educational</span>
+        <h3>What Is Market Regime Detection? How It Gives Traders an Edge</h3>
+        <p>5 market regimes. 5 strategy adjustments. Stop using the same playbook in every market condition.</p>
+        <span class="blog-preview-link">Read article &rarr;</span>
+      </a>
+    </div>
+    <div class="blog-preview-cta reveal">
+      <a href="/blog/" class="btn-secondary">View all articles &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
      FOOTER
      ============================================ -->
 <footer class="footer">
   <div class="container">
     <div class="footer-content">
       <div class="footer-brand">
-        <svg viewBox="0 0 100 27.4" height="24">
+        <svg viewBox="0 0 100 27.4" height="24" role="img" aria-label="ARX logo">
           <path fill="#71717A" fill-rule="evenodd" d="M 5.7 0.2 L 0 27.4 L 5.4 27.4 L 25.5 8.1 L 30.0 27.4 L 35.2 27.4 L 29.3 0 Z M 21.7 4.6 L 7.0 19.4 L 10.1 4.8 Z"/>
           <path fill="#71717A" d="M 45.2 0 L 39.3 27.4 L 44.5 27.4 L 49.4 4.6 L 68.6 4.6 L 68.6 0 Z"/>
           <path fill="#71717A" d="M 72.7 0 L 72.7 4.6 L 82.9 14.3 L 72.7 24.6 L 72.7 27.4 L 76.1 27.4 L 86.5 17.6 L 96.8 27.4 L 100 27.4 L 100 24.5 L 89.9 14.5 L 100 4.8 L 100 0 L 97.5 0 L 86.5 11.1 L 75.2 0 Z"/>
