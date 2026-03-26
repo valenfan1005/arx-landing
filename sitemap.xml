@@ -10,25 +10,37 @@
   </url>
   <url>
     <loc>https://arx.trade/blog/</loc>
-    <lastmod>2026-03-19</lastmod>
+    <lastmod>2026-03-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://arx.trade/blog/how-to-copy-trade-on-hyperliquid/</loc>
-    <lastmod>2026-03-19</lastmod>
+    <loc>https://arx.trade/blog/best-hyperliquid-trading-bots/</loc>
+    <lastmod>2026-03-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://arx.trade/blog/what-is-market-regime-detection/</loc>
-    <lastmod>2026-03-19</lastmod>
+    <loc>https://arx.trade/blog/hyperliquid-vs-gmx/</loc>
+    <lastmod>2026-03-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://arx.trade/blog/hyperliquid-vaults-explained/</loc>
-    <lastmod>2026-03-22</lastmod>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://arx.trade/blog/how-to-copy-trade-on-hyperliquid/</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://arx.trade/blog/what-is-market-regime-detection/</loc>
+    <lastmod>2026-03-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
