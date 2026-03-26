@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>ARX Blog — DeFi Copy Trading Insights</title>
+  <link>https://arx.trade/blog/</link>
+  <description>Insights on DeFi copy trading, market regime detection, wallet intelligence, and Hyperliquid. Stay ahead with ARX.</description>
+  <language>en</language>
+  <atom:link href="https://arx.trade/feed.xml" rel="self" type="application/rss+xml"/>
+  <lastBuildDate>Thu, 26 Mar 2026 06:22:15 -0000</lastBuildDate>
+  <image>
+    <url>https://arx.trade/logo.png</url>
+    <title>ARX Blog</title>
+    <link>https://arx.trade/blog/</link>
+  </image>
+
+  <item>
+    <title>Hyperliquid vs GMX: Which DEX Perps Platform Wins in 2026?</title>
+    <link>https://arx.trade/blog/hyperliquid-vs-gmx/</link>
+    <guid isPermaLink="true">https://arx.trade/blog/hyperliquid-vs-gmx/</guid>
+    <description>Hyperliquid vs GMX — compare fees, speed, liquidity, leverage, and copy trading features. An honest breakdown of the two biggest DEX perps platforms in 2026.</description>
+    <pubDate>Thu, 26 Mar 2026 00:00:00 +0000</pubDate>
+  </item>
+
+  <item>
+    <title>7 Best Hyperliquid Trading Bots &amp; Copy Trading Tools (2026)</title>
+    <link>https://arx.trade/blog/best-hyperliquid-trading-bots/</link>
+    <guid isPermaLink="true">https://arx.trade/blog/best-hyperliquid-trading-bots/</guid>
+    <description>Compare the best Hyperliquid trading bots and copy trading tools for 2026. Covers Hyperdash, Mizar, Coinrule, and more — with features, fees, and honest pros/cons.</description>
+    <pubDate>Thu, 26 Mar 2026 00:00:00 +0000</pubDate>
+  </item>
+
+  <item>
+    <title>Hyperliquid Vaults Explained: HLP APY, Fees &amp; How They Work (2026)</title>
+    <link>https://arx.trade/blog/hyperliquid-vaults-explained/</link>
+    <guid isPermaLink="true">https://arx.trade/blog/hyperliquid-vaults-explained/</guid>
+    <description>How do Hyperliquid vaults work? Learn about HLP vault APY, the 4-day lockup, 10% leader fee, and how to evaluate vaults before depositing USDC. Updated for 2026.</description>
+    <pubDate>Sun, 22 Mar 2026 00:00:00 +0000</pubDate>
+  </item>
+
+  <item>
+    <title>Market Regime Detection for Crypto: 5 Regimes Every Trader Must Know</title>
+    <link>https://arx.trade/blog/what-is-market-regime-detection/</link>
+    <guid isPermaLink="true">https://arx.trade/blog/what-is-market-regime-detection/</guid>
+    <description>Market regime detection classifies crypto markets into 5 states — Trending, Range-Bound, Transition, Compression, Crisis — so you use the right strategy at the right time.</description>
+    <pubDate>Thu, 19 Mar 2026 00:00:00 +0000</pubDate>
+  </item>
+
+  <item>
+    <title>How to Copy Trade on Hyperliquid: Best Platforms &amp; Guide (2026)</title>
+    <link>https://arx.trade/blog/how-to-copy-trade-on-hyperliquid/</link>
+    <guid isPermaLink="true">https://arx.trade/blog/how-to-copy-trade-on-hyperliquid/</guid>
+    <description>The best Hyperliquid copy trading platforms in 2026, compared. Step-by-step guide to follow elite DeFi traders on-chain — no KYC, no middlemen.</description>
+    <pubDate>Thu, 19 Mar 2026 00:00:00 +0000</pubDate>
+  </item>
+
+</channel>
+</rss>
