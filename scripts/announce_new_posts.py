@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Auto-announce new ARX blog posts on Telegram.
+Auto-announce new ARX blog posts on Telegram + Discord.
 
 Compares two git refs to find newly added blog/*/index.html files,
-extracts title + description from the HTML, and sends an announcement
-to @ARX_Trade_Official via tg_push.py.
+extracts title + description from the HTML, and sends announcements
+to @ARX_Trade_Official (Telegram) and #announcements (Discord).
 
 Usage:
     # Compare two commits (used by pre-push hook)
@@ -18,12 +18,16 @@ Usage:
 
 Environment:
     Uses stdlib only. Calls tg_push.py for Telegram delivery.
+    Discord uses webhook API directly (no dependencies).
 """
 
+import json
 import os
 import re
 import subprocess
 import sys
+import urllib.request
+import urllib.error
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 REPO_ROOT = os.path.dirname(SCRIPT_DIR)
@@ -32,6 +36,7 @@ TG_PUSH = os.path.join(
     "Documents", "ARX", "Skills",
     "alpha-provider-scout", "scripts", "tg_push.py",
 )
+DISCORD_WEBHOOK = "https://discord.com/api/webhooks/1486613902224527411/yVd427tfjYxLS75yeqCoyfIlOgRXoaoUCdKLyCPjDErFRJVYCRBDyO17vGsXWa-2cSkC"
 BLOG_PATTERN = re.compile(r"^blog/([^/]+)/index\.html$")
 BASE_URL = "https://arx.trade"
 
@@ -102,7 +107,7 @@ def build_message(slug, title, description):
 def send_telegram(message, dry_run=False):
     """Send message via tg_push.py. Returns True on success."""
     if dry_run:
-        print("[DRY RUN] Would send:\n{}\n".format(message))
+        print("[DRY RUN] Telegram:\n{}\n".format(message))
         return True
 
     if not os.path.exists(TG_PUSH):
@@ -118,6 +123,53 @@ def send_telegram(message, dry_run=False):
         return True
     else:
         print("Telegram: send failed — {}".format(result.stderr.strip()), file=sys.stderr)
+        return False
+
+
+def send_discord(slug, title, description, dry_run=False):
+    """Send a rich embed to Discord via webhook. Returns True on success."""
+    url = "{}/blog/{}/".format(BASE_URL, slug)
+    embed = {
+        "title": title,
+        "description": description,
+        "url": url,
+        "color": 0x7C3AED,  # ARX purple
+        "footer": {"text": "ARX Blog"},
+        "author": {
+            "name": "New on the ARX Blog",
+            "url": "{}/blog/".format(BASE_URL),
+        },
+    }
+    payload = {
+        "username": "ARX Blog",
+        "embeds": [embed],
+    }
+
+    if dry_run:
+        print("[DRY RUN] Discord embed: {} — {}".format(title, url))
+        return True
+
+    data = json.dumps(payload).encode("utf-8")
+    req = urllib.request.Request(
+        DISCORD_WEBHOOK,
+        data=data,
+        headers={
+            "Content-Type": "application/json",
+            "User-Agent": "ARX-Blog-Bot/1.0",
+        },
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            if resp.status in (200, 204):
+                print("Discord: announced successfully")
+                return True
+            print("Discord: unexpected status {}".format(resp.status), file=sys.stderr)
+            return False
+    except urllib.error.HTTPError as e:
+        print("Discord: HTTP {} — {}".format(e.code, e.read().decode("utf-8", errors="replace")), file=sys.stderr)
+        return False
+    except Exception as e:
+        print("Discord: failed — {}".format(e), file=sys.stderr)
         return False
 
 
@@ -154,6 +206,7 @@ def main():
 
         message = build_message(slug, title, description)
         send_telegram(message, dry_run=dry_run)
+        send_discord(slug, title, description, dry_run=dry_run)
 
 
 if __name__ == "__main__":
