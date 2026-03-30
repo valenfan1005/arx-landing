@@ -1,0 +1,50 @@
+/* ============================================
+   DESIGN TOKENS — "The Keep" Palette
+   ============================================ */
+:root {
+  /* Backgrounds */
+  --bg-base: #08060F;
+  --bg-surface-1: #0F0B1A;
+  --bg-surface-2: #1A1425;
+  --bg-surface-3: #251E30;
+  --bg-surface-4: #302840;
+
+  /* Primary — Purple */
+  --primary: #7C3AED;
+  --primary-hover: #925BF0;
+  --primary-light: #A274F2;
+  --primary-lighter: #B38DF4;
+  --primary-glow: rgba(124, 58, 237, 0.3);
+
+  /* Accent — Moat Cyan */
+  --cyan: #22D1EE;
+  --cyan-dim: rgba(34, 209, 238, 0.15);
+  --cyan-glow: rgba(34, 209, 238, 0.3);
+
+  /* Accent — Sky Pink */
+  --pink: #F472B6;
+  --pink-dim: rgba(244, 114, 182, 0.15);
+
+  /* Text */
+  --text-primary: #FFFFFF;
+  --text-secondary: #A1A1AA;
+  --text-muted: #71717A;
+  --text-dim: #52525B;
+
+  /* Borders */
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-medium: rgba(255, 255, 255, 0.1);
+  --border-accent: rgba(124, 58, 237, 0.3);
+
+  /* Misc */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Tier colors */
+  --tier-bronze: #CD7F32;
+  --tier-silver: #C0C0C0;
+  --tier-gold: #FFD700;
+}
