@@ -30,7 +30,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(8, 6, 15, 0.55);
+  background: rgba(8, 6, 15, 0.6);
   pointer-events: none;
 }
 
@@ -200,7 +200,7 @@
   font-size: 24px;
 }
 
-.value-card.trader .icon { background: rgba(124, 58, 237, 0.15); color: var(--primary-light); }
+.value-card.trader .icon { background: rgba(179, 141, 244, 0.15); color: var(--primary-light); }
 .value-card.follower .icon { background: var(--cyan-dim); color: var(--cyan); }
 
 .value-card h3 {
@@ -245,7 +245,7 @@
   margin-top: 2px;
 }
 
-.value-card.trader ul li .check { background: rgba(124, 58, 237, 0.2); color: var(--primary-light); }
+.value-card.trader ul li .check { background: rgba(179, 141, 244, 0.2); color: var(--primary-light); }
 .value-card.follower ul li .check { background: var(--cyan-dim); color: var(--cyan); }
 
 /* ============================================
@@ -376,10 +376,10 @@
   font-size: 22px;
 }
 
-.feature-card:nth-child(1) .feature-icon { background: rgba(124, 58, 237, 0.15); }
+.feature-card:nth-child(1) .feature-icon { background: rgba(179, 141, 244, 0.15); }
 .feature-card:nth-child(2) .feature-icon { background: var(--cyan-dim); }
 .feature-card:nth-child(3) .feature-icon { background: var(--pink-dim); }
-.feature-card:nth-child(4) .feature-icon { background: rgba(124, 58, 237, 0.15); }
+.feature-card:nth-child(4) .feature-icon { background: rgba(179, 141, 244, 0.15); }
 .feature-card:nth-child(5) .feature-icon { background: var(--cyan-dim); }
 .feature-card:nth-child(6) .feature-icon { background: var(--pink-dim); }
 
@@ -497,7 +497,7 @@
   width: 40px;
   height: 40px;
   border-radius: var(--radius-sm);
-  background: rgba(124, 58, 237, 0.1);
+  background: rgba(179, 141, 244, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -652,7 +652,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center, rgba(124, 58, 237, 0.12) 0%, transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(179, 141, 244, 0.12) 0%, transparent 70%);
 }
 
 .final-cta .container {
@@ -709,7 +709,7 @@
 .blog-preview-card:hover {
   border-color: var(--border-accent);
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(124, 58, 237, 0.1);
+  box-shadow: 0 8px 32px rgba(179, 141, 244, 0.1);
 }
 
 .blog-preview-card:hover::before {

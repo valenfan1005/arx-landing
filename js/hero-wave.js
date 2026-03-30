@@ -20,7 +20,7 @@
 
       // Customisation — ARX brand colours
       this.colorActive = options.colorActive || '#22D1EE';
-      this.colorIdle   = options.colorIdle   || '#7C3AED';
+      this.colorIdle   = options.colorIdle   || '#B38DF4';
       this.bg          = options.bg          || '#08060F';
       this.lines       = options.lines       || 60;
       this.amplitude   = options.amplitude   || 60;
@@ -93,7 +93,7 @@
   // Initialise with ARX brand colours
   new InterferenceRenderer('hero-wave-wrapper', {
     colorActive: '#22D1EE',
-    colorIdle:   '#7C3AED',
+    colorIdle:   '#B38DF4',
     bg:          '#08060F',
     lines:       60,
     amplitude:   60

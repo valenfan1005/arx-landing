@@ -10,11 +10,11 @@
   --bg-surface-4: #302840;
 
   /* Primary — Purple */
-  --primary: #7C3AED;
-  --primary-hover: #925BF0;
-  --primary-light: #A274F2;
-  --primary-lighter: #B38DF4;
-  --primary-glow: rgba(124, 58, 237, 0.3);
+  --primary: #B38DF4;
+  --primary-hover: #C4A5F7;
+  --primary-light: #D0B8F9;
+  --primary-lighter: #DDCCFB;
+  --primary-glow: rgba(179, 141, 244, 0.3);
 
   /* Accent — Moat Cyan */
   --cyan: #22D1EE;
@@ -34,7 +34,7 @@
   /* Borders */
   --border-subtle: rgba(255, 255, 255, 0.06);
   --border-medium: rgba(255, 255, 255, 0.1);
-  --border-accent: rgba(124, 58, 237, 0.3);
+  --border-accent: rgba(179, 141, 244, 0.3);
 
   /* Misc */
   --radius-sm: 8px;
