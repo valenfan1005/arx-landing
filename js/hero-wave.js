@@ -52,18 +52,18 @@
       this.ctx.fillRect(0, 0, this.width, this.height);
 
       const pointsPerLine = 100;
-      const margin = 100;
+      const marginY = 100;
 
       this.mouse.x += (this.targetMouse.x - this.mouse.x) * 0.1;
       this.mouse.y += (this.targetMouse.y - this.mouse.y) * 0.1;
 
       for (let i = 0; i < this.lines; i++) {
-        const yBase = margin + (i / this.lines) * (this.height - 2 * margin);
+        const yBase = marginY + (i / this.lines) * (this.height - 2 * marginY);
         const distY = Math.abs(yBase - this.mouse.y);
         const influence = Math.max(0, 1 - distY / 200);
 
         for (let j = 0; j < pointsPerLine; j++) {
-          const x = margin + (j / pointsPerLine) * (this.width - 2 * margin);
+          const x = (j / pointsPerLine) * this.width;
 
           const wave1 = Math.sin(j * 0.1 + this.time * 0.02 + i * 0.5);
           const wave2 = Math.sin(j * 0.5 - this.time * 0.05);
