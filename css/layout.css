@@ -206,20 +206,7 @@ img { max-width: 100%; display: block; }
 /* ============================================
    RESPONSIVE
    ============================================ */
-@media (max-width: 1024px) {
-  .hero h1 { font-size: 56px; }
-  .section-title { font-size: 40px; }
-  .features-grid { grid-template-columns: repeat(2, 1fr); }
-  .claim-content { grid-template-columns: 1fr; }
-  .claim-stats { grid-template-columns: repeat(3, 1fr); }
-}
-
 @media (max-width: 768px) {
-  .section { padding: 80px 0; }
-  .hero-sub { font-size: 17px; }
-  .section-title { font-size: 32px; }
-  .section-sub { font-size: 16px; }
-
   .nav-links {
     display: none;
     position: fixed;
@@ -248,22 +235,6 @@ img { max-width: 100%; display: block; }
     text-align: center;
   }
   .nav-toggle { display: flex; }
-
-  .dual-cards { grid-template-columns: 1fr; }
-  .steps { grid-template-columns: 1fr; gap: 48px; }
-  .steps::before { display: none; }
-  .features-grid { grid-template-columns: 1fr; }
-  .tiers { grid-template-columns: 1fr; }
-  .ref-features { grid-template-columns: 1fr; }
-  .reward-tiers { grid-template-columns: repeat(2, 1fr); }
-  .claim-card { padding: 32px; }
-  .claim-stats { grid-template-columns: 1fr; }
-
-  .form-row { flex-direction: column; }
-  .hero-ctas { flex-direction: column; }
-
-  .blog-preview-grid { grid-template-columns: 1fr; }
-  .blog-preview-card h3 { font-size: 18px; }
 
   .footer-content { flex-direction: column; gap: 48px; }
   .footer-links { gap: 32px; flex-wrap: wrap; }

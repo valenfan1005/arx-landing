@@ -766,7 +766,40 @@
 /* ============================================
    RESPONSIVE OVERRIDES
    ============================================ */
+@media (max-width: 1024px) {
+  .hero h1 { font-size: 56px; }
+  .section-title { font-size: 40px; }
+  .features-grid { grid-template-columns: repeat(2, 1fr); }
+  .claim-content { grid-template-columns: 1fr; }
+  .claim-stats { grid-template-columns: repeat(3, 1fr); }
+}
+
 @media (max-width: 768px) {
-  .hero h1 { font-size: clamp(24px, 7.5vw, 40px); }
+  .section { padding: 80px 0; }
+  .hero h1 { font-size: clamp(32px, 11vw, 48px); }
   .hero-content { width: 100%; max-width: 100%; padding: 0 24px; box-sizing: border-box; }
+  .hero-sub { font-size: 14px; max-width: 100%; }
+  .hero-ctas { flex-direction: column; }
+  .section-title { font-size: 32px; }
+  .section-sub { font-size: 16px; }
+
+  .dual-cards { grid-template-columns: 1fr; }
+  .value-card { padding: 32px 24px; }
+
+  .steps { grid-template-columns: 1fr; gap: 48px; }
+  .steps::before { display: none; }
+
+  .features-grid { grid-template-columns: 1fr; }
+
+  .tiers { grid-template-columns: 1fr; }
+  .ref-features { grid-template-columns: 1fr; }
+  .waitlist-rewards .reward-tiers { grid-template-columns: repeat(2, 1fr); }
+
+  .claim-card { padding: 32px; }
+  .claim-stats { grid-template-columns: 1fr; }
+
+  .blog-preview-grid { grid-template-columns: 1fr; }
+  .blog-preview-card h3 { font-size: 18px; }
+
+  .form-row { flex-direction: column; }
 }
