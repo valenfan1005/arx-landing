@@ -216,7 +216,6 @@ img { max-width: 100%; display: block; }
 
 @media (max-width: 768px) {
   .section { padding: 80px 0; }
-  .hero h1 { font-size: 40px; }
   .hero-sub { font-size: 17px; }
   .section-title { font-size: 32px; }
   .section-sub { font-size: 16px; }

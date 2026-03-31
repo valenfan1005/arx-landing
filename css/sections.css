@@ -762,3 +762,11 @@
   text-align: center;
   margin-top: 32px;
 }
+
+/* ============================================
+   RESPONSIVE OVERRIDES
+   ============================================ */
+@media (max-width: 768px) {
+  .hero h1 { font-size: clamp(24px, 7.5vw, 40px); }
+  .hero-content { width: 100%; max-width: 100%; padding: 0 24px; box-sizing: border-box; }
+}
