@@ -6,12 +6,20 @@
   <description>Insights on DeFi copy trading, market regime detection, wallet intelligence, and Hyperliquid. Stay ahead with ARX.</description>
   <language>en</language>
   <atom:link href="https://arx.trade/feed.xml" rel="self" type="application/rss+xml"/>
-  <lastBuildDate>Mon, 30 Mar 2026 07:42:26 -0000</lastBuildDate>
+  <lastBuildDate>Wed, 01 Apr 2026 08:45:55 -0000</lastBuildDate>
   <image>
     <url>https://arx.trade/logo.png</url>
     <title>ARX Blog</title>
     <link>https://arx.trade/blog/</link>
   </image>
+
+  <item>
+    <title>Hyperliquid Airdrop Season 2: How to Maximize Your HYPE Allocation (2026)</title>
+    <link>https://arx.trade/blog/hyperliquid-airdrop-season-2-guide/</link>
+    <guid isPermaLink="true">https://arx.trade/blog/hyperliquid-airdrop-season-2-guide/</guid>
+    <description>Hyperliquid Season 2 has 238.8M HYPE tokens allocated. Learn the points system, HLP 3x multiplier, eligibility criteria, and 5 strategies to maximize your airdrop allocation.</description>
+    <pubDate>Wed, 01 Apr 2026 00:00:00 +0000</pubDate>
+  </item>
 
   <item>
     <title>The Perp DEX Wars of 2026: Hyperliquid vs Lighter vs Aster Compared</title>
