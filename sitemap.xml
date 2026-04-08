@@ -3,8 +3,14 @@
 <!-- Update this as you add new pages (blog posts, features, etc.) -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://arx.trade/blog/rwa-perps-vs-cfd-brokers/</loc>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://arx.trade/</loc>
-    <lastmod>2026-04-01</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
