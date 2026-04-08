@@ -245,7 +245,67 @@
           <span class="ticker-col-change">Change</span>
         </div>
         <div class="ticker-body" id="ticker-body">
-          <!-- Rows injected by JS -->
+          <!-- Static RWA rows for SEO — JS overwrites on load & tab switch -->
+          <div class="ticker-row">
+            <div class="ticker-market">
+              <div class="ticker-icon"><img src="https://app.trade.xyz/markets/sp500.svg" alt="S&P 500 perpetual contract on-chain" width="36" height="36" loading="lazy"></div>
+              <div class="ticker-market-info">
+                <span class="ticker-market-name">S&P 500</span>
+                <span class="ticker-market-pair">/ USDC</span>
+              </div>
+            </div>
+            <span class="ticker-price">6,295.20</span>
+            <span class="ticker-vol">$5.36B</span>
+            <span class="ticker-change negative">-2.03%</span>
+          </div>
+          <div class="ticker-row">
+            <div class="ticker-market">
+              <div class="ticker-icon"><img src="https://app.trade.xyz/markets/oil.svg" alt="Brent Oil perpetual contract on-chain" width="36" height="36" loading="lazy"></div>
+              <div class="ticker-market-info">
+                <span class="ticker-market-name">BRENTOIL</span>
+                <span class="ticker-market-pair">/ USDC</span>
+              </div>
+            </div>
+            <span class="ticker-price">68.42</span>
+            <span class="ticker-vol">$471M</span>
+            <span class="ticker-change negative">-4.17%</span>
+          </div>
+          <div class="ticker-row">
+            <div class="ticker-market">
+              <div class="ticker-icon"><img src="https://app.trade.xyz/markets/gold.svg" alt="Gold perpetual contract on-chain" width="36" height="36" loading="lazy"></div>
+              <div class="ticker-market-info">
+                <span class="ticker-market-name">GOLD</span>
+                <span class="ticker-market-pair">/ USDC</span>
+              </div>
+            </div>
+            <span class="ticker-price">3,024.50</span>
+            <span class="ticker-vol">$1.2B</span>
+            <span class="ticker-change positive">+1.84%</span>
+          </div>
+          <div class="ticker-row">
+            <div class="ticker-market">
+              <div class="ticker-icon"><img src="https://app.trade.xyz/markets/silver.svg" alt="Silver perpetual contract on-chain" width="36" height="36" loading="lazy"></div>
+              <div class="ticker-market-info">
+                <span class="ticker-market-name">SILVER</span>
+                <span class="ticker-market-pair">/ USDC</span>
+              </div>
+            </div>
+            <span class="ticker-price">33.78</span>
+            <span class="ticker-vol">$312M</span>
+            <span class="ticker-change negative">-0.56%</span>
+          </div>
+          <div class="ticker-row">
+            <div class="ticker-market">
+              <div class="ticker-icon"><img src="/img/tsla.png" alt="Tesla stock perpetual contract on-chain" width="36" height="36" loading="lazy"></div>
+              <div class="ticker-market-info">
+                <span class="ticker-market-name">TSLA</span>
+                <span class="ticker-market-pair">/ USDC</span>
+              </div>
+            </div>
+            <span class="ticker-price">348.77</span>
+            <span class="ticker-vol">$25.5M</span>
+            <span class="ticker-change positive">+17.02%</span>
+          </div>
         </div>
       </div>
     </div>
@@ -385,27 +445,28 @@
       <p class="section-sub">Permanent on-chain fee share. The earlier you join, the more you earn.</p>
     </div>
 
-    <!-- Tier Cards -->
+    <!-- Referral Levels -->
     <div class="tiers reveal">
-      <div class="tier-card bronze">
-        <div class="tier-label">Tier 1</div>
-        <div class="tier-percentage mono">10<span>%</span></div>
-        <div class="tier-desc">of referral taker fees</div>
-        <div class="tier-req">0 – 9 referrals</div>
+      <div class="tier-card gold">
+        <div class="tier-label">Level 1</div>
+        <div class="tier-percentage mono">30<span>%</span></div>
+        <div class="tier-desc">of ARX fees from direct referrals</div>
+        <div class="tier-req">You → User A</div>
       </div>
       <div class="tier-card silver">
-        <div class="tier-label">Tier 2</div>
-        <div class="tier-percentage mono">15<span>%</span></div>
-        <div class="tier-desc">of referral taker fees</div>
-        <div class="tier-req">10 – 49 referrals</div>
+        <div class="tier-label">Level 2</div>
+        <div class="tier-percentage mono">5<span>%</span></div>
+        <div class="tier-desc">of ARX fees from 2nd-degree referrals</div>
+        <div class="tier-req">User A → User B</div>
       </div>
-      <div class="tier-card gold">
-        <div class="tier-label">Tier 3</div>
-        <div class="tier-percentage mono">20<span>%</span></div>
-        <div class="tier-desc">of referral taker fees</div>
-        <div class="tier-req">50+ referrals</div>
+      <div class="tier-card bronze">
+        <div class="tier-label">Level 3</div>
+        <div class="tier-percentage mono">2<span>%</span></div>
+        <div class="tier-desc">of ARX fees from 3rd-degree referrals</div>
+        <div class="tier-req">User B → User C</div>
       </div>
     </div>
+
 
     <!-- Key callouts -->
     <div class="ref-features reveal">
@@ -454,7 +515,7 @@
         <div class="reward-item">
           <div class="reward-count mono">50+</div>
           <div class="reward-label">Referrals</div>
-          <div class="reward-text">Auto Tier 2 Status</div>
+          <div class="reward-text">VIP Fee Rebate Unlock</div>
         </div>
       </div>
     </div>
@@ -521,10 +582,10 @@
           </div>
           <div class="reward-tier">
             <span class="reward-count mono">50+ refs</span>
-            <span class="reward-label">Auto Tier 2 — skip $100K volume req</span>
+            <span class="reward-label">VIP fee rebate unlock</span>
           </div>
         </div>
-        <p class="ref-note">Every referral becomes a <strong>permanent fee-share</strong> at launch. You earn 10% of their trading fees. Forever.</p>
+        <p class="ref-note">Every referral becomes a <strong>permanent fee-share</strong> at launch. You earn 30% of their ARX trading fees. Forever. Their referrals earn you 5%, and theirs earn you 2%.</p>
       </div>
     </div>
   </div>

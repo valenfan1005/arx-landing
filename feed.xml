@@ -6,12 +6,20 @@
   <description>Insights on DeFi copy trading, market regime detection, wallet intelligence, and Hyperliquid. Stay ahead with ARX.</description>
   <language>en</language>
   <atom:link href="https://arx.trade/feed.xml" rel="self" type="application/rss+xml"/>
-  <lastBuildDate>Wed, 01 Apr 2026 08:45:55 -0000</lastBuildDate>
+  <lastBuildDate>Wed, 08 Apr 2026 08:03:47 -0000</lastBuildDate>
   <image>
     <url>https://arx.trade/logo.png</url>
     <title>ARX Blog</title>
     <link>https://arx.trade/blog/</link>
   </image>
+
+  <item>
+    <title>RWA Perps vs CFD Brokers: Overnight Fees, Custody &amp; Why Traders Switch (2026)</title>
+    <link>https://arx.trade/blog/rwa-perps-vs-cfd-brokers/</link>
+    <guid isPermaLink="true">https://arx.trade/blog/rwa-perps-vs-cfd-brokers/</guid>
+    <description>RWA perpetuals vs CFD brokers compared: overnight fees (0% vs 5-10% annual), self-custody vs broker custody, 24/7 trading vs market hours. Real cost breakdown for gold, oil, and S&amp;P 500 traders.</description>
+    <pubDate>Wed, 08 Apr 2026 00:00:00 +0000</pubDate>
+  </item>
 
   <item>
     <title>Hyperliquid Airdrop Season 2: How to Maximize Your HYPE Allocation (2026)</title>
@@ -30,10 +38,10 @@
   </item>
 
   <item>
-    <title>Hyperliquid vs GMX: Which DEX Perps Platform Wins in 2026?</title>
+    <title>Hyperliquid vs GMX v2: ETH Perp Liquidity, Fees &amp; dYdX Compared (2026)</title>
     <link>https://arx.trade/blog/hyperliquid-vs-gmx/</link>
     <guid isPermaLink="true">https://arx.trade/blog/hyperliquid-vs-gmx/</guid>
-    <description>Hyperliquid vs GMX — compare fees, speed, liquidity, leverage, and copy trading features. An honest breakdown of the two biggest DEX perps platforms in 2026.</description>
+    <description>Hyperliquid vs GMX v2 liquidity comparison 2026: ETH perp depth, taker fees, execution speed, and leverage. Includes dYdX. Data-backed winner per category with live numbers.</description>
     <pubDate>Thu, 26 Mar 2026 00:00:00 +0000</pubDate>
   </item>
 
@@ -54,10 +62,10 @@
   </item>
 
   <item>
-    <title>Hyperliquid Vaults Explained: HLP APY, Fees &amp; How They Work (2026)</title>
+    <title>Hyperliquid Vaults Explained: HLP APY, 3x Airdrop Multiplier, Lockup &amp; Risks (2026)</title>
     <link>https://arx.trade/blog/hyperliquid-vaults-explained/</link>
     <guid isPermaLink="true">https://arx.trade/blog/hyperliquid-vaults-explained/</guid>
-    <description>Hyperliquid vaults earned 20%+ APY in 2025 — but the 4-day lockup and 10% leader fee catch most depositors off guard. Here</description>
+    <description>How Hyperliquid HLP vaults work in 2026: deposit USDC, earn ~20% APY, get the 3x airdrop multiplier. 4-day lockup period, 10% leader fee, and real risks explained before you deposit.</description>
     <pubDate>Sun, 22 Mar 2026 00:00:00 +0000</pubDate>
   </item>
 
