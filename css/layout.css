@@ -183,10 +183,24 @@ img { max-width: 100%; display: block; }
    ============================================ */
 .gradient-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--primary), var(--cyan), transparent);
-  opacity: 0.3;
+  background: linear-gradient(90deg, transparent 5%, var(--primary) 35%, var(--cyan) 65%, transparent 95%);
+  opacity: 0.4;
   margin: 0;
   border: none;
+  position: relative;
+}
+
+/* Soft glow behind divider */
+.gradient-divider::after {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 20%;
+  right: 20%;
+  height: 16px;
+  background: linear-gradient(90deg, transparent, rgba(179, 141, 244, 0.08), rgba(34, 209, 238, 0.08), transparent);
+  filter: blur(8px);
+  pointer-events: none;
 }
 
 /* ============================================
