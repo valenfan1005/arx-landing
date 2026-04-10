@@ -59,6 +59,78 @@
   pointer-events: auto;
 }
 
+/* ── Split hero layout ── */
+.hero.hero-split {
+  text-align: left;
+  align-items: center;
+  justify-content: stretch;
+}
+
+.hero-split-inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 48px;
+  align-items: center;
+  width: 100%;
+  pointer-events: none;
+}
+
+.hero-split-inner a,
+.hero-split-inner button {
+  pointer-events: auto;
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-left .hero-sub {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.hero-left .hero-ctas {
+  justify-content: flex-start;
+}
+
+.hero-left .hero-proof {
+  justify-content: flex-start;
+}
+
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-right .market-ticker {
+  max-width: 100%;
+  margin: 0;
+  transform: scale(0.9);
+  transform-origin: top right;
+}
+
+@media (max-width: 900px) {
+  .hero.hero-split {
+    text-align: center;
+  }
+  .hero-split-inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .hero-left .hero-ctas,
+  .hero-left .hero-proof {
+    justify-content: center;
+  }
+  .hero-left .hero-sub {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 .hero-powered-by {
   display: inline-flex;
   align-items: center;
