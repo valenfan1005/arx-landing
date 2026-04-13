@@ -159,6 +159,7 @@ img { max-width: 100%; display: block; }
 }
 
 .footer-col a:hover { color: var(--text-primary); }
+.footer-col .footer-placeholder { font-size: 14px; color: var(--text-muted); cursor: default; }
 
 .footer-bottom {
   display: flex;
@@ -177,6 +178,7 @@ img { max-width: 100%; display: block; }
 
 .footer-legal a { color: var(--text-dim); }
 .footer-legal a:hover { color: var(--text-secondary); }
+.footer-legal .footer-placeholder { color: var(--text-dim); cursor: default; }
 
 /* ============================================
    DIVIDER
