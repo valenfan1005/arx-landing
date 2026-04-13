@@ -3,6 +3,12 @@
 <!-- Update this as you add new pages (blog posts, features, etc.) -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://arx.trade/blog/oil-perps-hormuz-crisis-trading-guide/</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://arx.trade/blog/why-trade-gold-on-chain/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
