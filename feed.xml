@@ -6,12 +6,20 @@
   <description>Insights on DeFi copy trading, market regime detection, wallet intelligence, and Hyperliquid. Stay ahead with ARX.</description>
   <language>en</language>
   <atom:link href="https://arx.trade/feed.xml" rel="self" type="application/rss+xml"/>
-  <lastBuildDate>Tue, 14 Apr 2026 14:26:28 -0000</lastBuildDate>
+  <lastBuildDate>Tue, 14 Apr 2026 16:19:33 -0000</lastBuildDate>
   <image>
     <url>https://arx.trade/logo.png</url>
     <title>ARX Blog</title>
     <link>https://arx.trade/blog/</link>
   </image>
+
+  <item>
+    <title>Goldman Files Bitcoin Income ETF — $291M Exits Spot Funds the Same Day, BTC Doesn&apos;t Care</title>
+    <link>https://arx.trade/insights/#goldman-btc-etf-outflow-divergence-2026-04-15</link>
+    <guid isPermaLink="true">https://arx.trade/insights/#goldman-btc-etf-outflow-divergence-2026-04-15</guid>
+    <description>Goldman Sachs filed for a Bitcoin income ETF on April 14, generating yield by selling options on bitcoin-linked funds — following BlackRock&apos;s push into similar yield-focused products. On the same day, US spot Bitcoin ETFs saw $291M in outflows, the largest single-day redemption since March 27. Despi</description>
+    <pubDate>Wed, 15 Apr 2026 16:10:00 +0000</pubDate>
+  </item>
 
   <item>
     <title>Oil Perps Hit $2.4B Daily Volume — Trade the Hormuz Crisis On-Chain (2026)</title>
