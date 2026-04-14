@@ -74,6 +74,84 @@ def extract_post_meta(slug, content_dir=None, url_prefix="blog"):
     }
 
 
+def extract_insight_cards(index_path):
+    """Parse insights/index.html and extract article cards for RSS.
+
+    Each <article class="post" id="..."> becomes an RSS item with:
+      - title from <h2 class="post-title">
+      - description from first <div class="post-body"><p>
+      - pub_date from <time datetime="...">
+      - URL as https://arx.trade/insights/#{id}
+    """
+    with open(index_path, "r", encoding="utf-8") as f:
+        html = f.read()
+
+    cards = []
+    # Split on article tags
+    article_chunks = re.split(r'<article\s+class="post"\s+id="', html)[1:]
+
+    for chunk in article_chunks:
+        # Extract id
+        id_match = re.match(r'([^"]+)"', chunk)
+        if not id_match:
+            continue
+        slug = id_match.group(1)
+
+        # Extract datetime
+        time_match = re.search(r'<time[^>]+datetime="([^"]+)"', chunk)
+        pub_date = None
+        if time_match:
+            try:
+                pub_date = datetime.fromisoformat(
+                    time_match.group(1).replace("Z", "+00:00")
+                )
+            except ValueError:
+                pass
+
+        # Extract title (strip HTML entities and tags)
+        title_match = re.search(
+            r'<h2\s+class="post-title"[^>]*>(.*?)</h2>', chunk, re.DOTALL
+        )
+        title = ""
+        if title_match:
+            title = re.sub(r"<[^>]+>", "", title_match.group(1)).strip()
+            title = (
+                title.replace("&mdash;", "—")
+                .replace("&ndash;", "–")
+                .replace("&amp;", "&")
+                .replace("&rsquo;", "'")
+                .replace("&minus;", "−")
+            )
+
+        # Extract first paragraph as description
+        body_match = re.search(
+            r'<div\s+class="post-body">\s*<p>(.*?)</p>', chunk, re.DOTALL
+        )
+        description = ""
+        if body_match:
+            description = re.sub(r"<[^>]+>", "", body_match.group(1)).strip()
+            description = (
+                description.replace("&mdash;", "—")
+                .replace("&ndash;", "–")
+                .replace("&amp;", "&")
+                .replace("&rsquo;", "'")
+            )[:300]
+
+        if pub_date is None:
+            continue
+
+        cards.append({
+            "slug": slug,
+            "title": title,
+            "description": description,
+            "pub_date": pub_date,
+            "url_prefix": "insights",
+            "is_feed_card": True,
+        })
+
+    return cards
+
+
 def escape_xml(text):
     """Escape special XML characters."""
     return (
@@ -95,14 +173,10 @@ def build_feed():
         meta = extract_post_meta(entry, BLOG_DIR, "blog")
         if meta:
             posts.append(meta)
-    # Scan insights
-    if os.path.isdir(INSIGHTS_DIR):
-        for entry in os.listdir(INSIGHTS_DIR):
-            if entry == "index.html" or entry.startswith("."):
-                continue
-            meta = extract_post_meta(entry, INSIGHTS_DIR, "insights")
-            if meta:
-                posts.append(meta)
+    # Scan insights feed (feed-only: parse <article> cards from index.html)
+    insights_index = os.path.join(INSIGHTS_DIR, "index.html")
+    if os.path.isfile(insights_index):
+        posts.extend(extract_insight_cards(insights_index))
 
     posts.sort(key=lambda p: p["pub_date"], reverse=True)
 
@@ -110,7 +184,10 @@ def build_feed():
 
     items = []
     for post in posts:
-        url = "{}/{}/{}/".format(BASE_URL, post["url_prefix"], post["slug"])
+        if post.get("is_feed_card"):
+            url = "{}/insights/#{}".format(BASE_URL, post["slug"])
+        else:
+            url = "{}/{}/{}/".format(BASE_URL, post["url_prefix"], post["slug"])
         pub_rfc = format_datetime(post["pub_date"])
         items.append(
             "  <item>\n"

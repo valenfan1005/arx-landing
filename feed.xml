@@ -6,7 +6,7 @@
   <description>Insights on DeFi copy trading, market regime detection, wallet intelligence, and Hyperliquid. Stay ahead with ARX.</description>
   <language>en</language>
   <atom:link href="https://arx.trade/feed.xml" rel="self" type="application/rss+xml"/>
-  <lastBuildDate>Tue, 14 Apr 2026 14:20:37 -0000</lastBuildDate>
+  <lastBuildDate>Tue, 14 Apr 2026 14:26:28 -0000</lastBuildDate>
   <image>
     <url>https://arx.trade/logo.png</url>
     <title>ARX Blog</title>
@@ -22,19 +22,35 @@
   </item>
 
   <item>
-    <title>$430M BTC Shorts Wiped — Iran Talks Spark Crypto Short Squeeze</title>
-    <link>https://arx.trade/insights/btc-iran-short-squeeze-2026-04-14/</link>
-    <guid isPermaLink="true">https://arx.trade/insights/btc-iran-short-squeeze-2026-04-14/</guid>
-    <description>Bitcoin hit $74,499 as Iran-US talks triggered $430M in short liquidations. ETH surged 8.7%, SKEW at 156.9 signals institutions still hedging. Analysis on arx.trade.</description>
-    <pubDate>Tue, 14 Apr 2026 16:00:00 +0000</pubDate>
+    <title>Iran Ceasefire Hopes Lift Markets — But HL Whales Aren&apos;t Buying It</title>
+    <link>https://arx.trade/insights/#iran-ceasefire-rate-cut-2026-04-14</link>
+    <guid isPermaLink="true">https://arx.trade/insights/#iran-ceasefire-rate-cut-2026-04-14</guid>
+    <description>Iran deal optimism sent BTC +4.75% to $74,386 and ETH +7.65% today, with S&amp;P 500 and Nasdaq also rallying. TradFi institutions are net buyers on SPY. But Hyperliquid&apos;s top wallets haven&apos;t flipped — they were still net short $76.7M as of Apr 11. Either the whales get squeezed, or the rally fades.</description>
+    <pubDate>Tue, 14 Apr 2026 14:30:00 +0000</pubDate>
   </item>
 
   <item>
-    <title>BTC Rallies 5% to $74K — Hyperliquid Whales Still Net Short $77M</title>
-    <link>https://arx.trade/insights/btc-rally-whale-divergence-2026-04-14/</link>
-    <guid isPermaLink="true">https://arx.trade/insights/btc-rally-whale-divergence-2026-04-14/</guid>
-    <description>Bitcoin rallies to $74.4K but Hyperliquid S-tier whales remain net short $76.7M. On-chain data + VIX analysis on arx.trade.</description>
-    <pubDate>Tue, 14 Apr 2026 00:00:00 +0000</pubDate>
+    <title>BTC rallies 5% to $74K — but Hyperliquid whales are still net short $77M</title>
+    <link>https://arx.trade/insights/#btc-whale-divergence-2026-04-14</link>
+    <guid isPermaLink="true">https://arx.trade/insights/#btc-whale-divergence-2026-04-14</guid>
+    <description>Bitcoin surged +4.75% to $74,386 with ETH up 7.65% and HYPE up 7.69%. VIX collapsed from 30.61 to 19.12 (&amp;#8209;37.5% panic decay). But Hyperliquid S-tier wallets — the top 676 accounts by PnL — haven&apos;t flipped.</description>
+    <pubDate>Tue, 14 Apr 2026 06:41:00 +0000</pubDate>
+  </item>
+
+  <item>
+    <title>Gold perps OI surges past $180M as Hormuz tensions escalate — funding stays flat</title>
+    <link>https://arx.trade/insights/#gold-oi-record-2026-04-13</link>
+    <guid isPermaLink="true">https://arx.trade/insights/#gold-oi-record-2026-04-13</guid>
+    <description>Hyperliquid GOLD OI jumped to $182.3M with $41M daily volume, driven by Strait of Hormuz naval buildup headlines. But here&apos;s what the data says: funding rate is just 0.002%/8h — essentially zero. Longs aren&apos;t paying a premium despite the fear narrative.</description>
+    <pubDate>Mon, 13 Apr 2026 14:20:00 +0000</pubDate>
+  </item>
+
+  <item>
+    <title>ETH funding flips negative for first time in 3 weeks — shorts paying longs</title>
+    <link>https://arx.trade/insights/#eth-funding-flip-2026-04-12</link>
+    <guid isPermaLink="true">https://arx.trade/insights/#eth-funding-flip-2026-04-12</guid>
+    <description>ETH 8h funding rate turned -0.0042% on Hyperliquid, the first negative print since March 22. This means shorts are now paying longs to hold — a structural shift in positioning.</description>
+    <pubDate>Sun, 12 Apr 2026 09:15:00 +0000</pubDate>
   </item>
 
   <item>
