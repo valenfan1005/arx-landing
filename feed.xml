@@ -6,7 +6,7 @@
   <description>Insights on DeFi copy trading, market regime detection, wallet intelligence, and Hyperliquid. Stay ahead with ARX.</description>
   <language>en</language>
   <atom:link href="https://arx.trade/feed.xml" rel="self" type="application/rss+xml"/>
-  <lastBuildDate>Tue, 14 Apr 2026 07:15:45 -0000</lastBuildDate>
+  <lastBuildDate>Tue, 14 Apr 2026 14:20:37 -0000</lastBuildDate>
   <image>
     <url>https://arx.trade/logo.png</url>
     <title>ARX Blog</title>
@@ -19,6 +19,14 @@
     <guid isPermaLink="true">https://arx.trade/blog/oil-perps-hormuz-crisis-trading-guide/</guid>
     <description>Hyperliquid oil perps now trade more than Bitcoin. Learn how the Strait of Hormuz crisis created a $2.4B/day market and how to trade crude oil perpetuals 24/7 with zero overnight fees.</description>
     <pubDate>Wed, 15 Apr 2026 00:00:00 +0000</pubDate>
+  </item>
+
+  <item>
+    <title>$430M BTC Shorts Wiped — Iran Talks Spark Crypto Short Squeeze</title>
+    <link>https://arx.trade/insights/btc-iran-short-squeeze-2026-04-14/</link>
+    <guid isPermaLink="true">https://arx.trade/insights/btc-iran-short-squeeze-2026-04-14/</guid>
+    <description>Bitcoin hit $74,499 as Iran-US talks triggered $430M in short liquidations. ETH surged 8.7%, SKEW at 156.9 signals institutions still hedging. Analysis on arx.trade.</description>
+    <pubDate>Tue, 14 Apr 2026 16:00:00 +0000</pubDate>
   </item>
 
   <item>
