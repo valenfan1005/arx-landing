@@ -21,13 +21,16 @@ from email.utils import format_datetime
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 REPO_ROOT = os.path.dirname(SCRIPT_DIR)
 BLOG_DIR = os.path.join(REPO_ROOT, "blog")
+INSIGHTS_DIR = os.path.join(REPO_ROOT, "insights")
 FEED_PATH = os.path.join(REPO_ROOT, "feed.xml")
 BASE_URL = "https://arx.trade"
 
 
-def extract_post_meta(slug):
-    """Extract title, description, and publish date from a blog post."""
-    html_path = os.path.join(BLOG_DIR, slug, "index.html")
+def extract_post_meta(slug, content_dir=None, url_prefix="blog"):
+    """Extract title, description, and publish date from a blog post or insight."""
+    if content_dir is None:
+        content_dir = BLOG_DIR
+    html_path = os.path.join(content_dir, slug, "index.html")
     if not os.path.isfile(html_path):
         return None
 
@@ -67,6 +70,7 @@ def extract_post_meta(slug):
         "title": title,
         "description": description,
         "pub_date": pub_date,
+        "url_prefix": url_prefix,
     }
 
 
@@ -82,14 +86,23 @@ def escape_xml(text):
 
 
 def build_feed():
-    """Scan all blog posts and build the RSS XML."""
+    """Scan all blog posts and insights, build the RSS XML."""
     posts = []
+    # Scan blog posts
     for entry in os.listdir(BLOG_DIR):
         if entry == "index.html" or entry.startswith("."):
             continue
-        meta = extract_post_meta(entry)
+        meta = extract_post_meta(entry, BLOG_DIR, "blog")
         if meta:
             posts.append(meta)
+    # Scan insights
+    if os.path.isdir(INSIGHTS_DIR):
+        for entry in os.listdir(INSIGHTS_DIR):
+            if entry == "index.html" or entry.startswith("."):
+                continue
+            meta = extract_post_meta(entry, INSIGHTS_DIR, "insights")
+            if meta:
+                posts.append(meta)
 
     posts.sort(key=lambda p: p["pub_date"], reverse=True)
 
@@ -97,7 +110,7 @@ def build_feed():
 
     items = []
     for post in posts:
-        url = "{}/blog/{}/".format(BASE_URL, post["slug"])
+        url = "{}/{}/{}/".format(BASE_URL, post["url_prefix"], post["slug"])
         pub_rfc = format_datetime(post["pub_date"])
         items.append(
             "  <item>\n"
@@ -118,7 +131,7 @@ def build_feed():
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n'
         "<channel>\n"
-        "  <title>ARX Blog — DeFi Copy Trading Insights</title>\n"
+        "  <title>ARX — Market Insights &amp; Trading Analysis</title>\n"
         "  <link>{base}/blog/</link>\n"
         "  <description>Insights on DeFi copy trading, market regime detection, "
         "wallet intelligence, and Hyperliquid. Stay ahead with ARX.</description>\n"

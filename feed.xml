@@ -1,17 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-  <title>ARX Blog — DeFi Copy Trading Insights</title>
+  <title>ARX — Market Insights &amp; Trading Analysis</title>
   <link>https://arx.trade/blog/</link>
   <description>Insights on DeFi copy trading, market regime detection, wallet intelligence, and Hyperliquid. Stay ahead with ARX.</description>
   <language>en</language>
   <atom:link href="https://arx.trade/feed.xml" rel="self" type="application/rss+xml"/>
-  <lastBuildDate>Thu, 09 Apr 2026 07:31:14 -0000</lastBuildDate>
+  <lastBuildDate>Tue, 14 Apr 2026 07:15:45 -0000</lastBuildDate>
   <image>
     <url>https://arx.trade/logo.png</url>
     <title>ARX Blog</title>
     <link>https://arx.trade/blog/</link>
   </image>
+
+  <item>
+    <title>Oil Perps Hit $2.4B Daily Volume — Trade the Hormuz Crisis On-Chain (2026)</title>
+    <link>https://arx.trade/blog/oil-perps-hormuz-crisis-trading-guide/</link>
+    <guid isPermaLink="true">https://arx.trade/blog/oil-perps-hormuz-crisis-trading-guide/</guid>
+    <description>Hyperliquid oil perps now trade more than Bitcoin. Learn how the Strait of Hormuz crisis created a $2.4B/day market and how to trade crude oil perpetuals 24/7 with zero overnight fees.</description>
+    <pubDate>Wed, 15 Apr 2026 00:00:00 +0000</pubDate>
+  </item>
+
+  <item>
+    <title>BTC Rallies 5% to $74K — Hyperliquid Whales Still Net Short $77M</title>
+    <link>https://arx.trade/insights/btc-rally-whale-divergence-2026-04-14/</link>
+    <guid isPermaLink="true">https://arx.trade/insights/btc-rally-whale-divergence-2026-04-14/</guid>
+    <description>Bitcoin rallies to $74.4K but Hyperliquid S-tier whales remain net short $76.7M. On-chain data + VIX analysis on arx.trade.</description>
+    <pubDate>Tue, 14 Apr 2026 00:00:00 +0000</pubDate>
+  </item>
 
   <item>
     <title>Why Trade Gold On-Chain? Perps vs ETFs vs COMEX — Fees, Leverage &amp; 24/7 Access (2026)</title>

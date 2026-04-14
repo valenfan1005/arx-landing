@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<title>Market Insights — ARX | Real-Time Trading Analysis</title>
+<meta name="description" content="Real-time market analysis: Hyperliquid OI, funding rates, whale positioning, VIX regime, and institutional flow. Updated daily.">
+
+<!-- SEO -->
+<link rel="canonical" href="https://arx.trade/insights/" />
+<meta name="robots" content="index, follow" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Market Insights — ARX | Real-Time Trading Analysis">
+<meta property="og:description" content="Real-time market analysis powered by on-chain data and TradFi signals. Hyperliquid OI, funding rates, whale positioning, VIX regime, and institutional flow.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://arx.trade/insights/" />
+<meta property="og:image" content="https://arx.trade/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="ARX" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@ARX_TRADE" />
+<meta name="twitter:title" content="Market Insights — ARX | Real-Time Trading Analysis" />
+<meta name="twitter:description" content="Real-time market analysis powered by on-chain data and TradFi signals." />
+<meta name="twitter:image" content="https://arx.trade/og-image.png" />
+
+<!-- Additional Meta -->
+<meta name="keywords" content="market insights, trading analysis, Hyperliquid OI, funding rate analysis, whale positioning, VIX regime, institutional flow, on-chain analytics" />
+<meta name="theme-color" content="#B38DF4" />
+<meta name="author" content="ARX" />
+
+<!-- RSS Feed -->
+<link rel="alternate" type="application/rss+xml" title="ARX Insights" href="https://arx.trade/feed.xml" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+<!-- Structured Data: BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://arx.trade/" },
+    { "@type": "ListItem", "position": 2, "name": "Insights", "item": "https://arx.trade/insights/" }
+  ]
+}
+</script>
+
+<!-- Structured Data: ItemList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "ARX Market Insights",
+  "description": "Real-time trading analysis powered by on-chain data and TradFi signals",
+  "itemListOrder": "https://schema.org/ItemListOrderDescending",
+  "numberOfItems": 3,
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "Article",
+        "headline": "BTC Rallies 5% to $74K — Hyperliquid Whales Still Net Short $77M",
+        "datePublished": "2026-04-14T06:41:00Z",
+        "author": {"@type": "Organization", "name": "ARX"},
+        "publisher": {"@type": "Organization", "name": "ARX", "url": "https://arx.trade"},
+        "url": "https://arx.trade/insights/#btc-whale-divergence-2026-04-14"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "Article",
+        "headline": "Gold Perps OI Surges Past $180M as Hormuz Tensions Escalate — Funding Stays Flat",
+        "datePublished": "2026-04-13T14:20:00Z",
+        "author": {"@type": "Organization", "name": "ARX"},
+        "publisher": {"@type": "Organization", "name": "ARX", "url": "https://arx.trade"},
+        "url": "https://arx.trade/insights/#gold-oi-record-2026-04-13"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "Article",
+        "headline": "ETH Funding Flips Negative for First Time in 3 Weeks — Shorts Paying Longs",
+        "datePublished": "2026-04-12T09:15:00Z",
+        "author": {"@type": "Organization", "name": "ARX"},
+        "publisher": {"@type": "Organization", "name": "ARX", "url": "https://arx.trade"},
+        "url": "https://arx.trade/insights/#eth-funding-flip-2026-04-12"
+      }
+    }
+  ]
+}
+</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================
+   DESIGN TOKENS
+   ============================================ */
+:root {
+  --bg-base: #08060F;
+  --bg-surface-1: #0F0B1A;
+  --bg-surface-2: #1A1425;
+  --bg-surface-3: #251E30;
+  --bg-surface-4: #302840;
+
+  --primary: #B38DF4;
+  --primary-hover: #925BF0;
+  --primary-light: #A274F2;
+  --primary-glow: rgba(179, 141, 244, 0.3);
+
+  --cyan: #22D1EE;
+  --cyan-dim: rgba(34, 209, 238, 0.15);
+  --cyan-glow: rgba(34, 209, 238, 0.3);
+
+  --green: #34D399;
+  --green-dim: rgba(52, 211, 153, 0.15);
+  --red: #F87171;
+  --red-dim: rgba(248, 113, 113, 0.15);
+
+  --pink: #F472B6;
+  --pink-dim: rgba(244, 114, 182, 0.15);
+
+  --text-primary: #FFFFFF;
+  --text-secondary: #A1A1AA;
+  --text-muted: #71717A;
+  --text-dim: #52525B;
+
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-medium: rgba(255, 255, 255, 0.1);
+  --border-accent: rgba(34, 209, 238, 0.2);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+}
+
+/* ============================================
+   RESET & BASE
+   ============================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+.mono { font-family: 'JetBrains Mono', monospace; font-feature-settings: 'tnum'; }
+a { color: inherit; text-decoration: none; }
+
+.container { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+
+/* ============================================
+   NAVBAR
+   ============================================ */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 16px 0;
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  background: rgba(8, 6, 15, 0.85);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.navbar .container { max-width: 1200px; display: flex; align-items: center; justify-content: space-between; }
+.nav-logo svg { height: 28px; width: auto; }
+.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+.nav-links a { font-size: 14px; font-weight: 500; color: var(--text-secondary); transition: color 0.2s; }
+.nav-links a:hover { color: var(--text-primary); }
+.nav-links a.active { color: var(--text-primary); }
+.nav-links a.nav-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 20px; background: var(--primary); color: #FFFFFF;
+  border: none; border-radius: var(--radius-full);
+  font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s;
+}
+.nav-cta:hover { background: var(--primary-hover); box-shadow: 0 0 24px var(--primary-glow); }
+.nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+.nav-toggle span { width: 24px; height: 2px; background: var(--text-primary); border-radius: 2px; }
+
+/* ============================================
+   FEED HEADER
+   ============================================ */
+.feed-header {
+  padding: 100px 0 32px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.feed-header h1 {
+  font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+.feed-header h1 span {
+  background: linear-gradient(135deg, var(--cyan), var(--primary-light));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.feed-header p {
+  font-size: 14px; color: var(--text-muted); line-height: 1.5;
+}
+
+/* ============================================
+   FEED — TIMELINE
+   ============================================ */
+.feed { padding: 0 0 80px; }
+
+/* ── Single Post ── */
+.post {
+  padding: 24px 28px;
+  margin-bottom: 16px;
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-lg);
+}
+
+.post-header {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 12px;
+}
+.post-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--cyan-dim), var(--primary-glow));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 700; color: var(--cyan);
+  flex-shrink: 0;
+}
+.post-author { font-size: 14px; font-weight: 600; color: var(--text-primary); }
+.post-handle { font-size: 13px; color: var(--text-muted); }
+.post-time {
+  font-size: 12px; color: var(--text-dim); margin-left: auto;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Title / hook */
+.post-title {
+  font-size: 18px; font-weight: 700; line-height: 1.35;
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+}
+.post-title a { color: var(--text-primary); transition: color 0.15s; }
+.post-title a:hover { color: var(--cyan); }
+
+/* Body text */
+.post-body {
+  font-size: 14px; color: var(--text-secondary); line-height: 1.65;
+  margin-bottom: 16px;
+}
+.post-body strong { color: var(--text-primary); font-weight: 600; }
+
+/* ── Inline Data Card ── */
+.post-data {
+  background: var(--bg-surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.post-data-title {
+  font-size: 11px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+/* Mini data table */
+.mini-table {
+  width: 100%; border-collapse: collapse; font-size: 13px;
+}
+.mini-table th {
+  text-align: left; font-size: 11px; font-weight: 500;
+  color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em;
+  padding: 0 0 8px;
+}
+.mini-table td {
+  padding: 6px 0;
+  border-top: 1px solid var(--border-subtle);
+  font-family: 'JetBrains Mono', monospace; font-size: 12px;
+  color: var(--text-secondary);
+}
+.mini-table td:first-child { font-family: 'Inter', sans-serif; font-weight: 600; color: var(--text-primary); }
+.mini-table .positive { color: var(--green); }
+.mini-table .negative { color: var(--red); }
+
+/* Stat pills */
+.stat-pills {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px;
+}
+.stat-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 12px;
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  font-size: 12px; color: var(--text-secondary);
+}
+.stat-pill .label { color: var(--text-muted); }
+.stat-pill .value { font-family: 'JetBrains Mono', monospace; font-weight: 600; color: var(--text-primary); }
+.stat-pill.bearish .value { color: var(--red); }
+.stat-pill.bullish .value { color: var(--green); }
+.stat-pill.neutral .value { color: var(--cyan); }
+
+/* Verdict badge */
+.verdict {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  margin-top: 10px;
+}
+.verdict.bearish { background: var(--red-dim); color: var(--red); }
+.verdict.bullish { background: var(--green-dim); color: var(--green); }
+.verdict.neutral { background: var(--cyan-dim); color: var(--cyan); }
+
+/* ── Tags ── */
+.post-tags {
+  display: flex; gap: 6px; flex-wrap: wrap;
+}
+.tag {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.04em;
+  padding: 3px 8px; border-radius: var(--radius-full);
+  background: var(--cyan-dim); color: var(--cyan);
+}
+.tag.macro { background: var(--pink-dim); color: var(--pink); }
+.tag.rwa { background: rgba(255, 215, 0, 0.12); color: #FFD700; }
+
+/* ── Post footer actions ── */
+.post-actions {
+  display: flex; gap: 24px; margin-top: 14px; padding-top: 12px;
+  border-top: 1px solid var(--border-subtle);
+}
+.post-action {
+  font-size: 12px; color: var(--text-dim); cursor: pointer;
+  transition: color 0.15s; display: flex; align-items: center; gap: 4px;
+}
+.post-action:hover { color: var(--cyan); }
+.post-action svg { width: 14px; height: 14px; }
+
+/* Read more link */
+.post-readmore {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 13px; font-weight: 600; color: var(--cyan);
+  margin-top: 14px; transition: gap 0.2s;
+}
+.post-readmore:hover { gap: 8px; }
+.post-readmore svg { width: 14px; height: 14px; }
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer { padding: 60px 0 40px; border-top: 1px solid var(--border-subtle); }
+.footer .container { max-width: 1200px; }
+.footer-content { display: flex; justify-content: space-between; align-items: flex-start; gap: 48px; padding-bottom: 32px; }
+.footer-brand { max-width: 280px; }
+.footer-brand p { font-size: 13px; color: var(--text-muted); margin-top: 12px; line-height: 1.5; }
+.footer-links { display: flex; gap: 64px; }
+.footer-col h5 { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 16px; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col a { font-size: 14px; color: var(--text-secondary); transition: color 0.2s; }
+.footer-col a:hover { color: var(--text-primary); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; border-top: 1px solid var(--border-subtle); font-size: 13px; color: var(--text-dim); }
+.footer-legal { display: flex; gap: 24px; }
+.footer-legal span { color: var(--text-dim); }
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .feed-header { padding: 88px 0 24px; }
+  .feed-header h1 { font-size: 22px; }
+  .post-title { font-size: 16px; }
+  .post-time { display: none; }
+  .stat-pills { gap: 6px; }
+  .stat-pill { font-size: 11px; padding: 4px 10px; }
+  .mini-table td, .mini-table th { font-size: 11px; }
+  .nav-links { display: none; }
+  .nav-links.show { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(8, 6, 15, 0.95); backdrop-filter: blur(20px); padding: 24px; border-bottom: 1px solid var(--border-subtle); gap: 16px; }
+  .nav-toggle { display: flex; }
+  .footer-content { flex-direction: column; gap: 48px; }
+  .footer-links { gap: 32px; flex-wrap: wrap; }
+  .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="container">
+    <a href="/" class="nav-logo" aria-label="ARX Home">
+      <svg viewBox="0 0 100 27.4" height="28" role="img" aria-label="ARX logo">
+        <path fill="#FFFFFF" fill-rule="evenodd" d="M 5.7 0.2 L 0 27.4 L 5.4 27.4 L 25.5 8.1 L 30.0 27.4 L 35.2 27.4 L 29.3 0 Z M 21.7 4.6 L 7.0 19.4 L 10.1 4.8 Z"/>
+        <path fill="#FFFFFF" d="M 45.2 0 L 39.3 27.4 L 44.5 27.4 L 49.4 4.6 L 68.6 4.6 L 68.6 0 Z"/>
+        <path fill="#FFFFFF" d="M 72.7 0 L 72.7 4.6 L 82.9 14.3 L 72.7 24.6 L 72.7 27.4 L 76.1 27.4 L 86.5 17.6 L 96.8 27.4 L 100 27.4 L 100 24.5 L 89.9 14.5 L 100 4.8 L 100 0 L 97.5 0 L 86.5 11.1 L 75.2 0 Z"/>
+      </svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/insights/" class="active">Insights</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/#waitlist" class="nav-cta">Join Waitlist</a></li>
+    </ul>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- FEED HEADER -->
+<section class="feed-header">
+  <div class="container">
+    <h1><span>Market Insights</span></h1>
+    <p>On-chain data + TradFi signals. Updated daily.</p>
+  </div>
+</section>
+
+<!-- FEED -->
+<section class="feed">
+  <div class="container">
+
+    <!-- ═══════════════════════════════════════
+         POST 1: BTC Whale Divergence
+         ═══════════════════════════════════════ -->
+    <article class="post" id="btc-whale-divergence-2026-04-14">
+      <div class="post-header">
+        <div class="post-avatar">A</div>
+        <div>
+          <span class="post-author">ARX Research</span>
+          <span class="post-handle">@ARX_TRADE</span>
+        </div>
+        <time class="post-time" datetime="2026-04-14T06:41:00Z">14 Apr 2026 &middot; 06:41 UTC</time>
+      </div>
+
+      <h2 class="post-title"><a href="/insights/btc-rally-whale-divergence-2026-04-14/">BTC rallies 5% to $74K &mdash; but Hyperliquid whales are still net short $77M</a></h2>
+
+      <div class="post-body">
+        <p>Bitcoin surged <strong>+4.75%</strong> to $74,386 with ETH up 7.65% and HYPE up 7.69%. VIX collapsed from 30.61 to 19.12 (&#8209;37.5% panic decay). But Hyperliquid S-tier wallets &mdash; the top 676 accounts by PnL &mdash; haven't flipped.</p>
+      </div>
+
+      <!-- Data Card: Market Snapshot -->
+      <div class="post-data">
+        <div class="post-data-title">Hyperliquid Snapshot &middot; 06:41 UTC</div>
+        <table class="mini-table">
+          <thead><tr><th>Market</th><th>Price</th><th>24h</th><th>OI</th><th>Vol</th></tr></thead>
+          <tbody>
+            <tr><td>BTC</td><td class="mono">$74,386</td><td class="positive mono">+4.75%</td><td class="mono">$2.11B</td><td class="mono">$2.98B</td></tr>
+            <tr><td>ETH</td><td class="mono">$2,367</td><td class="positive mono">+7.65%</td><td class="mono">$1.43B</td><td class="mono">$1.26B</td></tr>
+            <tr><td>HYPE</td><td class="mono">$44.81</td><td class="positive mono">+7.69%</td><td class="mono">$931M</td><td class="mono">$339M</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Data Card: Whale Sentiment -->
+      <div class="post-data">
+        <div class="post-data-title">S-Tier Whale Positioning &middot; 676 wallets</div>
+        <div class="stat-pills">
+          <span class="stat-pill bearish"><span class="label">L/S Ratio</span><span class="value">0.73</span></span>
+          <span class="stat-pill bearish"><span class="label">Net Exposure</span><span class="value">-$76.7M</span></span>
+          <span class="stat-pill neutral"><span class="label">Avg Leverage</span><span class="value">22.1x</span></span>
+          <span class="stat-pill"><span class="label">Longs</span><span class="value">118</span></span>
+          <span class="stat-pill"><span class="label">Shorts</span><span class="value">143</span></span>
+        </div>
+        <div class="verdict bearish">Whale Verdict: Slightly Bearish</div>
+      </div>
+
+      <div class="post-body">
+        <p><strong>TradFi context:</strong> VIX at 19.12 (66th pctile), contango regime, 4 consecutive down days. Fear &amp; Greed at 16 (Extreme Fear) &mdash; historically a buy signal. Contrarian score 2/5: panic fading, but smart money hasn't committed.</p>
+        <p style="margin-top: 8px;"><strong>Key level:</strong> If BTC holds $74K for 48h, short capitulation becomes more likely. Funding near-zero (0.001%) &mdash; no extreme crowding yet.</p>
+      </div>
+
+      <a class="post-readmore" href="/insights/btc-rally-whale-divergence-2026-04-14/">Full analysis <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+
+      <div class="post-tags">
+        <span class="tag">On-Chain</span>
+        <span class="tag macro">Macro</span>
+      </div>
+
+      <div class="post-actions">
+        <a class="post-action" href="https://x.com/intent/tweet?text=BTC%20rallies%205%25%20to%20%2474K%20but%20Hyperliquid%20whales%20are%20still%20net%20short%20%2477M%20%40ARX_TRADE&url=https://arx.trade/insights/" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          Share
+        </a>
+        <a class="post-action" href="/blog/what-is-market-regime-detection/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+          What is regime detection?
+        </a>
+      </div>
+    </article>
+
+    <!-- ═══════════════════════════════════════
+         POST 2: Gold OI Hits Record
+         ═══════════════════════════════════════ -->
+    <article class="post" id="gold-oi-record-2026-04-13">
+      <div class="post-header">
+        <div class="post-avatar">A</div>
+        <div>
+          <span class="post-author">ARX Research</span>
+          <span class="post-handle">@ARX_TRADE</span>
+        </div>
+        <time class="post-time" datetime="2026-04-13T14:20:00Z">13 Apr 2026 &middot; 14:20 UTC</time>
+      </div>
+
+      <h2 class="post-title"><a href="/insights/gold-oi-record-2026-04-13/">Gold perps OI surges past $180M as Hormuz tensions escalate &mdash; funding stays flat</a></h2>
+
+      <div class="post-body">
+        <p>Hyperliquid GOLD OI jumped to <strong>$182.3M</strong> with $41M daily volume, driven by Strait of Hormuz naval buildup headlines. But here's what the data says: funding rate is just <strong>0.002%/8h</strong> &mdash; essentially zero. Longs aren't paying a premium despite the fear narrative.</p>
+      </div>
+
+      <div class="post-data">
+        <div class="post-data-title">RWA Markets Snapshot</div>
+        <table class="mini-table">
+          <thead><tr><th>Market</th><th>Price</th><th>24h</th><th>OI</th><th>Funding/8h</th></tr></thead>
+          <tbody>
+            <tr><td>GOLD</td><td class="mono">$4,748</td><td class="positive mono">+0.55%</td><td class="mono">$182M</td><td class="mono">0.002%</td></tr>
+            <tr><td>SILVER</td><td class="mono">$75.46</td><td class="positive mono">+1.83%</td><td class="mono">$180M</td><td class="mono">0.001%</td></tr>
+            <tr><td>WTIOIL</td><td class="mono">$95.40</td><td class="negative mono">-0.09%</td><td class="mono">$1.27B</td><td class="mono">-0.003%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="post-body">
+        <p><strong>Read:</strong> Geopolitical fear is driving OI, but positioning isn't panicked. Flat funding = balanced long/short. If Hormuz de-escalates, expect a fast OI unwind. If it escalates, funding will spike &mdash; watch for >0.01%/8h as the signal.</p>
+      </div>
+
+      <a class="post-readmore" href="/insights/gold-oi-record-2026-04-13/">Full analysis <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+
+      <div class="post-tags">
+        <span class="tag rwa">RWA</span>
+        <span class="tag macro">Macro</span>
+      </div>
+
+      <div class="post-actions">
+        <a class="post-action" href="https://x.com/intent/tweet?text=Gold%20perps%20OI%20surges%20past%20%24180M%20on%20Hormuz%20tensions%20but%20funding%20stays%20flat%20%40ARX_TRADE&url=https://arx.trade/insights/" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          Share
+        </a>
+        <a class="post-action" href="/blog/why-trade-gold-on-chain/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+          Why trade gold on-chain?
+        </a>
+      </div>
+    </article>
+
+    <!-- ═══════════════════════════════════════
+         POST 3: ETH Funding Flip
+         ═══════════════════════════════════════ -->
+    <article class="post" id="eth-funding-flip-2026-04-12">
+      <div class="post-header">
+        <div class="post-avatar">A</div>
+        <div>
+          <span class="post-author">ARX Research</span>
+          <span class="post-handle">@ARX_TRADE</span>
+        </div>
+        <time class="post-time" datetime="2026-04-12T09:15:00Z">12 Apr 2026 &middot; 09:15 UTC</time>
+      </div>
+
+      <h2 class="post-title"><a href="/insights/eth-funding-flip-2026-04-12/">ETH funding flips negative for first time in 3 weeks &mdash; shorts paying longs</a></h2>
+
+      <div class="post-body">
+        <p>ETH 8h funding rate turned <strong>-0.0042%</strong> on Hyperliquid, the first negative print since March 22. This means shorts are now paying longs to hold &mdash; a structural shift in positioning.</p>
+      </div>
+
+      <div class="post-data">
+        <div class="post-data-title">ETH Funding History</div>
+        <div class="stat-pills">
+          <span class="stat-pill bearish"><span class="label">Current Funding</span><span class="value">-0.0042%</span></span>
+          <span class="stat-pill neutral"><span class="label">24h Avg</span><span class="value">-0.0018%</span></span>
+          <span class="stat-pill"><span class="label">OI</span><span class="value">$1.38B</span></span>
+          <span class="stat-pill"><span class="label">24h Vol</span><span class="value">$1.1B</span></span>
+        </div>
+      </div>
+
+      <div class="post-body">
+        <p><strong>Context:</strong> Negative funding historically precedes either (a) a short squeeze if price moves up, or (b) continuation down if the shorts are right. The last time ETH funding went negative this deeply was Feb 28 &mdash; ETH rallied 12% in the following 5 days.</p>
+        <p style="margin-top: 8px;"><strong>VIX check:</strong> 22.4 and falling. Risk appetite is returning across TradFi. If ETH holds $2,300, the negative funding becomes fuel for longs.</p>
+      </div>
+
+      <a class="post-readmore" href="/insights/eth-funding-flip-2026-04-12/">Full analysis <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+
+      <div class="post-tags">
+        <span class="tag">On-Chain</span>
+      </div>
+
+      <div class="post-actions">
+        <a class="post-action" href="https://x.com/intent/tweet?text=ETH%20funding%20flips%20negative%20for%20first%20time%20in%203%20weeks%20%40ARX_TRADE&url=https://arx.trade/insights/" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          Share
+        </a>
+        <a class="post-action" href="/blog/hyperliquid-vaults-explained/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+          How vaults work
+        </a>
+      </div>
+    </article>
+
+    <!-- MORE POSTS GO HERE (newest first) -->
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <svg viewBox="0 0 100 27.4" height="24" role="img" aria-label="ARX logo">
+          <path fill="#71717A" fill-rule="evenodd" d="M 5.7 0.2 L 0 27.4 L 5.4 27.4 L 25.5 8.1 L 30.0 27.4 L 35.2 27.4 L 29.3 0 Z M 21.7 4.6 L 7.0 19.4 L 10.1 4.8 Z"/>
+          <path fill="#71717A" d="M 45.2 0 L 39.3 27.4 L 44.5 27.4 L 49.4 4.6 L 68.6 4.6 L 68.6 0 Z"/>
+          <path fill="#71717A" d="M 72.7 0 L 72.7 4.6 L 82.9 14.3 L 72.7 24.6 L 72.7 27.4 L 76.1 27.4 L 86.5 17.6 L 96.8 27.4 L 100 27.4 L 100 24.5 L 89.9 14.5 L 100 4.8 L 100 0 L 97.5 0 L 86.5 11.1 L 75.2 0 Z"/>
+        </svg>
+        <p>Trade gold, oil, S&amp;P 500, and crypto perps on-chain. Zero overnight fees. Powered by Hyperliquid.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Product</h5>
+          <ul>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#referral">Referral Program</a></li>
+            <li><a href="/insights/">Insights</a></li>
+            <li><a href="/blog/">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Community</h5>
+          <ul>
+            <li><a href="https://x.com/ARX_TRADE" target="_blank">X.com (Twitter)</a></li>
+            <li><a href="https://discord.gg/kNV6raqC" target="_blank">Discord</a></li>
+            <li><a href="https://t.me/ARX_Trade_Official" target="_blank">Telegram</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ARX. All rights reserved.</span>
+      <div class="footer-legal">
+        <span>Terms</span>
+        <span>Privacy</span>
+        <span>Risk</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
