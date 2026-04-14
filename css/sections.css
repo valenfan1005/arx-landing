@@ -25,12 +25,15 @@
   display: block;
 }
 
-/* Semi-transparent overlay to soften the wave animation */
+/* Semi-transparent overlay to soften the wave animation — starts below navbar */
 .hero-canvas::after {
   content: '';
   position: absolute;
-  inset: 0;
-  background: rgba(8, 6, 15, 0.6);
+  top: 70px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent 0%, rgba(8, 6, 15, 0.5) 60px, rgba(8, 6, 15, 0.6) 100%);
   pointer-events: none;
 }
 

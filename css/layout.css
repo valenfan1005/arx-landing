@@ -42,15 +42,19 @@ img { max-width: 100%; display: block; }
    ============================================ */
 .navbar {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 48px);
+  max-width: 1100px;
   z-index: 100;
-  padding: 16px 0;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  background: rgba(8, 6, 15, 0.8);
-  border-bottom: 1px solid var(--border-subtle);
+  padding: 8px 24px;
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  background: rgba(37, 30, 48, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   transition: all 0.3s ease;
 }
 
@@ -58,9 +62,12 @@ img { max-width: 100%; display: block; }
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-width: 100%;
+  padding: 0;
 }
 
-.nav-logo svg { height: 28px; width: auto; }
+.nav-logo { display: flex; align-items: center; }
+.nav-logo svg { height: 20px; width: auto; display: block; }
 
 .nav-links {
   display: flex;
@@ -82,12 +89,12 @@ img { max-width: 100%; display: block; }
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 20px;
+  padding: 7px 18px;
   background: var(--primary);
   color: #FFFFFF;
   border: none;
   border-radius: var(--radius-full);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;

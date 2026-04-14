@@ -2,13 +2,13 @@
 // NAVBAR & SMOOTH SCROLL
 // ============================================
 
-// Navbar background on scroll
+// Navbar background on scroll — keep glass effect
 window.addEventListener('scroll', () => {
   const navbar = document.querySelector('.navbar');
   if (window.scrollY > 50) {
-    navbar.style.background = 'rgba(8, 6, 15, 0.95)';
+    navbar.style.background = 'rgba(37, 30, 48, 0.65)';
   } else {
-    navbar.style.background = 'rgba(8, 6, 15, 0.8)';
+    navbar.style.background = 'rgba(37, 30, 48, 0.5)';
   }
 });
 
