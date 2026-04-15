@@ -10,20 +10,20 @@
   /* ── Asset config ─────────────────────────── */
   /* RWA: HIP-3 perps from Trade.xyz (dex: "xyz") — names prefixed xyz: in API */
   var RWA_ASSETS = [
-    { apiName: 'xyz:GOLD',    display: 'GOLD',    pair: 'USDC', icon: 'gold' },
-    { apiName: 'xyz:SP500',   display: 'S&P 500', pair: 'USDC', icon: 'sp500' },
-    { apiName: 'xyz:CL',      display: 'WTIOIL',  pair: 'USDC', icon: 'oil' },
-    { apiName: 'xyz:SILVER',  display: 'SILVER',  pair: 'USDC', icon: 'silver' },
-    { apiName: 'xyz:TSLA',    display: 'TSLA',    pair: 'USDC', icon: 'tsla' }
+    { apiName: 'xyz:GOLD',    display: 'GOLD',    pair: 'USDC', icon: 'gold',   slug: 'gold' },
+    { apiName: 'xyz:SP500',   display: 'S&P 500', pair: 'USDC', icon: 'sp500',  slug: 'sp500' },
+    { apiName: 'xyz:CL',      display: 'WTIOIL',  pair: 'USDC', icon: 'oil',    slug: 'oil' },
+    { apiName: 'xyz:SILVER',  display: 'SILVER',  pair: 'USDC', icon: 'silver', slug: 'silver' },
+    { apiName: 'xyz:TSLA',    display: 'TSLA',    pair: 'USDC', icon: 'tsla',   slug: 'tsla' }
   ];
 
   /* Crypto: standard Hyperliquid perps */
   var CRYPTO_ASSETS = [
-    { apiName: 'BTC',   display: 'BTC',  pair: 'USDC', icon: 'btc' },
-    { apiName: 'ETH',   display: 'ETH',  pair: 'USDC', icon: 'eth' },
-    { apiName: 'SOL',   display: 'SOL',  pair: 'USDC', icon: 'sol' },
-    { apiName: 'HYPE',  display: 'HYPE', pair: 'USDC', icon: 'hype' },
-    { apiName: 'kPEPE', display: 'PEPE', pair: 'USDC', icon: 'pepe' }
+    { apiName: 'BTC',   display: 'BTC',  pair: 'USDC', icon: 'btc',  slug: 'btc' },
+    { apiName: 'ETH',   display: 'ETH',  pair: 'USDC', icon: 'eth',  slug: 'eth' },
+    { apiName: 'SOL',   display: 'SOL',  pair: 'USDC', icon: 'sol',  slug: 'sol' },
+    { apiName: 'HYPE',  display: 'HYPE', pair: 'USDC', icon: 'hype', slug: 'hype' },
+    { apiName: 'kPEPE', display: 'PEPE', pair: 'USDC', icon: 'pepe', slug: 'pepe' }
   ];
 
   var ICON_URLS = {
@@ -77,9 +77,12 @@
       var isPos = m.change >= 0;
       var changeClass = isPos ? 'positive' : 'negative';
       var changeStr = (isPos ? '+' : '') + m.change.toFixed(2) + '%';
-      var row = document.createElement('div');
-      row.className = 'ticker-row';
-      row.innerHTML =
+      var link = document.createElement('a');
+      link.href = '/markets/' + m.slug + '/';
+      link.className = 'ticker-row';
+      link.style.textDecoration = 'none';
+      link.style.color = 'inherit';
+      link.innerHTML =
         '<div class="ticker-market">' +
           '<div class="ticker-icon">' + getIconHtml(m.icon) + '</div>' +
           '<div class="ticker-market-info">' +
@@ -90,7 +93,7 @@
         '<span class="ticker-price">' + m.price + '</span>' +
         '<span class="ticker-vol">' + m.vol + '</span>' +
         '<span class="ticker-change ' + changeClass + '">' + changeStr + '</span>';
-      body.appendChild(row);
+      body.appendChild(link);
     });
   }
 
@@ -131,6 +134,7 @@
       display: assetCfg.display,
       pair:    assetCfg.pair,
       icon:    assetCfg.icon,
+      slug:    assetCfg.slug,
       price:   fmtPrice(price),
       vol:     fmtVol(vol),
       change:  change
