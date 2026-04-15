@@ -48,7 +48,7 @@
     }
 
     draw() {
-      this.ctx.fillStyle = 'rgba(8, 6, 15, 0.2)';
+      this.ctx.fillStyle = 'rgba(8, 6, 15, 0.35)';
       this.ctx.fillRect(0, 0, this.width, this.height);
 
       const pointsPerLine = 100;
@@ -90,10 +90,10 @@
     }
   }
 
-  // Initialise with ARX brand colours
+  // Initialise with ARX brand colours (dimmed for subtlety)
   new InterferenceRenderer('hero-wave-wrapper', {
-    colorActive: '#22D1EE',
-    colorIdle:   '#B38DF4',
+    colorActive: '#1A9EB3',
+    colorIdle:   '#7A6AAF',
     bg:          '#08060F',
     lines:       60,
     amplitude:   60
