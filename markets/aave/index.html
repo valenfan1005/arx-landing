@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<title>Trade Aave (AAVE) Perpetuals on Hyperliquid | ARX</title>
+<meta name="description" content="Trade AAVE perpetual contracts on Hyperliquid. Live Aave price, open interest, funding rates, and 24h volume on the leading on-chain perp DEX.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://arx.trade/markets/aave/">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Trade Aave (AAVE) Perpetuals on Hyperliquid | ARX">
+<meta property="og:description" content="Trade AAVE perpetual contracts on Hyperliquid. Live Aave price, open interest, funding rates, and 24h volume on the leading on-chain perp DEX.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://arx.trade/markets/aave/">
+<meta property="og:image" content="https://arx.trade/og-image.png">
+<meta property="og:site_name" content="ARX">
+<meta property="article:published_time" content="2026-04-15">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@ARX_TRADE">
+<meta name="twitter:title" content="Trade Aave (AAVE) Perpetuals on Hyperliquid | ARX">
+<meta name="twitter:description" content="Trade AAVE perpetual contracts on Hyperliquid. Live Aave price, open interest, funding rates, and 24h volume on the leading on-chain perp DEX.">
+
+<!-- Schema: BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://arx.trade/" },
+    { "@type": "ListItem", "position": 2, "name": "Markets", "item": "https://arx.trade/markets/" },
+    { "@type": "ListItem", "position": 3, "name": "Aave", "item": "https://arx.trade/markets/aave/" }
+  ]
+}
+</script>
+
+<!-- Schema: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I trade AAVE perpetuals on Hyperliquid?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Connect your wallet to Hyperliquid, deposit USDC, and open a AAVE perpetual position. You can go long or short with up to 50x leverage on Hyperliquid's fully on-chain order book."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the fees for AAVE perps?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Hyperliquid charges taker fees of 0.035% and maker fees of 0.01% for AAVE perpetuals. There are no overnight holding fees."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- Schema: FinancialProduct -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FinancialProduct",
+  "name": "Aave Perpetual Contract",
+  "description": "Trade AAVE perpetual contracts on Hyperliquid. Live Aave price, open interest, funding rates, and 24h volume on the leading on-chain perp DEX.",
+  "provider": { "@type": "Organization", "name": "ARX", "url": "https://arx.trade" },
+  "url": "https://arx.trade/markets/aave/"
+}
+</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="alternate" type="application/rss+xml" title="ARX" href="https://arx.trade/feed.xml">
+
+<style>
+:root {
+  --bg-base: #08060F;
+  --bg-surface-1: #0F0B1A;
+  --bg-surface-2: #1A1425;
+  --bg-surface-3: #251E30;
+  --primary: #B38DF4;
+  --primary-hover: #925BF0;
+  --primary-glow: rgba(179,141,244,0.3);
+  --cyan: #22D1EE;
+  --cyan-dim: rgba(34,209,238,0.15);
+  --green: #34D399;
+  --green-dim: rgba(52,211,153,0.15);
+  --red: #F87171;
+  --red-dim: rgba(248,113,113,0.15);
+  --text-primary: #FFFFFF;
+  --text-secondary: #A1A1AA;
+  --text-muted: #71717A;
+  --border-subtle: rgba(255,255,255,0.06);
+  --border-medium: rgba(255,255,255,0.1);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+}
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; -webkit-font-smoothing:antialiased; }
+body { font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif; background:var(--bg-base); color:var(--text-primary); line-height:1.6; }
+.mono { font-family:'JetBrains Mono',monospace; font-feature-settings:'tnum'; }
+a { color:inherit; text-decoration:none; }
+.container { max-width:900px; margin:0 auto; padding:0 20px; }
+
+/* Navbar */
+.navbar {
+  position:fixed; top:12px; left:50%; transform:translateX(-50%);
+  width:calc(100% - 48px); max-width:1100px; z-index:100;
+  padding:8px 24px;
+  backdrop-filter:blur(20px) saturate(1.5); -webkit-backdrop-filter:blur(20px) saturate(1.5);
+  background:rgba(37,30,48,0.5);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:9999px;
+  box-shadow:0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.08);
+}
+.navbar .container { max-width:100%; display:flex; align-items:center; justify-content:space-between; padding:0; }
+.nav-logo { display:flex; align-items:center; }
+.nav-logo svg { height:20px; width:auto; display:block; }
+.nav-links { display:flex; align-items:center; gap:32px; list-style:none; }
+.nav-links a { font-size:14px; font-weight:500; color:var(--text-secondary); transition:color 0.2s; }
+.nav-links a:hover { color:var(--text-primary); }
+.nav-links a.active { color:var(--text-primary); }
+.nav-links a.nav-cta {
+  display:inline-flex; align-items:center; gap:8px;
+  padding:7px 18px; background:var(--primary); color:#FFF;
+  border:none; border-radius:var(--radius-full);
+  font-size:14px; font-weight:600; cursor:pointer; transition:all 0.2s;
+}
+.nav-cta:hover { background:var(--primary-hover); box-shadow:0 0 24px var(--primary-glow); }
+.nav-toggle { display:none; }
+
+/* Breadcrumb */
+.breadcrumb { padding:80px 0 16px; font-size:13px; color:var(--text-muted); }
+.breadcrumb a { color:var(--text-muted); }
+.breadcrumb a:hover { color:var(--text-primary); }
+.breadcrumb .sep { margin:0 6px; }
+
+/* Hero */
+.market-hero { padding:0 0 32px; border-bottom:1px solid var(--border-subtle); }
+.market-hero-top { display:flex; align-items:center; gap:16px; margin-bottom:12px; }
+.market-icon { width:48px; height:48px; border-radius:50%; }
+.market-name { font-size:32px; font-weight:800; letter-spacing:-0.02em; }
+.category-badge {
+  display:inline-block; padding:3px 10px; border-radius:var(--radius-full);
+  font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.05em;
+}
+.category-badge.rwa { background:var(--cyan-dim); color:var(--cyan); }
+.category-badge.crypto { background:rgba(179,141,244,0.15); color:var(--primary); }
+.market-price { font-size:48px; font-weight:700; letter-spacing:-0.02em; }
+.market-change { font-size:18px; font-weight:600; margin-left:12px; }
+.positive { color:var(--green); }
+.negative { color:var(--red); }
+
+/* Stats Grid */
+.stats-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; padding:32px 0; }
+.stat-card {
+  background:var(--bg-surface-2); border:1px solid var(--border-subtle);
+  border-radius:var(--radius-md); padding:16px;
+}
+.stat-card .label { font-size:12px; color:var(--text-muted); margin-bottom:4px; text-transform:uppercase; letter-spacing:0.05em; }
+.stat-card .value { font-size:20px; font-weight:600; }
+
+/* About */
+.about { padding:32px 0; }
+.about h2 { font-size:22px; font-weight:700; margin-bottom:16px; }
+.about p { color:var(--text-secondary); margin-bottom:12px; line-height:1.7; }
+
+/* FAQ */
+.faq { padding:32px 0; border-top:1px solid var(--border-subtle); }
+.faq h2 { font-size:22px; font-weight:700; margin-bottom:16px; }
+.faq-item { margin-bottom:20px; }
+.faq-item h3 { font-size:16px; font-weight:600; margin-bottom:6px; color:var(--text-primary); }
+.faq-item p { font-size:14px; color:var(--text-secondary); line-height:1.7; }
+
+/* Related */
+.related { padding:32px 0; border-top:1px solid var(--border-subtle); }
+.related h2 { font-size:22px; font-weight:700; margin-bottom:16px; }
+.related-card {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:16px; background:var(--bg-surface-2); border:1px solid var(--border-subtle);
+  border-radius:var(--radius-md); margin-bottom:8px; transition:border-color 0.2s;
+}
+.related-card:hover { border-color:var(--primary); }
+.related-title { font-size:14px; font-weight:500; }
+.related-arrow { color:var(--primary); font-size:18px; }
+
+/* CTA */
+.cta-banner {
+  margin:32px 0; padding:32px; text-align:center;
+  background:linear-gradient(135deg, rgba(179,141,244,0.1), rgba(34,209,238,0.05));
+  border:1px solid var(--border-medium); border-radius:var(--radius-lg);
+}
+.cta-banner h2 { font-size:22px; font-weight:700; margin-bottom:8px; }
+.cta-banner p { font-size:14px; color:var(--text-secondary); margin-bottom:16px; }
+.cta-btn {
+  display:inline-block; padding:12px 32px; background:var(--primary); color:#FFF;
+  border-radius:var(--radius-full); font-size:15px; font-weight:600; transition:all 0.2s;
+}
+.cta-btn:hover { background:var(--primary-hover); box-shadow:0 0 24px var(--primary-glow); }
+
+/* Footer */
+.footer { padding:40px 0; border-top:1px solid var(--border-subtle); margin-top:40px; }
+.footer p { font-size:12px; color:var(--text-muted); text-align:center; }
+.footer a { color:var(--text-secondary); }
+.footer a:hover { color:var(--text-primary); }
+
+/* Mobile */
+@media (max-width:768px) {
+  .stats-grid { grid-template-columns:repeat(2,1fr); }
+  .market-price { font-size:36px; }
+  .market-name { font-size:24px; }
+}
+</style>
+</head>
+<body data-api-name="AAVE" data-price-divisor="1">
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="container">
+    <a href="/" class="nav-logo">
+      <svg viewBox="0 0 100 27.4" height="20" role="img" aria-label="ARX logo">
+        <path fill="#FFFFFF" fill-rule="evenodd" d="M 5.7 0.2 L 0 27.4 L 5.4 27.4 L 25.5 8.1 L 30.0 27.4 L 35.2 27.4 L 29.3 0 Z M 21.7 4.6 L 7.0 19.4 L 10.1 4.8 Z"/>
+        <path fill="#FFFFFF" d="M 45.2 0 L 39.3 27.4 L 44.5 27.4 L 49.4 4.6 L 68.6 4.6 L 68.6 0 Z"/>
+        <path fill="#FFFFFF" d="M 72.7 0 L 72.7 4.6 L 82.9 14.3 L 72.7 24.6 L 72.7 27.4 L 76.1 27.4 L 86.5 17.6 L 96.8 27.4 L 100 27.4 L 100 24.5 L 89.9 14.5 L 100 4.8 L 100 0 L 97.5 0 L 86.5 11.1 L 75.2 0 Z"/>
+      </svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/markets/" class="active">Markets</a></li>
+      <li><a href="/insights/">Insights</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/#waitlist" class="nav-cta">Join Waitlist</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <a href="/">Home</a><span class="sep">/</span>
+    <a href="/markets/">Markets</a><span class="sep">/</span>
+    <span>Aave</span>
+  </div>
+
+  <!-- HERO -->
+  <section class="market-hero">
+    <div class="market-hero-top">
+      <img src="https://coin-images.coingecko.com/coins/images/1/small/aave.png" alt="Aave" class="market-icon" width="48" height="48">
+      <h1 class="market-name">Aave <span style="color:var(--text-muted);font-size:20px;font-weight:500">/ USDC</span></h1>
+      <span class="category-badge crypto">Crypto</span>
+    </div>
+    <div style="display:flex;align-items:baseline;">
+      <span class="market-price mono" data-field="price">$100.12</span>
+      <span class="market-change negative mono" data-field="change">-1.46%</span>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats-grid">
+    <div class="stat-card">
+      <div class="label">24h Volume</div>
+      <div class="value mono" data-field="volume">$12.4M</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Open Interest</div>
+      <div class="value mono" data-field="oi">$39.4M</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Funding Rate / 8h</div>
+      <div class="value mono" data-field="funding">+0.0013%</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Category</div>
+      <div class="value">Crypto</div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about">
+    <h2>About Aave Perpetuals on Hyperliquid</h2>
+        <p>Aave (AAVE) perpetual contracts are available on Hyperliquid, the most liquid on-chain perp DEX. Trade AAVE with up to 50x leverage on a fully decentralized order book with self-custody.</p>
+        <p>Unlike centralized exchanges, every trade on Hyperliquid is verifiable on-chain. There's no counterparty risk — your funds stay in your wallet. Hyperliquid's sub-second execution and deep liquidity make it competitive with top CEX platforms.</p>
+        <p>ARX provides real-time AAVE data including price, open interest, funding rates, and 24h volume to help you make informed trading decisions.</p>
+
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <h3>How do I trade AAVE perpetuals on Hyperliquid?</h3>
+        <p>Connect your wallet to Hyperliquid, deposit USDC, and open a AAVE perpetual position. You can go long or short with up to 50x leverage on Hyperliquid's fully on-chain order book.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What are the fees for AAVE perps?</h3>
+        <p>Hyperliquid charges taker fees of 0.035% and maker fees of 0.01% for AAVE perpetuals. There are no overnight holding fees.</p>
+      </div>
+  </section>
+
+  <!-- RELATED -->
+  <section class="related">
+    <h2>Related Articles</h2>
+
+      <a class="related-card" href="/blog/hyperliquid-vaults-explained/">
+        <span class="related-title">Hyperliquid Vaults Explained</span>
+        <span class="related-arrow">&rarr;</span>
+      </a>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-banner">
+    <h2>Start Trading Aave on ARX</h2>
+    <p>Zero overnight fees. Self-custody. 24/7 access. Powered by Hyperliquid.</p>
+    <a href="/#waitlist" class="cta-btn">Join Waitlist</a>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2026 ARX. Trade gold, oil, S&amp;P 500, and crypto perps on-chain.
+      <a href="https://x.com/ARX_TRADE" target="_blank">X</a> &middot;
+      <a href="https://t.me/ARX_Trade_Official" target="_blank">Telegram</a> &middot;
+      <a href="https://discord.gg/kNV6raqC" target="_blank">Discord</a>
+    </p>
+  </div>
+</footer>
+
+<script src="/js/market-page.js"></script>
+</body>
+</html>
