@@ -6,9 +6,9 @@
 window.addEventListener('scroll', () => {
   const navbar = document.querySelector('.navbar');
   if (window.scrollY > 50) {
-    navbar.style.background = 'rgba(37, 30, 48, 0.65)';
+    navbar.style.background = 'rgba(8, 6, 15, 0.65)';
   } else {
-    navbar.style.background = 'rgba(37, 30, 48, 0.5)';
+    navbar.style.background = 'rgba(8, 6, 15, 0.5)';
   }
 });
 
