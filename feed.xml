@@ -6,7 +6,7 @@
   <description>Insights on DeFi copy trading, market regime detection, wallet intelligence, and Hyperliquid. Stay ahead with ARX.</description>
   <language>en</language>
   <atom:link href="https://arx.trade/feed.xml" rel="self" type="application/rss+xml"/>
-  <lastBuildDate>Wed, 15 Apr 2026 06:02:48 -0000</lastBuildDate>
+  <lastBuildDate>Wed, 15 Apr 2026 06:26:22 -0000</lastBuildDate>
   <image>
     <url>https://arx.trade/logo.png</url>
     <title>ARX Blog</title>
@@ -19,6 +19,14 @@
     <guid isPermaLink="true">https://arx.trade/insights/#goldman-btc-etf-outflow-divergence-2026-04-15</guid>
     <description>Goldman Sachs filed for a Bitcoin income ETF on April 14, generating yield by selling options on bitcoin-linked funds — following BlackRock&apos;s push into similar yield-focused products. On the same day, US spot Bitcoin ETFs saw $291M in outflows, the largest single-day redemption since March 27. Despi</description>
     <pubDate>Wed, 15 Apr 2026 16:10:00 +0000</pubDate>
+  </item>
+
+  <item>
+    <title>Central Banks Selling Gold Into the War Rally — Oil at $98 as Iran Deal Takes Shape. Two Long Trades Breaking.</title>
+    <link>https://arx.trade/insights/#war-premium-unwind-2026-04-15</link>
+    <guid isPermaLink="true">https://arx.trade/insights/#war-premium-unwind-2026-04-15</guid>
+    <description>Reports of EM central bank selling are emerging in the gold market — a reversal from three years of net buying. Meanwhile, US-Iran peace talks are gaining traction, pulling crude from ~$105 to $98 as the risk of Strait of Hormuz supply disruption eases. BTC holds above $74,590 with spot ETF inflows </description>
+    <pubDate>Wed, 15 Apr 2026 06:15:00 +0000</pubDate>
   </item>
 
   <item>
@@ -46,7 +54,7 @@
   </item>
 
   <item>
-    <title>Gold perps OI surges past $180M as Hormuz tensions escalate — funding stays flat</title>
+    <title>Gold Perps OI Surges Past $180M as Hormuz Tensions Escalate — Funding Stays Flat</title>
     <link>https://arx.trade/insights/#gold-oi-record-2026-04-13</link>
     <guid isPermaLink="true">https://arx.trade/insights/#gold-oi-record-2026-04-13</guid>
     <description>Hyperliquid GOLD OI jumped to $182.3M with $41M daily volume, driven by Strait of Hormuz naval buildup headlines. But here&apos;s what the data says: funding rate is just 0.002%/8h — essentially zero. Longs aren&apos;t paying a premium despite the fear narrative.</description>
@@ -54,7 +62,7 @@
   </item>
 
   <item>
-    <title>ETH funding flips negative for first time in 3 weeks — shorts paying longs</title>
+    <title>ETH Funding Flips Negative for First Time in 3 Weeks — Shorts Paying Longs</title>
     <link>https://arx.trade/insights/#eth-funding-flip-2026-04-12</link>
     <guid isPermaLink="true">https://arx.trade/insights/#eth-funding-flip-2026-04-12</guid>
     <description>ETH 8h funding rate turned -0.0042% on Hyperliquid, the first negative print since March 22. This means shorts are now paying longs to hold — a structural shift in positioning.</description>
