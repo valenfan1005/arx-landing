@@ -260,6 +260,27 @@
    ============================================ */
 #for-you {
   position: relative;
+  overflow: hidden;
+}
+
+#for-you > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Purple 3D blob background */
+#for-you::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  background: url('/img/purple-blob.png') center/contain no-repeat;
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 0;
 }
 
 #for-you::before {
