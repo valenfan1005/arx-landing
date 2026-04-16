@@ -61,7 +61,7 @@
     }
   },
   "datePublished": "2026-03-22",
-  "dateModified": "2026-03-26",
+  "dateModified": "2026-04-16",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://arx.trade/blog/hyperliquid-vaults-explained/"
@@ -77,6 +77,46 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is HLP on Hyperliquid?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "HLP (Hyperliquidity Provider) is Hyperliquid's native protocol vault. It provides market-making liquidity across all perpetual markets, absorbs trader liquidations, and earns a share of trading fees. Depositors supply USDC and receive a proportional share of the vault's profits. Unlike user vaults, HLP charges no performance fees and is operated by the Hyperliquid protocol itself, not an individual trader."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much can you earn with HLP?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "HLP has historically averaged approximately 1.75% per month, or roughly 20% annualized. Returns are highly variable — during the February 2026 $700M liquidation event, HLP captured an estimated $15 million in profit in a single event. Conversely, HLP can produce negative returns during adverse conditions when traders collectively win against the vault. Past performance does not guarantee future results."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the HLP lock period?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "HLP has a 4-day lockup period — you cannot withdraw until 4 days after your most recent deposit. User vaults have a shorter 24-hour lockup. During the lockup, your funds remain in the vault and are subject to all trading activity, including potential losses. This means you cannot exit during a crisis that unfolds faster than 4 days."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does HLP give you airdrop points?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. HLP depositors receive a 3x HYPE airdrop multiplier on their deposited capital. Every dollar in HLP earns three times the airdrop points compared to simply holding USDC in your Hyperliquid account. For many depositors, the airdrop multiplier is the primary reason to deposit — the vault yield is a bonus on top. However, the multiplier does not protect you from vault drawdowns or the 4-day lockup."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the risks of HLP?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "HLP carries several risks: (1) Adverse selection — sophisticated traders can extract value from HLP's market-making positions. (2) Directional risk — HLP loses money when traders collectively win big. (3) Black swan events — extreme liquidation cascades can cause significant drawdowns. (4) Funding rate risk — HLP may pay funding when positioned on the wrong side. (5) Smart contract risk — Hyperliquid L1 is closed-source, limiting independent auditing. The March 2025 whale manipulation incident caused approximately $4 million in temporary losses."
+      }
+    },
     {
       "@type": "Question",
       "name": "What is a Hyperliquid vault?",
@@ -95,50 +135,10 @@
     },
     {
       "@type": "Question",
-      "name": "How much can you earn from Hyperliquid vaults?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Returns vary significantly by vault and market conditions. HLP has historically averaged approximately 1.75% per month (roughly 20% annualized), though returns spike during major liquidation events and can be negative during adverse market conditions. User vaults have wider variance — top-performing vaults have generated higher returns, but many underperform or lose money. Past performance does not guarantee future results."
-      }
-    },
-    {
-      "@type": "Question",
       "name": "Can you lose money in a Hyperliquid vault?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Yes. Vaults carry real market risk. If the vault leader's strategy produces losses, depositors share those losses proportionally. HLP experienced a notable drawdown in March 2025 when a whale manipulated a liquidation event, causing approximately $4 million in temporary losses. Hyperliquid subsequently tightened leverage limits to reduce this risk, but losses are always possible."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the Hyperliquid vault lockup period?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "HLP (the protocol vault) has a 4-day lockup period — you cannot withdraw until 4 days after your most recent deposit. User vaults have a shorter 24-hour lockup period. During the lockup, your funds remain in the vault and are subject to the vault's trading activity, including potential losses. Plan your deposits accordingly, especially in volatile markets where you may want to exit quickly."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the Hyperliquid HLP vault APY in 2026?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "HLP has historically averaged approximately 1.75% per month, or roughly 20% annualized. However, returns vary significantly with market conditions. During the February 2026 whale liquidation event, HLP generated an estimated $15 million in profit for depositors in a single event, temporarily spiking the annualized yield well above 100%. Conversely, HLP can produce negative returns during adverse conditions. Past performance does not guarantee future results."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the minimum deposit for Hyperliquid vaults?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "HLP has no minimum deposit requirement — you can deposit any amount of USDC. User vaults may have different minimums set by the vault leader, but most accept deposits starting from as low as $10 USDC. Keep in mind that very small deposits may not generate meaningful returns after accounting for gas fees on deposits and withdrawals."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How much does the Hyperliquid vault leader fee cost?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "HLP charges no management or performance fees — 100% of profits go to depositors. User vaults charge a 10% profit share to the vault leader, meaning the leader takes 10% of any profits generated and depositors keep 90%. There are no management fees, entry fees, or exit fees on any Hyperliquid vault. You only pay the profit share when the vault is actually profitable."
       }
     },
     {
@@ -989,9 +989,9 @@ img { max-width: 100%; display: block; }
     </div>
     <h1>Hyperliquid Vaults Explained: HLP APY, Fees &amp; How They Work (2026)</h1>
     <div class="article-meta">
-      <span>2026-03-22</span>
+      <span>2026-04-16</span>
       <div class="dot"></div>
-      <span>10 min read</span>
+      <span>14 min read</span>
       <div class="dot"></div>
       <span>Guide</span>
     </div>
@@ -1012,6 +1012,8 @@ img { max-width: 100%; display: block; }
         <li><a href="#passive-yield">Can You Earn Passive Yield on Hyperliquid?</a></li>
       </ul>
     </li>
+    <li><a href="#hlp-vs-glp-jlp">HLP vs GLP vs JLP: Protocol Vault Comparison</a></li>
+    <li><a href="#hlp-risks">What Can Go Wrong with HLP?</a></li>
     <li><a href="#user-vaults">User Vaults: Following Individual Traders</a></li>
     <li><a href="#how-to-deposit">How to Deposit into a Vault</a></li>
     <li><a href="#evaluating-vaults">How to Evaluate a Vault Before Depositing</a></li>
@@ -1123,6 +1125,104 @@ img { max-width: 100%; display: block; }
   </ul>
 
   <p>If you want truly passive exposure, HLP is the closest thing Hyperliquid offers to a &ldquo;savings account&rdquo; &mdash; though calling it that understates the risk. User vaults running market-neutral or arbitrage strategies can also serve as passive yield products, but require more due diligence on the vault leader.</p>
+
+  <h2 id="hlp-vs-glp-jlp">HLP vs GLP vs JLP: Protocol Vault Comparison</h2>
+
+  <p>HLP is not the only protocol vault in DeFi. <a href="/blog/hyperliquid-vs-gmx/">GMX&rsquo;s GLP</a> on Arbitrum and Jupiter&rsquo;s JLP on Solana serve similar roles for their respective DEXs. Here is how they compare.</p>
+
+  <div class="comparison-table">
+    <table>
+      <tr>
+        <th>Feature</th>
+        <th>HLP (Hyperliquid)</th>
+        <th>GLP (GMX)</th>
+        <th>JLP (Jupiter)</th>
+      </tr>
+      <tr>
+        <td>Chain</td>
+        <td>Hyperliquid L1</td>
+        <td>Arbitrum / Avalanche</td>
+        <td>Solana</td>
+      </tr>
+      <tr>
+        <td>Strategy</td>
+        <td>Market making + liquidations</td>
+        <td>Passive LP (index of assets)</td>
+        <td>Passive LP + perp market making</td>
+      </tr>
+      <tr>
+        <td>Assets in Pool</td>
+        <td>USDC only</td>
+        <td>ETH, BTC, USDC, USDT, etc.</td>
+        <td>SOL, ETH, BTC, USDC</td>
+      </tr>
+      <tr>
+        <td>APY (approx)</td>
+        <td>~20% (variable)</td>
+        <td>~5&ndash;15% (variable)</td>
+        <td>~10&ndash;30% (variable)</td>
+      </tr>
+      <tr>
+        <td>Lock Period</td>
+        <td>4 days</td>
+        <td>None</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Airdrop Multiplier</td>
+        <td><strong>3x HYPE points</strong></td>
+        <td>None</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Risk Profile</td>
+        <td>Directional risk (loses when traders win)</td>
+        <td>IL + asset exposure</td>
+        <td>IL + directional</td>
+      </tr>
+      <tr>
+        <td>Min Deposit</td>
+        <td>No minimum</td>
+        <td>No minimum</td>
+        <td>No minimum</td>
+      </tr>
+      <tr>
+        <td>Fee Structure</td>
+        <td>No performance fee</td>
+        <td>0.4% buy/sell for minting/burning</td>
+        <td>Dynamic fees</td>
+      </tr>
+    </table>
+  </div>
+
+  <p>The key distinction: HLP deposits USDC only, so you have no impermanent loss from holding volatile assets. GLP and JLP expose you to a basket of tokens, meaning your returns are partially determined by the price movement of ETH, BTC, SOL, and other pool assets &mdash; not just trading activity. HLP also market-makes <a href="/blog/oil-perps-hormuz-crisis-trading-guide/">RWA perps like oil</a>, gold, and S&amp;P 500, giving it a broader fee base than crypto-only vaults.</p>
+
+  <p>The <a href="/blog/hyperliquid-airdrop-season-2-guide/">3x HYPE airdrop multiplier</a> is unique to HLP and is often the deciding factor. Neither GLP nor JLP offers a comparable airdrop incentive in 2026. However, HLP&rsquo;s 4-day lock period is a meaningful trade-off compared to the instant redemption available on GLP and JLP.</p>
+
+  <h2 id="hlp-risks">What Can Go Wrong with HLP?</h2>
+
+  <p>HLP&rsquo;s ~20% historical APY does not come for free. Here are the specific risk vectors every depositor should understand before committing capital.</p>
+
+  <div class="info-box" data-label="Risk Taxonomy">
+    <h3>1. Adverse Selection</h3>
+    <p>HLP acts as the counterparty to every trade on Hyperliquid. Sophisticated traders &mdash; quantitative funds, MEV bots, and professional market makers &mdash; can systematically extract value from HLP&rsquo;s market-making positions by trading on information advantages. When the smartest traders consistently take the opposite side, HLP absorbs the loss.</p>
+
+    <h3>2. Directional Risk</h3>
+    <p>HLP loses money when traders collectively win big. In a strong trending market where the majority of traders are correctly positioned, HLP is on the wrong side of those trades. The vault&rsquo;s profitability depends on enough traders losing to offset the winners &mdash; which is typical, but not guaranteed.</p>
+
+    <h3>3. Black Swan Events</h3>
+    <p>Extreme market events can cause outsized losses. The February 2026 <code>$700M</code> liquidation event happened to be profitable for HLP &mdash; it captured approximately <code>$15M</code>. But the outcome could have been the opposite if the liquidation cascade had overwhelmed the vault&rsquo;s capacity to absorb positions at favorable prices. The March 2025 whale manipulation incident proved this is not theoretical.</p>
+
+    <h3>4. Funding Rate Risk</h3>
+    <p>When HLP holds directional positions (as a result of absorbing liquidations or market making), it may be required to pay funding rates to the other side. During extended periods where HLP is positioned against the prevailing market direction, funding payments can erode returns even if the underlying positions eventually become profitable.</p>
+
+    <h3>5. Smart Contract Risk</h3>
+    <p>Hyperliquid L1 is closed-source. Unlike open-source protocols where the community and independent auditors can review the code, Hyperliquid&rsquo;s vault logic has not been publicly audited in the same way as Ethereum-based DeFi protocols. You are trusting the team&rsquo;s implementation without the ability to independently verify it. This is a meaningful consideration for larger deposits.</p>
+  </div>
+
+  <blockquote>
+    <p>None of these risks are reasons to avoid HLP entirely. They are reasons to size your position appropriately and not treat HLP as a risk-free savings account.</p>
+  </blockquote>
 
   <h2 id="user-vaults">User Vaults: Following Individual Traders</h2>
 
@@ -1249,6 +1349,31 @@ img { max-width: 100%; display: block; }
 
   <div class="faq-section">
     <div class="faq-item">
+      <h3>What is HLP on Hyperliquid?</h3>
+      <p>HLP (Hyperliquidity Provider) is Hyperliquid&rsquo;s native protocol vault. It provides market-making liquidity across all perpetual markets, absorbs trader liquidations, and earns a share of trading fees. Depositors supply USDC and receive a proportional share of the vault&rsquo;s profits. Unlike user vaults, HLP charges no performance fees and is operated by the Hyperliquid protocol itself, not an individual trader.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How much can you earn with HLP?</h3>
+      <p>HLP has historically averaged approximately <code>1.75%</code> per month, or roughly <code>20%</code> annualized. Returns are highly variable &mdash; during the February 2026 <code>$700M</code> liquidation event, HLP captured an estimated <code>$15 million</code> in profit in a single event. Conversely, HLP can produce negative returns when traders collectively win against the vault. Past performance does not guarantee future results.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>What is the HLP lock period?</h3>
+      <p>HLP has a <code>4-day</code> lockup period &mdash; you cannot withdraw until <code>4 days</code> after your most recent deposit. User vaults have a shorter <code>24-hour</code> lockup. During the lockup, your funds remain in the vault and are subject to all trading activity, including potential losses. This means you cannot exit during a crisis that unfolds faster than 4 days.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Does HLP give you airdrop points?</h3>
+      <p>Yes. HLP depositors receive a <code>3x</code> HYPE airdrop multiplier on their deposited capital. Every dollar in HLP earns three times the airdrop points compared to simply holding USDC in your Hyperliquid account. For many depositors, the airdrop multiplier is the primary reason to deposit &mdash; the vault yield is a bonus on top. See our <a href="/blog/hyperliquid-airdrop-season-2-guide/">Airdrop Season 2 guide</a> for the full points breakdown.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>What are the risks of HLP?</h3>
+      <p>HLP carries five key risks: (1) adverse selection from sophisticated traders extracting value, (2) directional risk when traders collectively win big, (3) black swan events like extreme liquidation cascades, (4) funding rate risk when positioned on the wrong side of the market, and (5) smart contract risk since Hyperliquid L1 is closed-source and has not been publicly audited in the same way as Ethereum-based DeFi protocols.</p>
+    </div>
+
+    <div class="faq-item">
       <h3>What is a Hyperliquid vault?</h3>
       <p>A Hyperliquid vault is a smart contract that allows users to deposit USDC and earn a share of profits generated by a vault leader&rsquo;s trading strategy. Vault leaders execute trades using the pooled capital, and depositors receive returns proportional to their share of the vault. It is non-custodial &mdash; your funds remain on-chain, not in a centralized entity&rsquo;s balance sheet.</p>
     </div>
@@ -1313,6 +1438,12 @@ img { max-width: 100%; display: block; }
       <p>From wallet setup to position sizing &mdash; everything you need to follow elite DeFi traders on-chain. No KYC, no middlemen.</p>
       <span class="related-link">Read article &rarr;</span>
     </a>
+    <a href="/blog/hyperliquid-vs-gmx/" class="related-card">
+      <span class="related-tag">Comparison</span>
+      <h3>Hyperliquid vs GMX: Which DEX Perps Platform Wins in 2026?</h3>
+      <p>Fees, speed, liquidity, leverage, and copy trading &mdash; an honest breakdown of the two biggest DEX perps platforms, including HLP vs GLP vault comparison.</p>
+      <span class="related-link">Read article &rarr;</span>
+    </a>
     <a href="/blog/best-hyperliquid-trading-bots/" class="related-card">
       <span class="related-tag">Guide</span>
       <h3>7 Best Hyperliquid Trading Bots & Copy Trading Tools (2026)</h3>
@@ -1329,7 +1460,7 @@ img { max-width: 100%; display: block; }
   <div class="author-avatar">A</div>
   <div class="author-info">
     <div class="author-name">ARX Team</div>
-    <div class="author-date">Published March 22, 2026</div>
+    <div class="author-date">Published March 22, 2026 | Updated April 16, 2026</div>
   </div>
 </div>
 
