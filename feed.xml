@@ -6,12 +6,28 @@
   <description>Insights on DeFi copy trading, market regime detection, wallet intelligence, and Hyperliquid. Stay ahead with ARX.</description>
   <language>en</language>
   <atom:link href="https://arx.trade/feed.xml" rel="self" type="application/rss+xml"/>
-  <lastBuildDate>Wed, 15 Apr 2026 06:26:22 -0000</lastBuildDate>
+  <lastBuildDate>Thu, 16 Apr 2026 04:00:28 -0000</lastBuildDate>
   <image>
     <url>https://arx.trade/logo.png</url>
     <title>ARX Blog</title>
     <link>https://arx.trade/blog/</link>
   </image>
+
+  <item>
+    <title>Nasdaq Up 11 Straight. Crypto Perp Traders Are Doubling Down on Shorts.</title>
+    <link>https://arx.trade/insights/#btc-tradfi-divergence-2026-04-16</link>
+    <guid isPermaLink="true">https://arx.trade/insights/#btc-tradfi-divergence-2026-04-16</guid>
+    <description>The Nasdaq has recovered sharply — 11 consecutive up sessions off the early-April lows, with the S&amp;P 500 back at multi-week highs. Crypto isn&apos;t following. BTC sits at $74,574, barely changed (+0.11% in 24h), capped below the $75K level. ETH perpetual funding sits at &amp;minus;0.0024% per 8h (&amp;asymp; &amp;m</description>
+    <pubDate>Thu, 16 Apr 2026 02:30:00 +0000</pubDate>
+  </item>
+
+  <item>
+    <title>Gold at $5,500 ATH: Why Traders Are Moving to On-Chain Gold Perps (2026)</title>
+    <link>https://arx.trade/blog/gold-5500-on-chain-gold-perps/</link>
+    <guid isPermaLink="true">https://arx.trade/blog/gold-5500-on-chain-gold-perps/</guid>
+    <description>Gold hit $5,500/oz ATH as RWA perp volume surges 65,000% in Q1 2026. Compare gold perpetuals vs CFDs: overnight fees, custody, and how to trade gold on Hyperliquid 24/7 with near-zero holding costs.</description>
+    <pubDate>Thu, 16 Apr 2026 00:00:00 +0000</pubDate>
+  </item>
 
   <item>
     <title>Goldman Files Bitcoin Income ETF — $291M Exits Spot Funds the Same Day, BTC Doesn&apos;t Care</title>
