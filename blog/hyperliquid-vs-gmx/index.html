@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-<title>GMX v2 vs Hyperliquid: ETH Perp Liquidity Comparison (2026)</title>
-<meta name="description" content="GMX v2 vs Hyperliquid liquidity depth for ETH perps — who wins in 2026? Side-by-side: fees, slippage, execution speed, leverage. dYdX included. Data-backed verdict.">
+<title>Hyperliquid vs GMX v2 vs dYdX: ETH Perps Liquidity (2026)</title>
+<meta name="description" content="Hyperliquid vs GMX v2 vs dYdX for ETH perps — depth, fees, slippage, leverage compared with live 2026 data. Which DEX wins your order? Data-backed verdict.">
 
 <!-- SEO -->
 <link rel="canonical" href="https://arx.trade/blog/hyperliquid-vs-gmx/" />
 <meta name="robots" content="index, follow" />
 
 <!-- Open Graph -->
-<meta property="og:title" content="GMX v2 vs Hyperliquid: ETH Perp Liquidity Comparison (2026)">
-<meta property="og:description" content="GMX v2 vs Hyperliquid liquidity depth for ETH perps — who wins in 2026? Side-by-side: fees, slippage, execution speed, leverage. dYdX included. Data-backed verdict.">
+<meta property="og:title" content="Hyperliquid vs GMX v2 vs dYdX: ETH Perps Liquidity (2026)">
+<meta property="og:description" content="Hyperliquid vs GMX v2 vs dYdX for ETH perps — depth, fees, slippage, leverage compared with live 2026 data. Which DEX wins your order? Data-backed verdict.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://arx.trade/blog/hyperliquid-vs-gmx/" />
 <meta property="og:image" content="https://arx.trade/og-image.png" />
@@ -25,8 +25,8 @@
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@ARX_TRADE" />
-<meta name="twitter:title" content="GMX v2 vs Hyperliquid: ETH Perp Liquidity Comparison (2026)" />
-<meta name="twitter:description" content="GMX v2 vs Hyperliquid liquidity depth for ETH perps — who wins in 2026? Side-by-side: fees, slippage, execution speed, leverage. dYdX included. Data-backed verdict." />
+<meta name="twitter:title" content="Hyperliquid vs GMX v2 vs dYdX: ETH Perps Liquidity (2026)" />
+<meta name="twitter:description" content="Hyperliquid vs GMX v2 vs dYdX for ETH perps — depth, fees, slippage, leverage compared with live 2026 data. Which DEX wins your order? Data-backed verdict." />
 <meta name="twitter:image" content="https://arx.trade/og-image.png" />
 
 <!-- Additional Meta -->
@@ -61,7 +61,7 @@
     }
   },
   "datePublished": "2026-03-26",
-  "dateModified": "2026-03-26",
+  "dateModified": "2026-04-17",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://arx.trade/blog/hyperliquid-vs-gmx/"
@@ -939,7 +939,7 @@ img { max-width: 100%; display: block; }
     <div class="breadcrumb">
       <a href="/blog/">&larr; Back to Blog</a>
     </div>
-    <h1>Hyperliquid vs GMX: Which DEX Perps Platform Wins in 2026?</h1>
+    <h1>Hyperliquid vs GMX v2 vs dYdX: ETH Perps Liquidity in 2026</h1>
     <div class="article-meta">
       <span>2026-03-26</span>
       <div class="dot"></div>
@@ -963,6 +963,7 @@ img { max-width: 100%; display: block; }
     <li><a href="#liquidity">Liquidity and Execution</a></li>
     <li><a href="#leverage">Leverage and Asset Coverage</a></li>
     <li><a href="#copy-trading">Copy Trading and Vault Ecosystem</a></li>
+    <li><a href="#dydx-three-way">Where Does dYdX Fit? The Three-Way Comparison</a></li>
     <li><a href="#who-should-use">Who Should Use Which</a></li>
     <li><a href="#faq">Frequently Asked Questions</a></li>
   </ol>
@@ -1134,6 +1135,81 @@ img { max-width: 100%; display: block; }
   <p>GMX does not have a native copy trading feature, and the third-party ecosystem for following GMX traders is limited compared to Hyperliquid&rsquo;s. The pool-based architecture makes individual trader tracking less straightforward than on an order book, where every fill is attributable to a specific address.</p>
 
   <p>If copy trading is a priority &mdash; following specific traders, choosing who to mirror, setting custom risk parameters &mdash; Hyperliquid is the only serious option among the two. If you want straightforward yield from liquidity provision with strong tokenomics (GMX staking earns real ETH/AVAX fees), GMX has a compelling offering.</p>
+
+  <h2 id="dydx-three-way">Where Does dYdX Fit? The Three-Way Comparison</h2>
+
+  <p>Most "Hyperliquid vs GMX" searches end up being three-way questions: <strong>where does dYdX fit?</strong> dYdX pioneered the on-chain perp order-book model in 2021, ran on StarkWare's L2, and then migrated to its own Cosmos app-chain (dYdX v4) in late 2023. It remains the third major venue in any serious DEX perps discussion and is explicitly worth comparing on ETH perps specifically.</p>
+
+  <div class="comparison-table">
+    <table>
+      <tr>
+        <th>Dimension</th>
+        <th>Hyperliquid</th>
+        <th>GMX v2</th>
+        <th>dYdX v4</th>
+      </tr>
+      <tr>
+        <td>Architecture</td>
+        <td>Custom L1, on-chain order book</td>
+        <td>Arbitrum, pool-based (GM pools)</td>
+        <td>Cosmos app-chain, off-chain order book</td>
+      </tr>
+      <tr>
+        <td>ETH perp depth (<code>$1M</code> market impact)</td>
+        <td class="td-good">&lt;<code>0.05%</code></td>
+        <td><code>0.1&ndash;0.3%</code> (pool-dependent)</td>
+        <td><code>0.05&ndash;0.10%</code></td>
+      </tr>
+      <tr>
+        <td>Taker fee</td>
+        <td class="td-good"><code>0.035%</code></td>
+        <td><code>0.05&ndash;0.07%</code></td>
+        <td><code>0.05%</code></td>
+      </tr>
+      <tr>
+        <td>Maker fee</td>
+        <td class="td-good"><code>0.01%</code></td>
+        <td><code>0.05%</code> (no maker rebate)</td>
+        <td class="td-good"><code>0.02%</code></td>
+      </tr>
+      <tr>
+        <td>Max leverage (ETH)</td>
+        <td><code>50x</code></td>
+        <td><code>100x</code></td>
+        <td><code>20x</code></td>
+      </tr>
+      <tr>
+        <td>Order-book visibility</td>
+        <td class="td-good">Full on-chain book</td>
+        <td>N/A (pool pricing)</td>
+        <td>Off-chain book, on-chain settlement</td>
+      </tr>
+      <tr>
+        <td>Settlement speed</td>
+        <td class="td-good">Sub-second</td>
+        <td><code>1&ndash;3</code>s (Arbitrum)</td>
+        <td><code>~1</code>s (Cosmos block)</td>
+      </tr>
+      <tr>
+        <td>Token incentives</td>
+        <td>HYPE (live, Season 2 active)</td>
+        <td>GMX staking (real yield)</td>
+        <td>DYDX staking (validator rewards)</td>
+      </tr>
+    </table>
+  </div>
+
+  <h3>When dYdX Beats Hyperliquid</h3>
+
+  <p>dYdX is the strongest pick when you specifically want a Cosmos-native experience (IBC bridging, Keplr wallet, validator staking) or when you want the original order-book DEX with the longest audit history. Its ETH perp liquidity is competitive &mdash; often within <code>10&ndash;20%</code> of Hyperliquid's for mid-size orders &mdash; and its maker fee of <code>0.02%</code> is lower than GMX's.</p>
+
+  <h3>When dYdX Loses to Both</h3>
+
+  <p>On taker fees, raw depth at the <code>$5M+</code> level, and max leverage, Hyperliquid consistently wins. On tokenomics and real-yield capture via GMX staking, GMX wins for long-term holders. dYdX sits in the middle: a solid, battle-tested option with fewer standout advantages post-2024 as Hyperliquid has pulled away on volume share.</p>
+
+  <blockquote>
+    <p>For active ETH perp traders executing large orders, the 2026 picking order is: Hyperliquid for execution, GMX for pool-side yield plays, dYdX for traders already embedded in the Cosmos ecosystem.</p>
+  </blockquote>
 
   <h2 id="who-should-use">Who Should Use Which</h2>
 
