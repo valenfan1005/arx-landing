@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<title>Gold & Silver Perps on Hyperliquid: ARX vs trade.xyz (2026)</title>
+<meta name="description" content="Trade gold and silver perpetuals on Hyperliquid: zero overnight fees, 24/7 markets, self-custody. Full comparison of ARX, trade.xyz, CFD brokers & COMEX with live data.">
+
+<!-- SEO -->
+<link rel="canonical" href="https://arx.trade/blog/gold-silver-perps-hyperliquid-vs-tradexyz/" />
+<meta name="robots" content="index, follow" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Gold & Silver Perps on Hyperliquid: ARX vs trade.xyz (2026)">
+<meta property="og:description" content="Two RWA perp frontends on Hyperliquid, two different bets. A neutral walk-through of gold and silver perps — how they work, how ARX and trade.xyz differ, and how they stack up against CFD brokers and COMEX.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://arx.trade/blog/gold-silver-perps-hyperliquid-vs-tradexyz/" />
+<meta property="og:image" content="https://arx.trade/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="ARX" />
+<meta property="article:published_time" content="2026-04-17T00:00:00+00:00" />
+<meta property="article:author" content="ARX Team" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@ARX_TRADE" />
+<meta name="twitter:title" content="Gold & Silver Perps on Hyperliquid: ARX vs trade.xyz (2026)" />
+<meta name="twitter:description" content="Gold at $5,500. Silver closing the gold/silver ratio. Hyperliquid RWA perps carrying $2.3B OI. Here is the neutral guide to trading them on-chain — and how ARX differs from trade.xyz." />
+<meta name="twitter:image" content="https://arx.trade/og-image.png" />
+
+<!-- Additional Meta -->
+<meta name="keywords" content="gold perps, silver perps, RWA perps, trade.xyz, hyperliquid, RWA DEX, XAUUSDC, XAGUSDC, on-chain gold, on-chain silver, Hyperunit, HIP-3, gold silver ratio, perpetual contract, CFD alternative, ARX trade" />
+<meta name="theme-color" content="#B38DF4" />
+<meta name="author" content="ARX Team" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+<!-- Structured Data: Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Gold & Silver Perps on Hyperliquid: ARX vs trade.xyz (2026)",
+  "description": "Complete guide to trading gold and silver perpetual contracts on Hyperliquid. Compares ARX, trade.xyz, CFD brokers, and COMEX futures across fees, custody, hours, and execution.",
+  "author": {
+    "@type": "Organization",
+    "name": "ARX",
+    "url": "https://arx.trade"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ARX",
+    "url": "https://arx.trade",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://arx.trade/logo.png"
+    }
+  },
+  "datePublished": "2026-04-17",
+  "dateModified": "2026-04-17",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://arx.trade/blog/gold-silver-perps-hyperliquid-vs-tradexyz/"
+  },
+  "image": "https://arx.trade/og-image.png",
+  "url": "https://arx.trade/blog/gold-silver-perps-hyperliquid-vs-tradexyz/"
+}
+</script>
+
+<!-- Structured Data: FAQ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What are gold and silver perps on Hyperliquid?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Gold and silver perps are perpetual futures that track the spot price of XAU/USD (gold) and XAG/USD (silver) with no expiry date. On Hyperliquid they trade as XAUUSDC and XAGUSDC, margined in USDC, with 24/7 on-chain settlement. Unlike COMEX futures they never expire or roll, and unlike CFDs there is no broker-set overnight swap fee — holding cost is a market-driven funding rate that typically hovers near 0% in balanced markets."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between ARX and trade.xyz?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Both ARX and trade.xyz are frontends built on Hyperliquid's RWA perps infrastructure, but they target different users. trade.xyz is built by the Hyperunit team and focuses on supply-side firsts — first HIP-3 deployer, first officially licensed S&P 500 perp, deep institutional asset coverage (equities, FX, commodities, indices). ARX focuses on the demand side: copy trading via shadow-persona wallets, regime detection, and a CFD-trader migration funnel optimized for Korea, Vietnam, Taiwan, and the Philippines. trade.xyz is optimized for crypto-native traders adding TradFi exposure; ARX is optimized for CFD traders moving on-chain."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the fees for gold and silver perps on Hyperliquid?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Hyperliquid charges 0.035% taker and 0.01% maker on RWA perps. On a $10,000 gold position, that is $3.50 taker or $1.00 maker per side. Funding rates are paid or received every 8 hours and are market-driven — often near 0% in balanced markets. There are no platform subscription fees, no inactivity fees, no withdrawal fees, and no overnight swap fees. trade.xyz has run fee promotions at 90%+ discount during growth phases; check the current schedule before trading."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do gold and silver perps compare to CFD brokers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The core structural difference is overnight holding cost. CFD brokers charge 0.01–0.03% per day in swap fees (5–10% annualized) whether the position moves or not, and they mark up the spread beyond interbank rates. Hyperliquid funding is symmetric and market-driven — often you receive funding as a short when longs are crowded. CFDs also require full KYC, lock withdrawals for 1–5 business days, close on weekends, and hold 100% of your funds on their balance sheet. On-chain perps are 24/7, self-custodied, instantly withdrawable, and require no broker account."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the current gold/silver ratio and why does it matter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The gold/silver ratio is gold price divided by silver price. As of April 2026, with gold near $5,500/oz and silver around $72/oz, the ratio sits near 76 — historically elevated. The 50-year mean is closer to 60. Traders who expect the ratio to compress can express this view on Hyperliquid with a long XAGUSDC + short XAUUSDC pair trade using a single USDC margin pool, which is effectively impossible with CFDs (no netting, full overnight fee on both legs) and capital-heavy with COMEX futures (two separate contracts, large notional per contract)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is trade.xyz or Hyperliquid safer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "trade.xyz is a frontend — your margin lives on Hyperliquid, the underlying venue. The same is true of ARX. Custody and execution risk are identical across frontends: the smart contracts, matching engine, and oracle feeds are Hyperliquid's. What differs is the application layer: order types, fee rebates, copy trading, referral programs, analytics, and reporting. Evaluate frontends on UX and features; evaluate the venue (Hyperliquid) on smart-contract audits, validator set, insurance fund, and historical uptime."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I trade gold and silver on ARX today?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ARX is pre-launch. The underlying Hyperliquid markets (XAUUSDC for gold, XAGUSDC for silver) are live and can be accessed directly via app.hyperliquid.xyz. ARX's frontend adds copy trading, regime detection, and CFD-friendly onboarding on top of these markets. Join the waitlist at arx.trade to be notified at launch."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is HIP-3 and why does it matter for RWA perps?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "HIP-3 is a Hyperliquid governance proposal that lets deployers list new perp markets by staking HYPE, bringing permissionless market creation to Hyperliquid. trade.xyz was the first HIP-3 deployer and used it to list silver, gold, oil, NASDAQ (XYZ100), tokenized equities, palladium, and an officially licensed S&P 500 perp. HIP-3 is the reason RWA perp open interest on Hyperliquid exceeds $2.3B as of April 2026."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- Structured Data: BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://arx.trade/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://arx.trade/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Gold & Silver Perps on Hyperliquid: ARX vs trade.xyz",
+      "item": "https://arx.trade/blog/gold-silver-perps-hyperliquid-vs-tradexyz/"
+    }
+  ]
+}
+</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg-base: #08060F;
+  --bg-surface-1: #0F0B1A;
+  --bg-surface-2: #1A1425;
+  --bg-surface-3: #251E30;
+  --bg-surface-4: #302840;
+  --primary: #B38DF4;
+  --primary-hover: #925BF0;
+  --primary-light: #A274F2;
+  --primary-glow: rgba(179, 141, 244, 0.3);
+  --cyan: #22D1EE;
+  --cyan-dim: rgba(34, 209, 238, 0.15);
+  --cyan-glow: rgba(34, 209, 238, 0.3);
+  --gold: #F5C842;
+  --gold-dim: rgba(245, 200, 66, 0.15);
+  --gold-glow: rgba(245, 200, 66, 0.3);
+  --pink: #F472B6;
+  --pink-dim: rgba(244, 114, 182, 0.15);
+  --text-primary: #FFFFFF;
+  --text-secondary: #A1A1AA;
+  --text-muted: #71717A;
+  --text-dim: #52525B;
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-medium: rgba(255, 255, 255, 0.1);
+  --border-accent: rgba(179, 141, 244, 0.3);
+  --border-gold: rgba(245, 200, 66, 0.3);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg-base); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; }
+.mono { font-family: 'JetBrains Mono', monospace; font-feature-settings: 'tnum'; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+.navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 16px 0; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); background: rgba(8, 6, 15, 0.8); border-bottom: 1px solid var(--border-subtle); transition: all 0.3s ease; }
+.navbar .container { display: flex; align-items: center; justify-content: space-between; }
+.nav-logo svg { height: 28px; width: auto; }
+.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+.nav-links a { font-size: 14px; font-weight: 500; color: var(--text-secondary); transition: color 0.2s; }
+.nav-links a:hover { color: var(--text-primary); }
+.nav-links a.nav-cta { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: var(--primary); color: #FFFFFF; border: none; border-radius: var(--radius-full); font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+.nav-cta:hover { background: var(--primary-hover); box-shadow: 0 0 24px var(--primary-glow); }
+.nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+.nav-toggle span { width: 24px; height: 2px; background: var(--text-primary); border-radius: 2px; transition: all 0.3s; }
+
+.article-header { padding: 140px 0 48px; text-align: center; position: relative; }
+.article-header::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 600px; height: 400px; background: radial-gradient(ellipse, rgba(245, 200, 66, 0.08) 0%, transparent 70%); pointer-events: none; }
+.breadcrumb { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted); margin-bottom: 32px; position: relative; }
+.breadcrumb a { color: var(--text-muted); transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--primary-light); }
+.breadcrumb .sep { color: var(--text-dim); }
+.article-header h1 { font-size: 44px; font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; max-width: 820px; margin: 0 auto 20px; position: relative; }
+.gradient-text { background: linear-gradient(135deg, var(--gold) 0%, var(--primary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.article-meta { display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 14px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; position: relative; }
+.article-meta .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--text-dim); }
+
+.toc { max-width: 720px; margin: 0 auto 40px; padding: 24px 32px; background: var(--bg-surface-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); border-left: 3px solid var(--gold); }
+.toc-title { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 16px; }
+.toc ol { list-style: none; counter-reset: toc; display: flex; flex-direction: column; gap: 10px; }
+.toc li { counter-increment: toc; display: flex; gap: 12px; font-size: 14px; }
+.toc li::before { content: counter(toc, decimal-leading-zero); font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-dim); flex-shrink: 0; margin-top: 1px; }
+.toc a { color: var(--text-secondary); transition: color 0.2s; }
+.toc a:hover { color: var(--primary-light); }
+
+.article-body { max-width: 720px; margin: 0 auto; padding: 0 24px 60px; }
+.article-body h2 { font-size: 28px; font-weight: 700; line-height: 1.25; letter-spacing: -0.01em; margin: 56px 0 20px; color: var(--text-primary); }
+.article-body h2:first-child { margin-top: 0; }
+.article-body h3 { font-size: 20px; font-weight: 600; line-height: 1.3; margin: 36px 0 14px; color: var(--text-primary); }
+.article-body p { font-size: 16px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 20px; }
+.article-body ul, .article-body ol { padding-left: 24px; margin-bottom: 20px; }
+.article-body li { font-size: 16px; line-height: 1.7; color: var(--text-secondary); margin-bottom: 8px; }
+.article-body strong { color: var(--text-primary); font-weight: 600; }
+.article-body code { font-family: 'JetBrains Mono', monospace; font-size: 14px; background: var(--bg-surface-2); border: 1px solid var(--border-subtle); border-radius: 4px; padding: 2px 6px; color: var(--cyan); }
+.article-body a { color: var(--primary-light); text-decoration: underline; text-decoration-color: rgba(162, 116, 242, 0.4); transition: all 0.2s; }
+.article-body a:hover { color: var(--cyan); text-decoration-color: rgba(34, 209, 238, 0.4); }
+
+blockquote { margin: 32px 0; padding: 20px 24px; border-left: 3px solid var(--gold); background: var(--gold-dim); border-radius: 0 var(--radius-md) var(--radius-md) 0; }
+blockquote p { margin: 0; font-style: italic; color: var(--text-secondary); }
+
+.info-box, .warning-box { margin: 32px 0; padding: 24px 28px; border-radius: var(--radius-md); border: 1px solid; position: relative; }
+.info-box { background: var(--cyan-dim); border-color: rgba(34, 209, 238, 0.2); }
+.warning-box { background: rgba(244, 114, 182, 0.08); border-color: rgba(244, 114, 182, 0.25); }
+.info-box::before, .warning-box::before { content: attr(data-label); display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
+.info-box::before { color: var(--cyan); }
+.warning-box::before { color: var(--pink); }
+.info-box h3, .warning-box h3 { font-size: 16px; font-weight: 600; margin: 0 0 8px; }
+.info-box p, .warning-box p { font-size: 15px; margin-bottom: 8px; line-height: 1.7; }
+.info-box p:last-child, .warning-box p:last-child { margin-bottom: 0; }
+
+.comparison-table { margin: 24px 0 32px; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); overflow: hidden; }
+.comparison-table table { width: 100%; border-collapse: collapse; }
+.comparison-table th { background: var(--bg-surface-2); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); padding: 14px 20px; text-align: left; border-bottom: 1px solid var(--border-subtle); }
+.comparison-table td { font-size: 14px; color: var(--text-secondary); padding: 14px 20px; border-bottom: 1px solid var(--border-subtle); line-height: 1.5; }
+.comparison-table tr:last-child td { border-bottom: none; }
+.comparison-table td:first-child { font-weight: 600; color: var(--text-primary); }
+.td-good { color: #4ADE80 !important; font-weight: 600 !important; }
+.td-bad { color: #F87171 !important; }
+
+.stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 24px 0 32px; }
+.stat-card { padding: 24px; background: var(--bg-surface-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); text-align: center; }
+.stat-card .stat-value { font-family: 'JetBrains Mono', monospace; font-size: 28px; font-weight: 700; color: var(--gold); margin-bottom: 4px; }
+.stat-card .stat-label { font-size: 13px; color: var(--text-muted); }
+
+.step-list { list-style: none; padding-left: 0; counter-reset: steps; }
+.step-list li { counter-increment: steps; display: flex; gap: 16px; margin-bottom: 20px; align-items: flex-start; }
+.step-list li::before { content: counter(steps); display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; min-width: 28px; border-radius: 50%; background: var(--gold-dim); border: 1px solid var(--border-gold); font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; color: var(--gold); margin-top: 2px; }
+
+.article-author { max-width: 720px; margin: 0 auto 48px; padding: 24px 32px; display: flex; align-items: center; gap: 20px; background: var(--bg-surface-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); }
+.author-avatar { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--primary)); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px; flex-shrink: 0; }
+.author-info .author-name { font-size: 15px; font-weight: 600; color: var(--text-primary); }
+.author-info .author-date { font-size: 13px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
+
+.article-cta { max-width: 720px; margin: 0 auto 80px; padding: 48px; text-align: center; background: var(--bg-surface-1); border: 1px solid var(--border-accent); border-radius: var(--radius-lg); position: relative; overflow: hidden; }
+.article-cta::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--gold), var(--primary)); }
+.article-cta h3 { font-size: 24px; font-weight: 700; margin-bottom: 12px; color: var(--text-primary); }
+.article-cta p { font-size: 15px; color: var(--text-secondary); margin-bottom: 24px; max-width: 480px; margin-left: auto; margin-right: auto; }
+
+.related-articles { max-width: 720px; margin: 0 auto 60px; padding: 0 24px; }
+.related-articles h2 { font-size: 20px; font-weight: 700; margin-bottom: 20px; letter-spacing: -0.01em; }
+.related-grid { display: flex; flex-direction: column; gap: 16px; }
+.related-card { display: block; background: var(--bg-surface-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 28px 32px; transition: all 0.3s ease; text-decoration: none; }
+.related-card:hover { border-color: var(--border-accent); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(179, 141, 244, 0.1); }
+.related-tag { display: inline-block; padding: 3px 10px; background: var(--primary-glow); border: 1px solid var(--border-accent); border-radius: var(--radius-full); font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--primary-light); margin-bottom: 12px; }
+.related-card h3 { font-size: 18px; font-weight: 700; line-height: 1.3; margin-bottom: 8px; color: var(--text-primary); }
+.related-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+.related-link { font-size: 14px; font-weight: 600; color: var(--primary-light); }
+.related-card:hover .related-link { color: var(--cyan); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 28px; border-radius: var(--radius-full); font-size: 16px; font-weight: 600; font-family: 'Inter', sans-serif; cursor: pointer; transition: all 0.25s ease; border: none; text-decoration: none; }
+.btn-primary { background: var(--primary); color: white; }
+.btn-primary:hover { background: var(--primary-hover); box-shadow: 0 0 32px var(--primary-glow); transform: translateY(-1px); }
+
+.faq-section { margin: 56px 0 32px; }
+.faq-item { margin-bottom: 24px; padding: 24px 28px; background: var(--bg-surface-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); }
+.faq-item h3 { font-size: 16px; font-weight: 600; color: var(--text-primary); margin: 0 0 10px; }
+.faq-item p { font-size: 15px; line-height: 1.7; color: var(--text-secondary); margin-bottom: 0; }
+
+.footer { padding: 64px 0 32px; border-top: 1px solid var(--border-subtle); }
+.footer-content { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 48px; }
+.footer-brand svg { height: 24px; width: auto; margin-bottom: 16px; }
+.footer-tagline { font-size: 14px; color: var(--text-muted); max-width: 280px; }
+.footer-links { display: flex; gap: 64px; }
+.footer-col h5 { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 16px; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col a { font-size: 14px; color: var(--text-secondary); transition: color 0.2s; }
+.footer-col a:hover { color: var(--text-primary); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; border-top: 1px solid var(--border-subtle); font-size: 13px; color: var(--text-dim); }
+.footer-legal { display: flex; gap: 24px; }
+.footer-legal a { color: var(--text-dim); }
+.footer-legal a:hover { color: var(--text-secondary); }
+
+@media (max-width: 768px) {
+  .article-header { padding: 120px 0 40px; }
+  .article-header h1 { font-size: 30px; }
+  .article-body { padding: 0 0 48px; }
+  .article-body h2 { font-size: 22px; margin: 40px 0 16px; }
+  .article-body h3 { font-size: 18px; }
+  .toc { margin: 0 0 32px; padding: 20px 24px; }
+  .comparison-table { overflow-x: auto; }
+  .comparison-table table { min-width: 520px; }
+  .stat-grid { grid-template-columns: 1fr; }
+  .article-author { margin: 0 0 40px; padding: 20px; flex-direction: column; text-align: center; }
+  .article-cta { margin: 0 0 60px; padding: 32px 24px; }
+  .article-cta h3 { font-size: 20px; }
+  .faq-item { padding: 20px; }
+  .nav-links { display: none; }
+  .nav-links.show { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(8, 6, 15, 0.95); backdrop-filter: blur(20px); padding: 24px; border-bottom: 1px solid var(--border-subtle); gap: 16px; }
+  .nav-toggle { display: flex; }
+  .footer-content { flex-direction: column; gap: 48px; }
+  .footer-links { gap: 32px; flex-wrap: wrap; }
+  .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="/" class="nav-logo" aria-label="ARX Home">
+      <svg viewBox="0 0 100 27.4" height="28" role="img" aria-label="ARX logo">
+        <path fill="#FFFFFF" fill-rule="evenodd" d="M 5.7 0.2 L 0 27.4 L 5.4 27.4 L 25.5 8.1 L 30.0 27.4 L 35.2 27.4 L 29.3 0 Z M 21.7 4.6 L 7.0 19.4 L 10.1 4.8 Z"/>
+        <path fill="#FFFFFF" d="M 45.2 0 L 39.3 27.4 L 44.5 27.4 L 49.4 4.6 L 68.6 4.6 L 68.6 0 Z"/>
+        <path fill="#FFFFFF" d="M 72.7 0 L 72.7 4.6 L 82.9 14.3 L 72.7 24.6 L 72.7 27.4 L 76.1 27.4 L 86.5 17.6 L 96.8 27.4 L 100 27.4 L 100 24.5 L 89.9 14.5 L 100 4.8 L 100 0 L 97.5 0 L 86.5 11.1 L 75.2 0 Z"/>
+      </svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/markets/">Markets</a></li>
+      <li><a href="/insights/">Insights</a></li>
+      <li><a href="/blog/" class="active">Blog</a></li>
+      <li><a href="/#waitlist" class="nav-cta">Join Waitlist</a></li>
+    </ul>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<header class="article-header">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="/blog/">&larr; Back to Blog</a>
+    </div>
+    <h1>Gold &amp; Silver Perps on Hyperliquid: <span class="gradient-text">ARX vs trade.xyz</span> (2026)</h1>
+    <div class="article-meta">
+      <span>2026-04-17</span>
+      <div class="dot"></div>
+      <span>14 min read</span>
+      <div class="dot"></div>
+      <span>RWA Trading</span>
+    </div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Table of contents">
+  <div class="toc-title">Contents</div>
+  <ol>
+    <li><a href="#state-of-the-market">The State of RWA Perps in April 2026</a></li>
+    <li><a href="#gold-perps">Gold Perps on Hyperliquid (XAUUSDC)</a></li>
+    <li><a href="#silver-perps">Silver Perps on Hyperliquid (XAGUSDC) &amp; the Gold/Silver Ratio</a></li>
+    <li><a href="#frontends">ARX vs trade.xyz: Two Frontends, Two Bets</a></li>
+    <li><a href="#vs-cfd-comex">Hyperliquid vs CFD Brokers vs COMEX</a></li>
+    <li><a href="#how-to-trade">How to Open Your First Gold or Silver Perp Trade</a></li>
+    <li><a href="#risks">Risks Traders Underestimate</a></li>
+    <li><a href="#faq">Frequently Asked Questions</a></li>
+  </ol>
+</nav>
+
+<article class="article-body">
+
+  <h2 id="state-of-the-market">The State of RWA Perps in April 2026</h2>
+
+  <p>The gold/silver ratio is at <strong><code>76</code></strong>. The 50-year mean is near <code>60</code>. Traders who want to express a compression view — long silver, short gold — now have a venue where both legs share one margin pool, cost near <code>0%</code> overnight in balanced conditions, and trade <code>24/7</code>. That venue is Hyperliquid. This guide walks through how the gold and silver perp markets actually work on-chain, then compares the two main frontends routing into them (ARX and trade.xyz) and the incumbents (CFD brokers, COMEX futures).</p>
+
+  <p>As of April 17, 2026: gold spot near <strong><code>$5,500/oz</code></strong>, silver near <code>$72/oz</code>, and real-world-asset (RWA) perpetual open interest on Hyperliquid around <strong><code>$2.3B</code></strong>. A single RWA frontend — trade.xyz, built by the Hyperunit team — captures roughly <code>21%</code> of total Hyperliquid daily volume according to Pine Analytics. HIP-3 (Hyperliquid&rsquo;s permissionless market-listing mechanism, enabled by staking HYPE) is the reason any of this exists.</p>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-value">$2.3B</div>
+      <div class="stat-label">Total RWA Perp OI on Hyperliquid</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">~21%</div>
+      <div class="stat-label">trade.xyz Share of HL Daily Volume <em style="font-size:10px;color:var(--text-dim);">(Pine Analytics)</em></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">~76</div>
+      <div class="stat-label">Gold / Silver Ratio (vs 50-yr mean <code style="font-size:11px;">60</code>)</div>
+    </div>
+  </div>
+
+  <p style="font-size:13px;color:var(--text-muted);margin-top:-8px;">Prices as of April 17, 2026. Spot: TradingView feed. On-chain data: Hyperliquid API + Pine Analytics.</p>
+
+  <p>Two frontends dominate the narrative: <strong>trade.xyz</strong> (built by the Hyperunit team, first HIP-3 deployer, currently the largest RWA perp volume source on Hyperliquid) and <strong>ARX</strong> (pre-launch, focused on CFD-trader migration and copy trading). Both route orders to the same Hyperliquid matching engine. Both settle in USDC on-chain. Both inherit the same oracle feeds, funding mechanism, and insurance fund.</p>
+
+  <p>What differs is what sits <strong>on top</strong> of those shared rails — the asset menu, the fee schedule, the account experience, and the feature set. This guide walks through gold and silver specifically (the two deepest RWA perp markets after oil), then compares the major access paths a trader has today.</p>
+
+  <blockquote>
+    <p>If you are coming from a CFD broker like IG, CMC Markets, eToro, or XM — or from COMEX futures via Kiwoom, TD Ameritrade, or Interactive Brokers — the mental model shift is the same: you are trading the same underlying price, but the cost structure, custody, and hours are fundamentally different.</p>
+  </blockquote>
+
+  <h2 id="gold-perps">Gold Perps on Hyperliquid (XAUUSDC)</h2>
+
+  <p>The Hyperliquid gold perp trades under the ticker <strong>XAUUSDC</strong>. It tracks the spot gold price (XAU/USD), settles in USDC, and has no expiry. Funding is exchanged every <code>8 hours</code> between longs and shorts to keep the perp anchored to spot.</p>
+
+  <h3>Current Specs (April 2026)</h3>
+
+  <ul>
+    <li><strong>Ticker:</strong> <code>XAUUSDC</code> (sometimes surfaced as <code>xyz:XAU-USD</code> on HIP-3 deployers)</li>
+    <li><strong>Max leverage:</strong> up to <code>50x</code> on Hyperliquid native; some HIP-3 deployers cap at <code>20x</code></li>
+    <li><strong>Daily volume:</strong> approximately <code>$33&ndash;41M</code></li>
+    <li><strong>Open interest:</strong> approximately <code>$280M+</code></li>
+    <li><strong>Funding rate:</strong> market-driven, typically near <code>0%</code> in balanced markets</li>
+    <li><strong>Trading fee:</strong> <code>0.035%</code> taker / <code>0.01%</code> maker (pre-rebate)</li>
+    <li><strong>Trading hours:</strong> <code>24/7/365</code></li>
+    <li><strong>Minimum position:</strong> around <code>$10</code> notional</li>
+  </ul>
+
+  <p>The ticker is widely referred to as "gold on Hyperliquid" across ecosystem coverage. The market is live on both the native Hyperliquid order book and on every HIP-3 frontend that chooses to surface it (including trade.xyz and, at launch, ARX). Liquidity is shared — an order routed through trade.xyz matches against an order routed through the native app against an order routed through ARX. There is no liquidity fragmentation between frontends.</p>
+
+  <div class="info-box" data-label="Key Concept">
+    <h3>Why the Funding Rate Is Not the Same as a CFD Swap Fee</h3>
+    <p>CFD overnight swap fees are a fixed cost set by the broker, paid by the position holder to the broker, regardless of market direction or positioning. Hyperliquid funding is symmetric and market-driven: if longs are crowded, longs pay shorts; if shorts are crowded, shorts pay longs. In balanced conditions it is near zero. Over the past quarter, XAUUSDC funding has averaged roughly <code>0.001&ndash;0.003%</code> per 8-hour period — a fraction of CFD swap costs.</p>
+  </div>
+
+  <h2 id="silver-perps">Silver Perps on Hyperliquid (XAGUSDC) &amp; the Gold/Silver Ratio</h2>
+
+  <p>Silver was the first HIP-3 market that trade.xyz deployed. The Hyperliquid silver perp trades as <strong>XAGUSDC</strong> and tracks the spot XAG/USD price. Silver is a more volatile, more retail-driven metal than gold — which makes it mechanically interesting as a perps instrument, and uniquely useful when paired against gold.</p>
+
+  <h3>Current Specs (April 2026)</h3>
+
+  <ul>
+    <li><strong>Ticker:</strong> <code>XAGUSDC</code></li>
+    <li><strong>Spot reference:</strong> around <code>$72/oz</code> (April 17, 2026)</li>
+    <li><strong>Max leverage:</strong> up to <code>20x</code> typical on HIP-3 deployers</li>
+    <li><strong>Daily volume:</strong> lower than gold but the fastest-growing RWA metal by percentage</li>
+    <li><strong>Volatility profile:</strong> roughly <code>1.5&ndash;2x</code> gold's realized volatility historically</li>
+  </ul>
+
+  <h3>The Gold/Silver Ratio Trade</h3>
+
+  <p>The gold/silver ratio (gold price divided by silver price) is one of the oldest pair trades in the precious-metals book. The 50-year mean is near <code>60</code>. The ratio currently sits near <code>76</code>, which mean-reversion traders read as silver being cheap relative to gold. The ratio has historically compressed during late-cycle precious-metals bull phases as silver catches up.</p>
+
+  <p>To express this view with traditional instruments, you would need two separate CFD accounts (or two COMEX futures contracts), with two sets of overnight fees and no margin netting. On Hyperliquid, you post USDC once and open a long XAGUSDC + short XAUUSDC position out of the same margin pool. Cross-margin means the two legs offset; you only post margin on the net directional exposure, which dramatically reduces capital lockup.</p>
+
+  <div class="comparison-table">
+    <table>
+      <tr>
+        <th>Aspect</th>
+        <th>Gold/Silver Pair on Hyperliquid</th>
+        <th>Gold/Silver Pair via CFDs</th>
+      </tr>
+      <tr>
+        <td>Margin netting</td>
+        <td class="td-good">Cross-margin, net exposure</td>
+        <td class="td-bad">Gross margin on both legs</td>
+      </tr>
+      <tr>
+        <td>Overnight cost</td>
+        <td class="td-good">Funding near <code>0%</code> both legs</td>
+        <td class="td-bad"><code>0.02%/day</code> on each leg</td>
+      </tr>
+      <tr>
+        <td>Execution</td>
+        <td>Two orders, one venue, one wallet</td>
+        <td>Two orders, often two broker accounts</td>
+      </tr>
+      <tr>
+        <td>Adjustment speed</td>
+        <td class="td-good">Seconds, 24/7</td>
+        <td>Business hours only</td>
+      </tr>
+    </table>
+  </div>
+
+  <h2 id="frontends">ARX vs trade.xyz: Two Frontends, Two Bets</h2>
+
+  <p>Both ARX and trade.xyz are Hyperliquid frontends. Neither is the custodian of your margin. Neither runs the matching engine. What each brings is a distinct product layer on top of the same rails. Understanding the difference helps you pick the frontend that matches how you actually trade.</p>
+
+  <div class="comparison-table">
+    <table>
+      <tr>
+        <th>Dimension</th>
+        <th>trade.xyz</th>
+        <th>ARX</th>
+      </tr>
+      <tr>
+        <td>Builder</td>
+        <td>Hyperunit team (HL tokenization layer)</td>
+        <td>Independent team, Hyperliquid frontend</td>
+      </tr>
+      <tr>
+        <td>Launch status</td>
+        <td class="td-good">Live (Oct 2025)</td>
+        <td>Pre-launch, waitlist open</td>
+      </tr>
+      <tr>
+        <td>Primary wedge</td>
+        <td>Supply-side: first HIP-3, first licensed S&amp;P 500 perp, broadest asset menu</td>
+        <td>Demand-side: copy trading, CFD-trader onboarding, SEA-native UX</td>
+      </tr>
+      <tr>
+        <td>Asset lineup</td>
+        <td class="td-good">Gold, silver, oil (WTI+Brent), palladium, NASDAQ (XYZ100), S&amp;P 500, tokenized equities (NVDA, TSLA, SPACEX), FX, EWJ</td>
+        <td>Hyperliquid native + RWA core set (gold, silver, oil, S&amp;P 500) at launch</td>
+      </tr>
+      <tr>
+        <td>Target trader</td>
+        <td>Crypto-native wanting TradFi exposure</td>
+        <td>CFD trader in Korea/Vietnam/Taiwan/Philippines moving on-chain</td>
+      </tr>
+      <tr>
+        <td>Fee posture (observed)</td>
+        <td>Growth-mode promo: reported ≥<code>90%</code> fee discount, no builder fee</td>
+        <td>Competitive with HL base fees + referral rebates at launch</td>
+      </tr>
+      <tr>
+        <td>Copy trading</td>
+        <td class="td-bad">None</td>
+        <td class="td-good">Shadow-persona + AI-surfaced wallet copy trading *</td>
+      </tr>
+      <tr>
+        <td>Regime / signals</td>
+        <td>None native</td>
+        <td>Built-in market regime detection layer *</td>
+      </tr>
+      <tr>
+        <td>Localization</td>
+        <td>English</td>
+        <td>Korean, Vietnamese, Traditional Chinese, Filipino *</td>
+      </tr>
+      <tr>
+        <td>Airdrop / token</td>
+        <td>Not announced; speculation persists</td>
+        <td>Not announced</td>
+      </tr>
+    </table>
+  </div>
+
+  <p style="font-size:13px;color:var(--text-muted);margin-top:-16px;">* ARX features marked reflect roadmap commitments at pre-launch; trade.xyz features reflect live product as of April 2026.</p>
+
+  <h3>How to Choose Between Them (Honestly)</h3>
+
+  <p>Some traders will get more value from trade.xyz, and some from ARX. This is not a zero-sum framing — many traders will use both, because both route to Hyperliquid anyway.</p>
+
+  <ul>
+    <li><strong>Use trade.xyz if:</strong> you want the broadest asset menu (tokenized NVDA, TSLA, SPACEX, licensed S&amp;P 500), you are crypto-native and already comfortable on Hyperliquid, or you want to ride the first-mover HIP-3 ecosystem halo.</li>
+    <li><strong>Use ARX if:</strong> you are coming from a CFD background and want onboarding optimized for that transition, you want copy trading on top of RWA perps, you trade in Korean / Vietnamese / Traditional Chinese / Filipino and want localized UX, or you want regime-aware position sizing tools on top of the raw markets.</li>
+    <li><strong>Use the native Hyperliquid app if:</strong> you want the lowest-overhead UI with no additional frontend layer and you only need the markets Hyperliquid lists natively (i.e., you do not need HIP-3 RWA markets).</li>
+  </ul>
+
+  <blockquote>
+    <p>The framing "trade.xyz vs ARX" is less useful than "which frontend adds the feature you actually pay for with your time." trade.xyz's moat is supply (assets + licensing). ARX's moat is demand (who you can bring to Hyperliquid and what you do once they arrive).</p>
+  </blockquote>
+
+  <h2 id="vs-cfd-comex">Hyperliquid vs CFD Brokers vs COMEX</h2>
+
+  <p>For traders evaluating whether to move gold or silver exposure on-chain at all, the more useful comparison is not between two Hyperliquid frontends — it is between Hyperliquid as a venue and the two incumbents: CFD brokers (IG, CMC, eToro, XM, Exness) and CME/COMEX futures (GC for gold, SI for silver). The table below aggregates across any Hyperliquid frontend (ARX, trade.xyz, native).</p>
+
+  <div class="comparison-table">
+    <table>
+      <tr>
+        <th>Feature</th>
+        <th>Hyperliquid (any frontend)</th>
+        <th>CFD Brokers</th>
+        <th>COMEX Futures</th>
+      </tr>
+      <tr>
+        <td>Overnight / Holding Cost</td>
+        <td class="td-good">Funding: ~<code>0%</code> balanced</td>
+        <td class="td-bad">Swap: <code>0.01&ndash;0.03%/day</code></td>
+        <td>Contango roll cost at expiry</td>
+      </tr>
+      <tr>
+        <td>Trading Hours</td>
+        <td class="td-good"><code>24/7/365</code></td>
+        <td>Sun&ndash;Fri, session breaks</td>
+        <td>Sun&ndash;Fri, session breaks</td>
+      </tr>
+      <tr>
+        <td>Minimum Position (Gold)</td>
+        <td class="td-good">~<code>$10</code></td>
+        <td><code>$100&ndash;$500+</code></td>
+        <td><code>100 oz</code> = ~<code>$550,000</code> (GC)</td>
+      </tr>
+      <tr>
+        <td>Minimum Position (Silver)</td>
+        <td class="td-good">~<code>$10</code></td>
+        <td><code>$100&ndash;$500+</code></td>
+        <td><code>5,000 oz</code> = ~<code>$360,000</code> (SI)</td>
+      </tr>
+      <tr>
+        <td>Max Leverage</td>
+        <td><code>20&ndash;50x</code></td>
+        <td><code>20x</code> EU / <code>33x</code> offshore</td>
+        <td>~<code>20x</code> via margin</td>
+      </tr>
+      <tr>
+        <td>Custody</td>
+        <td class="td-good">Self-custody</td>
+        <td class="td-bad">Broker holds all funds</td>
+        <td class="td-bad">Clearinghouse margin</td>
+      </tr>
+      <tr>
+        <td>KYC Required</td>
+        <td class="td-good">No</td>
+        <td class="td-bad">Full ID + PoA</td>
+        <td class="td-bad">Full application</td>
+      </tr>
+      <tr>
+        <td>Withdrawal Speed</td>
+        <td class="td-good">Instant on-chain</td>
+        <td><code>1&ndash;5</code> business days</td>
+        <td><code>1&ndash;3</code> business days</td>
+      </tr>
+      <tr>
+        <td>Price Transparency</td>
+        <td class="td-good">On-chain order book</td>
+        <td class="td-bad">Broker-set spread</td>
+        <td>Exchange order book</td>
+      </tr>
+      <tr>
+        <td>Expiry / Rollover</td>
+        <td class="td-good">None (perpetual)</td>
+        <td>None (CFD)</td>
+        <td class="td-bad">Monthly roll required</td>
+      </tr>
+      <tr>
+        <td>Weekend Trading</td>
+        <td class="td-good">Yes</td>
+        <td class="td-bad">No</td>
+        <td class="td-bad">No</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="info-box" data-label="Worked Example: 30-Day $50K Silver Long">
+    <h3>Holding 30 Days vs Paying Overnight Fees</h3>
+    <p><strong>CFD broker (eToro/XM):</strong> Silver overnight swap averages <code>0.025%/day</code> on long positions. On a <code>$50,000</code> silver long held for 30 days, that is approximately <code>$375</code> in pure holding cost — regardless of whether silver moves. Annualized on the same size: about <code>$4,500</code> (<code>9%</code> of notional).</p>
+    <p><strong>Hyperliquid XAGUSDC:</strong> Funding rate averaged near <code>0%</code> over the last quarter on silver. Round-trip trading fee at taker: <code>$17.50</code> in, <code>$17.50</code> out. Total 30-day cost: approximately <code>$35&ndash;50</code> including entry, funding, and exit.</p>
+    <p><strong>Net difference on 30 days: approximately <code>$325&ndash;340</code>.</strong> For a swing trader running this play ten times a year, that is <code>$3,250+</code> that stays in the P&amp;L instead of accruing to the broker.</p>
+  </div>
+
+  <h2 id="how-to-trade">How to Open Your First Gold or Silver Perp Trade</h2>
+
+  <p>If you already hold USDC in a Web3 wallet, the on-chain part of onboarding takes under <code>5 minutes</code>. If you are coming from fiat via a CFD broker, allow <code>1&ndash;2 days</code> for exchange KYC and USDC acquisition — that is the slow step, not the on-chain step. The walkthrough below works identically whether you use the native Hyperliquid app, trade.xyz, or ARX at launch.</p>
+
+  <ol class="step-list">
+    <li><strong>Install a Web3 wallet.</strong> MetaMask or Rabby are the most common choices. Rabby tends to have cleaner transaction previews; MetaMask has broader ecosystem integration. Either works with any Hyperliquid frontend.</li>
+    <li><strong>Acquire USDC.</strong> Buy USDC on a major exchange (Coinbase, Binance, Kraken) or use a fiat on-ramp that deposits directly to your wallet. Start with an amount you are comfortable putting at risk, since any leveraged perps position can be liquidated.</li>
+    <li><strong>Bridge USDC to Hyperliquid.</strong> Go to <code>app.hyperliquid.xyz</code> and use the native bridge. Arbitrum &rarr; Hyperliquid typically completes in under <code>60 seconds</code>. No minimum deposit.</li>
+    <li><strong>Pick your frontend.</strong> Use the native Hyperliquid app, trade.xyz, or (at launch) ARX. Your USDC balance and open positions are visible from any frontend — they all read from the same on-chain state.</li>
+    <li><strong>Find XAUUSDC or XAGUSDC.</strong> Search for the ticker. Verify that the quoted price matches an external reference (TradingView spot feed). Check the funding rate and open interest before sizing.</li>
+    <li><strong>Size conservatively.</strong> For your first trade, stay at <strong><code>3&ndash;5x</code> leverage</strong>. At <code>5x</code>, a <code>20%</code> adverse move liquidates you — which for gold is roughly a <code>$1,100</code> drop from current spot, a move that has happened inside a single week in 2026.</li>
+    <li><strong>Use limit orders and always set a stop-loss.</strong> A limit order at a support level gets you the <code>0.01%</code> maker fee instead of <code>0.035%</code> taker. A stop-loss at <code>3&ndash;5%</code> below entry (at <code>5x</code> leverage) limits damage on macro shocks.</li>
+  </ol>
+
+  <h2 id="risks">Risks Traders Underestimate</h2>
+
+  <p>On-chain perps are not a free lunch. The advantages over CFDs are real, but there are category-specific risks that a CFD trader moving on-chain should internalize before sizing up.</p>
+
+  <div class="warning-box" data-label="Risk Warning">
+    <h3>Four Risks to Take Seriously</h3>
+    <p><strong>1. Liquidation cascades.</strong> During extreme moves, liquidations trigger more liquidations. Gold's <code>$180/oz</code> weekend gap in April 2026 flushed highly leveraged positions quickly. Use <code>3&ndash;10x</code> max for held positions.</p>
+    <p><strong>2. Oracle risk.</strong> Hyperliquid's RWA perps price from external oracles. A stale or manipulated feed can trigger liquidations off fair value. Review the oracle design before posting large margin.</p>
+    <p><strong>3. Smart-contract risk.</strong> Hyperliquid has a track record, but any on-chain system can have bugs. Only post margin you can afford to lose, and understand the insurance fund's size relative to your position.</p>
+    <p><strong>4. Weekend liquidity thinning.</strong> 24/7 markets are a feature, but weekend volumes can be lower than weekdays. Spreads widen; slippage on market orders can spike during low-liquidity windows.</p>
+  </div>
+
+  <h2 id="faq">Frequently Asked Questions</h2>
+
+  <div class="faq-section">
+
+    <div class="faq-item">
+      <h3>What are gold and silver perps on Hyperliquid?</h3>
+      <p>Perpetual futures that track spot XAU/USD and XAG/USD with no expiry. Traded as <code>XAUUSDC</code> (gold) and <code>XAGUSDC</code> (silver), margined in USDC, 24/7, with market-driven funding every 8 hours instead of broker-set overnight swap fees.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>What is the difference between ARX and trade.xyz?</h3>
+      <p>Both are Hyperliquid frontends routing to the same order book. trade.xyz (Hyperunit team) is supply-side focused — first HIP-3 deployer, broadest tokenized asset menu, officially licensed S&amp;P 500. ARX is demand-side focused — copy trading, regime detection, SEA-localized onboarding for CFD traders migrating on-chain.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>What are the fees for gold and silver perps on Hyperliquid?</h3>
+      <p>Hyperliquid base fees: <code>0.035%</code> taker, <code>0.01%</code> maker on RWA perps. On a <code>$10,000</code> position, <code>$3.50</code> taker or <code>$1.00</code> maker per side. Funding rates are market-driven and typically near <code>0%</code>. No platform fees, no inactivity fees, no withdrawal fees, no swap fees. Individual frontends may offer discounts or rebates on top.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How do gold and silver perps compare to CFD brokers?</h3>
+      <p>CFD brokers charge <code>0.01&ndash;0.03%/day</code> overnight swap (<code>5&ndash;10%</code> annualized), mark up the spread beyond interbank, require full KYC, lock withdrawals for <code>1&ndash;5</code> business days, close on weekends, and hold <code>100%</code> of your funds on their balance sheet. Hyperliquid is symmetric funding (often near <code>0%</code>), on-chain order book, self-custody, instant withdrawals, and <code>24/7</code>.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>What is the current gold/silver ratio and why does it matter?</h3>
+      <p>Gold/silver ratio (gold price &divide; silver price) is near <code>76</code> in April 2026 — historically elevated vs the 50-year mean near <code>60</code>. Mean-reversion traders read this as silver being cheap relative to gold. You can express a compression view on Hyperliquid with long XAGUSDC + short XAUUSDC out of one USDC margin pool, which nets exposure and eliminates both legs' overnight costs.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Is trade.xyz or Hyperliquid safer?</h3>
+      <p>trade.xyz is a frontend; your margin lives on Hyperliquid. ARX is the same. Custody and execution risk are identical across frontends — the smart contracts, matching engine, and oracle feeds are Hyperliquid's. Evaluate frontends on UX and features; evaluate the venue (Hyperliquid) on audits, validator set, insurance fund, and uptime.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Can I trade gold and silver on ARX today?</h3>
+      <p>ARX is pre-launch. The underlying Hyperliquid markets (<code>XAUUSDC</code>, <code>XAGUSDC</code>) are live and accessible via app.hyperliquid.xyz or trade.xyz today. ARX adds copy trading, regime detection, and CFD-friendly onboarding on top. <a href="/#waitlist">Join the ARX waitlist</a> to be notified at launch.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>What is HIP-3 and why does it matter for RWA perps?</h3>
+      <p>HIP-3 is the Hyperliquid governance proposal that enabled permissionless perp market creation by staking HYPE. trade.xyz was the first HIP-3 deployer and used it to list silver, gold, oil, NASDAQ (XYZ100), tokenized equities, palladium, and a licensed S&amp;P 500 perp. HIP-3 is why RWA perp OI on Hyperliquid exceeds <code>$2.3B</code> today.</p>
+    </div>
+
+  </div>
+
+</article>
+
+<nav class="related-articles" aria-label="Related articles">
+  <h2>Continue Reading</h2>
+  <div class="related-grid">
+    <a href="/blog/gold-5500-on-chain-gold-perps/" class="related-card">
+      <span class="related-tag">RWA Trading</span>
+      <h3>Gold at $5,500: Why Traders Are Moving to On-Chain Gold Perps</h3>
+      <p>The macro story behind gold's $5,500 ATH and the structural forces pulling gold traders out of CFD brokers and onto Hyperliquid.</p>
+      <span class="related-link">Read article &rarr;</span>
+    </a>
+    <a href="/blog/rwa-perps-vs-cfd-brokers/" class="related-card">
+      <span class="related-tag">Comparison</span>
+      <h3>RWA Perps vs CFD Brokers: Overnight Fees, Custody &amp; Why Traders Switch</h3>
+      <p>Full cost breakdown across gold, oil, and S&amp;P 500: overnight fees, custody risk, pricing transparency. The real numbers CFD traders need to see.</p>
+      <span class="related-link">Read article &rarr;</span>
+    </a>
+    <a href="/blog/why-trade-gold-on-chain/" class="related-card">
+      <span class="related-tag">RWA Trading</span>
+      <h3>Why Trade Gold On-Chain? Perps vs ETFs vs COMEX &mdash; Fees, Leverage &amp; 24/7 Access</h3>
+      <p>Complete cost breakdown comparing on-chain gold perpetuals to gold ETFs and COMEX futures. Zero overnight fees, 24/7 access, and up to 50x leverage.</p>
+      <span class="related-link">Read article &rarr;</span>
+    </a>
+  </div>
+</nav>
+
+<div class="article-author">
+  <div class="author-avatar">A</div>
+  <div class="author-info">
+    <div class="author-name">ARX Team</div>
+    <div class="author-date">Published April 17, 2026</div>
+  </div>
+</div>
+
+<div class="article-cta">
+  <h3>Coming from eToro, XM, or IG?</h3>
+  <p>ARX is built for CFD traders moving on-chain. Copy top Hyperliquid wallets, trade gold and silver perps in your language, and stop paying overnight swap fees. Join the waitlist &mdash; we will walk you through the transition.</p>
+  <a href="/#waitlist" class="btn btn-primary">Join the ARX Waitlist</a>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <svg viewBox="0 0 100 27.4" height="24" role="img" aria-label="ARX logo">
+          <path fill="#71717A" fill-rule="evenodd" d="M 5.7 0.2 L 0 27.4 L 5.4 27.4 L 25.5 8.1 L 30.0 27.4 L 35.2 27.4 L 29.3 0 Z M 21.7 4.6 L 7.0 19.4 L 10.1 4.8 Z"/>
+          <path fill="#71717A" d="M 45.2 0 L 39.3 27.4 L 44.5 27.4 L 49.4 4.6 L 68.6 4.6 L 68.6 0 Z"/>
+          <path fill="#71717A" d="M 72.7 0 L 72.7 4.6 L 82.9 14.3 L 72.7 24.6 L 72.7 27.4 L 76.1 27.4 L 86.5 17.6 L 96.8 27.4 L 100 27.4 L 100 24.5 L 89.9 14.5 L 100 4.8 L 100 0 L 97.5 0 L 86.5 11.1 L 75.2 0 Z"/>
+        </svg>
+        <p class="footer-tagline">Institutional-grade copy trading on Hyperliquid. Trade with conviction. Copy with confidence.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Product</h5>
+          <ul>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#referral">Referral Program</a></li>
+            <li><a href="/blog/">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Community</h5>
+          <ul>
+            <li><a href="https://x.com/ARX_TRADE" target="_blank">X.com (Twitter)</a></li>
+            <li><a href="https://discord.gg/kNV6raqC" target="_blank">Discord</a></li>
+            <li><a href="https://t.me/ARX_Trade_Official" target="_blank">Telegram</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ARX. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="#">Terms</a>
+        <a href="#">Privacy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
