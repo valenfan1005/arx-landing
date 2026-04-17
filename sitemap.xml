@@ -46,7 +46,7 @@
   </url>
   <url>
     <loc>https://arx.trade/insights/</loc>
-    <lastmod>2026-04-15</lastmod>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -70,7 +70,7 @@
   </url>
   <url>
     <loc>https://arx.trade/blog/hyperliquid-vaults-explained/</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -93,6 +93,12 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://arx.trade/insights/sp500-ath-oil-ceasefire-2026-04-17/</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <url>
     <loc>https://arx.trade/insights/powell-fire-btc-distribution-2026-04-16/</loc>
     <lastmod>2026-04-16</lastmod>

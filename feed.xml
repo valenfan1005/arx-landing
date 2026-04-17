@@ -6,12 +6,20 @@
   <description>Insights on DeFi copy trading, market regime detection, wallet intelligence, and Hyperliquid. Stay ahead with ARX.</description>
   <language>en</language>
   <atom:link href="https://arx.trade/feed.xml" rel="self" type="application/rss+xml"/>
-  <lastBuildDate>Thu, 16 Apr 2026 09:14:58 -0000</lastBuildDate>
+  <lastBuildDate>Fri, 17 Apr 2026 02:23:50 -0000</lastBuildDate>
   <image>
     <url>https://arx.trade/logo.png</url>
     <title>ARX Blog</title>
     <link>https://arx.trade/blog/</link>
   </image>
+
+  <item>
+    <title>Oil&apos;s Risk Premium Starts to Collapse as Ceasefire Signals Stack — S&amp;P at ATH While BTC Flat-Lines at $74K</title>
+    <link>https://arx.trade/insights/#sp500-ath-oil-ceasefire-2026-04-17</link>
+    <guid isPermaLink="true">https://arx.trade/insights/#sp500-ath-oil-ceasefire-2026-04-17</guid>
+    <description>Two ceasefire signals landed in 24 hours: Trump said the Iran war &amp;ldquo;should&amp;rdquo; end soon, and Israel and Lebanon agreed to a 10-day truce (via CNBC). Oil fell and the S&amp;P 500 closed at an all-time high. The risk premium that has kept oil elevated since the conflict escalated is starting to co</description>
+    <pubDate>Fri, 17 Apr 2026 02:30:00 +0000</pubDate>
+  </item>
 
   <item>
     <title>Trump Threatens to Fire Powell, CLARITY Act Closing In — BTC at $75K as Whales Distribute</title>
