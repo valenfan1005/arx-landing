@@ -6,12 +6,20 @@
   <description>Insights on DeFi copy trading, market regime detection, wallet intelligence, and Hyperliquid. Stay ahead with ARX.</description>
   <language>en</language>
   <atom:link href="https://arx.trade/feed.xml" rel="self" type="application/rss+xml"/>
-  <lastBuildDate>Fri, 17 Apr 2026 06:55:02 -0000</lastBuildDate>
+  <lastBuildDate>Fri, 17 Apr 2026 13:30:58 -0000</lastBuildDate>
   <image>
     <url>https://arx.trade/logo.png</url>
     <title>ARX Blog</title>
     <link>https://arx.trade/blog/</link>
   </image>
+
+  <item>
+    <title>S&amp;P 500 Breaks 7,000 on Earnings. Derivatives Traders Are Shorting BTC With $2.07B on the Line.</title>
+    <link>https://arx.trade/insights/#sp500-7000-btc-shorts-2026-04-17</link>
+    <guid isPermaLink="true">https://arx.trade/insights/#sp500-7000-btc-shorts-2026-04-17</guid>
+    <description>The S&amp;P 500 cracked 7,000 this week on stronger-than-expected earnings — and Trump signaled Iran&apos;s war should end &amp;ldquo;pretty soon,&amp;rdquo; pushing oil lower. Macro is risk-on. BTC moved from $74K to $76,010 (+1.9% 24h). But on Hyperliquid, perpetual futures traders are building short positions int</description>
+    <pubDate>Fri, 17 Apr 2026 12:17:00 +0000</pubDate>
+  </item>
 
   <item>
     <title>DeFi Tokens +10–20% as BTC Flat-Lines at $74K — Classic High-Beta Rotation or a Trap?</title>
@@ -27,6 +35,14 @@
     <guid isPermaLink="true">https://arx.trade/insights/#sp500-ath-oil-ceasefire-2026-04-17</guid>
     <description>Two ceasefire signals landed in 24 hours: Trump said the Iran war &amp;ldquo;should&amp;rdquo; end soon, and Israel and Lebanon agreed to a 10-day truce (via CNBC). Oil fell and the S&amp;P 500 closed at an all-time high. The risk premium that has kept oil elevated since the conflict escalated is starting to co</description>
     <pubDate>Fri, 17 Apr 2026 02:30:00 +0000</pubDate>
+  </item>
+
+  <item>
+    <title>Gold &amp; Silver Perps on Hyperliquid: ARX vs trade.xyz (2026)</title>
+    <link>https://arx.trade/blog/gold-silver-perps-hyperliquid-vs-tradexyz/</link>
+    <guid isPermaLink="true">https://arx.trade/blog/gold-silver-perps-hyperliquid-vs-tradexyz/</guid>
+    <description>Trade gold and silver perpetuals on Hyperliquid: zero overnight fees, 24/7 markets, self-custody. Full comparison of ARX, trade.xyz, CFD brokers &amp; COMEX with live data.</description>
+    <pubDate>Fri, 17 Apr 2026 00:00:00 +0000</pubDate>
   </item>
 
   <item>
@@ -126,10 +142,10 @@
   </item>
 
   <item>
-    <title>Hyperliquid Season 2 Airdrop — HLP 3x Multiplier &amp; Dates (2026)</title>
+    <title>HLP 3x Multiplier &amp; Hyperliquid Season 2: Dates, Eligibility</title>
     <link>https://arx.trade/blog/hyperliquid-airdrop-season-2-guide/</link>
     <guid isPermaLink="true">https://arx.trade/blog/hyperliquid-airdrop-season-2-guide/</guid>
-    <description>When is Hyperliquid Season 2? 238.8M HYPE allocated. HLP depositors get a 3x points multiplier. Eligibility criteria, snapshot dates, and farming strategies.</description>
+    <description>HLP depositors get a 3x points multiplier in Hyperliquid Season 2. 238.8M HYPE allocated. Eligibility, snapshot timing, and farming strategies — full guide.</description>
     <pubDate>Wed, 01 Apr 2026 00:00:00 +0000</pubDate>
   </item>
 
@@ -142,10 +158,10 @@
   </item>
 
   <item>
-    <title>GMX v2 vs Hyperliquid: ETH Perp Liquidity Comparison (2026)</title>
+    <title>Hyperliquid vs GMX v2 vs dYdX: ETH Perps Liquidity (2026)</title>
     <link>https://arx.trade/blog/hyperliquid-vs-gmx/</link>
     <guid isPermaLink="true">https://arx.trade/blog/hyperliquid-vs-gmx/</guid>
-    <description>GMX v2 vs Hyperliquid liquidity depth for ETH perps — who wins in 2026? Side-by-side: fees, slippage, execution speed, leverage. dYdX included. Data-backed verdict.</description>
+    <description>Hyperliquid vs GMX v2 vs dYdX for ETH perps — depth, fees, slippage, leverage compared with live 2026 data. Which DEX wins your order? Data-backed verdict.</description>
     <pubDate>Thu, 26 Mar 2026 00:00:00 +0000</pubDate>
   </item>
 

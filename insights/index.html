@@ -60,11 +60,23 @@
   "name": "ARX Market Insights",
   "description": "Real-time trading analysis powered by on-chain data and TradFi signals",
   "itemListOrder": "https://schema.org/ItemListOrderDescending",
-  "numberOfItems": 10,
+  "numberOfItems": 11,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
+      "item": {
+        "@type": "Article",
+        "headline": "S&P 500 Breaks 7,000 on Earnings. Derivatives Traders Are Shorting BTC With $2.07B on the Line.",
+        "datePublished": "2026-04-17T12:17:00Z",
+        "author": {"@type": "Organization", "name": "ARX"},
+        "publisher": {"@type": "Organization", "name": "ARX", "url": "https://arx.trade"},
+        "url": "https://arx.trade/insights/sp500-7000-btc-shorts-2026-04-17/"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
       "item": {
         "@type": "Article",
         "headline": "DeFi Tokens +10–20% as BTC Flat-Lines at $74K — Classic High-Beta Rotation or a Trap?",
@@ -521,6 +533,77 @@ a { color: inherit; text-decoration: none; }
 <!-- FEED -->
 <section class="feed">
   <div class="container">
+
+    <!-- ═══════════════════════════════════════
+         POST: S&P 500 7000 BTC Shorts
+         ═══════════════════════════════════════ -->
+    <article class="post" id="sp500-7000-btc-shorts-2026-04-17">
+      <div class="post-header">
+        <div class="post-avatar">A</div>
+        <div>
+          <span class="post-author">ARX Research</span>
+          <span class="post-handle">@ARX_TRADE</span>
+        </div>
+        <time class="post-time" datetime="2026-04-17T12:17:00Z">17 Apr 2026 &middot; 12:17 UTC</time>
+      </div>
+
+      <h2 class="post-title"><a href="/insights/sp500-7000-btc-shorts-2026-04-17/">S&amp;P 500 Breaks 7,000 on Earnings. Derivatives Traders Are Shorting BTC With $2.07B on the Line.</a></h2>
+
+      <div class="post-body">
+        <p>The S&amp;P 500 cracked <strong class="mono">7,000</strong> this week on stronger-than-expected earnings &mdash; and <a href="https://www.marketwatch.com/story/oil-prices-dropping-after-trump-says-iran-war-should-end-pretty-soon" target="_blank" rel="noopener">Trump signaled Iran&rsquo;s war should end &ldquo;pretty soon,&rdquo;</a> pushing oil lower. Macro is risk-on. BTC moved from $74K to <strong class="mono">$76,010</strong> (+1.9% 24h). But on Hyperliquid, perpetual futures traders are building short positions into the rally: funding is <strong class="mono">&minus;0.0006%</strong> per 8h (&asymp;&minus;0.66% annualised &mdash; comparable to a CFD overnight fee), meaning short open interest outweighs long open interest and bearish traders are paying a daily carry cost to stay positioned. Combined BTC OI: <strong>$2.07B</strong>. Watch <strong class="mono">$76,500</strong>: a break on volume forces shorts to cover and accelerates the move higher. A rejection deleverages the $2.07B lower &mdash; DeFi names like PENDLE (+16%) and AAVE (+9%) fall 2&ndash;3x harder than BTC.</p>
+      </div>
+
+      <div class="post-data">
+        <div class="post-data-title">Hyperliquid Snapshot &mdash; 17 Apr 12:17 UTC</div>
+        <table class="mini-table">
+          <thead><tr><th>Market</th><th>Price</th><th>24h</th><th>OI</th><th>Funding/8h</th></tr></thead>
+          <tbody>
+            <tr><td>BTC</td><td class="mono">$76,010</td><td class="positive mono">+1.91%</td><td class="mono">$2.07B</td><td class="negative mono">&minus;0.0006%</td></tr>
+            <tr><td>ETH</td><td class="mono">$2,370</td><td class="positive mono">+1.33%</td><td class="mono">$963M</td><td class="negative mono">&minus;0.0008%</td></tr>
+            <tr><td>SOL</td><td class="mono">$88.64</td><td class="positive mono">+3.88%</td><td class="mono">$353M</td><td class="positive mono">+0.0011%</td></tr>
+            <tr><td>HYPE</td><td class="mono">$43.92</td><td class="negative mono">&minus;2.48%</td><td class="mono">$935M</td><td class="positive mono">+0.0013%</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:11px;color:var(--text-dim,#52525B);margin-top:6px;">OI figures: Hyperliquid perpetuals only. * HYPE = Hyperliquid&rsquo;s native token; OI reflects platform speculation, not macro positioning.</p>
+      </div>
+
+      <div class="post-data">
+        <div class="post-data-title">Key Signals</div>
+        <div class="stat-pills">
+          <span class="stat-pill bullish"><span class="label">S&amp;P 500</span><span class="value mono">7,000 milestone</span></span>
+          <span class="stat-pill bearish"><span class="label">BTC Funding/8h</span><span class="value mono">&minus;0.0006% (shorts loading)</span></span>
+          <span class="stat-pill macro"><span class="label">Oil Catalyst</span><span class="value mono">Iran war "ending soon"</span></span>
+          <span class="stat-pill"><span class="label">BTC OI</span><span class="value mono">$2.07B (elevated)</span></span>
+        </div>
+      </div>
+
+      <div class="post-body">
+        <p><strong>The divergence.</strong> Risk assets are running &mdash; S&amp;P 500 at a fresh psychological milestone, oil retreating on geopolitical de-escalation, equities pricing in a solid earnings season. Historically, this macro backdrop lifts all risk assets including crypto. But BTC perp traders on Hyperliquid are betting against the trend: negative funding at $76K means the short book is larger than the long book against $2.07B of total OI. That&rsquo;s a large pool of leveraged capital positioned for a reversal.</p>
+        <p>Two outcomes. <strong>Short squeeze:</strong> BTC breaks above <strong class="mono">$76,500</strong> on volume &mdash; shorts get forced out, funding snaps positive, OI deleverages upward. Watch for a funding flip (negative → positive) as the first warning signal for shorts. <strong>Shorts vindicated:</strong> macro optimism fades (earnings disappoint, Iran deal collapses, Treasury yield spike) &mdash; BTC loses <strong class="mono">$75,000</strong> and the $2.07B unwind accelerates the move. DeFi names currently running hard (PENDLE +16%, AAVE +9%) fall 2&ndash;3x harder in this scenario.</p>
+        <p><a href="/blog/what-is-market-regime-detection/">How macro regime detection helps traders navigate divergences like this &rarr;</a></p>
+        <p>Not financial advice.</p>
+      </div>
+
+      <a class="post-readmore" href="/insights/sp500-7000-btc-shorts-2026-04-17/">Full analysis <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+
+      <div class="post-tags">
+        <span class="tag">BTC</span>
+        <span class="tag macro">Macro</span>
+        <span class="tag">S&amp;P 500</span>
+        <span class="tag">Derivatives</span>
+      </div>
+
+      <div class="post-actions">
+        <a class="post-action" href="https://x.com/intent/tweet?text=S%26P%20500%20at%207%2C000.%20BTC%20at%20%2476K.%0A%0ABut%20Hyperliquid%20perp%20traders%20are%20shorting%20BTC%20at%20the%20highs.%0A%0ANegative%20funding%2C%20%242.07B%20OI.%0A%0AShort%20squeeze%20or%20macro%20fade%3F&url=https://arx.trade/insights/sp500-7000-btc-shorts-2026-04-17/" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          Share
+        </a>
+        <a class="post-action" href="/blog/what-is-market-regime-detection/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+          Market Regime Detection
+        </a>
+      </div>
+    </article>
 
     <!-- ═══════════════════════════════════════
          POST: DeFi Rotation BTC Flat Stagflation
