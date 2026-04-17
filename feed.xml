@@ -6,12 +6,20 @@
   <description>Insights on DeFi copy trading, market regime detection, wallet intelligence, and Hyperliquid. Stay ahead with ARX.</description>
   <language>en</language>
   <atom:link href="https://arx.trade/feed.xml" rel="self" type="application/rss+xml"/>
-  <lastBuildDate>Fri, 17 Apr 2026 02:23:50 -0000</lastBuildDate>
+  <lastBuildDate>Fri, 17 Apr 2026 06:55:02 -0000</lastBuildDate>
   <image>
     <url>https://arx.trade/logo.png</url>
     <title>ARX Blog</title>
     <link>https://arx.trade/blog/</link>
   </image>
+
+  <item>
+    <title>DeFi Tokens +10–20% as BTC Flat-Lines at $74K — Classic High-Beta Rotation or a Trap?</title>
+    <link>https://arx.trade/insights/#defi-rotation-btc-flat-stagflation-2026-04-17</link>
+    <guid isPermaLink="true">https://arx.trade/insights/#defi-rotation-btc-flat-stagflation-2026-04-17</guid>
+    <description>BTC is flat at $74,787 while DeFi tokens are up 10–20% in 24 hours — a divergence happening directly against macro deterioration. Former Treasury Secretary Paulson this morning called for an emergency &amp;ldquo;break-the-glass&amp;rdquo; plan if Treasury demand collapses (&amp;ldquo;it will be vicious&amp;rdquo; —</description>
+    <pubDate>Fri, 17 Apr 2026 06:45:00 +0000</pubDate>
+  </item>
 
   <item>
     <title>Oil&apos;s Risk Premium Starts to Collapse as Ceasefire Signals Stack — S&amp;P at ATH While BTC Flat-Lines at $74K</title>
