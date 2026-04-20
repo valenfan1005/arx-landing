@@ -713,23 +713,25 @@
 }
 
 .tier-card {
-  background: linear-gradient(165deg, var(--bg-surface-3) 0%, var(--bg-surface-2) 100%);
-  border: 1px solid var(--border-medium);
+  /* Glassmorphism — matches .feature-card / .value-card / .step */
+  background: rgba(18, 16, 26, 0.86);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: var(--radius-xl);
   padding: 40px 32px;
   text-align: center;
   position: relative;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow:
+    0 8px 28px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
+/* Top colored bar — disabled (clean edge) */
 .tier-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
+  content: none;
 }
 
 .tier-card::after {
@@ -746,17 +748,17 @@
   transition: opacity 0.4s ease;
 }
 
-.tier-card.bronze::before { background: var(--tier-bronze); }
 .tier-card.bronze::after { background: radial-gradient(circle, rgba(205, 127, 50, 0.15), transparent); }
-.tier-card.silver::before { background: linear-gradient(90deg, #C0C0C0, #E8E8E8, #C0C0C0); }
 .tier-card.silver::after { background: radial-gradient(circle, rgba(192, 192, 192, 0.12), transparent); }
-.tier-card.gold::before { background: linear-gradient(90deg, var(--primary), var(--tier-gold), var(--primary)); }
 .tier-card.gold::after { background: radial-gradient(circle, rgba(255, 215, 0, 0.12), transparent); }
 
 .tier-card:hover {
-  border-color: var(--border-accent);
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(28, 25, 38, 0.92);
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .tier-card:hover::after {
