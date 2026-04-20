@@ -70,10 +70,15 @@ def fetch_market_data() -> dict[str, dict]:
             break
         ctx = ctxs[i]
 
+        # Hyperliquid's `funding` field is the HOURLY funding rate (HL pays
+        # funding every hour, unlike Binance/Bybit which pay every 8h). We
+        # store the raw hourly value and derive the 8h figure on output so
+        # that industry-standard comparisons (most traders think in 8h
+        # terms) display correctly.
         markets[name] = {
             "mark_price": float(ctx.get("markPx", 0)),
             "open_interest": float(ctx.get("openInterest", 0)),
-            "funding_rate_8h": float(ctx.get("funding", 0)),
+            "funding_rate_hourly": float(ctx.get("funding", 0)),
             "volume_24h": float(ctx.get("dayNtlVlm", 0)),
             "prev_day_price": float(ctx.get("prevDayPx", 0)),
         }
@@ -110,18 +115,19 @@ def find_notable_moves(all_markets: dict[str, dict]) -> list[dict]:
     notable: list[dict] = []
 
     for name, data in all_markets.items():
-        funding = data.get("funding_rate_8h", 0)
+        hourly = data.get("funding_rate_hourly", 0)
         oi = data.get("open_interest", 0)
         vol = data.get("volume_24h", 0)
         change = data.get("price_change_24h_pct", 0)
 
-        # Extreme funding (>0.05% or <-0.05%)
-        if abs(funding) > 0.0005:
+        # Extreme funding: threshold is 0.05% per 8h (industry convention).
+        # Hourly equivalent = 0.05% / 8 = 0.00625% = 6.25e-5 raw.
+        if abs(hourly) > 6.25e-5:
             notable.append({
                 "type": "extreme_funding",
                 "market": name,
-                "funding_8h": round(funding * 100, 4),
-                "annualized": round(funding * 100 * 3 * 365, 1),
+                "funding_8h": round(hourly * 8 * 100, 4),
+                "annualized": round(hourly * 24 * 365 * 100, 1),
             })
 
         # Large price move (>5%)
@@ -186,7 +192,10 @@ def main() -> None:
             "oi_contracts": round(oi, 2),
             "oi_usd": round(oi * mark, 0),
             "funding_8h_pct": round(
-                data.get("funding_rate_8h", 0) * 100, 4
+                data.get("funding_rate_hourly", 0) * 8 * 100, 4
+            ),
+            "funding_annualized_pct": round(
+                data.get("funding_rate_hourly", 0) * 24 * 365 * 100, 2
             ),
             "volume_24h_usd": round(data.get("volume_24h", 0), 0),
         }
