@@ -61,7 +61,7 @@
     }
   },
   "datePublished": "2026-03-22",
-  "dateModified": "2026-04-16",
+  "dateModified": "2026-04-17",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://arx.trade/blog/hyperliquid-vaults-explained/"
@@ -155,6 +155,22 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "HLP can experience a form of impermanent loss similar to AMM pools. As a market maker, HLP takes the opposite side of trades, which means it can accumulate directional exposure during strong trending markets. This is not the same mechanism as Uniswap-style IL, but the result is similar — the vault can underperform during sustained one-directional moves. The effect typically reverses when volatility returns."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you pay taxes on Hyperliquid vault profits?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In most jurisdictions, yes — profits earned from Hyperliquid vaults are taxable. In the United States, HLP profits are typically treated as ordinary income or capital gains depending on how your tax authority classifies DeFi yield. Since HLP accrues value continuously, profits are generally realized when you withdraw and may be subject to short-term capital gains rates if held under one year. Tax treatment varies significantly by country — Australia, the UK, and Canada treat DeFi yield as ordinary income; other jurisdictions remain unclear. Consult a qualified crypto tax professional before depositing significant capital. Tools like Koinly, CoinTracker, and TokenTax can import Hyperliquid transaction history for reporting."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you report Hyperliquid HLP on your taxes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Hyperliquid does not issue tax forms. You are responsible for tracking your own cost basis and gains. The most reliable approach: (1) record your deposit amount and date, (2) record your withdrawal amount and date, (3) calculate the difference as your gain or loss. For US taxpayers, report on Schedule D (capital gains) or Schedule 1 (ordinary income) — consult a tax professional for the correct form. Export your transaction history from Hyperliquid's app and import into a crypto tax tool to generate compliant reports. Tax law for DeFi is evolving rapidly; verify current IRS or local authority guidance before filing."
       }
     }
   ]
@@ -989,7 +1005,7 @@ img { max-width: 100%; display: block; }
     </div>
     <h1>Hyperliquid Vaults Explained: HLP APY, Fees &amp; How They Work (2026)</h1>
     <div class="article-meta">
-      <span>2026-04-16</span>
+      <span>2026-04-17</span>
       <div class="dot"></div>
       <span>14 min read</span>
       <div class="dot"></div>
@@ -1012,8 +1028,8 @@ img { max-width: 100%; display: block; }
         <li><a href="#passive-yield">Can You Earn Passive Yield on Hyperliquid?</a></li>
       </ul>
     </li>
-    <li><a href="#hlp-vs-glp-jlp">HLP vs GLP vs JLP: Protocol Vault Comparison</a></li>
-    <li><a href="#hlp-risks">What Can Go Wrong with HLP?</a></li>
+    <li><a href="#hlp-vs-glp-jlp">HLP vs GLP vs JLP: Protocol Vault Comparison + Live TVL</a></li>
+    <li><a href="#hlp-risks">What Can Go Wrong with HLP? (8 Risk Categories)</a></li>
     <li><a href="#user-vaults">User Vaults: Following Individual Traders</a></li>
     <li><a href="#how-to-deposit">How to Deposit into a Vault</a></li>
     <li><a href="#evaluating-vaults">How to Evaluate a Vault Before Depositing</a></li>
@@ -1128,7 +1144,7 @@ img { max-width: 100%; display: block; }
 
   <h2 id="hlp-vs-glp-jlp">HLP vs GLP vs JLP: Protocol Vault Comparison</h2>
 
-  <p>HLP is not the only protocol vault in DeFi. <a href="/blog/hyperliquid-vs-gmx/">GMX&rsquo;s GLP</a> on Arbitrum and Jupiter&rsquo;s JLP on Solana serve similar roles for their respective DEXs. Here is how they compare.</p>
+  <p>HLP is not the only protocol vault in DeFi. <a href="/blog/hyperliquid-vs-gmx/">GMX&rsquo;s GLP</a> on Arbitrum and Jupiter&rsquo;s JLP on Solana serve similar roles for their respective DEXs. For a broader look at how Hyperliquid stacks up across the <a href="/blog/perp-dex-wars-hyperliquid-lighter-aster/">DEX perps competitive landscape</a>, see our full analysis. Here is how the protocol vaults compare.</p>
 
   <div class="comparison-table">
     <table>
@@ -1181,6 +1197,12 @@ img { max-width: 100%; display: block; }
         <td>IL + directional</td>
       </tr>
       <tr>
+        <td>TVL (Apr 2026)</td>
+        <td><strong>~$373M</strong></td>
+        <td>~$450M (GLV v2)</td>
+        <td>~$1.62B</td>
+      </tr>
+      <tr>
         <td>Min Deposit</td>
         <td>No minimum</td>
         <td>No minimum</td>
@@ -1195,7 +1217,17 @@ img { max-width: 100%; display: block; }
     </table>
   </div>
 
-  <p>The key distinction: HLP deposits USDC only, so you have no impermanent loss from holding volatile assets. GLP and JLP expose you to a basket of tokens, meaning your returns are partially determined by the price movement of ETH, BTC, SOL, and other pool assets &mdash; not just trading activity. HLP also market-makes <a href="/blog/oil-perps-hormuz-crisis-trading-guide/">RWA perps like oil</a>, gold, and S&amp;P 500, giving it a broader fee base than crypto-only vaults.</p>
+  <div class="info-box" data-label="Live TVL Snapshot — Apr 2026">
+    <p>Protocol vault TVL reflects depositor confidence and liquidity depth. As of April 2026:</p>
+    <ul>
+      <li><strong>HLP (Hyperliquid):</strong> ~<code>$373M</code> — USDC-only, market making + liquidations</li>
+      <li><strong>GLV (GMX v2, Arbitrum):</strong> ~<code>$450M</code> — GMX&rsquo;s newer liquidity vault, multi-asset basket</li>
+      <li><strong>JLP (Jupiter, Solana):</strong> ~<code>$1.62B</code> — largest protocol vault by TVL, SOL ecosystem dominance</li>
+    </ul>
+    <p>JLP&rsquo;s TVL lead reflects Solana&rsquo;s perp trading volume surge in 2025&ndash;2026. HLP&rsquo;s smaller TVL relative to JLP means each depositor&rsquo;s share of liquidation profits is proportionally higher — a smaller pool chasing the same fee revenue. TVL data is approximate and changes daily; verify at each protocol&rsquo;s app before depositing.</p>
+  </div>
+
+  <p>The key distinction: HLP deposits USDC only, so you have no impermanent loss from holding volatile assets. GLP and JLP expose you to a basket of tokens, meaning your returns are partially determined by the price movement of ETH, BTC, SOL, and other pool assets &mdash; not just trading activity. HLP also market-makes <a href="/blog/oil-perps-hormuz-crisis-trading-guide/">RWA perps like oil</a>, <a href="/blog/gold-5500-on-chain-gold-perps/">gold</a>, and S&amp;P 500, giving it a broader fee base than crypto-only vaults.</p>
 
   <p>The <a href="/blog/hyperliquid-airdrop-season-2-guide/">3x HYPE airdrop multiplier</a> is unique to HLP and is often the deciding factor. Neither GLP nor JLP offers a comparable airdrop incentive in 2026. However, HLP&rsquo;s 4-day lock period is a meaningful trade-off compared to the instant redemption available on GLP and JLP.</p>
 
@@ -1218,6 +1250,15 @@ img { max-width: 100%; display: block; }
 
     <h3>5. Smart Contract Risk</h3>
     <p>Hyperliquid L1 is closed-source. Unlike open-source protocols where the community and independent auditors can review the code, Hyperliquid&rsquo;s vault logic has not been publicly audited in the same way as Ethereum-based DeFi protocols. You are trusting the team&rsquo;s implementation without the ability to independently verify it. This is a meaningful consideration for larger deposits.</p>
+
+    <h3>6. Asset Delta Risk</h3>
+    <p>HLP absorbs liquidations across all Hyperliquid perp markets, including <a href="/blog/why-trade-gold-on-chain/">gold</a>, oil, and S&amp;P 500 RWA perps. When HLP absorbs a large liquidation, it takes on a directional position in that asset. If the liquidated position continues to move against HLP before it can unwind, the vault accumulates mark-to-market losses on those delta positions. The more RWA markets Hyperliquid adds, the broader this exposure becomes.</p>
+
+    <h3>7. Liquidation Cascade Risk</h3>
+    <p>During extreme volatility, multiple large positions can get liquidated simultaneously across correlated assets. HLP must absorb all of them at once. If the cascade outpaces the vault&rsquo;s ability to unwind positions at favorable prices &mdash; particularly in thin after-hours markets for RWA assets &mdash; the vault can experience rapid drawdowns. The March 2025 whale manipulation incident was a targeted, single-position version of this risk. A true multi-market cascade would be harder to contain.</p>
+
+    <h3>8. Geo-Blocking &amp; Regulatory Risk</h3>
+    <p>Hyperliquid restricts access to users in certain jurisdictions, including the United States. If regulatory pressure expands geo-blocking to additional regions, depositors in affected countries could find themselves unable to access the platform to withdraw during the 4-day lockup period. Always verify that Hyperliquid is accessible in your jurisdiction before depositing. Regulatory status for DeFi protocols can change with little notice.</p>
   </div>
 
   <blockquote>
@@ -1422,6 +1463,16 @@ img { max-width: 100%; display: block; }
       <h3>Does HLP have impermanent loss?</h3>
       <p>HLP can experience a form of impermanent loss similar to AMM pools. As a market maker, HLP takes the opposite side of trades, which means it can accumulate directional exposure during strong trending markets. This is not the same mechanism as Uniswap-style IL, but the result is similar &mdash; the vault can underperform during sustained one-directional moves. The effect typically reverses when volatility returns.</p>
     </div>
+
+    <div class="faq-item">
+      <h3>Do you pay taxes on Hyperliquid vault profits?</h3>
+      <p>In most jurisdictions, yes &mdash; profits earned from Hyperliquid vaults are taxable. In the United States, HLP profits are typically treated as ordinary income or capital gains depending on how your tax authority classifies DeFi yield. Since HLP accrues value continuously (not via discrete token distributions), profits are generally realized when you withdraw and may be subject to short-term capital gains rates if held under one year. Tax treatment varies significantly by country: Australia, the UK, and Canada have issued guidance treating DeFi yield as ordinary income; other jurisdictions remain unclear. Consult a qualified crypto tax professional in your country before depositing significant capital. Tools like Koinly, CoinTracker, and TokenTax can import Hyperliquid transaction history to assist with reporting.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How do you report Hyperliquid HLP on your taxes?</h3>
+      <p>Hyperliquid does not issue tax forms (no 1099 in the US, no equivalent in other jurisdictions). You are responsible for tracking your own cost basis and gains. The most reliable approach: (1) record your deposit amount and date, (2) record your withdrawal amount and date, (3) calculate the difference as your gain or loss. For US taxpayers, report on Schedule D (capital gains) or Schedule 1 (if treated as ordinary income) &mdash; your tax professional will advise on the correct form. For the lock-up period, gains accrue but are not realized until withdrawal. Export your transaction history from Hyperliquid&rsquo;s app and import into a crypto tax tool to generate compliant reports. Tax law for DeFi is evolving rapidly; verify current IRS or local authority guidance before filing.</p>
+    </div>
   </div>
 
 </article>
@@ -1460,7 +1511,7 @@ img { max-width: 100%; display: block; }
   <div class="author-avatar">A</div>
   <div class="author-info">
     <div class="author-name">ARX Team</div>
-    <div class="author-date">Published March 22, 2026 | Updated April 16, 2026</div>
+    <div class="author-date">Published March 22, 2026 | Updated April 17, 2026</div>
   </div>
 </div>
 
