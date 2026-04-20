@@ -308,23 +308,24 @@
 }
 
 .value-card {
-  background: linear-gradient(165deg, var(--bg-surface-2) 0%, var(--bg-surface-1) 100%);
-  border: 1px solid var(--border-medium);
+  /* Glassmorphism */
+  background: rgba(18, 16, 26, 0.88);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-xl);
   padding: 48px 40px;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   position: relative;
   overflow: hidden;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
-/* Top accent bar */
+/* Top accent bar — disabled (clean edge) */
 .value-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
+  content: none;
 }
 
 /* Subtle corner glow */
@@ -496,17 +497,26 @@
 .step {
   text-align: center;
   position: relative;
-  background: linear-gradient(165deg, var(--bg-surface-2) 0%, var(--bg-surface-1) 100%);
-  border: 1px solid var(--border-subtle);
+  /* Glassmorphism — matches .feature-card / .value-card */
+  background: rgba(18, 16, 26, 0.86);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: var(--radius-xl);
   padding: 48px 32px 40px;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow:
+    0 8px 28px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .step:hover {
-  border-color: var(--border-accent);
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(28, 25, 38, 0.92);
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .step-number {
@@ -593,44 +603,33 @@
 }
 
 .feature-card {
-  background: linear-gradient(165deg, var(--bg-surface-2) 0%, var(--bg-surface-1) 100%);
-  border: 1px solid var(--border-subtle);
+  /* Glassmorphism */
+  background: rgba(18, 16, 26, 0.86);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: var(--radius-xl);
   padding: 40px 32px;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   position: relative;
   overflow: hidden;
+  box-shadow:
+    0 8px 28px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
-/* Top accent line per card */
+/* Top accent line — disabled (clean edge) */
 .feature-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 24px;
-  right: 24px;
-  height: 2px;
-  border-radius: 0 0 2px 2px;
-  opacity: 0.6;
-  transition: opacity 0.3s ease;
+  content: none;
 }
-
-.feature-card:nth-child(1)::before,
-.feature-card:nth-child(4)::before { background: linear-gradient(90deg, transparent, var(--primary-light), transparent); }
-.feature-card:nth-child(2)::before,
-.feature-card:nth-child(5)::before { background: linear-gradient(90deg, transparent, var(--cyan), transparent); }
-.feature-card:nth-child(3)::before,
-.feature-card:nth-child(6)::before { background: linear-gradient(90deg, transparent, var(--pink), transparent); }
 
 .feature-card:hover {
-  border-color: var(--border-accent);
-  background: linear-gradient(165deg, var(--bg-surface-3) 0%, var(--bg-surface-2) 100%);
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(28, 25, 38, 0.92);
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-}
-
-.feature-card:hover::before {
-  opacity: 1;
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .feature-icon {
@@ -1323,4 +1322,64 @@
   .ticker-change { font-size: 13px; }
 
   .form-row { flex-direction: column; }
+}
+
+/* ============================================
+   HOW IT WORKS — Flowing purple background video
+   HLS source: Mux public stream (CORS wide open).
+   ============================================ */
+.how-it-works {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: #010101;
+}
+
+.flow-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.flow-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+  /* slight blur smooths upscaled 720p without killing the flow shapes */
+  filter: blur(1.5px) saturate(1.15) brightness(1.05);
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* Layer 1: dark tint + top/bottom fade to merge with page bg */
+.flow-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, #010101 0%, transparent 14%, transparent 86%, #010101 100%),
+    rgba(1, 1, 1, 0.5);
+  pointer-events: none;
+}
+
+/* Layer 2: SVG noise grain — hides low-res pixels, gives filmic texture.
+   Inline data URI so no extra HTTP request. */
+.flow-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.18;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.5 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 200px 200px;
+}
+
+.how-it-works .container { position: relative; z-index: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .flow-bg-video { display: none; }
 }
