@@ -52,8 +52,14 @@
   </url>
   <url>
     <loc>https://arx.trade/insights/</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-21</lastmod>
     <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://arx.trade/insights/ceasefire-deadline-btc-75k-perp-shorts-2026-04-21/</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>

@@ -6,12 +6,20 @@
   <description>Insights on DeFi copy trading, market regime detection, wallet intelligence, and Hyperliquid. Stay ahead with ARX.</description>
   <language>en</language>
   <atom:link href="https://arx.trade/feed.xml" rel="self" type="application/rss+xml"/>
-  <lastBuildDate>Mon, 20 Apr 2026 02:21:10 -0000</lastBuildDate>
+  <lastBuildDate>Tue, 21 Apr 2026 06:08:02 -0000</lastBuildDate>
   <image>
     <url>https://arx.trade/logo.png</url>
     <title>ARX Blog</title>
     <link>https://arx.trade/blog/</link>
   </image>
+
+  <item>
+    <title>$1.97B BTC Perp Shorts Unmoved as Oil&apos;s War Premium Fades — Wednesday Ceasefire Is the Binary</title>
+    <link>https://arx.trade/insights/#ceasefire-deadline-btc-75k-perp-shorts-2026-04-21</link>
+    <guid isPermaLink="true">https://arx.trade/insights/#ceasefire-deadline-btc-75k-perp-shorts-2026-04-21</guid>
+    <description>Iran sent a delegation to Pakistan talks ahead of Wednesday&apos;s ceasefire deadline. BTC: $75,794 (+2.1%). Oil&apos;s war premium is already reversing — WTI fell back after Monday&apos;s 7% spike on &amp;ldquo;mixed messaging.&amp;rdquo;</description>
+    <pubDate>Tue, 21 Apr 2026 06:01:00 +0000</pubDate>
+  </item>
 
   <item>
     <title>Strait of Hormuz Under Attack — Oil Surges as DeFi Loses $292M in the Year&apos;s Biggest Hack</title>
