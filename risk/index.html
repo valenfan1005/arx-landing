@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Risk Disclosure | ARX</title>
+<meta name="description" content="ARX Risk Disclosure. Leverage, market volatility, liquidation, funding rates, smart contract risk, counterparty risk, regulatory risk. Trading perpetual futures can result in total loss of capital.">
+
+<link rel="canonical" href="https://arx.trade/risk/" />
+<meta name="robots" content="index, follow" />
+
+<meta property="og:title" content="Risk Disclosure | ARX" />
+<meta property="og:description" content="Trading perpetual futures involves a high degree of risk, including total loss of capital. Read the full risk disclosure." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://arx.trade/risk/" />
+<meta property="og:image" content="https://arx.trade/og-image.png" />
+<meta property="og:site_name" content="ARX" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@ARX_TRADE" />
+<meta name="twitter:title" content="Risk Disclosure | ARX" />
+<meta name="twitter:description" content="Trading perpetual futures involves a high degree of risk, including total loss of capital." />
+<meta name="twitter:image" content="https://arx.trade/og-image.png" />
+
+<meta name="theme-color" content="#B38DF4" />
+<meta name="author" content="ARX Team" />
+
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg-base:#08060F; --bg-surface-1:#0F0B1A; --bg-surface-2:#1A1425;
+  --primary:#B38DF4; --primary-hover:#925BF0; --primary-glow:rgba(179,141,244,0.3);
+  --pink:#F472B6;
+  --text-primary:#FFFFFF; --text-secondary:#A1A1AA; --text-muted:#71717A; --text-dim:#52525B;
+  --border-subtle:rgba(255,255,255,0.06); --border-medium:rgba(255,255,255,0.1);
+  --radius-md:12px; --radius-full:9999px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg-base);color:var(--text-primary);line-height:1.7;overflow-x:hidden}
+a{color:var(--primary);text-decoration:none}
+a:hover{color:var(--primary-hover)}
+.container{max-width:800px;margin:0 auto;padding:0 24px}
+
+.navbar{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(8,6,15,0.8);border-bottom:1px solid var(--border-subtle)}
+.navbar .container{max-width:1200px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo svg{height:28px;width:auto}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-links a{font-size:14px;font-weight:500;color:var(--text-secondary);transition:color 0.2s}
+.nav-links a:hover{color:var(--text-primary)}
+.nav-links a.nav-cta{padding:10px 20px;background:var(--primary);color:#FFF;border-radius:var(--radius-full);font-weight:600}
+.nav-cta:hover{background:var(--primary-hover);box-shadow:0 0 24px var(--primary-glow);color:#FFF}
+
+main{padding:140px 0 80px}
+.legal-header{margin-bottom:40px;padding-bottom:32px;border-bottom:1px solid var(--border-subtle)}
+.legal-header h1{font-size:clamp(32px,5vw,48px);font-weight:800;letter-spacing:-0.02em;margin-bottom:12px}
+.legal-meta{color:var(--text-muted);font-size:14px}
+.legal-notice{margin-top:20px;padding:16px 20px;background:rgba(179,141,244,0.06);border:1px solid rgba(179,141,244,0.2);border-radius:var(--radius-md);font-size:14px;color:var(--text-secondary)}
+.legal-notice strong{color:var(--primary)}
+
+.risk-banner{margin:24px 0 40px;padding:20px 24px;background:rgba(244,114,182,0.08);border:1px solid rgba(244,114,182,0.3);border-radius:var(--radius-md);color:var(--text-primary);font-weight:500}
+.risk-banner strong{color:var(--pink)}
+
+.prose h2{font-size:24px;font-weight:700;margin:40px 0 16px;letter-spacing:-0.01em}
+.prose h3{font-size:18px;font-weight:600;margin:28px 0 12px;color:var(--text-primary)}
+.prose p{color:var(--text-secondary);margin-bottom:16px}
+.prose ul,.prose ol{color:var(--text-secondary);margin:0 0 16px 24px}
+.prose li{margin-bottom:8px}
+.prose strong{color:var(--text-primary);font-weight:600}
+
+.footer{padding:64px 0 32px;border-top:1px solid var(--border-subtle);margin-top:80px}
+.footer .container{max-width:1200px}
+.footer-content{display:flex;justify-content:space-between;gap:48px;flex-wrap:wrap;margin-bottom:48px}
+.footer-brand{max-width:320px}
+.footer-brand svg{height:24px;width:auto;margin-bottom:16px}
+.footer-tagline{font-size:14px;color:var(--text-muted)}
+.footer-links{display:flex;gap:64px;flex-wrap:wrap}
+.footer-col h5{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-muted);margin-bottom:16px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-col a{font-size:14px;color:var(--text-secondary);transition:color 0.2s}
+.footer-col a:hover{color:var(--text-primary)}
+.footer-bottom{display:flex;justify-content:space-between;padding-top:24px;border-top:1px solid var(--border-subtle);font-size:13px;color:var(--text-dim);flex-wrap:wrap;gap:12px}
+.footer-legal{display:flex;gap:24px}
+.footer-legal a{color:var(--text-dim)}
+.footer-legal a:hover{color:var(--text-secondary)}
+
+@media(max-width:640px){
+  .nav-links{display:none}
+  main{padding:100px 0 40px}
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="/" class="nav-logo" aria-label="ARX Home">
+      <svg viewBox="0 0 100 27.4" height="28" role="img" aria-label="ARX logo">
+        <path fill="#FFFFFF" fill-rule="evenodd" d="M 5.7 0.2 L 0 27.4 L 5.4 27.4 L 25.5 8.1 L 30.0 27.4 L 35.2 27.4 L 29.3 0 Z M 21.7 4.6 L 7.0 19.4 L 10.1 4.8 Z"/>
+        <path fill="#FFFFFF" d="M 45.2 0 L 39.3 27.4 L 44.5 27.4 L 49.4 4.6 L 68.6 4.6 L 68.6 0 Z"/>
+        <path fill="#FFFFFF" d="M 72.7 0 L 72.7 4.6 L 82.9 14.3 L 72.7 24.6 L 72.7 27.4 L 76.1 27.4 L 86.5 17.6 L 96.8 27.4 L 100 27.4 L 100 24.5 L 89.9 14.5 L 100 4.8 L 100 0 L 97.5 0 L 86.5 11.1 L 75.2 0 Z"/>
+      </svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/#waitlist" class="nav-cta">Join Waitlist</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+    <header class="legal-header">
+      <h1>Risk Disclosure</h1>
+      <p class="legal-meta">Last updated: 2026-04-20</p>
+      <div class="legal-notice">
+        <strong>Pre-launch notice:</strong> This Risk Disclosure is a draft pending final legal review and will be updated before the platform becomes accessible to users.
+      </div>
+    </header>
+
+    <div class="risk-banner">
+      <strong>Warning:</strong> Trading perpetual futures and other leveraged derivatives is <strong>high-risk</strong>. You can <strong>lose all of your deposited capital</strong>, and in some scenarios more. Only trade with funds you can afford to lose entirely, and make sure you understand the risks described below before using the Services.
+    </div>
+
+    <article class="prose">
+      <h2>1. Nothing Here Is Investment Advice</h2>
+      <p>ARX is an informational interface, not a financial adviser, broker, or dealer. Nothing on the Site or in the Services is a recommendation to buy, sell, or hold any asset, and nothing here takes into account your personal financial situation, objectives, or risk tolerance. You are solely responsible for your trading decisions and their outcomes.</p>
+
+      <h2>2. Risk of Total Loss</h2>
+      <p>Perpetual futures are leveraged products. A small adverse move in the price of the underlying asset can liquidate your entire margin. Historically, a significant majority of retail traders of leveraged products lose money. You should assume that you may lose <strong>100% of the capital you deposit</strong>, and in some venues, more than your initial margin in the event of extreme price gaps, slippage, or socialized losses.</p>
+
+      <h2>3. Leverage Amplifies Losses</h2>
+      <p>Leverage magnifies both gains and losses. A position with 10x leverage loses 100% of its margin on a 10% adverse move in the underlying (before funding and fees). The higher the leverage, the smaller the adverse move required to wipe out your position.</p>
+
+      <h2>4. Market Volatility</h2>
+      <p>Markets for gold, oil, equity indices, and digital assets can be <strong>highly volatile</strong>. Prices can move sharply in seconds in response to macroeconomic data, geopolitical events, regulatory announcements, exchange outages, or large orders. Volatility can cause slippage, gaps through your stop-loss, and unexpected liquidations.</p>
+
+      <h2>5. Liquidation Risk</h2>
+      <p>Perpetual futures positions are automatically liquidated when margin falls below the maintenance level. During liquidation you may lose <strong>all margin posted to the position</strong> plus liquidation fees. Network congestion, oracle latency, or circuit-breaker behavior can cause liquidations at prices materially different from the last quoted mid-price.</p>
+
+      <h2>6. Funding Rates</h2>
+      <p>Perpetual futures use funding payments to keep the contract price anchored to the underlying. Depending on market conditions, funding can become strongly positive or strongly negative for extended periods, making it <strong>expensive to hold a position</strong> on the wrong side of the funding. Funding is not a fixed cost and cannot be predicted reliably.</p>
+
+      <h2>7. Smart Contract and Protocol Risk</h2>
+      <p>The Services interact with smart contracts, protocols, and infrastructure operated by third parties, including the Hyperliquid network. Smart contracts can contain <strong>bugs, exploits, or economic vulnerabilities</strong> that result in loss of user funds. Protocol upgrades, validator failures, chain reorganizations, or consensus failures can also cause losses. Audits reduce but do not eliminate these risks.</p>
+
+      <h2>8. Oracle and Price-Feed Risk</h2>
+      <p>Perpetual futures markets rely on oracle price feeds to calculate mark prices, funding, and liquidations. Oracle manipulation, stale data, or feed outages can cause <strong>unfair liquidations</strong> or trades to execute at prices disconnected from the broader market.</p>
+
+      <h2>9. Custody, Wallet, and Key Risk</h2>
+      <p>You are solely responsible for the security of your wallet, private keys, and seed phrases. If you lose access to your wallet, or if a third party obtains your keys or signs a malicious transaction, <strong>your funds may be permanently lost</strong>, and no one &mdash; including ARX &mdash; will be able to recover them. Always verify transaction details before signing.</p>
+
+      <h2>10. Counterparty and Infrastructure Risk</h2>
+      <p>ARX is a front-end only. Order matching, clearing, and settlement occur on third-party infrastructure. Outages, upgrades, bugs, or insolvency events affecting that infrastructure can <strong>prevent you from closing a position</strong>, delay withdrawals, or cause losses. ARX does not control or guarantee the availability of any third-party venue.</p>
+
+      <h2>11. Regulatory Risk</h2>
+      <p>The regulatory status of perpetual futures, decentralized finance, and tokens referencing real-world assets is <strong>uncertain and evolving</strong> in most jurisdictions. Future regulation, enforcement action, or changes in interpretation could restrict or prohibit your access to the Services, impair the value of your positions, or make certain activities illegal in your country of residence.</p>
+
+      <h2>12. Tax Risk</h2>
+      <p>Trading perpetual futures and other digital-asset derivatives may have significant tax consequences that vary widely by jurisdiction. You are responsible for determining and satisfying your own tax obligations. Consult a qualified tax professional in your country of residence.</p>
+
+      <h2>13. Third-Party Signals and Copy Trading</h2>
+      <p>If the Services present signals, leaderboards, or copy-trading features derived from third-party wallets or traders, <strong>past performance does not predict future results</strong>. Publicly visible strategies can be reverse-engineered, gamed, or abandoned without warning. Copying any strategy exposes you to the full trading risk of that strategy, and you may lose money even if the reference strategy is profitable, due to execution differences, slippage, or timing.</p>
+
+      <h2>14. Market Access Risk</h2>
+      <p>Access to the Services may be restricted or blocked at any time, with or without notice, including in response to legal or regulatory requirements. Users in restricted jurisdictions should not use the Services. See our <a href="/terms/">Terms of Service</a> for details on eligibility.</p>
+
+      <h2>15. Your Acknowledgement</h2>
+      <p>By using the Services, you confirm that you have read and understood this Risk Disclosure, that you accept the risks of trading perpetual futures, that you are financially able to bear losses up to and including the full amount of any funds you deposit, and that you have not relied on ARX for investment advice.</p>
+
+      <h2>16. Questions</h2>
+      <p>Questions about this Risk Disclosure? Contact <a href="mailto:support@arx.trade">support@arx.trade</a>. See also our <a href="/terms/">Terms of Service</a> and <a href="/privacy/">Privacy Policy</a>.</p>
+    </article>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <svg viewBox="0 0 100 27.4" height="24" role="img" aria-label="ARX logo">
+          <path fill="#71717A" fill-rule="evenodd" d="M 5.7 0.2 L 0 27.4 L 5.4 27.4 L 25.5 8.1 L 30.0 27.4 L 35.2 27.4 L 29.3 0 Z M 21.7 4.6 L 7.0 19.4 L 10.1 4.8 Z"/>
+          <path fill="#71717A" d="M 45.2 0 L 39.3 27.4 L 44.5 27.4 L 49.4 4.6 L 68.6 4.6 L 68.6 0 Z"/>
+          <path fill="#71717A" d="M 72.7 0 L 72.7 4.6 L 82.9 14.3 L 72.7 24.6 L 72.7 27.4 L 76.1 27.4 L 86.5 17.6 L 96.8 27.4 L 100 27.4 L 100 24.5 L 89.9 14.5 L 100 4.8 L 100 0 L 97.5 0 L 86.5 11.1 L 75.2 0 Z"/>
+        </svg>
+        <p class="footer-tagline">Trade gold, oil, S&amp;P 500, and crypto perps on-chain. Zero overnight fees. Powered by Hyperliquid.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Product</h5>
+          <ul>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#referral">Referral Program</a></li>
+            <li><a href="/insights/">Insights</a></li>
+            <li><a href="/blog/">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Community</h5>
+          <ul>
+            <li><a href="https://x.com/ARX_TRADE" target="_blank" rel="noopener">X.com (Twitter)</a></li>
+            <li><a href="https://discord.gg/kNV6raqC" target="_blank" rel="noopener">Discord</a></li>
+            <li><a href="https://t.me/ARX_Trade_Official" target="_blank" rel="noopener">Telegram</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="/terms/">Terms of Service</a></li>
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/risk/">Risk Disclosure</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ARX. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="/terms/">Terms</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/risk/">Risk</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service | ARX</title>
+<meta name="description" content="ARX Terms of Service. Rules for using arx.trade, including eligibility, restricted jurisdictions, acceptable use, risk acknowledgement, and limitation of liability.">
+
+<link rel="canonical" href="https://arx.trade/terms/" />
+<meta name="robots" content="index, follow" />
+
+<meta property="og:title" content="Terms of Service | ARX" />
+<meta property="og:description" content="Rules for using arx.trade: eligibility, acceptable use, risk acknowledgement, limitation of liability." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://arx.trade/terms/" />
+<meta property="og:image" content="https://arx.trade/og-image.png" />
+<meta property="og:site_name" content="ARX" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@ARX_TRADE" />
+<meta name="twitter:title" content="Terms of Service | ARX" />
+<meta name="twitter:description" content="Rules for using arx.trade." />
+<meta name="twitter:image" content="https://arx.trade/og-image.png" />
+
+<meta name="theme-color" content="#B38DF4" />
+<meta name="author" content="ARX Team" />
+
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg-base:#08060F; --bg-surface-1:#0F0B1A; --bg-surface-2:#1A1425;
+  --primary:#B38DF4; --primary-hover:#925BF0; --primary-glow:rgba(179,141,244,0.3);
+  --text-primary:#FFFFFF; --text-secondary:#A1A1AA; --text-muted:#71717A; --text-dim:#52525B;
+  --border-subtle:rgba(255,255,255,0.06); --border-medium:rgba(255,255,255,0.1);
+  --radius-md:12px; --radius-full:9999px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg-base);color:var(--text-primary);line-height:1.7;overflow-x:hidden}
+a{color:var(--primary);text-decoration:none}
+a:hover{color:var(--primary-hover)}
+.container{max-width:800px;margin:0 auto;padding:0 24px}
+
+/* Navbar */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(8,6,15,0.8);border-bottom:1px solid var(--border-subtle)}
+.navbar .container{max-width:1200px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo svg{height:28px;width:auto}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-links a{font-size:14px;font-weight:500;color:var(--text-secondary);transition:color 0.2s}
+.nav-links a:hover{color:var(--text-primary)}
+.nav-links a.nav-cta{padding:10px 20px;background:var(--primary);color:#FFF;border-radius:var(--radius-full);font-weight:600}
+.nav-cta:hover{background:var(--primary-hover);box-shadow:0 0 24px var(--primary-glow);color:#FFF}
+
+/* Article */
+main{padding:140px 0 80px}
+.legal-header{margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border-subtle)}
+.legal-header h1{font-size:clamp(32px,5vw,48px);font-weight:800;letter-spacing:-0.02em;margin-bottom:12px}
+.legal-meta{color:var(--text-muted);font-size:14px}
+.legal-notice{margin-top:20px;padding:16px 20px;background:rgba(179,141,244,0.06);border:1px solid rgba(179,141,244,0.2);border-radius:var(--radius-md);font-size:14px;color:var(--text-secondary)}
+.legal-notice strong{color:var(--primary)}
+
+.prose h2{font-size:24px;font-weight:700;margin:40px 0 16px;letter-spacing:-0.01em}
+.prose h3{font-size:18px;font-weight:600;margin:28px 0 12px;color:var(--text-primary)}
+.prose p{color:var(--text-secondary);margin-bottom:16px}
+.prose ul,.prose ol{color:var(--text-secondary);margin:0 0 16px 24px}
+.prose li{margin-bottom:8px}
+.prose strong{color:var(--text-primary);font-weight:600}
+
+/* Footer */
+.footer{padding:64px 0 32px;border-top:1px solid var(--border-subtle);margin-top:80px}
+.footer .container{max-width:1200px}
+.footer-content{display:flex;justify-content:space-between;gap:48px;flex-wrap:wrap;margin-bottom:48px}
+.footer-brand{max-width:320px}
+.footer-brand svg{height:24px;width:auto;margin-bottom:16px}
+.footer-tagline{font-size:14px;color:var(--text-muted)}
+.footer-links{display:flex;gap:64px;flex-wrap:wrap}
+.footer-col h5{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-muted);margin-bottom:16px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-col a{font-size:14px;color:var(--text-secondary);transition:color 0.2s}
+.footer-col a:hover{color:var(--text-primary)}
+.footer-bottom{display:flex;justify-content:space-between;padding-top:24px;border-top:1px solid var(--border-subtle);font-size:13px;color:var(--text-dim);flex-wrap:wrap;gap:12px}
+.footer-legal{display:flex;gap:24px}
+.footer-legal a{color:var(--text-dim)}
+.footer-legal a:hover{color:var(--text-secondary)}
+
+@media(max-width:640px){
+  .nav-links{display:none}
+  main{padding:100px 0 40px}
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="/" class="nav-logo" aria-label="ARX Home">
+      <svg viewBox="0 0 100 27.4" height="28" role="img" aria-label="ARX logo">
+        <path fill="#FFFFFF" fill-rule="evenodd" d="M 5.7 0.2 L 0 27.4 L 5.4 27.4 L 25.5 8.1 L 30.0 27.4 L 35.2 27.4 L 29.3 0 Z M 21.7 4.6 L 7.0 19.4 L 10.1 4.8 Z"/>
+        <path fill="#FFFFFF" d="M 45.2 0 L 39.3 27.4 L 44.5 27.4 L 49.4 4.6 L 68.6 4.6 L 68.6 0 Z"/>
+        <path fill="#FFFFFF" d="M 72.7 0 L 72.7 4.6 L 82.9 14.3 L 72.7 24.6 L 72.7 27.4 L 76.1 27.4 L 86.5 17.6 L 96.8 27.4 L 100 27.4 L 100 24.5 L 89.9 14.5 L 100 4.8 L 100 0 L 97.5 0 L 86.5 11.1 L 75.2 0 Z"/>
+      </svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/#waitlist" class="nav-cta">Join Waitlist</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+    <header class="legal-header">
+      <h1>Terms of Service</h1>
+      <p class="legal-meta">Last updated: 2026-04-20</p>
+      <div class="legal-notice">
+        <strong>Pre-launch notice:</strong> ARX is in pre-launch. These Terms are a draft pending final legal review and will be updated before the platform becomes accessible to users. Jurisdictional and entity details are indicative and subject to change.
+      </div>
+    </header>
+
+    <article class="prose">
+      <h2>1. Agreement</h2>
+      <p>These Terms of Service ("<strong>Terms</strong>") form a binding agreement between you ("<strong>you</strong>", "<strong>user</strong>") and ARX ("<strong>ARX</strong>", "<strong>we</strong>", "<strong>us</strong>"). By accessing arx.trade (the "<strong>Site</strong>") or using any service, product, or interface we make available (collectively, the "<strong>Services</strong>"), you agree to be bound by these Terms. If you do not agree, do not use the Services.</p>
+
+      <h2>2. Description of the Services</h2>
+      <p>ARX is a non-custodial front-end interface that helps users interact with perpetual futures markets on the Hyperliquid network, including perpetual contracts referencing real-world assets (for example gold, silver, oil, and equity indices) and digital assets.</p>
+      <p>ARX does <strong>not</strong> custody user funds, does <strong>not</strong> operate an order book or matching engine, and does <strong>not</strong> act as a broker, dealer, exchange, or counterparty. All trades are executed on third-party infrastructure, and self-custody of assets is retained by the user at all times.</p>
+
+      <h2>3. Eligibility</h2>
+      <p>To use the Services, you represent and warrant that:</p>
+      <ul>
+        <li>You are at least 18 years old and have full legal capacity to enter into these Terms.</li>
+        <li>You are not a Restricted Person (defined below).</li>
+        <li>You are not located, incorporated, or otherwise established in, and are not a citizen or resident of, a Restricted Jurisdiction.</li>
+        <li>Your use of the Services complies with all laws and regulations that apply to you.</li>
+      </ul>
+
+      <h3>Restricted Jurisdictions and Persons</h3>
+      <p>The Services are <strong>not</strong> offered to, and may not be used by, any of the following ("<strong>Restricted Persons</strong>"):</p>
+      <ul>
+        <li>Citizens, residents, or persons located in the <strong>United States of America</strong> (including all U.S. territories and possessions) or entities organized under U.S. law;</li>
+        <li>Persons located in or subject to the jurisdiction of any country or region subject to comprehensive sanctions administered by the U.S. Office of Foreign Assets Control (OFAC), the United Nations, the European Union, or the United Kingdom, including but not limited to <strong>Cuba, Iran, North Korea, Syria, and the Crimea, Donetsk, and Luhansk regions</strong>;</li>
+        <li>Persons listed on any sanctions or denied-parties list maintained by OFAC, the UN, EU, or UK;</li>
+        <li>Any other persons prohibited from accessing the Services by applicable law.</li>
+      </ul>
+      <p>We may, in our sole discretion, block access to the Services from any jurisdiction at any time, without notice.</p>
+
+      <h2>4. No Advice</h2>
+      <p>Nothing on the Site or in the Services constitutes financial, investment, legal, tax, or other professional advice, or a recommendation to buy, sell, or hold any asset. All content is provided for informational purposes only. You are solely responsible for your own trading decisions and should consult qualified professionals where appropriate.</p>
+
+      <h2>5. Risk Acknowledgement</h2>
+      <p>You acknowledge and accept that trading perpetual futures and other leveraged derivatives involves a high degree of risk, including the risk of <strong>total loss of deposited funds</strong> and, in some cases, losses exceeding initial margin. You further acknowledge the technical, market, regulatory, and counterparty risks described in our <a href="/risk/">Risk Disclosure</a>, which is incorporated into these Terms by reference.</p>
+
+      <h2>6. Acceptable Use</h2>
+      <p>You agree not to, and not to attempt to:</p>
+      <ul>
+        <li>Use the Services in violation of any applicable law, regulation, or third-party right;</li>
+        <li>Use the Services for money laundering, terrorist financing, tax evasion, or any other illegal purpose;</li>
+        <li>Engage in market manipulation, wash trading, spoofing, or similar abusive trading practices;</li>
+        <li>Interfere with, disrupt, or attempt to gain unauthorized access to the Services, related infrastructure, or other users' accounts;</li>
+        <li>Scrape, copy, modify, reverse-engineer, or create derivative works of the Site or Services, except to the limited extent permitted by law;</li>
+        <li>Use bots or automated tools to access the Services in a manner that imposes an unreasonable load on our infrastructure;</li>
+        <li>Misrepresent your identity, eligibility, or jurisdiction in order to bypass access controls.</li>
+      </ul>
+
+      <h2>7. Third-Party Services</h2>
+      <p>The Services rely on third-party infrastructure, including blockchain networks, wallet providers, liquidity venues, and data providers. We do not control these third parties and are not responsible for their acts, omissions, outages, or fees. Your use of third-party services is governed by their own terms.</p>
+
+      <h2>8. Intellectual Property</h2>
+      <p>All content on the Site, including text, graphics, logos, and software, is owned by ARX or its licensors and is protected by intellectual-property laws. Except as expressly permitted, you may not copy, reproduce, or distribute any part of the Site without our prior written consent. The "ARX" name and mark are owned by ARX.</p>
+
+      <h2>9. Disclaimers</h2>
+      <p>The Services are provided on an "<strong>as is</strong>" and "<strong>as available</strong>" basis, with all faults, and without warranty of any kind, whether express, implied, or statutory, including warranties of merchantability, fitness for a particular purpose, non-infringement, accuracy, or uninterrupted operation. We do not warrant that the Services will be secure, error-free, or available at any given time.</p>
+
+      <h2>10. Limitation of Liability</h2>
+      <p>To the maximum extent permitted by law, ARX, its affiliates, officers, directors, employees, and agents shall not be liable for any indirect, incidental, special, consequential, exemplary, or punitive damages, including lost profits, lost trading opportunities, loss of data, or loss of goodwill, arising out of or relating to the Services, even if advised of the possibility of such damages. Our aggregate liability for all claims relating to the Services shall not exceed US$100.</p>
+
+      <h2>11. Indemnification</h2>
+      <p>You agree to indemnify and hold harmless ARX and its affiliates from and against any claim, demand, loss, or expense (including reasonable legal fees) arising out of your use of the Services, your violation of these Terms, or your violation of any law or third-party right.</p>
+
+      <h2>12. Governing Law and Dispute Resolution</h2>
+      <p>These Terms and any dispute arising out of or relating to them are governed by the laws of the <strong>Cayman Islands</strong>, without regard to its conflict-of-laws rules. You agree that any dispute shall be resolved exclusively in the courts of the Cayman Islands, and you waive any objection to venue or forum.</p>
+      <p>Nothing in this section prevents us from seeking injunctive or equitable relief in any court of competent jurisdiction to protect our intellectual-property or confidentiality interests.</p>
+
+      <h2>13. Changes to These Terms</h2>
+      <p>We may update these Terms from time to time. The updated version will be posted on this page with a new "Last updated" date. Your continued use of the Services after an update constitutes acceptance of the revised Terms. If you do not agree to the changes, you must stop using the Services.</p>
+
+      <h2>14. Miscellaneous</h2>
+      <p>If any provision of these Terms is held to be invalid or unenforceable, the remaining provisions will continue in full force. Our failure to enforce any right is not a waiver. These Terms constitute the entire agreement between you and ARX regarding the Services and supersede any prior agreements.</p>
+
+      <h2>15. Contact</h2>
+      <p>Questions about these Terms? Reach us at <a href="mailto:support@arx.trade">support@arx.trade</a>.</p>
+    </article>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <svg viewBox="0 0 100 27.4" height="24" role="img" aria-label="ARX logo">
+          <path fill="#71717A" fill-rule="evenodd" d="M 5.7 0.2 L 0 27.4 L 5.4 27.4 L 25.5 8.1 L 30.0 27.4 L 35.2 27.4 L 29.3 0 Z M 21.7 4.6 L 7.0 19.4 L 10.1 4.8 Z"/>
+          <path fill="#71717A" d="M 45.2 0 L 39.3 27.4 L 44.5 27.4 L 49.4 4.6 L 68.6 4.6 L 68.6 0 Z"/>
+          <path fill="#71717A" d="M 72.7 0 L 72.7 4.6 L 82.9 14.3 L 72.7 24.6 L 72.7 27.4 L 76.1 27.4 L 86.5 17.6 L 96.8 27.4 L 100 27.4 L 100 24.5 L 89.9 14.5 L 100 4.8 L 100 0 L 97.5 0 L 86.5 11.1 L 75.2 0 Z"/>
+        </svg>
+        <p class="footer-tagline">Trade gold, oil, S&amp;P 500, and crypto perps on-chain. Zero overnight fees. Powered by Hyperliquid.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Product</h5>
+          <ul>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#referral">Referral Program</a></li>
+            <li><a href="/insights/">Insights</a></li>
+            <li><a href="/blog/">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Community</h5>
+          <ul>
+            <li><a href="https://x.com/ARX_TRADE" target="_blank" rel="noopener">X.com (Twitter)</a></li>
+            <li><a href="https://discord.gg/kNV6raqC" target="_blank" rel="noopener">Discord</a></li>
+            <li><a href="https://t.me/ARX_Trade_Official" target="_blank" rel="noopener">Telegram</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="/terms/">Terms of Service</a></li>
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/risk/">Risk Disclosure</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ARX. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="/terms/">Terms</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/risk/">Risk</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -167,6 +167,25 @@
   </url>
 
   <url>
+    <loc>https://arx.trade/terms/</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://arx.trade/privacy/</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://arx.trade/risk/</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
     <loc>https://arx.trade/markets/</loc>
     <lastmod>2026-04-20</lastmod>
     <changefreq>daily</changefreq>

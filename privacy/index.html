@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy | ARX</title>
+<meta name="description" content="ARX Privacy Policy. What data we collect (email, wallet address, IP, device), lawful basis under GDPR, cookies, third-party processors, and your rights including access and deletion.">
+
+<link rel="canonical" href="https://arx.trade/privacy/" />
+<meta name="robots" content="index, follow" />
+
+<meta property="og:title" content="Privacy Policy | ARX" />
+<meta property="og:description" content="What data we collect, how we use it, cookies, and your rights under GDPR." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://arx.trade/privacy/" />
+<meta property="og:image" content="https://arx.trade/og-image.png" />
+<meta property="og:site_name" content="ARX" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@ARX_TRADE" />
+<meta name="twitter:title" content="Privacy Policy | ARX" />
+<meta name="twitter:description" content="What data we collect and your rights." />
+<meta name="twitter:image" content="https://arx.trade/og-image.png" />
+
+<meta name="theme-color" content="#B38DF4" />
+<meta name="author" content="ARX Team" />
+
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg-base:#08060F; --bg-surface-1:#0F0B1A; --bg-surface-2:#1A1425;
+  --primary:#B38DF4; --primary-hover:#925BF0; --primary-glow:rgba(179,141,244,0.3);
+  --text-primary:#FFFFFF; --text-secondary:#A1A1AA; --text-muted:#71717A; --text-dim:#52525B;
+  --border-subtle:rgba(255,255,255,0.06); --border-medium:rgba(255,255,255,0.1);
+  --radius-md:12px; --radius-full:9999px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg-base);color:var(--text-primary);line-height:1.7;overflow-x:hidden}
+a{color:var(--primary);text-decoration:none}
+a:hover{color:var(--primary-hover)}
+.container{max-width:800px;margin:0 auto;padding:0 24px}
+
+.navbar{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(8,6,15,0.8);border-bottom:1px solid var(--border-subtle)}
+.navbar .container{max-width:1200px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo svg{height:28px;width:auto}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-links a{font-size:14px;font-weight:500;color:var(--text-secondary);transition:color 0.2s}
+.nav-links a:hover{color:var(--text-primary)}
+.nav-links a.nav-cta{padding:10px 20px;background:var(--primary);color:#FFF;border-radius:var(--radius-full);font-weight:600}
+.nav-cta:hover{background:var(--primary-hover);box-shadow:0 0 24px var(--primary-glow);color:#FFF}
+
+main{padding:140px 0 80px}
+.legal-header{margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border-subtle)}
+.legal-header h1{font-size:clamp(32px,5vw,48px);font-weight:800;letter-spacing:-0.02em;margin-bottom:12px}
+.legal-meta{color:var(--text-muted);font-size:14px}
+.legal-notice{margin-top:20px;padding:16px 20px;background:rgba(179,141,244,0.06);border:1px solid rgba(179,141,244,0.2);border-radius:var(--radius-md);font-size:14px;color:var(--text-secondary)}
+.legal-notice strong{color:var(--primary)}
+
+.prose h2{font-size:24px;font-weight:700;margin:40px 0 16px;letter-spacing:-0.01em}
+.prose h3{font-size:18px;font-weight:600;margin:28px 0 12px;color:var(--text-primary)}
+.prose p{color:var(--text-secondary);margin-bottom:16px}
+.prose ul,.prose ol{color:var(--text-secondary);margin:0 0 16px 24px}
+.prose li{margin-bottom:8px}
+.prose strong{color:var(--text-primary);font-weight:600}
+.prose table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}
+.prose th,.prose td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--border-subtle);color:var(--text-secondary);vertical-align:top}
+.prose th{font-weight:600;color:var(--text-primary);background:var(--bg-surface-1)}
+
+.footer{padding:64px 0 32px;border-top:1px solid var(--border-subtle);margin-top:80px}
+.footer .container{max-width:1200px}
+.footer-content{display:flex;justify-content:space-between;gap:48px;flex-wrap:wrap;margin-bottom:48px}
+.footer-brand{max-width:320px}
+.footer-brand svg{height:24px;width:auto;margin-bottom:16px}
+.footer-tagline{font-size:14px;color:var(--text-muted)}
+.footer-links{display:flex;gap:64px;flex-wrap:wrap}
+.footer-col h5{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-muted);margin-bottom:16px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-col a{font-size:14px;color:var(--text-secondary);transition:color 0.2s}
+.footer-col a:hover{color:var(--text-primary)}
+.footer-bottom{display:flex;justify-content:space-between;padding-top:24px;border-top:1px solid var(--border-subtle);font-size:13px;color:var(--text-dim);flex-wrap:wrap;gap:12px}
+.footer-legal{display:flex;gap:24px}
+.footer-legal a{color:var(--text-dim)}
+.footer-legal a:hover{color:var(--text-secondary)}
+
+@media(max-width:640px){
+  .nav-links{display:none}
+  main{padding:100px 0 40px}
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="/" class="nav-logo" aria-label="ARX Home">
+      <svg viewBox="0 0 100 27.4" height="28" role="img" aria-label="ARX logo">
+        <path fill="#FFFFFF" fill-rule="evenodd" d="M 5.7 0.2 L 0 27.4 L 5.4 27.4 L 25.5 8.1 L 30.0 27.4 L 35.2 27.4 L 29.3 0 Z M 21.7 4.6 L 7.0 19.4 L 10.1 4.8 Z"/>
+        <path fill="#FFFFFF" d="M 45.2 0 L 39.3 27.4 L 44.5 27.4 L 49.4 4.6 L 68.6 4.6 L 68.6 0 Z"/>
+        <path fill="#FFFFFF" d="M 72.7 0 L 72.7 4.6 L 82.9 14.3 L 72.7 24.6 L 72.7 27.4 L 76.1 27.4 L 86.5 17.6 L 96.8 27.4 L 100 27.4 L 100 24.5 L 89.9 14.5 L 100 4.8 L 100 0 L 97.5 0 L 86.5 11.1 L 75.2 0 Z"/>
+      </svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/#waitlist" class="nav-cta">Join Waitlist</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+    <header class="legal-header">
+      <h1>Privacy Policy</h1>
+      <p class="legal-meta">Last updated: 2026-04-20</p>
+      <div class="legal-notice">
+        <strong>Pre-launch notice:</strong> ARX is in pre-launch. This Privacy Policy describes the limited data we collect during the waitlist phase and the data we expect to collect once the platform launches. It will be updated as processing activities evolve and as final legal review is completed.
+      </div>
+    </header>
+
+    <article class="prose">
+      <h2>1. Who We Are</h2>
+      <p>ARX ("<strong>ARX</strong>", "<strong>we</strong>", "<strong>us</strong>") operates the website at arx.trade (the "<strong>Site</strong>") and related services. For the purposes of the EU General Data Protection Regulation (GDPR) and the UK GDPR, ARX is the <strong>data controller</strong> for personal data processed through the Site.</p>
+      <p>If you have any questions about this Policy or your data, contact us at <a href="mailto:support@arx.trade">support@arx.trade</a>.</p>
+
+      <h2>2. Data We Collect</h2>
+      <p>We collect only the data we need to operate the Site and prepare for launch.</p>
+
+      <table>
+        <thead>
+          <tr><th>Category</th><th>Examples</th><th>Source</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Contact data</td><td>Email address, referral code</td><td>You, via the waitlist form</td></tr>
+          <tr><td>Wallet data</td><td>Public wallet address (optional)</td><td>You, via the waitlist form</td></tr>
+          <tr><td>Technical data</td><td>IP address, browser type, device type, OS, screen size</td><td>Automatically, via server logs and cookies</td></tr>
+          <tr><td>Usage data</td><td>Pages viewed, referrer URL, time on page, clicks</td><td>Automatically, via analytics</td></tr>
+          <tr><td>Communications</td><td>Messages you send to us via email or social channels</td><td>You</td></tr>
+        </tbody>
+      </table>
+
+      <p>We do <strong>not</strong> knowingly collect data from children under 18. We do <strong>not</strong> collect government identifiers, passport numbers, or payment-card data.</p>
+
+      <h2>3. How We Use Your Data and Lawful Basis</h2>
+      <p>Under GDPR, we process personal data only where we have a lawful basis:</p>
+      <ul>
+        <li><strong>Contract / pre-contract (Art. 6(1)(b)):</strong> to register you on the waitlist, send launch notifications, and later provide the Services.</li>
+        <li><strong>Legitimate interests (Art. 6(1)(f)):</strong> to secure the Site against fraud and abuse, measure traffic, diagnose technical problems, and improve the product.</li>
+        <li><strong>Consent (Art. 6(1)(a)):</strong> for non-essential cookies and optional marketing communications. You may withdraw consent at any time.</li>
+        <li><strong>Legal obligation (Art. 6(1)(c)):</strong> to comply with sanctions, anti-money-laundering, and other laws that apply to us.</li>
+      </ul>
+
+      <h2>4. Cookies and Similar Technologies</h2>
+      <p>We use a small number of cookies and local-storage keys:</p>
+      <ul>
+        <li><strong>Strictly necessary:</strong> keep the Site functional (e.g. CSRF protection, session continuity). Cannot be disabled.</li>
+        <li><strong>Analytics:</strong> count unique visitors and measure traffic patterns. May be disabled in your browser.</li>
+        <li><strong>Preferences:</strong> remember your consent choices and UI preferences.</li>
+      </ul>
+      <p>You can block or delete cookies through your browser settings. Doing so may affect Site functionality.</p>
+
+      <h2>5. Third-Party Processors</h2>
+      <p>We share limited personal data with service providers who process it on our behalf under written data-processing agreements. Current and anticipated processors include:</p>
+      <ul>
+        <li><strong>Hosting and CDN:</strong> GitHub Pages, Cloudflare (if applicable) &mdash; to serve the Site.</li>
+        <li><strong>Email delivery:</strong> transactional-email provider (TBD) &mdash; to send waitlist confirmations and launch notifications.</li>
+        <li><strong>Analytics:</strong> Google Analytics or a privacy-preserving equivalent &mdash; to measure traffic.</li>
+        <li><strong>Search and indexing:</strong> Google Search Console &mdash; to monitor search performance (aggregated, not user-level).</li>
+      </ul>
+      <p>We do not sell personal data, and we do not share it with third parties for their independent marketing.</p>
+
+      <h2>6. International Transfers</h2>
+      <p>Our processors may store data in the United States, the European Union, and other jurisdictions. Where personal data is transferred out of the EEA or UK, we rely on appropriate safeguards such as the European Commission's Standard Contractual Clauses, or on the adequacy decisions that apply to the destination country.</p>
+
+      <h2>7. Data Retention</h2>
+      <p>We retain personal data only as long as needed for the purposes described in this Policy:</p>
+      <ul>
+        <li>Waitlist email and wallet address: until you unsubscribe or request deletion, or until launch plus 24 months.</li>
+        <li>Server logs: up to 90 days.</li>
+        <li>Analytics data: up to 26 months, aggregated thereafter.</li>
+      </ul>
+
+      <h2>8. Your Rights</h2>
+      <p>If you are in the EEA, UK, or a comparable jurisdiction, you have the right to:</p>
+      <ul>
+        <li><strong>Access</strong> the personal data we hold about you;</li>
+        <li><strong>Rectify</strong> inaccurate or incomplete data;</li>
+        <li><strong>Erase</strong> your data ("right to be forgotten"), subject to our legal retention obligations;</li>
+        <li><strong>Restrict or object</strong> to processing based on legitimate interests;</li>
+        <li><strong>Data portability</strong> &mdash; receive your data in a structured, machine-readable format;</li>
+        <li><strong>Withdraw consent</strong> at any time, without affecting the lawfulness of prior processing;</li>
+        <li><strong>Lodge a complaint</strong> with your local data-protection authority.</li>
+      </ul>
+      <p>To exercise any of these rights, email <a href="mailto:support@arx.trade">support@arx.trade</a>. We will respond within 30 days.</p>
+
+      <h2>9. Security</h2>
+      <p>We use industry-standard measures to protect personal data, including TLS encryption in transit, access controls, and least-privilege administration. No system is perfectly secure, however, and we cannot guarantee absolute protection against unauthorized access.</p>
+
+      <h2>10. On-Chain Data</h2>
+      <p>If you interact with the Services on a public blockchain, your wallet address and transaction history are recorded on that blockchain and are <strong>publicly visible and permanent</strong>. We have no control over this data and cannot delete it. You should understand the privacy implications of on-chain activity before using any wallet.</p>
+
+      <h2>11. Changes</h2>
+      <p>We may update this Policy from time to time. Material changes will be announced on the Site and, where appropriate, by email. The "Last updated" date at the top of this page reflects the most recent revision.</p>
+
+      <h2>12. Contact</h2>
+      <p>Questions, requests, or complaints? Contact <a href="mailto:support@arx.trade">support@arx.trade</a>.</p>
+    </article>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <svg viewBox="0 0 100 27.4" height="24" role="img" aria-label="ARX logo">
+          <path fill="#71717A" fill-rule="evenodd" d="M 5.7 0.2 L 0 27.4 L 5.4 27.4 L 25.5 8.1 L 30.0 27.4 L 35.2 27.4 L 29.3 0 Z M 21.7 4.6 L 7.0 19.4 L 10.1 4.8 Z"/>
+          <path fill="#71717A" d="M 45.2 0 L 39.3 27.4 L 44.5 27.4 L 49.4 4.6 L 68.6 4.6 L 68.6 0 Z"/>
+          <path fill="#71717A" d="M 72.7 0 L 72.7 4.6 L 82.9 14.3 L 72.7 24.6 L 72.7 27.4 L 76.1 27.4 L 86.5 17.6 L 96.8 27.4 L 100 27.4 L 100 24.5 L 89.9 14.5 L 100 4.8 L 100 0 L 97.5 0 L 86.5 11.1 L 75.2 0 Z"/>
+        </svg>
+        <p class="footer-tagline">Trade gold, oil, S&amp;P 500, and crypto perps on-chain. Zero overnight fees. Powered by Hyperliquid.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Product</h5>
+          <ul>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#referral">Referral Program</a></li>
+            <li><a href="/insights/">Insights</a></li>
+            <li><a href="/blog/">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Community</h5>
+          <ul>
+            <li><a href="https://x.com/ARX_TRADE" target="_blank" rel="noopener">X.com (Twitter)</a></li>
+            <li><a href="https://discord.gg/kNV6raqC" target="_blank" rel="noopener">Discord</a></li>
+            <li><a href="https://t.me/ARX_Trade_Official" target="_blank" rel="noopener">Telegram</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="/terms/">Terms of Service</a></li>
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/risk/">Risk Disclosure</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ARX. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="/terms/">Terms</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/risk/">Risk</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
