@@ -556,7 +556,7 @@ a {{ color:inherit; text-decoration:none; }}
 }}
 .navbar .container {{ max-width:100%; display:flex; align-items:center; justify-content:space-between; padding:0; }}
 .nav-logo {{ display:flex; align-items:center; }}
-.nav-logo svg {{ height:20px; width:auto; display:block; }}
+.nav-logo svg, .nav-logo img {{ height:40px; width:auto; display:block; }}
 .nav-links {{ display:flex; align-items:center; gap:32px; list-style:none; }}
 .nav-links a {{ font-size:14px; font-weight:500; color:var(--text-secondary); transition:color 0.2s; }}
 .nav-links a:hover {{ color:var(--text-primary); }}
@@ -659,11 +659,7 @@ a {{ color:inherit; text-decoration:none; }}
 <nav class="navbar">
   <div class="container">
     <a href="/" class="nav-logo">
-      <svg viewBox="0 0 100 27.4" height="20" role="img" aria-label="ARX logo">
-        <path fill="#FFFFFF" fill-rule="evenodd" d="M 5.7 0.2 L 0 27.4 L 5.4 27.4 L 25.5 8.1 L 30.0 27.4 L 35.2 27.4 L 29.3 0 Z M 21.7 4.6 L 7.0 19.4 L 10.1 4.8 Z"/>
-        <path fill="#FFFFFF" d="M 45.2 0 L 39.3 27.4 L 44.5 27.4 L 49.4 4.6 L 68.6 4.6 L 68.6 0 Z"/>
-        <path fill="#FFFFFF" d="M 72.7 0 L 72.7 4.6 L 82.9 14.3 L 72.7 24.6 L 72.7 27.4 L 76.1 27.4 L 86.5 17.6 L 96.8 27.4 L 100 27.4 L 100 24.5 L 89.9 14.5 L 100 4.8 L 100 0 L 97.5 0 L 86.5 11.1 L 75.2 0 Z"/>
-      </svg>
+      <img src="/img/Arx_Logo_Frost_white.svg" alt="ARX" height="40" width="73">
     </a>
     <ul class="nav-links">
       <li><a href="/">Home</a></li>
@@ -904,7 +900,7 @@ a {{ color:inherit; text-decoration:none; }}
 }}
 .navbar .container {{ max-width:100%; display:flex; align-items:center; justify-content:space-between; padding:0; }}
 .nav-logo {{ display:flex; align-items:center; }}
-.nav-logo svg {{ height:20px; width:auto; display:block; }}
+.nav-logo svg, .nav-logo img {{ height:40px; width:auto; display:block; }}
 .nav-links {{ display:flex; align-items:center; gap:32px; list-style:none; }}
 .nav-links a {{ font-size:14px; font-weight:500; color:var(--text-secondary); transition:color 0.2s; }}
 .nav-links a:hover {{ color:var(--text-primary); }}
@@ -987,11 +983,7 @@ a {{ color:inherit; text-decoration:none; }}
 <nav class="navbar">
   <div class="container">
     <a href="/" class="nav-logo">
-      <svg viewBox="0 0 100 27.4" height="20" role="img" aria-label="ARX logo">
-        <path fill="#FFFFFF" fill-rule="evenodd" d="M 5.7 0.2 L 0 27.4 L 5.4 27.4 L 25.5 8.1 L 30.0 27.4 L 35.2 27.4 L 29.3 0 Z M 21.7 4.6 L 7.0 19.4 L 10.1 4.8 Z"/>
-        <path fill="#FFFFFF" d="M 45.2 0 L 39.3 27.4 L 44.5 27.4 L 49.4 4.6 L 68.6 4.6 L 68.6 0 Z"/>
-        <path fill="#FFFFFF" d="M 72.7 0 L 72.7 4.6 L 82.9 14.3 L 72.7 24.6 L 72.7 27.4 L 76.1 27.4 L 86.5 17.6 L 96.8 27.4 L 100 27.4 L 100 24.5 L 89.9 14.5 L 100 4.8 L 100 0 L 97.5 0 L 86.5 11.1 L 75.2 0 Z"/>
-      </svg>
+      <img src="/img/Arx_Logo_Frost_white.svg" alt="ARX" height="40" width="73">
     </a>
     <ul class="nav-links">
       <li><a href="/">Home</a></li>
