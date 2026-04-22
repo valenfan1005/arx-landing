@@ -97,6 +97,12 @@
 .disclaimer{font-size:11px;color:var(--text-muted);text-align:center;padding:16px 0 0}
 .footer{padding:40px 0;border-top:1px solid var(--border-subtle);margin-top:40px}.footer p{font-size:12px;color:var(--text-muted);text-align:center}.footer a{color:var(--text-secondary)}.footer a:hover{color:var(--text-primary)}
 @media(max-width:768px){.stats-grid{grid-template-columns:repeat(2,1fr)}.article-header h1{font-size:22px}}
+.cta-btn + .cta-btn-secondary { margin-left: 12px; }
+.cta-btn-secondary { display:inline-block; padding:12px 32px; background:transparent; color:var(--primary); border:1px solid var(--primary); border-radius:var(--radius-full); font-size:15px; font-weight:600; transition:all 0.2s; text-decoration:none; }
+.cta-btn-secondary:hover { background:rgba(179,141,244,0.1); border-color:var(--primary-hover); color:var(--primary-hover); }
+@media (max-width: 560px) {
+  .cta-btn + .cta-btn-secondary { margin-left:0; margin-top:10px; }
+}
 </style>
 </head>
 <body>
@@ -207,6 +213,7 @@
     <h2>Trade Gold Perps on ARX</h2>
     <p>Zero overnight fees. 24/7 access. Self-custody. Powered by Hyperliquid.</p>
     <a href="/#waitlist" class="cta-btn">Join Waitlist</a>
+    <a href="https://t.me/ARX_Trade_Official" target="_blank" rel="noopener" class="cta-btn-secondary">Trading Signals →</a>
   </div>
 
   <p class="disclaimer">This content is for informational purposes only and does not constitute financial advice. Always do your own research before making trading decisions.</p>

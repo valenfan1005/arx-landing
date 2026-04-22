@@ -974,6 +974,21 @@ img { max-width: 100%; display: block; }
   .footer-links { gap: 32px; flex-wrap: wrap; }
   .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
 }
+.article-cta .btn + .btn { margin-left: 12px; }
+.article-cta .btn-secondary {
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  backdrop-filter: none;
+}
+.article-cta .btn-secondary:hover {
+  background: rgba(179, 141, 244, 0.1);
+  border-color: var(--primary-hover);
+  color: var(--primary-hover);
+}
+@media (max-width: 560px) {
+  .article-cta .btn + .btn { margin-left: 0; margin-top: 12px; display: block; }
+}
 </style>
 </head>
 <body>
@@ -1304,6 +1319,7 @@ img { max-width: 100%; display: block; }
   <h3>Trade Oil, Gold &amp; S&amp;P 500 On-Chain</h3>
   <p>Zero overnight fees. Self-custody. 24/7 markets. ARX adds smart signals and copy trading on top of Hyperliquid&rsquo;s RWA perps.</p>
   <a href="/#waitlist" class="btn btn-primary">Join the ARX Waitlist</a>
+  <a href="https://t.me/ARX_Trade_Official" target="_blank" rel="noopener" class="btn btn-secondary">Trading Signals →</a>
 </div>
 
 <!-- ============================================

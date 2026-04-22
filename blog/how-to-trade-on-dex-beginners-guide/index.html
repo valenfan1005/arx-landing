@@ -365,6 +365,21 @@ blockquote p { margin: 0; font-style: italic; color: var(--text-secondary); }
   .footer-links { gap: 32px; flex-wrap: wrap; }
   .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
 }
+.article-cta .btn + .btn { margin-left: 12px; }
+.article-cta .btn-secondary {
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  backdrop-filter: none;
+}
+.article-cta .btn-secondary:hover {
+  background: rgba(179, 141, 244, 0.1);
+  border-color: var(--primary-hover);
+  color: var(--primary-hover);
+}
+@media (max-width: 560px) {
+  .article-cta .btn + .btn { margin-left: 0; margin-top: 12px; display: block; }
+}
 </style>
 </head>
 <body>
@@ -808,6 +823,7 @@ blockquote p { margin: 0; font-style: italic; color: var(--text-secondary); }
   <h3>Already Know How to Read a Chart?</h3>
   <p>ARX puts gold, silver, oil, and S&amp;P 500 perps in one interface &mdash; designed for traders coming from eToro, IG, or a CEX, not for first-time crypto buyers. Copy top on-chain wallets, trade in your language (KR / VN / ZH / EN), and use regime detection tools instead of guessing.</p>
   <a href="/#waitlist" class="btn btn-primary">Join the ARX Waitlist</a>
+  <a href="https://t.me/ARX_Trade_Official" target="_blank" rel="noopener" class="btn btn-secondary">Trading Signals →</a>
 </div>
 
 <footer class="footer">
