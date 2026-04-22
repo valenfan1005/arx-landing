@@ -508,7 +508,8 @@ def render_market_page(slug: str, cfg: dict, data: dict) -> str:
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="apple-touch-icon" href="/img/favicon.png">
 <link rel="alternate" type="application/rss+xml" title="ARX" href="{BASE_URL}/feed.xml">
 
 <style>
@@ -855,7 +856,8 @@ def render_markets_index(configs: Dict[str, Dict[str, Any]], hl_data: Dict[str, 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="apple-touch-icon" href="/img/favicon.png">
 <link rel="alternate" type="application/rss+xml" title="ARX" href="{BASE_URL}/feed.xml">
 
 <style>
