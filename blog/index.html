@@ -168,7 +168,7 @@ img { max-width: 100%; display: block; }
 }
 
 .nav-logo { display: flex; align-items: center; }
-.nav-logo svg { height: 20px; width: auto; display: block; }
+.nav-logo svg, .nav-logo img { height:40px; width:auto; display:block; }
 
 .nav-links {
   display: flex;
@@ -477,6 +477,27 @@ img { max-width: 100%; display: block; }
   .footer-content { flex-direction: column; gap: 48px; }
   .footer-links { gap: 32px; flex-wrap: wrap; }
   .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+}
+.article-header .hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 12px 28px;
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  border-radius: var(--radius-full);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.article-header .hero-cta:hover {
+  background: rgba(179, 141, 244, 0.1);
+  border-color: var(--primary-hover);
+  color: var(--primary-hover);
+  box-shadow: 0 0 24px var(--primary-glow);
 }
 </style>
 </head>

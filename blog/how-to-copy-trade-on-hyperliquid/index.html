@@ -309,7 +309,7 @@ img { max-width: 100%; display: block; }
   justify-content: space-between;
 }
 
-.nav-logo svg { height: 28px; width: auto; }
+.nav-logo svg, .nav-logo img { height: 40px; width: auto; display: block; }
 
 .nav-links {
   display: flex;
@@ -922,20 +922,26 @@ img { max-width: 100%; display: block; }
   .footer-links { gap: 32px; flex-wrap: wrap; }
   .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
 }
-.article-cta .btn + .btn { margin-left: 12px; }
-.article-cta .btn-secondary {
+.article-header .hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 12px 28px;
   background: transparent;
   color: var(--primary);
   border: 1px solid var(--primary);
-  backdrop-filter: none;
+  border-radius: var(--radius-full);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
 }
-.article-cta .btn-secondary:hover {
+.article-header .hero-cta:hover {
   background: rgba(179, 141, 244, 0.1);
   border-color: var(--primary-hover);
   color: var(--primary-hover);
-}
-@media (max-width: 560px) {
-  .article-cta .btn + .btn { margin-left: 0; margin-top: 12px; display: block; }
+  box-shadow: 0 0 24px var(--primary-glow);
 }
 </style>
 </head>
@@ -976,8 +982,8 @@ img { max-width: 100%; display: block; }
       <span class="dot"></span>
       <span>8 min read</span>
     </div>
-  </div>
-</header>
+      <a class="hero-cta" href="https://t.me/ARX_Trade_Official" target="_blank" rel="noopener">Trading Signals →</a>
+  </div></header>
 
 <!-- ============================================
      TABLE OF CONTENTS
@@ -1169,16 +1175,6 @@ img { max-width: 100%; display: block; }
     <div class="author-name">ARX Team</div>
     <div class="author-date">Published March 19, 2026</div>
   </div>
-</div>
-
-<!-- ============================================
-     CTA BANNER
-     ============================================ -->
-<div class="article-cta">
-  <h3>Start Copy Trading with an Edge</h3>
-  <p>Regime-aware signals, confluence scoring, and institutional-grade risk controls &mdash; built for traders who demand more from Hyperliquid.</p>
-  <a href="/#waitlist" class="btn btn-primary">Join the ARX Waitlist</a>
-  <a href="https://t.me/ARX_Trade_Official" target="_blank" rel="noopener" class="btn btn-secondary">Trading Signals →</a>
 </div>
 
 <!-- ============================================

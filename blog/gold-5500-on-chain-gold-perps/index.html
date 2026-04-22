@@ -253,7 +253,7 @@ img { max-width: 100%; display: block; }
   justify-content: space-between;
 }
 
-.nav-logo svg { height: 28px; width: auto; }
+.nav-logo svg, .nav-logo img { height: 40px; width: auto; display: block; }
 
 .nav-links {
   display: flex;
@@ -980,20 +980,26 @@ blockquote p {
   .footer-links { gap: 32px; flex-wrap: wrap; }
   .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
 }
-.article-cta .btn + .btn { margin-left: 12px; }
-.article-cta .btn-secondary {
+.article-header .hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 12px 28px;
   background: transparent;
   color: var(--primary);
   border: 1px solid var(--primary);
-  backdrop-filter: none;
+  border-radius: var(--radius-full);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
 }
-.article-cta .btn-secondary:hover {
+.article-header .hero-cta:hover {
   background: rgba(179, 141, 244, 0.1);
   border-color: var(--primary-hover);
   color: var(--primary-hover);
-}
-@media (max-width: 560px) {
-  .article-cta .btn + .btn { margin-left: 0; margin-top: 12px; display: block; }
+  box-shadow: 0 0 24px var(--primary-glow);
 }
 </style>
 </head>
@@ -1036,8 +1042,8 @@ blockquote p {
       <div class="dot"></div>
       <span>RWA Trading</span>
     </div>
-  </div>
-</header>
+      <a class="hero-cta" href="https://t.me/ARX_Trade_Official" target="_blank" rel="noopener">Trading Signals →</a>
+  </div></header>
 
 <!-- ============================================
      TABLE OF CONTENTS
@@ -1352,16 +1358,6 @@ blockquote p {
     <div class="author-name">ARX Team</div>
     <div class="author-date">Published April 16, 2026</div>
   </div>
-</div>
-
-<!-- ============================================
-     CTA BANNER
-     ============================================ -->
-<div class="article-cta">
-  <h3>Trade Gold, Oil &amp; S&amp;P 500 On-Chain</h3>
-  <p>Zero overnight fees. Self-custody. 24/7 markets. ARX adds smart signals and copy trading on top of Hyperliquid&rsquo;s RWA perps.</p>
-  <a href="/#waitlist" class="btn btn-primary">Join the ARX Waitlist</a>
-  <a href="https://t.me/ARX_Trade_Official" target="_blank" rel="noopener" class="btn btn-secondary">Trading Signals →</a>
 </div>
 
 <!-- ============================================
