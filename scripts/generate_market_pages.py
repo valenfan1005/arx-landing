@@ -652,6 +652,11 @@ a {{ color:inherit; text-decoration:none; }}
   .market-price {{ font-size:36px; }}
   .market-name {{ font-size:24px; }}
 }}
+@media (max-width: 768px) {{
+  .navbar .nav-links li a:not(.nav-cta) {{ display: none; }}
+  .navbar .nav-links {{ gap: 12px; }}
+  .nav-logo img {{ height: 32px !important; }}
+}}
 </style>
 </head>
 <body data-api-name="{api_name}"{dex_attr} data-price-divisor="{cfg.get('price_divisor', 1)}">
@@ -977,6 +982,11 @@ a {{ color:inherit; text-decoration:none; }}
     background:var(--bg-surface-2); border-radius:var(--radius-md);
     padding:16px; margin-top:8px; gap:12px;
   }}
+}}
+@media (max-width: 768px) {{
+  .navbar .nav-links li a:not(.nav-cta) {{ display: none; }}
+  .navbar .nav-links {{ gap: 12px; }}
+  .nav-logo img {{ height: 32px !important; }}
 }}
 </style>
 </head>

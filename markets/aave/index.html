@@ -223,6 +223,11 @@ a { color:inherit; text-decoration:none; }
   .market-price { font-size:36px; }
   .market-name { font-size:24px; }
 }
+@media (max-width: 768px) {
+  .navbar .nav-links li a:not(.nav-cta) { display: none; }
+  .navbar .nav-links { gap: 12px; }
+  .nav-logo img { height: 32px !important; }
+}
 </style>
 </head>
 <body data-api-name="AAVE" data-price-divisor="1">

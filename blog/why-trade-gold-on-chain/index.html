@@ -930,6 +930,11 @@ img { max-width: 100%; display: block; }
   color: var(--primary-hover);
   box-shadow: 0 0 24px var(--primary-glow);
 }
+@media (max-width: 768px) {
+  .navbar .nav-links li a:not(.nav-cta) { display: none; }
+  .navbar .nav-links { gap: 12px; }
+  .nav-logo img { height: 32px !important; }
+}
 </style>
 </head>
 
