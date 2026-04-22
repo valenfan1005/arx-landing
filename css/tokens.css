@@ -1,50 +1,182 @@
 /* ============================================
-   DESIGN TOKENS — "The Keep" Palette
+   ARX DESIGN TOKENS
+   Source of truth: Design/brand/Arx _Typography and more.pdf (2026-04-22)
+   Brand philosophy: "Colour with purpose. Every colour earns its place."
    ============================================ */
 :root {
-  /* Backgrounds */
-  --bg-base: #08060F;
-  --bg-surface-1: #0F0B1A;
-  --bg-surface-2: #1A1425;
-  --bg-surface-3: #251E30;
-  --bg-surface-4: #302840;
+  /* ============================================
+     BRAND CORE — 5 named colours (p.16)
+     ============================================ */
+  --color-violet:   #B38DF4;  /* Primary — signature, use boldly */
+  --color-purple:   #381B81;  /* Secondary — supports/grounds, never competes */
+  --color-electric: #22D1EE;  /* Secondary — brand expression only, NEVER in product UI */
+  --color-midnight: #070700;  /* Neutral — brand black, dark-mode canvas */
+  --color-frost:    #E9EAF0;  /* Neutral — replaces pure white in reversed text */
 
-  /* Primary — Purple */
-  --primary: #B38DF4;
-  --primary-hover: #C4A5F7;
-  --primary-light: #D0B8F9;
-  --primary-lighter: #DDCCFB;
-  --primary-glow: rgba(179, 141, 244, 0.3);
+  /* ============================================
+     RAMPS — 50 (lightest) → 900 (darkest), 500 = base
+     (Approximated; refine against PDF p.18 when final ramp values confirmed)
+     ============================================ */
 
-  /* Accent — Moat Cyan */
-  --cyan: #22D1EE;
-  --cyan-dim: rgba(34, 209, 238, 0.15);
-  --cyan-glow: rgba(34, 209, 238, 0.3);
+  /* Violet ramp (base 500 = #B38DF4) */
+  --violet-50:  #F4ECFE;
+  --violet-100: #E8D9FD;
+  --violet-200: #D0B6FB;
+  --violet-300: #C4A5F7;
+  --violet-400: #BD9AF6;
+  --violet-500: #B38DF4;
+  --violet-600: #9D74E8;
+  --violet-700: #8155E0;
+  --violet-800: #5E37B8;
+  --violet-900: #3E2180;
 
-  /* Accent — Sky Pink */
-  --pink: #F472B6;
-  --pink-dim: rgba(244, 114, 182, 0.15);
+  /* Purple ramp (base 500 = #381B81) */
+  --purple-50:  #ECE8F8;
+  --purple-100: #D4CAEE;
+  --purple-200: #A898D9;
+  --purple-300: #8774C6;
+  --purple-400: #6B57B4;
+  --purple-500: #381B81;
+  --purple-600: #2E166A;
+  --purple-700: #251253;
+  --purple-800: #1C0E3F;
+  --purple-900: #14092B;
 
-  /* Text */
-  --text-primary: #FFFFFF;
+  /* Electric ramp (base 500 = #22D1EE) — brand-only */
+  --electric-50:  #E3FAFE;
+  --electric-100: #B6F1FB;
+  --electric-200: #7FE5F7;
+  --electric-300: #4ADAF3;
+  --electric-400: #2FD5F1;
+  --electric-500: #22D1EE;
+  --electric-600: #1BABC5;
+  --electric-700: #14839B;
+  --electric-800: #0E5A6C;
+  --electric-900: #073442;
+
+  /* Midnight ramp — brand black (base 500 = #070700) */
+  --midnight-50:  #F5F5F5;
+  --midnight-100: #D4D4D3;
+  --midnight-200: #A8A8A6;
+  --midnight-300: #7D7D7A;
+  --midnight-400: #525250;
+  --midnight-500: #070700;
+  --midnight-600: #050500;
+  --midnight-700: #040400;
+  --midnight-800: #020200;
+  --midnight-900: #000000;
+
+  /* Frost ramp — brand off-white (base 50 = #E9EAF0, the most-used tone) */
+  --frost-50:  #E9EAF0;
+  --frost-100: #D8DAE3;
+  --frost-200: #B8BBC8;
+  --frost-300: #8A8E9E;
+  --frost-400: #5E6273;
+  --frost-500: #464956;
+  --frost-600: #323540;
+  --frost-700: #22252D;
+  --frost-800: #13141A;
+  --frost-900: #0A0B0F;
+
+  /* ============================================
+     SEMANTIC ROLES — prefer these in app code
+     ============================================ */
+
+  /* Primary (signature) */
+  --primary:        var(--color-violet);
+  --primary-hover:  var(--violet-300);
+  --primary-light:  var(--violet-200);
+  --primary-lighter:var(--violet-100);
+  --primary-glow:   rgba(179, 141, 244, 0.30);
+
+  /* Surfaces — dark-mode base canvas is Midnight 500 */
+  --bg-base:        var(--midnight-500);  /* #070700 */
+  --bg-surface-1:   #0F0B1A;              /* legacy surface; keep until migration complete */
+  --bg-surface-2:   #1A1425;
+  --bg-surface-3:   #251E30;
+  --bg-surface-4:   #302840;
+
+  /* Text — never pure white; Frost 50 replaces #FFFFFF on dark */
+  --text-primary:   var(--frost-50);      /* #E9EAF0 */
   --text-secondary: #A1A1AA;
-  --text-muted: #71717A;
-  --text-dim: #52525B;
+  --text-muted:     #71717A;
+  --text-dim:       #52525B;
+  --text-on-light:  var(--midnight-500);  /* #070700 — for Frost backgrounds */
 
   /* Borders */
-  --border-subtle: rgba(255, 255, 255, 0.06);
-  --border-medium: rgba(255, 255, 255, 0.1);
-  --border-accent: rgba(179, 141, 244, 0.3);
+  --border-subtle:  rgba(233, 234, 240, 0.06);
+  --border-medium:  rgba(233, 234, 240, 0.10);
+  --border-accent:  rgba(179, 141, 244, 0.30);
 
-  /* Misc */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
+  /* ============================================
+     LEGACY ALIASES (kept for backward compatibility,
+     reassigned to brand values — do not use in new code)
+     ============================================ */
+  --cyan:        var(--color-electric);
+  --cyan-dim:    rgba(34, 209, 238, 0.15);
+  --cyan-glow:   rgba(34, 209, 238, 0.30);
+  --pink:        #F472B6;                 /* TO DEPRECATE — not in brand palette */
+  --pink-dim:    rgba(244, 114, 182, 0.15);
+
+  /* ============================================
+     FUNCTIONAL COLOURS — "Signal, not decoration" (p.19)
+     Used ONLY in trading/data displays. Never for brand/UI chrome.
+     ============================================ */
+
+  /* Trending Up (green) */
+  --signal-up-light: #A6EFCD;
+  --signal-up-mid:   #10B981;
+  --signal-up-dark:  #065F46;
+
+  /* Trending Down (red) */
+  --signal-down-light: #FFD6D6;
+  --signal-down-mid:   #EF4444;
+  --signal-down-dark:  #7F1D1D;
+
+  /* Range-bound (blue) */
+  --signal-range-light: #CDE1FB;
+  --signal-range-mid:   #3B82F6;
+  --signal-range-dark:  #1E3A8A;
+
+  /* Transition (amber) */
+  --signal-transition-light: #FEF3C7;
+  --signal-transition-mid:   #FBBF24;
+  --signal-transition-dark:  #7B350F;
+
+  /* Compression (ochre) */
+  --signal-compression-light: #E9E8FB;
+  --signal-compression-mid:   #845309;
+  --signal-compression-dark:  #451A03;
+
+  /* Crisis (deep red) */
+  --signal-crisis-light: #FF9BBB;
+  --signal-crisis-mid:   #DC2626;
+  --signal-crisis-dark:  #8E0000;
+
+  /* ============================================
+     TYPOGRAPHY (p.3 — three-tier system, free fonts)
+     Headline  → Plus Jakarta Sans (free) / Raptor V3 SemiBold (paid)
+     Body + UI → Inter
+     Numerical → JetBrains Mono (for Txn/trading screens)
+     ============================================ */
+  --font-headline: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body:     'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:     'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* ============================================
+     RADII / SHAPES
+     ============================================ */
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
   --radius-full: 9999px;
 
-  /* Tier colors */
+  /* ============================================
+     TIER COLOURS (ARX-specific, outside brand palette)
+     Kept until we decide on brand-compliant tier mapping.
+     ============================================ */
   --tier-bronze: #CD7F32;
   --tier-silver: #C0C0C0;
-  --tier-gold: #FFD700;
+  --tier-gold:   #FFD700;
 }
