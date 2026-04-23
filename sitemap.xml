@@ -3,6 +3,12 @@
 <!-- Update this as you add new pages (blog posts, features, etc.) -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://arx.trade/blog/arx-vs-tradexyz-mobile-rwa-perps/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://arx.trade/blog/how-to-trade-on-dex-beginners-guide/</loc>
     <lastmod>2026-04-21</lastmod>
     <changefreq>monthly</changefreq>
