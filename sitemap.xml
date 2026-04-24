@@ -3,6 +3,18 @@
 <!-- Update this as you add new pages (blog posts, features, etc.) -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://arx.trade/insights/eth-etf-vs-perp-flip-2026-04-24/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://arx.trade/insights/btc-stall-hormuz-japan-macro-2026-04-24/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://arx.trade/insights/majors-flat-alts-thrashing-2026-04-24/</loc>
     <lastmod>2026-04-24</lastmod>
     <changefreq>weekly</changefreq>

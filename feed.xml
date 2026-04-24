@@ -6,7 +6,7 @@
   <description>Insights on DeFi copy trading, market regime detection, wallet intelligence, and Hyperliquid. Stay ahead with ARX.</description>
   <language>en</language>
   <atom:link href="https://arx.trade/feed.xml" rel="self" type="application/rss+xml"/>
-  <lastBuildDate>Thu, 23 Apr 2026 05:31:26 -0000</lastBuildDate>
+  <lastBuildDate>Fri, 24 Apr 2026 13:42:06 -0000</lastBuildDate>
   <image>
     <url>https://arx.trade/logo.png</url>
     <title>ARX Blog</title>
@@ -14,11 +14,43 @@
   </image>
 
   <item>
+    <title>ETH Spot ETFs: $633M in 10 Days — Perp Traders Just Flipped Short on Flat Price</title>
+    <link>https://arx.trade/insights/#eth-etf-vs-perp-flip-2026-04-24</link>
+    <guid isPermaLink="true">https://arx.trade/insights/#eth-etf-vs-perp-flip-2026-04-24</guid>
+    <description>Spot ETH ETFs logged a 10-day inflow streak totalling $633M (per CoinTelegraph, Apr 24) — institutional buyers are in. At the same time, ETH perpetual funding on Hyperliquid flipped from +7.57% APR at $2,313 (08:46 UTC) to &amp;minus;3.24% APR at $2,328 (12:26 UTC) — a $15 price move that doesn&apos;t explai</description>
+    <pubDate>Fri, 24 Apr 2026 12:30:00 +0000</pubDate>
+  </item>
+
+  <item>
+    <title>BTC Stalls at $77.8K: Hormuz Closure + Japan CPI Squeeze the Rally</title>
+    <link>https://arx.trade/insights/#btc-stall-hormuz-japan-macro-2026-04-24</link>
+    <guid isPermaLink="true">https://arx.trade/insights/#btc-stall-hormuz-japan-macro-2026-04-24</guid>
+    <description>BTC printed +0.08% today — effectively zero — as two macro forces converge: Iran&apos;s Hormuz Strait stays closed, keeping oil elevated and risk appetite capped, while Japan&apos;s rising CPI renews BoJ rate-hike fears. On Hyperliquid, BTC OI sits at $2.22B at baseline 10.95% APR funding — no one is adding l</description>
+    <pubDate>Fri, 24 Apr 2026 09:00:00 +0000</pubDate>
+  </item>
+
+  <item>
+    <title>Majors Flat, Alts Thrashing: BTC/ETH/SOL All &amp;plusmn;1% — Low-Conviction Tape</title>
+    <link>https://arx.trade/insights/#majors-flat-alts-thrashing-2026-04-24</link>
+    <guid isPermaLink="true">https://arx.trade/insights/#majors-flat-alts-thrashing-2026-04-24</guid>
+    <description>All four HL majors frozen within &amp;plusmn;1%; funding clustered at baseline (+8.7% to +11% APR). Meanwhile DYDX +16%, kLUNC +17%, ORDI +11% — each on sub-$2M volume. Thin mid-cap rotation, not broad risk-on.</description>
+    <pubDate>Fri, 24 Apr 2026 08:45:00 +0000</pubDate>
+  </item>
+
+  <item>
     <title>BTC Bears Added $120M in Fresh Shorts at $78K — HYPE Squeeze Confirmed</title>
     <link>https://arx.trade/insights/#btc-bears-add-hype-squeeze-2026-04-23</link>
     <guid isPermaLink="true">https://arx.trade/insights/#btc-bears-add-hype-squeeze-2026-04-23</guid>
     <description>HYPE called: funding flipped from &amp;minus;30.3% APR to +10.95% APR in six hours — shorts squeezed out as price recovered from $40.24 to $41.08. BTC shorts answered by adding $120M in new open interest: OI grew from $2.02B (06:04 UTC) to $2.14B at 12:43 UTC, while funding held at &amp;minus;9.35% APR (per</description>
     <pubDate>Thu, 23 Apr 2026 12:50:00 +0000</pubDate>
+  </item>
+
+  <item>
+    <title>ARX vs trade.xyz: Same RWA Liquidity, Built for Mobile (2026)</title>
+    <link>https://arx.trade/blog/arx-vs-tradexyz-mobile-rwa-perps/</link>
+    <guid isPermaLink="true">https://arx.trade/blog/arx-vs-tradexyz-mobile-rwa-perps/</guid>
+    <description>trade.xyz runs the biggest RWA pool on Hyperliquid — but there</description>
+    <pubDate>Thu, 23 Apr 2026 00:00:00 +0000</pubDate>
   </item>
 
   <item>
