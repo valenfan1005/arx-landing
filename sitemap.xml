@@ -3,6 +3,12 @@
 <!-- Update this as you add new pages (blog posts, features, etc.) -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://arx.trade/blog/why-copy-trade-smart-money-hyperliquid/</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://arx.trade/insights/ondo-rwa-btc-etf-outflow-2026-05-09/</loc>
     <lastmod>2026-05-09</lastmod>
     <changefreq>monthly</changefreq>
