@@ -6,12 +6,20 @@
   <description>Insights on DeFi copy trading, market regime detection, wallet intelligence, and Hyperliquid. Stay ahead with ARX.</description>
   <language>en</language>
   <atom:link href="https://arx.trade/feed.xml" rel="self" type="application/rss+xml"/>
-  <lastBuildDate>Sat, 09 May 2026 12:37:44 -0000</lastBuildDate>
+  <lastBuildDate>Sat, 09 May 2026 12:48:47 -0000</lastBuildDate>
   <image>
     <url>https://arx.trade/logo.png</url>
     <title>ARX Blog</title>
     <link>https://arx.trade/blog/</link>
   </image>
+
+  <item>
+    <title>BTC Shorts Bleeding $384K/Day While Alts Run — Bears Haven&apos;t Flinched at $80K</title>
+    <link>https://arx.trade/insights/#trump-xi-alt-rotation-btc-flat-2026-05-09</link>
+    <guid isPermaLink="true">https://arx.trade/insights/#trump-xi-alt-rotation-btc-flat-2026-05-09</guid>
+    <description>Alts are running and BTC is not — the exact divergence that precedes either a squeeze or a reversal. DYM +42.8%, JUP +15.3%, ACE +16.2%, ICP +14.3%, SUI +7.1%, SOL +5.2% on the day. BTC: +0.12%. The catalyst is the first Trump-Xi trade summit since tariff escalation began — markets are pre-pricing a</description>
+    <pubDate>Sat, 09 May 2026 12:40:00 +0000</pubDate>
+  </item>
 
   <item>
     <title>BTC Bears Paying $390K/Day to Stay Short While SOL Rallies 5.6% — Gold Breaks Out on Iran Tanker Strike</title>
