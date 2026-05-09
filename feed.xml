@@ -6,12 +6,44 @@
   <description>Insights on DeFi copy trading, market regime detection, wallet intelligence, and Hyperliquid. Stay ahead with ARX.</description>
   <language>en</language>
   <atom:link href="https://arx.trade/feed.xml" rel="self" type="application/rss+xml"/>
-  <lastBuildDate>Fri, 24 Apr 2026 13:42:06 -0000</lastBuildDate>
+  <lastBuildDate>Sat, 09 May 2026 03:22:58 -0000</lastBuildDate>
   <image>
     <url>https://arx.trade/logo.png</url>
     <title>ARX Blog</title>
     <link>https://arx.trade/blog/</link>
   </image>
+
+  <item>
+    <title>ONDO +30% While BTC ETFs Bleed $268M — Wall Street Is No Longer Satisfied With Bitcoin</title>
+    <link>https://arx.trade/insights/#ondo-rwa-btc-etf-outflow-2026-05-09</link>
+    <guid isPermaLink="true">https://arx.trade/insights/#ondo-rwa-btc-etf-outflow-2026-05-09</guid>
+    <description>Ondo Finance surged +29.98% in 24 hours on $33.5M in Hyperliquid perp volume — on the same day Bitcoin spot ETFs recorded $268M in outflows. CoinTelegraph&apos;s headline this morning: &amp;ldquo;Wall Street wants more than just Bitcoin.&amp;rdquo; Capital is routing into RWA tokenization specifically.</description>
+    <pubDate>Sat, 09 May 2026 03:15:00 +0000</pubDate>
+  </item>
+
+  <item>
+    <title>Why Copy Smart Money on Hyperliquid? The On-Chain Edge (2026)</title>
+    <link>https://arx.trade/blog/why-copy-trade-smart-money-hyperliquid/</link>
+    <guid isPermaLink="true">https://arx.trade/blog/why-copy-trade-smart-money-hyperliquid/</guid>
+    <description>CEX leaderboards are curated. Hyperliquid shows every wallet</description>
+    <pubDate>Sat, 09 May 2026 00:00:00 +0000</pubDate>
+  </item>
+
+  <item>
+    <title>Hyperliquid vs dYdX 2026: Volume, Liquidity, Fees &amp; Why HL Won</title>
+    <link>https://arx.trade/blog/hyperliquid-vs-dydx-2026/</link>
+    <guid isPermaLink="true">https://arx.trade/blog/hyperliquid-vs-dydx-2026/</guid>
+    <description>Hyperliquid vs dYdX v4 — 8x volume gap, lower fees, hourly funding on both. Side-by-side liquidity, costs, gas, copy trading. Which DEX wins for whom in 2026.</description>
+    <pubDate>Thu, 30 Apr 2026 00:00:00 +0000</pubDate>
+  </item>
+
+  <item>
+    <title>Hyperliquid Fees 2026: Tier Table + $10K Cost vs eToro, IG, Binance</title>
+    <link>https://arx.trade/blog/hyperliquid-fees-explained-2026/</link>
+    <guid isPermaLink="true">https://arx.trade/blog/hyperliquid-fees-explained-2026/</guid>
+    <description>Maker 0.01%, taker 0.035%, HYPE staking discount, funding rates often near zero. See exactly how Hyperliquid fees beat CFD brokers on a $10K position.</description>
+    <pubDate>Thu, 30 Apr 2026 00:00:00 +0000</pubDate>
+  </item>
 
   <item>
     <title>ETH Spot ETFs: $633M in 10 Days — Perp Traders Just Flipped Short on Flat Price</title>
