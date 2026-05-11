@@ -9,6 +9,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://arx.trade/insights/iran-oil-bears-cover-sui-breakout-2026-05-11/</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://arx.trade/insights/trump-xi-alt-rotation-btc-flat-2026-05-09/</loc>
     <lastmod>2026-05-09</lastmod>
     <changefreq>monthly</changefreq>
@@ -118,7 +124,7 @@
   </url>
   <url>
     <loc>https://arx.trade/insights/</loc>
-    <lastmod>2026-05-09</lastmod>
+    <lastmod>2026-05-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>

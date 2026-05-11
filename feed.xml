@@ -6,12 +6,28 @@
   <description>Insights on DeFi copy trading, market regime detection, wallet intelligence, and Hyperliquid. Stay ahead with ARX.</description>
   <language>en</language>
   <atom:link href="https://arx.trade/feed.xml" rel="self" type="application/rss+xml"/>
-  <lastBuildDate>Sat, 09 May 2026 12:48:47 -0000</lastBuildDate>
+  <lastBuildDate>Mon, 11 May 2026 04:26:41 -0000</lastBuildDate>
   <image>
     <url>https://arx.trade/logo.png</url>
     <title>ARX Blog</title>
     <link>https://arx.trade/blog/</link>
   </image>
+
+  <item>
+    <title>Iran Escalation Shrugged: Oil Surges, BTC Bears Cover, SUI Breaks +18%</title>
+    <link>https://arx.trade/insights/#iran-oil-bears-cover-sui-breakout-2026-05-11</link>
+    <guid isPermaLink="true">https://arx.trade/insights/#iran-oil-bears-cover-sui-breakout-2026-05-11</guid>
+    <description>Trump called Iran&apos;s latest ceasefire proposal &amp;ldquo;totally unacceptable&amp;rdquo; Sunday, sending oil higher and U.S. stock futures lower. Classic risk-off playbook. Crypto didn&apos;t get the memo. BTC is flat at $80,667 and SUI has extended its high-beta rotation to +18.4% on $147M in volume — a continu</description>
+    <pubDate>Mon, 11 May 2026 04:20:00 +0000</pubDate>
+  </item>
+
+  <item>
+    <title>Iran War Day 70: Gold -10%, Oil +37%, S&amp;P at ATH — RWA Playbook</title>
+    <link>https://arx.trade/blog/iran-war-rwa-perp-playbook/</link>
+    <guid isPermaLink="true">https://arx.trade/blog/iran-war-rwa-perp-playbook/</guid>
+    <description>Brent crude +37%, gold -10%, S&amp;P hit 7,230 ATH while Iran negotiations stall. Counter-intuitive RWA perp playbook for the next move on Hyperliquid.</description>
+    <pubDate>Mon, 11 May 2026 00:00:00 +0000</pubDate>
+  </item>
 
   <item>
     <title>BTC Shorts Bleeding $384K/Day While Alts Run — Bears Haven&apos;t Flinched at $80K</title>
