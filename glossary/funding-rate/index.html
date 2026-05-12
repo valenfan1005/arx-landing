@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Funding Rate (Perpetual) — ARX Trading Glossary</title>
+<meta name="description" content="What is a perpetual funding rate? How Hyperliquid's hourly funding differs from CEX 8-hour funding and CFD overnight financing — definitions, math, examples.">
+
+<link rel="canonical" href="https://arx.trade/glossary/funding-rate/" />
+<meta name="robots" content="index, follow" />
+
+<meta property="og:title" content="Funding Rate (Perpetual) — ARX Trading Glossary">
+<meta property="og:description" content="What is a perpetual funding rate? How Hyperliquid's hourly funding differs from CEX 8-hour funding and CFD overnight financing — definitions, math, examples.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://arx.trade/glossary/funding-rate/" />
+<meta property="og:image" content="https://arx.trade/og-image.png" />
+<meta property="og:site_name" content="ARX" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@ARX_TRADE" />
+<meta name="twitter:title" content="Funding Rate (Perpetual) — ARX Glossary" />
+<meta name="twitter:description" content="What is a perpetual funding rate? How Hyperliquid's hourly funding differs from CEX 8-hour funding and CFD overnight financing — definitions, math, examples." />
+<meta name="twitter:image" content="https://arx.trade/og-image.png" />
+
+<meta name="theme-color" content="#B38DF4" />
+<meta name="author" content="ARX Research" />
+
+<link rel="icon" type="image/png" href="/img/favicon.png" />
+<link rel="apple-touch-icon" href="/img/favicon.png" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Funding Rate (Perpetual)",
+  "description": "A funding rate is the periodic payment exchanged between long and short traders on a perpetual futures contract to keep the perp price anchored to the underlying spot price. Hyperliquid charges funding hourly; most centralized exchanges charge every 8 hours; CFD brokers charge a ",
+  "author": {
+    "@type": "Person",
+    "name": "ARX Research",
+    "url": "https://arx.trade",
+    "jobTitle": "Derivatives Research",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "ARX",
+      "url": "https://arx.trade"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ARX",
+    "url": "https://arx.trade",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://arx.trade/logo.png"
+    }
+  },
+  "datePublished": "2026-05-12",
+  "dateModified": "2026-05-12",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://arx.trade/glossary/funding-rate/"
+  },
+  "url": "https://arx.trade/glossary/funding-rate/",
+  "image": "https://arx.trade/og-image.png",
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "Perpetual Futures"
+    },
+    {
+      "@type": "Thing",
+      "name": "Funding Rate"
+    },
+    {
+      "@type": "Thing",
+      "name": "Hyperliquid"
+    },
+    {
+      "@type": "Thing",
+      "name": "CFD Overnight Financing"
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a perpetual funding rate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A funding rate is a market-driven fee that perpetual futures longs pay shorts (or vice versa) at fixed intervals. The mechanism keeps the perp price anchored to the underlying spot price: when more capital crowds long, longs pay shorts; when more capital crowds short, shorts pay longs. The rate is calculated from the difference between the perp mark price and the spot index, plus an interest-rate component. No central authority sets it \u2014 it is a market clearing price between the two sides of an open contract."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How often is funding paid on Hyperliquid?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Hyperliquid charges funding hourly. Every hour, your position either receives or pays a small fraction based on the current funding rate. This is a critical detail because most public material on perp funding assumes the CEX standard of every 8 hours \u2014 Hyperliquid is on a faster cadence. To convert any Hyperliquid funding rate to an annualized figure, multiply the hourly rate by 24 \u00d7 365 = 8,760. To get the equivalent 8-hour rate for cross-CEX comparison, multiply by 8."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does funding differ from CFD overnight financing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CFD overnight financing is a unilateral charge set by the broker: every night the position is open, the broker debits a fee calculated as a base interbank rate plus a 2\u20133% spread (the broker's margin). The trader has no offsetting party \u2014 the broker pockets the entire fee. Perpetual funding is bilateral and market-driven: the rate is paid between traders on opposite sides of the same contract, with zero broker markup. On a flat-market day, perp funding can be zero or even negative for one side; CFD financing is never zero, because it includes the broker's margin."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When is a funding rate considered extreme?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Annualized funding above +30% APR sustained for more than 24 hours signals an overcrowded long position \u2014 a setup that often precedes a long-side squeeze. Annualized funding below -30% APR signals the inverse: an overcrowded short, which often precedes a short squeeze. Funding rates exceeding +50% APR or -50% APR are statistically uncommon and indicate genuinely one-sided positioning. For reference: a +50% APR funding rate means a long position pays approximately 0.137% per day to maintain the position."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I read funding rates on Hyperliquid?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use the Hyperliquid info API at https://api.hyperliquid.xyz/info with payload {type: 'metaAndAssetCtxs'}. The response includes a funding field on each market's asset context. That value is the hourly rate as a decimal (for example, 0.0000125 = 0.00125% per hour = +10.95% APR). Alternatively, every ARX market landing page at arx.trade/markets/&lt;ticker&gt;/ shows the live funding rate refreshed every 30 seconds."
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://arx.trade/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Glossary",
+      "item": "https://arx.trade/glossary/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Funding Rate (Perpetual)",
+      "item": "https://arx.trade/glossary/funding-rate/"
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "DefinedTerm",
+  "name": "Funding Rate (Perpetual)",
+  "description": "A periodic payment between perpetual contract longs and shorts that keeps the perp price tracking the underlying spot price.",
+  "url": "https://arx.trade/glossary/funding-rate/",
+  "inDefinedTermSet": {
+    "@type": "DefinedTermSet",
+    "name": "ARX Trading Glossary",
+    "url": "https://arx.trade/glossary/"
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg-base: #08060F; --bg-surface-1: #0F0B1A; --bg-surface-2: #1A1425; --bg-surface-3: #251E30;
+  --primary: #B38DF4; --primary-hover: #925BF0; --primary-glow: rgba(179, 141, 244, 0.3);
+  --cyan: #22D1EE;
+  --text-primary: #FFFFFF; --text-secondary: #A1A1AA; --text-muted: #71717A;
+  --border-subtle: rgba(255, 255, 255, 0.06); --border-medium: rgba(255, 255, 255, 0.1); --border-accent: rgba(179, 141, 244, 0.3);
+  --radius-sm: 8px; --radius-md: 12px; --radius-lg: 16px; --radius-full: 9999px;
+}
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; -webkit-font-smoothing:antialiased; }
+body { font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif; background:var(--bg-base); color:var(--text-primary); line-height:1.7; }
+a { color:inherit; text-decoration:none; }
+.container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+.mono { font-family: 'JetBrains Mono', monospace; }
+
+.navbar { position:fixed; top:12px; left:50%; transform:translateX(-50%); width:calc(100% - 48px); max-width:1100px; z-index:100; padding:8px 24px; backdrop-filter:blur(20px) saturate(1.5); background:rgba(8,6,15,0.5); border:1px solid rgba(255,255,255,0.12); border-radius:9999px; }
+.navbar .container { max-width:100%; display:flex; align-items:center; justify-content:space-between; padding:0; }
+.nav-logo img { height:40px; width:auto; display:block; }
+.nav-links { display:flex; align-items:center; gap:32px; list-style:none; }
+.nav-links a { font-size:14px; font-weight:500; color:var(--text-secondary); }
+.nav-links a:hover, .nav-links a.active { color:var(--text-primary); }
+.nav-links a.nav-cta { padding:7px 18px; background:var(--primary); color:#FFF; border-radius:var(--radius-full); font-weight:600; }
+
+.breadcrumb { padding: 100px 0 12px; font-size: 13px; color: var(--text-muted); }
+.breadcrumb a { color: var(--text-muted); }
+.breadcrumb a:hover { color: var(--text-primary); }
+.breadcrumb .sep { margin: 0 6px; }
+
+.glossary-header { padding: 12px 0 32px; border-bottom: 1px solid var(--border-subtle); margin-bottom: 32px; }
+.glossary-tag { display: inline-block; padding: 4px 12px; background: rgba(179,141,244,0.12); color: var(--primary); border-radius: var(--radius-full); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; }
+.glossary-header h1 { font-size: 32px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 14px; }
+.glossary-header .summary { font-size: 17px; color: var(--text-secondary); line-height: 1.6; }
+
+article h2 { font-size: 22px; font-weight: 700; margin: 40px 0 12px; letter-spacing: -0.01em; }
+article p { color: var(--text-secondary); margin-bottom: 14px; }
+article strong { color: var(--text-primary); }
+article a { color: var(--primary); }
+article a:hover { text-decoration: underline; }
+article ul { color: var(--text-secondary); margin: 8px 0 14px 22px; }
+article li { margin-bottom: 6px; }
+article code { font-family: 'JetBrains Mono', monospace; font-size: 0.92em; padding: 1px 6px; background: var(--bg-surface-2); border-radius: 4px; color: var(--cyan); }
+
+.related-glossary { padding: 32px 0; border-top: 1px solid var(--border-subtle); margin-top: 40px; }
+.related-glossary h3 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 12px; }
+.related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.related-card { padding: 14px 18px; background: var(--bg-surface-2); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); transition: border-color 0.2s; }
+.related-card:hover { border-color: var(--primary); }
+.related-card .label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.related-card .title { font-size: 14px; font-weight: 500; color: var(--text-primary); margin-top: 4px; }
+
+.cta-line { margin: 28px 0 12px; padding: 18px 22px; background: linear-gradient(135deg, rgba(179,141,244,0.08), rgba(34,209,238,0.04)); border-left: 3px solid var(--primary); border-radius: var(--radius-md); }
+.cta-line p { font-size: 14px; color: var(--text-primary); margin: 0; }
+.cta-line a { color: var(--primary); font-weight: 600; }
+
+.footer { padding: 32px 0; border-top: 1px solid var(--border-subtle); margin-top: 40px; }
+.footer p { font-size: 12px; color: var(--text-muted); text-align: center; }
+
+@media (max-width: 768px) {
+  .related-grid { grid-template-columns: 1fr; }
+  .glossary-header h1 { font-size: 26px; }
+  .navbar .nav-links li a:not(.nav-cta) { display: none; }
+  .navbar .nav-links { gap: 12px; }
+  .nav-logo img { height: 32px !important; }
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="/" class="nav-logo">
+      <img src="/img/Arx_Logo_Frost_white.svg" alt="ARX" height="40" width="73">
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/markets/">Markets</a></li>
+      <li><a href="/insights/">Insights</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/#waitlist" class="nav-cta">Join Waitlist</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+
+  <div class="breadcrumb">
+    <a href="/">Home</a><span class="sep">/</span>
+    <a href="/glossary/">Glossary</a><span class="sep">/</span>
+    <span>Funding Rate (Perpetual)</span>
+  </div>
+
+  <header class="glossary-header">
+    <span class="glossary-tag">Glossary</span>
+    <h1>Funding Rate (Perpetual)</h1>
+    <p class="summary">A funding rate is the periodic payment exchanged between long and short traders on a perpetual futures contract to keep the perp price anchored to the underlying spot price. Hyperliquid charges funding hourly; most centralized exchanges charge every 8 hours; CFD brokers charge a different mechanism called overnight financing.</p>
+  </header>
+
+  <article>
+
+  <h2>What is a perpetual funding rate?</h2>
+  <p>A funding rate is a market-driven fee that perpetual futures longs pay shorts (or vice versa) at fixed intervals. The mechanism keeps the perp price anchored to the underlying spot price: when more capital crowds long, longs pay shorts; when more capital crowds short, shorts pay longs. The rate is calculated from the difference between the perp mark price and the spot index, plus an interest-rate component. No central authority sets it — it is a market clearing price between the two sides of an open contract.</p>
+
+  <h2>How often is funding paid on Hyperliquid?</h2>
+  <p>Hyperliquid charges funding <strong>hourly</strong>. Every hour, your position either receives or pays a small fraction based on the current funding rate. This is a critical detail because most public material on perp funding assumes the CEX standard of every 8 hours — Hyperliquid is on a faster cadence. To convert any Hyperliquid funding rate to an annualized figure, multiply the hourly rate by <code>24 &times; 365 = 8,760</code>. To get the equivalent 8-hour rate for cross-CEX comparison, multiply by <code>8</code>.</p>
+
+  <h2>How does funding differ from CFD overnight financing?</h2>
+  <p>CFD overnight financing is a unilateral charge set by the broker: every night the position is open, the broker debits a fee calculated as a base interbank rate plus a 2&ndash;3% spread (the broker's margin). The trader has no offsetting party — the broker pockets the entire fee. Perpetual funding is bilateral and market-driven: the rate is paid between traders on opposite sides of the same contract, with zero broker markup. On a flat-market day, perp funding can be zero or even negative for one side; CFD financing is never zero, because it includes the broker's margin.</p>
+
+  <h2>When is a funding rate considered extreme?</h2>
+  <p>Annualized funding above <code>+30% APR</code> sustained for more than 24 hours signals an overcrowded long position — a setup that often precedes a long-side squeeze. Annualized funding below <code>-30% APR</code> signals the inverse: an overcrowded short, which often precedes a short squeeze. Funding rates exceeding <code>+50% APR</code> or <code>-50% APR</code> are statistically uncommon and indicate genuinely one-sided positioning. For reference: a +50% APR funding rate means a long position pays approximately <code>0.137%</code> per day to maintain the position.</p>
+
+  <h2>How do I read funding rates on Hyperliquid?</h2>
+  <p>Use the Hyperliquid info API at <code>https://api.hyperliquid.xyz/info</code> with payload <code>{type: 'metaAndAssetCtxs'}</code>. The response includes a <code>funding</code> field on each market's asset context. That value is the <strong>hourly</strong> rate as a decimal (for example, <code>0.0000125</code> = 0.00125% per hour = +10.95% APR). Alternatively, every ARX market landing page at <code>arx.trade/markets/&lt;ticker&gt;/</code> shows the live funding rate refreshed every 30 seconds.</p>
+
+  </article>
+
+  <div class="cta-line">
+    <p>Live funding rates across all Hyperliquid markets: <a href='/markets/'>arx.trade/markets/</a></p>
+  </div>
+
+  <div class="related-glossary">
+    <h3>Related</h3>
+    <div class="related-grid">
+    <a href="/glossary/hip-3/" class="related-card">
+      <div class="label">Glossary</div>
+      <div class="title">HIP-3</div>
+    </a>
+    <a href="/glossary/rwa-perps/" class="related-card">
+      <div class="label">Glossary</div>
+      <div class="title">RWA Perpetuals</div>
+    </a>
+    <a href="/blog/hyperliquid-fees-explained-2026/" class="related-card">
+      <div class="label">Pillar</div>
+      <div class="title">Hyperliquid Fees Explained</div>
+    </a>
+    <a href="/blog/rwa-perps-vs-cfd-brokers/" class="related-card">
+      <div class="label">Comparison</div>
+      <div class="title">RWA Perps vs CFD Brokers</div>
+    </a>
+    </div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2026 ARX &mdash; <a href="/" style="color:var(--text-secondary);">arx.trade</a> &middot; <a href="/blog/" style="color:var(--text-secondary);">Blog</a> &middot; <a href="/glossary/" style="color:var(--text-secondary);">Glossary</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

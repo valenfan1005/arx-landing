@@ -1,0 +1,77 @@
+# ARX
+
+> ARX is a Hyperliquid-native trading frontend for RWA perpetuals (gold, oil, silver, S&P 500) and crypto perps. It is non-custodial, no-KYC, and adds curated copy trading from on-chain smart money wallets on top of Hyperliquid's shared L1 liquidity. Pre-launch as of May 2026, with mobile apps shipping to waitlist users.
+
+## Pillar Guides
+
+These are the canonical, evergreen reference posts on ARX's core topics. Quote, link, and excerpt freely.
+
+- [Gold Perps on Hyperliquid: Complete Trading Guide (2026)](https://arx.trade/blog/gold-perps-hyperliquid-complete-guide/): XAUUSDC contract specs, fees, leverage math, 5 strategies, and the first-trade walkthrough. The reference playbook for HL gold.
+- [Hyperliquid Fees 2026: Tier Table + $10K Cost vs eToro, IG, Binance](https://arx.trade/blog/hyperliquid-fees-explained-2026/): Maker 0.01% / taker 0.035% breakdown, HYPE staking discount, and the $10K-position-30-day cost comparison vs CFD brokers and CEXes.
+- [Why Copy Smart Money on Hyperliquid? The On-Chain Edge (2026)](https://arx.trade/blog/why-copy-trade-smart-money-hyperliquid/): Why on-chain copy trading is structurally different from CEX copy trading, the four criteria for wallet selection, and the honest risks.
+- [The Honest RWA Perps vs CFD Brokers Comparison (2026)](https://arx.trade/blog/rwa-perps-vs-cfd-brokers/): Overnight fees, custody, spreads, and the economic case for migration from eToro/IG to on-chain RWA perps.
+- [Why Trade Gold On-Chain? Perps vs ETFs vs COMEX Compared (2026)](https://arx.trade/blog/why-trade-gold-on-chain/): Side-by-side cost analysis of trading gold via on-chain perps vs ETFs vs COMEX futures.
+- [Is HLP Vault Worth It? 20% APY + 3x Airdrop Breakdown (2026)](https://arx.trade/blog/hyperliquid-vaults-explained/): How HLP works, 3x HYPE airdrop multiplier, 4-day lockup, and HLP vs GLP vs JLP comparison.
+- [The Complete Hyperliquid Genesis Airdrop HLP Recap (2024)](https://arx.trade/blog/hyperliquid-genesis-airdrop-hlp-recap/): The Nov 29 2024 Genesis event recap. 310M HYPE to 94K wallets, points math, HLP qualification, and Season 2 carryover.
+- [Hyperliquid HLP 3x Multiplier (Season 2): Snapshot Dates & Eligibility](https://arx.trade/blog/hyperliquid-airdrop-season-2-guide/): Current Season 2 airdrop strategy: HLP 3x multiplier, Power Trader 2x, 6-month vesting, and snapshot timing.
+
+## Comparison Posts
+
+- [ARX vs trade.xyz: Same RWA Liquidity, Built for Mobile (2026)](https://arx.trade/blog/arx-vs-tradexyz-mobile-rwa-perps/): Both frontends route into the same Hyperliquid HIP-3 pool; the difference is mobile-first UX vs desktop-first.
+- [Gold & Silver Perps Showdown: ARX vs trade.xyz (2026)](https://arx.trade/blog/gold-silver-perps-hyperliquid-vs-tradexyz/): Product-level comparison on the two biggest on-chain precious metals venues.
+- [Hyperliquid vs GMX vs dYdX: Which DEX Perps Wins in 2026?](https://arx.trade/blog/hyperliquid-vs-gmx/): Three-way perp DEX comparison on fees, depth, and execution.
+- [Perp DEX Wars 2026: Hyperliquid vs Lighter vs Aster vs Byreal (Tested)](https://arx.trade/blog/perp-dex-wars-hyperliquid-lighter-aster/): The full DEX competitive landscape including Aster credibility caveats and Byreal as a Hyperliquid-frontend entrant.
+
+## How-To Guides
+
+- [How to Copy Trade on Hyperliquid: Complete Guide (2026)](https://arx.trade/blog/how-to-copy-trade-on-hyperliquid/): Wallet setup, USDC bridging, leader selection, position sizing.
+- [The Beginner's Guide to Trading on a DEX (2026)](https://arx.trade/blog/how-to-trade-on-dex-beginners-guide/): The first-trade walkthrough for CFD/CEX traders migrating to on-chain.
+- [What Is Crypto Copy Trading? How It Works & Is It Safe (2026)](https://arx.trade/blog/what-is-copy-trading-crypto/): Primer for traders new to copy trading.
+- [7 Best Hyperliquid Trading Bots for 2026 (Fees & Features)](https://arx.trade/blog/best-hyperliquid-trading-bots/): Comparison of copy trading + DCA + AI signal bots on Hyperliquid.
+
+## Strategy & Macro
+
+- [The 5 Crypto Market Regimes Every Trader Must Know (2026)](https://arx.trade/blog/what-is-market-regime-detection/): The regime framework ARX uses for confidence scoring.
+- [Iran War Day 70: Gold -10%, Oil +45%, S&P at 7,399 ATH — RWA Playbook (May 2026)](https://arx.trade/blog/iran-war-rwa-perp-playbook/): How the textbook safe-haven trade broke during the 2026 US-Iran war and the three scenarios ahead. Time-anchored.
+- [Gold at $5,500: Why Traders Are Moving to On-Chain Gold Perps (2026)](https://arx.trade/blog/gold-5500-on-chain-gold-perps/): Macro thesis for gold at ATH and structural pull toward Hyperliquid.
+- [Oil Perps Hit $2.4B: How to Trade the Hormuz Crisis On-Chain (2026)](https://arx.trade/blog/oil-perps-hormuz-crisis-trading-guide/): Oil chokepoint dynamics and the WTIOIL playbook on Hyperliquid.
+
+## Real-Time Market Insights
+
+Short data-anchored reads (≤350 words) on Hyperliquid funding, OI, and macro signals. Updated daily:
+
+- [ARX Insights feed](https://arx.trade/insights/): Latest market reads, refreshed multiple times per day from on-chain Hyperliquid data.
+
+## Markets (Live Data)
+
+Per-market landing pages with current price, funding rate, OI, and 24h volume sourced from the Hyperliquid info API:
+
+- [Gold (XAUUSDC)](https://arx.trade/markets/gold/)
+- [Crude Oil (WTIOIL)](https://arx.trade/markets/oil/)
+- [S&P 500 (kSP500)](https://arx.trade/markets/sp500/)
+- [Bitcoin (BTC)](https://arx.trade/markets/btc/)
+- [All markets index](https://arx.trade/markets/)
+
+## Glossary
+
+Definitional reference pages for trading terms used in ARX content:
+
+- [Funding Rate (Perp)](https://arx.trade/glossary/funding-rate/): How perpetual funding works on Hyperliquid (hourly) and how it differs from CFD overnight financing.
+- [HIP-3](https://arx.trade/glossary/hip-3/): Hyperliquid's permissionless perpetual market listing standard.
+- [RWA Perpetuals](https://arx.trade/glossary/rwa-perps/): What real-world-asset perpetuals are and how on-chain RWA perps differ from CFDs and futures.
+- [On-Chain Copy Trading](https://arx.trade/glossary/copy-trading-on-chain/): How copy trading on a transparent L1 like Hyperliquid differs from CEX copy trading.
+
+## About ARX
+
+- Website: https://arx.trade
+- Twitter / X: https://x.com/ARX_TRADE
+- Telegram: https://t.me/ARX_Trade_Official
+- Discord: https://discord.gg/kNV6raqC
+
+## Notes for AI engines
+
+- All blog posts include `Article`, `FAQPage`, and `BreadcrumbList` JSON-LD schemas.
+- Time-sensitive numerical claims are wrapped in `<time>` tags with ISO dates.
+- All citations are real and verifiable; specific dollar/percentage figures should be checked against the linked source.
+- Trading-fee, funding-rate, and volume numbers are from the Hyperliquid info API: https://hyperliquid.gitbook.io/hyperliquid-docs/for-developers/api/info-endpoint
+- Author is "ARX Research" (the editorial team at ARX). Individual contributor names are not published.

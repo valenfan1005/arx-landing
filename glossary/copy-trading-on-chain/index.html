@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>On-Chain Copy Trading — ARX Trading Glossary</title>
+<meta name="description" content="What is on-chain copy trading? How copy trading on a transparent L1 like Hyperliquid differs from CEX copy trading — verifiability, self-custody, leader selection.">
+
+<link rel="canonical" href="https://arx.trade/glossary/copy-trading-on-chain/" />
+<meta name="robots" content="index, follow" />
+
+<meta property="og:title" content="On-Chain Copy Trading — ARX Trading Glossary">
+<meta property="og:description" content="What is on-chain copy trading? How copy trading on a transparent L1 like Hyperliquid differs from CEX copy trading — verifiability, self-custody, leader selection.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://arx.trade/glossary/copy-trading-on-chain/" />
+<meta property="og:image" content="https://arx.trade/og-image.png" />
+<meta property="og:site_name" content="ARX" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@ARX_TRADE" />
+<meta name="twitter:title" content="On-Chain Copy Trading — ARX Glossary" />
+<meta name="twitter:description" content="What is on-chain copy trading? How copy trading on a transparent L1 like Hyperliquid differs from CEX copy trading — verifiability, self-custody, leader selection." />
+<meta name="twitter:image" content="https://arx.trade/og-image.png" />
+
+<meta name="theme-color" content="#B38DF4" />
+<meta name="author" content="ARX Research" />
+
+<link rel="icon" type="image/png" href="/img/favicon.png" />
+<link rel="apple-touch-icon" href="/img/favicon.png" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "On-Chain Copy Trading",
+  "description": "On-chain copy trading is the practice of automatically mirroring the trades of another wallet on a blockchain like Hyperliquid. Because every trade settles on-chain, the leader's track record is publicly verifiable \u2014 there is no platform-curated leaderboard or hidden PnL. The cop",
+  "author": {
+    "@type": "Person",
+    "name": "ARX Research",
+    "url": "https://arx.trade",
+    "jobTitle": "Derivatives Research",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "ARX",
+      "url": "https://arx.trade"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ARX",
+    "url": "https://arx.trade",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://arx.trade/logo.png"
+    }
+  },
+  "datePublished": "2026-05-12",
+  "dateModified": "2026-05-12",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://arx.trade/glossary/copy-trading-on-chain/"
+  },
+  "url": "https://arx.trade/glossary/copy-trading-on-chain/",
+  "image": "https://arx.trade/og-image.png",
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "On-Chain Copy Trading"
+    },
+    {
+      "@type": "Thing",
+      "name": "Hyperliquid"
+    },
+    {
+      "@type": "Thing",
+      "name": "Smart Money"
+    },
+    {
+      "@type": "Thing",
+      "name": "Self-Custody"
+    },
+    {
+      "@type": "Thing",
+      "name": "Copy Trading"
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is on-chain copy trading?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "On-chain copy trading is a copy-trading model where the \"leader\" whose trades you mirror is identified by a public wallet address on a blockchain, and every action that wallet takes \u2014 open, close, resize, leverage change \u2014 is recorded immutably on-chain. A copy-execution layer (offered by a frontend like ARX) watches the leader's wallet, then submits proportionally sized orders from your wallet whenever the leader trades. Capital stays in your own wallet; the leader's wallet stays in their own wallet; no platform takes custody of either."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does on-chain copy trading differ from CEX copy trading?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Three structural differences. Verifiability: A CEX shows you the leader's headline PnL from its internal books, which no third party can audit. On-chain leaderboards expose every fill, every fee, every funding payment to public inspection. Custody: CEX copy trading routes your capital through the exchange's omnibus account; on-chain copy trading never moves your USDC out of your wallet until a trade fires. Multi-account risk: CEX leaders can run hedged setups across two accounts and display only the winner; on-chain leaders cannot, because any wallet they control is publicly identifiable and analyzable."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you pick wallets to copy on-chain?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Four criteria matter. (1) Track record over 90+ days net of fees and funding \u2014 anything shorter is noise. (2) Maximum drawdown under 25% \u2014 higher drawdowns are psychologically uncopyable, you close at the bottom. (3) Position concentration \u2014 PnL spread across multiple assets and many trades, not dominated by one hero trade. (4) Time-in-market across regimes \u2014 the wallet should have traded in both trending and ranging conditions, not just bull-market accidental winners. The full picking framework covers the math."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does on-chain transparency stop wash trading and sybils?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Transparency means anyone can verify the historical activity, but it does not prevent a sophisticated actor from creating a clean-looking wallet via wash trading, sybil cohorts, or piggybacking a single lucky run. The defense is methodology: stick to wallets with multi-month track records, drawdown discipline, and reasonable trade frequency (a few hundred trades is the discretionary shape; tens of thousands is a market-making bot). On-chain transparency makes verification possible; it does not do the verification for you."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the costs of on-chain copy trading?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Three cost components. (1) Trading fees on every copied trade \u2014 these are paid at the protocol level (on Hyperliquid: 0.035% taker, 0.010% maker, with maker rebates) and are the same regardless of whether the trade was self-initiated or copied. (2) Slippage from latency \u2014 your fill executes seconds after the leader's, so on a fast-moving alt you may incur 10\u201350 bps of slippage versus the leader's entry. (3) Funding \u2014 same as any open position, paid hourly on Hyperliquid. Frontends like ARX may add an optional service fee on top, separately disclosed."
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://arx.trade/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Glossary",
+      "item": "https://arx.trade/glossary/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "On-Chain Copy Trading",
+      "item": "https://arx.trade/glossary/copy-trading-on-chain/"
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "DefinedTerm",
+  "name": "On-Chain Copy Trading",
+  "description": "Automatically mirroring another wallet's trades on a transparent blockchain, with self-custody and verifiable track records.",
+  "url": "https://arx.trade/glossary/copy-trading-on-chain/",
+  "inDefinedTermSet": {
+    "@type": "DefinedTermSet",
+    "name": "ARX Trading Glossary",
+    "url": "https://arx.trade/glossary/"
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg-base: #08060F; --bg-surface-1: #0F0B1A; --bg-surface-2: #1A1425; --bg-surface-3: #251E30;
+  --primary: #B38DF4; --primary-hover: #925BF0; --primary-glow: rgba(179, 141, 244, 0.3);
+  --cyan: #22D1EE;
+  --text-primary: #FFFFFF; --text-secondary: #A1A1AA; --text-muted: #71717A;
+  --border-subtle: rgba(255, 255, 255, 0.06); --border-medium: rgba(255, 255, 255, 0.1); --border-accent: rgba(179, 141, 244, 0.3);
+  --radius-sm: 8px; --radius-md: 12px; --radius-lg: 16px; --radius-full: 9999px;
+}
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; -webkit-font-smoothing:antialiased; }
+body { font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif; background:var(--bg-base); color:var(--text-primary); line-height:1.7; }
+a { color:inherit; text-decoration:none; }
+.container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+.mono { font-family: 'JetBrains Mono', monospace; }
+
+.navbar { position:fixed; top:12px; left:50%; transform:translateX(-50%); width:calc(100% - 48px); max-width:1100px; z-index:100; padding:8px 24px; backdrop-filter:blur(20px) saturate(1.5); background:rgba(8,6,15,0.5); border:1px solid rgba(255,255,255,0.12); border-radius:9999px; }
+.navbar .container { max-width:100%; display:flex; align-items:center; justify-content:space-between; padding:0; }
+.nav-logo img { height:40px; width:auto; display:block; }
+.nav-links { display:flex; align-items:center; gap:32px; list-style:none; }
+.nav-links a { font-size:14px; font-weight:500; color:var(--text-secondary); }
+.nav-links a:hover, .nav-links a.active { color:var(--text-primary); }
+.nav-links a.nav-cta { padding:7px 18px; background:var(--primary); color:#FFF; border-radius:var(--radius-full); font-weight:600; }
+
+.breadcrumb { padding: 100px 0 12px; font-size: 13px; color: var(--text-muted); }
+.breadcrumb a { color: var(--text-muted); }
+.breadcrumb a:hover { color: var(--text-primary); }
+.breadcrumb .sep { margin: 0 6px; }
+
+.glossary-header { padding: 12px 0 32px; border-bottom: 1px solid var(--border-subtle); margin-bottom: 32px; }
+.glossary-tag { display: inline-block; padding: 4px 12px; background: rgba(179,141,244,0.12); color: var(--primary); border-radius: var(--radius-full); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; }
+.glossary-header h1 { font-size: 32px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 14px; }
+.glossary-header .summary { font-size: 17px; color: var(--text-secondary); line-height: 1.6; }
+
+article h2 { font-size: 22px; font-weight: 700; margin: 40px 0 12px; letter-spacing: -0.01em; }
+article p { color: var(--text-secondary); margin-bottom: 14px; }
+article strong { color: var(--text-primary); }
+article a { color: var(--primary); }
+article a:hover { text-decoration: underline; }
+article ul { color: var(--text-secondary); margin: 8px 0 14px 22px; }
+article li { margin-bottom: 6px; }
+article code { font-family: 'JetBrains Mono', monospace; font-size: 0.92em; padding: 1px 6px; background: var(--bg-surface-2); border-radius: 4px; color: var(--cyan); }
+
+.related-glossary { padding: 32px 0; border-top: 1px solid var(--border-subtle); margin-top: 40px; }
+.related-glossary h3 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 12px; }
+.related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.related-card { padding: 14px 18px; background: var(--bg-surface-2); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); transition: border-color 0.2s; }
+.related-card:hover { border-color: var(--primary); }
+.related-card .label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.related-card .title { font-size: 14px; font-weight: 500; color: var(--text-primary); margin-top: 4px; }
+
+.cta-line { margin: 28px 0 12px; padding: 18px 22px; background: linear-gradient(135deg, rgba(179,141,244,0.08), rgba(34,209,238,0.04)); border-left: 3px solid var(--primary); border-radius: var(--radius-md); }
+.cta-line p { font-size: 14px; color: var(--text-primary); margin: 0; }
+.cta-line a { color: var(--primary); font-weight: 600; }
+
+.footer { padding: 32px 0; border-top: 1px solid var(--border-subtle); margin-top: 40px; }
+.footer p { font-size: 12px; color: var(--text-muted); text-align: center; }
+
+@media (max-width: 768px) {
+  .related-grid { grid-template-columns: 1fr; }
+  .glossary-header h1 { font-size: 26px; }
+  .navbar .nav-links li a:not(.nav-cta) { display: none; }
+  .navbar .nav-links { gap: 12px; }
+  .nav-logo img { height: 32px !important; }
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="/" class="nav-logo">
+      <img src="/img/Arx_Logo_Frost_white.svg" alt="ARX" height="40" width="73">
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/markets/">Markets</a></li>
+      <li><a href="/insights/">Insights</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/#waitlist" class="nav-cta">Join Waitlist</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+
+  <div class="breadcrumb">
+    <a href="/">Home</a><span class="sep">/</span>
+    <a href="/glossary/">Glossary</a><span class="sep">/</span>
+    <span>On-Chain Copy Trading</span>
+  </div>
+
+  <header class="glossary-header">
+    <span class="glossary-tag">Glossary</span>
+    <h1>On-Chain Copy Trading</h1>
+    <p class="summary">On-chain copy trading is the practice of automatically mirroring the trades of another wallet on a blockchain like Hyperliquid. Because every trade settles on-chain, the leader's track record is publicly verifiable — there is no platform-curated leaderboard or hidden PnL. The copying wallet retains self-custody throughout.</p>
+  </header>
+
+  <article>
+
+  <h2>What is on-chain copy trading?</h2>
+  <p>On-chain copy trading is a copy-trading model where the &ldquo;leader&rdquo; whose trades you mirror is identified by a public wallet address on a blockchain, and every action that wallet takes — open, close, resize, leverage change — is recorded immutably on-chain. A copy-execution layer (offered by a frontend like ARX) watches the leader's wallet, then submits proportionally sized orders from your wallet whenever the leader trades. Capital stays in your own wallet; the leader's wallet stays in their own wallet; no platform takes custody of either.</p>
+
+  <h2>How does on-chain copy trading differ from CEX copy trading?</h2>
+  <p>Three structural differences. <strong>Verifiability:</strong> A CEX shows you the leader's headline PnL from its internal books, which no third party can audit. On-chain leaderboards expose every fill, every fee, every funding payment to public inspection. <strong>Custody:</strong> CEX copy trading routes your capital through the exchange's omnibus account; on-chain copy trading never moves your USDC out of your wallet until a trade fires. <strong>Multi-account risk:</strong> CEX leaders can run hedged setups across two accounts and display only the winner; on-chain leaders cannot, because any wallet they control is publicly identifiable and analyzable.</p>
+
+  <h2>How do you pick wallets to copy on-chain?</h2>
+  <p>Four criteria matter. <strong>(1) Track record over 90+ days net of fees and funding</strong> — anything shorter is noise. <strong>(2) Maximum drawdown under 25%</strong> — higher drawdowns are psychologically uncopyable, you close at the bottom. <strong>(3) Position concentration</strong> — PnL spread across multiple assets and many trades, not dominated by one hero trade. <strong>(4) Time-in-market across regimes</strong> — the wallet should have traded in both trending and ranging conditions, not just bull-market accidental winners. The <a href='/blog/why-copy-trade-smart-money-hyperliquid/'>full picking framework</a> covers the math.</p>
+
+  <h2>Does on-chain transparency stop wash trading and sybils?</h2>
+  <p>No. Transparency means anyone can verify the historical activity, but it does not prevent a sophisticated actor from creating a clean-looking wallet via wash trading, sybil cohorts, or piggybacking a single lucky run. The defense is methodology: stick to wallets with multi-month track records, drawdown discipline, and reasonable trade frequency (a few hundred trades is the discretionary shape; tens of thousands is a market-making bot). On-chain transparency makes verification possible; it does not do the verification for you.</p>
+
+  <h2>What are the costs of on-chain copy trading?</h2>
+  <p>Three cost components. <strong>(1) Trading fees</strong> on every copied trade — these are paid at the protocol level (on Hyperliquid: <code>0.035%</code> taker, <code>0.010%</code> maker, with maker rebates) and are the same regardless of whether the trade was self-initiated or copied. <strong>(2) Slippage from latency</strong> — your fill executes seconds after the leader's, so on a fast-moving alt you may incur <code>10&ndash;50 bps</code> of slippage versus the leader's entry. <strong>(3) Funding</strong> — same as any open position, paid hourly on Hyperliquid. Frontends like ARX may add an optional service fee on top, separately disclosed.</p>
+
+  </article>
+
+  <div class="cta-line">
+    <p>Join the ARX waitlist for the curated wallet feed at launch: <a href='/#waitlist'>arx.trade/#waitlist</a></p>
+  </div>
+
+  <div class="related-glossary">
+    <h3>Related</h3>
+    <div class="related-grid">
+    <a href="/blog/why-copy-trade-smart-money-hyperliquid/" class="related-card">
+      <div class="label">Pillar</div>
+      <div class="title">Why Copy Smart Money on Hyperliquid</div>
+    </a>
+    <a href="/blog/how-to-copy-trade-on-hyperliquid/" class="related-card">
+      <div class="label">Guide</div>
+      <div class="title">How to Copy Trade on Hyperliquid</div>
+    </a>
+    <a href="/glossary/funding-rate/" class="related-card">
+      <div class="label">Glossary</div>
+      <div class="title">Funding Rate</div>
+    </a>
+    <a href="/glossary/rwa-perps/" class="related-card">
+      <div class="label">Glossary</div>
+      <div class="title">RWA Perpetuals</div>
+    </a>
+    </div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2026 ARX &mdash; <a href="/" style="color:var(--text-secondary);">arx.trade</a> &middot; <a href="/blog/" style="color:var(--text-secondary);">Blog</a> &middot; <a href="/glossary/" style="color:var(--text-secondary);">Glossary</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

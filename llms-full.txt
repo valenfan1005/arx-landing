@@ -1,0 +1,2451 @@
+# ARX — Full Pillar Content (llms-full.txt)
+
+> Concatenated full body content of the five canonical ARX pillar posts. This file gives AI engines a single-fetch path to the authoritative ARX content. See llms.txt for the full sitemap.
+
+> Last regenerated: 2026-05-12
+
+
+---
+
+
+# The Complete Guide to Gold Perps on Hyperliquid (2026)
+
+Source: https://arx.trade/blog/gold-perps-hyperliquid-complete-guide/
+
+
+## Live Snapshot: Gold Perps on Hyperliquid
+
+ 
+
+Before the specs and strategies, here is the current state of the Hyperliquid gold perp market as of **April 21, 2026**. These numbers move continuously and are included to set scale — live data from the `app.hyperliquid.xyz` order book will differ when you read this. For a standing live view, see arx.trade/markets/gold/ (/markets/gold/).
+
+ 
+ 
+ $4,788 
+ XAU/USD Spot (Apr 21) 
+ 
+ 
+ $130M 
+ Open Interest on Hyperliquid 
+ 
+ 
+ +5.5% 
+ Funding Rate (annualized) 
+ 
+ 
+
+ 
+
+Gold pulled back from its April 14 ATH of `$5,500/oz` as ceasefire headlines out of the Middle East reduced the geopolitical risk premium and as traders took profits. Despite the pullback, structural demand remains strong — central banks continued accumulating, real yields are low, and the RWA perps category has grown `65,000%` in volume in Q1 2026 (see our gold ATH deep-dive (/blog/gold-5500-on-chain-gold-perps/)).
+
+ 
+
+The **+5.5% annualized funding** rate tells you that longs are paying shorts a small carry to hold positions — a mild long-bias in positioning, but far from crowded. In balanced markets this rate typically hovers between `-10%` and `+10%` annualized, and is the single most useful real-time sentiment indicator for gold perps.
+
+ 
+
+## What Is XAUUSDC? Contract Specs
+
+ 
+
+Gold perpetuals on Hyperliquid trade under the ticker **XAUUSDC** (sometimes surfaced as `xyz:GOLD` on HIP-3 frontends such as ARX or trade.xyz). The contract:
+
+ 
+ 
+- **Underlying:** XAU/USD spot gold price, sourced from external oracle feeds
+ 
+- **Collateral:** USDC (a USD-pegged stablecoin)
+ 
+- **Expiry:** None — this is a perpetual contract, held indefinitely until you close it
+ 
+- **Settlement:** USDC-settled, on-chain, instant
+ 
+- **Funding interval:** Hourly (Hyperliquid pays funding every hour, not every 8 hours like Binance or Bybit)
+ 
+- **Maximum leverage:** `25x` (as of April 2026)
+ 
+- **Minimum position size:** approximately `$10` notional
+ 
+- **Tick size:** `$0.01`
+ 
+- **Trading hours:** `24/7/365` — the on-chain order book never closes
+ 
+
+ 
+
+The combination of `$10` minimum position size and 24/7 trading makes Hyperliquid gold perps accessible in ways that COMEX gold futures (one contract = `100 oz`, ~`$480,000` notional, monthly expiry) and most CFD brokers (`$100–500` minimums, weekend closed) are not.
+
+ 
+ 
+
+## The Perpetual Contract Advantage
+
+ 
+
+Traditional gold futures (GC on COMEX) expire monthly. Holding a position for more than a few weeks requires **rolling** — closing the expiring contract and opening the next month. Each roll costs the contango spread (typically `0.2–0.5%`) and creates a taxable event in many jurisdictions. Perps have no expiry, no rolls, no contango drag. You pay only the market-driven funding rate for as long as you hold.
+ 
+
+ 
+
+## Fees & Funding Mechanics
+
+ 
+
+## Trading Fees
+
+ 
+ 
+ 
+ Role 
+ Fee 
+ $10,000 position 
+ $50,000 position 
+ 
+ 
+ Taker (market order) 
+ `0.035%` 
+ `$3.50` 
+ `$17.50` 
+ 
+ 
+ Maker (limit order) 
+ `0.01%` 
+ `$1.00` 
+ `$5.00` 
+ 
+ 
+ 
+
+ 
+
+There are **no other fees**: no platform subscription, no inactivity fee, no withdrawal fee, no overnight swap fee. Individual frontends (trade.xyz, ARX at launch) may offer rebates or fee promotions — check their current fee schedules.
+
+ 
+
+## The Funding Rate
+
+ 
+
+Without an expiry, a perpetual needs a mechanism to stay anchored to spot price. That mechanism is funding:
+
+ 
+ 
+- Every **hour**, a small payment passes between longs and shorts
+ 
+- If longs are crowded (bullish consensus), **longs pay shorts**
+ 
+- If shorts are crowded, **shorts pay longs**
+ 
+- The rate is **market-driven**, not broker-set — it comes from the difference between the perp mid-price and the underlying oracle
+ 
+
+ 
+ 
+
+## Hyperliquid Funding Is Paid Hourly
+
+ 
+
+Binance, Bybit, OKX, and most centralised exchanges pay funding every 8 hours. Hyperliquid pays **every hour**. Three quick conversions you will use:
+ 
+ 
+- **HL hourly &rarr; CEX per-8h:** multiply by `8`
+ 
+- **HL hourly &rarr; CFD per-day:** multiply by `24`
+ 
+- **HL hourly &rarr; annualized (APR):** multiply by `24 &times; 365`
+ 
+ 
+
+Example: an HL hourly rate of `+0.000625%` equals `+0.005%` per 8h, `+0.015%` per day, or `+5.5%` APR. A typical CFD gold swap fee is `0.02–0.03%` per day — so `+0.015%`/day HL funding is already cheaper than a CFD broker, and you receive this as a short if the sign flips.
+ 
+
+ 
+
+## Leverage, Margin & Liquidation Math
+
+ 
+
+Leverage amplifies both profit and loss. Understanding exactly how liquidation works in gold perps is the single most important thing before sizing up.
+
+ 
+
+## The Liquidation Price Formula
+
+ 
+
+For a **long** position:
+
+ 
+
+`liquidation_price &asymp; entry_price &times; (1 - 1/leverage + maintenance_margin_rate)`
+
+ 
+
+For a **short** position:
+
+ 
+
+`liquidation_price &asymp; entry_price &times; (1 + 1/leverage - maintenance_margin_rate)`
+
+ 
+
+Hyperliquid's maintenance margin rate varies by leverage tier and position size. The **practical rule**: always use the liquidation price displayed in the order panel before you confirm — the formula above is a useful mental model, but the exact number depends on the tier schedule in effect when you trade.
+
+ 
+ 
+
+## Long 5x at $4,800 — Rough Liquidation Zone
+
+ 
+
+Entry: `$4,800`. Leverage: `5x`. Using the textbook formula with a `1%` maintenance margin buffer:
+ 
+
+Liquidation price &asymp; `4,800 &times; (1 - 0.20 + 0.01) &asymp; $3,888`
+ 
+
+Gold must fall roughly `19%` before liquidation — about `$912/oz` of room. For context, gold's largest single-day drop in 2026 was about `$180/oz` (~`3.8%`), which at `5x` would only pull equity down to about `$4,620`. The order-panel liquidation number in Hyperliquid is authoritative — the figure above is for intuition, not for sizing decisions.
+ 
+
+ 
+ 
+ 
+ Leverage 
+ % move to liquidation 
+ Liquidation price (long from $4,800) 
+ When to use 
+ 
+ 
+ `2x` 
+ ~`49%` 
+ `$2,448` 
+ Long-term hold / conservative 
+ 
+ 
+ `5x` 
+ `~19%` 
+ `$3,888` 
+ Standard swing trades 
+ 
+ 
+ `10x` 
+ `~9%` 
+ `$4,368` 
+ Short-term tactical; monitor actively 
+ 
+ 
+ `20x` 
+ ~`4%` 
+ `$4,608` 
+ Intraday only; hard stops mandatory 
+ 
+ 
+ `25x (max)` 
+ ~`3%` 
+ `$4,656` 
+ Expert only; single-event scalps 
+ 
+ 
+ 
+
+ 
+
+**Practical rule:** pick your leverage based on the realistic drawdown you expect, plus a `2–3x` buffer. If you think gold could drop `5%` before recovering, you need liquidation at least `15%` below entry — which means `5x` leverage maximum. Higher leverage is not "bonus upside"; it is a smaller buffer against the same volatility.
+
+ 
+
+## How to Place Your First Gold Perp Trade
+
+ 
+
+If you already hold USDC in a Web3 wallet, the on-chain portion takes `5 minutes`. If you are starting from fiat via a CFD broker or exchange, allow `1–2 days` for on-ramp KYC and USDC acquisition — that is the slow step, not the blockchain step.
+
+ 
+ 
+- **Install a Web3 wallet and fund it with USDC.** MetaMask or Rabby Wallet are the common choices. Buy USDC on a major exchange (Coinbase, Binance, Kraken) and withdraw to your wallet, or use a direct fiat on-ramp. Start with an amount you are comfortable putting at risk — a leveraged perp can be liquidated.
+ 
+- **Bridge USDC to Hyperliquid.** Go to `app.hyperliquid.xyz`, connect your wallet, and use the native bridge. Arbitrum &rarr; Hyperliquid typically completes in under `60 seconds`. No minimum deposit; gas fees are under `$0.50`.
+ 
+- **Find XAUUSDC and verify the price.** Search for `XAUUSDC` or `GOLD` in the market list. Cross-check the displayed price against an external reference like TradingView's XAU/USD spot feed. Verify the open interest and funding rate before sizing.
+ 
+- **Set leverage, position size, and a stop-loss BEFORE you enter.** Decide your leverage (start with `3–5x`), your notional size, and the price where you will cut the trade if wrong. Hyperliquid's order panel shows your liquidation price before you submit — always verify this is sufficiently far from your stop-loss.
+ 
+- **Use a limit order at a known level.** Limit orders fill at your specified price and qualify for the `0.01%` maker fee (vs `0.035%` taker). Place them at identifiable support (if long) or resistance (if short). Attach the stop-loss as a separate reduce-only order immediately after entry.
+ 
+
+ 
+ 
+
+The single most common mistake: placing a market order without a pre-defined exit. Gold can move `$40–80/oz` in minutes on geopolitical headlines. Know your exit before you enter.
+ 
+
+ 
+
+## 5 Gold Perp Strategies
+
+ 
+
+Gold perps enable strategies that are impractical or impossible with gold ETFs, COMEX futures, or CFDs. The five below cover the common trader archetypes.
+
+ 
+
+## 1. Directional Macro Long
+
+ 
+
+The classic trade: go long gold on expected Fed dovishness, weak-dollar cycles, or elevated geopolitical risk. Size with `3–5x` leverage on a multi-week horizon. Key signals to watch: US real yields (10Y Treasury minus inflation breakeven), DXY (dollar index), and central bank gold purchase flows. Unlike buying GLD, you get leverage and 24/7 access; unlike futures, no rolls.
+
+ 
+
+## 2. Gold/Silver Ratio Pair Trade
+
+ 
+
+Gold/silver ratio = gold price &divide; silver price. With gold at `$4,788` and silver near `$72` (April 21, 2026), the ratio sits at `~66` — down from `76` a week ago as gold pulled back faster than silver. A commonly cited historical band is `60–70` (50-year window); post-1990 trends toward the upper end. If you expect compression further, go long silver (`XAGUSDC`) and short gold (`XAUUSDC`) out of the same USDC margin pool. Cross-margin means you only post net exposure. Impractical with CFDs (two overnight fees), capital-heavy with futures. Full mechanics in our gold & silver perps guide (/blog/gold-silver-perps-hyperliquid-vs-tradexyz/).
+
+ 
+
+## 3. Geopolitical Event Trade
+
+ 
+
+Gold spikes on risk events — war escalation, banking crises, sanctions announcements — and fades when tension resolves. Pre-position a small long with a tight stop below the recent low; take profit on the event spike; re-short on resolution headlines. The key advantage: on-chain markets never close, so you can react to Sunday-night headlines from Asia before COMEX opens Monday.
+
+ 
+
+## 4. Funding Rate Carry (Short)
+
+ 
+
+In strong gold uptrends, retail piles into longs and drives the funding rate positive. If annualised funding exceeds `10–15%`, shorts are collecting a meaningful carry. An experienced trader might short XAUUSDC not because they believe gold will fall, but because the funding income exceeds expected price drift. Delta-neutral strategies combine this short with an equivalent spot gold long (GLD or physical) to lock the carry while staying flat on direction.
+
+ 
+
+## 5. Portfolio Hedge Against Crypto Drawdowns
+
+ 
+
+For BTC/ETH-heavy traders, gold has historically acted as an uncorrelated safe haven during macro risk-off selloffs (not crypto-specific events). A small gold long — `5–10%` of your crypto portfolio notional at `2–3x` leverage — can dampen portfolio volatility during Fed-driven or macro-driven drawdowns without requiring you to exit crypto positions. The cross-asset hedge is practical because both sit in the same Hyperliquid wallet with the same USDC margin pool.
+
+ 
+ 
+
+## Strategies This Guide Doesn't Cover
+
+ 
+
+Options-based gold strategies (collars, covered calls, protective puts) are not available on Hyperliquid — the platform is perps-only. If you need options-based gold exposure, look at CME, Deribit (crypto-adjacent), or traditional brokers. Basis trades against physical gold (arbitrage between spot and perp) require a prime brokerage setup and are out of scope for retail traders.
+ 
+
+ 
+
+## Risk Management: Mistakes to Avoid
+
+ 
+ 
+
+## The Playbook-Killers
+
+ 
+
+**1. No pre-defined stop-loss.** Every trade needs an exit BEFORE you enter. Gold can move `$40–80/oz` in minutes on headlines; "I'll decide when the time comes" = liquidation.
+ 
+
+**2. Over-leveraging.** `25x` looks like free money on an upward chart; it is `3%` drawdown to liquidation on a downward one. Most experienced gold traders cap at `5–10x` for any held position.
+ 
+
+**3. Ignoring funding cost.** A `+30%` annualized funding rate on a long position erodes `2.5%` per month. Over a quarter, that matches the expected upside on many macro trades.
+ 
+
+**4. Weekend liquidity assumptions.** Gold perps trade 24/7, but Saturday-night spreads can widen `3–5x`. Market orders slip hard during low-liquidity windows.
+ 
+
+**5. Oracle risk.** The perp prices from external oracles. If the oracle lags the spot market (it occasionally does during extreme moves), liquidations can occur off-fair-value. Read Hyperliquid's oracle documentation before posting large margin.
+ 
+
+**6. HIP-3 delisting risk.** XAUUSDC is a **HIP-3** market (permissionless perp deployed via governance on Hyperliquid), not a core protocol asset. HIP-3 markets can in principle be delisted by the deploying entity or by governance vote. If a delisting occurs, open positions are typically closed at oracle price and remaining margin is returned to wallets — there is no way the platform can freeze withdrawals — but the market itself ceases to exist. Monitor governance activity on markets you are holding large positions in.
+ 
+
+**7. Correlated position stacking.** Long gold + long silver + long oil + short USD is effectively one macro trade. Size total risk, not per-position.
+ 
+
+ 
+
+## Gold Perps vs ETFs, CFDs & COMEX
+
+ 
+
+For the detailed cost and structural comparison, see our Why Trade Gold On-Chain? Perps vs ETFs vs COMEX (/blog/why-trade-gold-on-chain/) and RWA Perps vs CFD Brokers (/blog/rwa-perps-vs-cfd-brokers/). The short version:
+
+ 
+ 
+ 
+ Aspect 
+ XAUUSDC (Hyperliquid) 
+ GLD ETF 
+ Gold CFD 
+ COMEX Gold Futures 
+ 
+ 
+ Annual holding cost 
+ Funding: ~`0–10%` market-driven 
+ `0.40%` (management fee) 
+ `5–10%` (overnight swap) 
+ Contango roll cost 
+ 
+ 
+ Leverage 
+ `25x` 
+ None (spot ETF) 
+ `20–33x` 
+ ~`20x` via margin 
+ 
+ 
+ Hours 
+ `24/7/365` 
+ Market hours only 
+ Sun–Fri, session breaks 
+ Sun–Fri, session breaks 
+ 
+ 
+ Minimum size 
+ ~`$10` 
+ 1 share (~`$300`) 
+ `$100–500` 
+ `100 oz` = ~`$480,000` 
+ 
+ 
+ Custody 
+ Self-custody 
+ Broker holds 
+ Broker holds all funds 
+ Clearinghouse margin 
+ 
+ 
+ KYC 
+ No (DEX) 
+ Yes 
+ Yes 
+ Yes 
+ 
+ 
+ 
+
+ 
+
+## Frequently Asked Questions
+
+ 
+
+ 
+ 
+
+## What is the ticker for gold perps on Hyperliquid?
+
+ 
+
+Gold perpetuals on Hyperliquid trade under the ticker **XAUUSDC** (sometimes surfaced as `xyz:GOLD` on HIP-3 frontends). Tracks XAU/USD spot, settles in USDC, no expiry.
+ 
+
+ 
+ 
+
+## How does the funding rate work?
+
+ 
+
+Hyperliquid pays funding every **hour** (not every 8h like Binance/Bybit). Market-driven: if longs are crowded, longs pay shorts. Near-zero in balanced conditions. Multiply HL's hourly rate by `8` to get the 8h equivalent that most traders are familiar with.
+ 
+
+ 
+ 
+
+## What are the fees?
+
+ 
+
+`0.035%` taker / `0.01%` maker. On a `$10,000` position, `$3.50` taker or `$1.00` maker per side. No platform fees, no inactivity fees, no withdrawal fees, no overnight swap fees.
+ 
+
+ 
+ 
+
+## What is the maximum leverage?
+
+ 
+
+Up to `25x` as of April 2026. For most traders, `3–5x` is a safer starting point: at `5x`, gold needs to move `~19%` against you before liquidation — meaningful buffer for a macro asset.
+ 
+
+ 
+ 
+
+## How do I calculate my liquidation price?
+
+ 
+
+Long: `entry &times; (1 - 1/leverage + maint_margin)`. Example: long at `$4,800`, `5x` leverage, `1%` maintenance = `$4,800 &times; 0.81 = $3,888`. Flip signs for short. Hyperliquid shows the liquidation price in the order panel — always verify before submitting.
+ 
+
+ 
+ 
+
+## What are the risks of trading gold perps on-chain?
+
+ 
+
+Four core risks: liquidation cascades on extreme moves, oracle risk (stale/manipulated price feed), smart-contract risk, and weekend liquidity thinning. Use limit orders at known support/resistance, set stops, size conservatively, and only post margin you can afford to lose.
+ 
+
+ 
+ 
+
+## Can I trade without KYC?
+
+ 
+
+Yes — Hyperliquid is a DEX with no KYC on-chain. Note that onboarding from fiat still requires KYC at your on-ramp (the exchange where you buy USDC before bridging). Users in sanctioned jurisdictions should not access the platform.
+ 
+
+ 
+ 
+
+## How do gold perps compare to a gold ETF?
+
+ 
+
+GLD: `0.40%` annual fee, market-hours only, broker account required, no leverage. XAUUSDC: `0.035%` taker fee per side, `24/7`, wallet only, up to `25x`. For passive spot exposure GLD is simpler; for leveraged round-the-clock trading perps are structurally superior.
+ 
+
+ 
+ 
+
+## What is the minimum trade size?
+
+ 
+
+Approximately `$10` notional — far lower than COMEX (`~$480,000` per contract) or most CFD brokers (`$100–500`).
+
+
+---
+
+
+# Hyperliquid Fees 2026: Tier Table + $10K Cost vs eToro, IG, Binance
+
+Source: https://arx.trade/blog/hyperliquid-fees-explained-2026/
+
+
+## The 4 Components of Hyperliquid Fees
+
+ 
+
+Most fee guides for centralized exchanges focus on a single number — the maker/taker rate. Hyperliquid is more nuanced because its cost structure has **four components**, and the relative weight of each depends on how long you hold and how often you trade.
+
+ 
+
+## 1. Trading Fees (Maker / Taker)
+
+ 
+
+Charged on every fill. Hyperliquid uses a standard maker-taker model: limit orders that rest on the book and provide liquidity get the maker rate; market orders and aggressive limits that take liquidity get the taker rate.
+
+ 
+ 
+- **Maker (limit order, rests on book):** `0.0100%`
+ 
+- **Taker (market order or marketable limit):** `0.0350%`
+ 
+
+ 
+
+Rates verified at `app.hyperliquid.xyz/portfolio` as of April 2026. Check the portfolio page for live numbers before sizing a strategy around fee economics.
+
+ 
+
+That makes Hyperliquid **3.5&times; more rewarding to use limit orders** than market orders. On a $10,000 fill, the difference is $1.00 vs $3.50 — on a $100,000 fill, $10 vs $35. The limit-order discipline (/blog/how-to-trade-on-dex-beginners-guide/) is the single biggest fee lever for active traders.
+
+ 
+
+## 2. Funding Rates (the "overnight fee" replacement)
+
+ 
+
+Perpetual contracts have no expiry, which means they need a mechanism to stay anchored to spot. That mechanism is the funding rate: a small payment that passes between longs and shorts every hour.
+
+ 
+ 
+- If longs are crowded, **longs pay shorts**
+ 
+- If shorts are crowded, **shorts pay longs**
+ 
+- If positioning is balanced, the rate hovers near `0%`
+ 
+
+ 
+
+This is the structural difference vs CFD brokers. CFD brokers *always* charge an overnight swap fee — the holder pays, regardless of which side. Hyperliquid funding can pay *you* if you are on the unfavored side of crowded positioning. We unpack this fully in section 5.
+
+ 
+
+## 3. Gas Fees
+
+ 
+
+Zero. Hyperliquid runs on its own dedicated blockchain (similar to how Ethereum is its own chain, but built specifically for trading), and all trading actions — placing orders, canceling, modifying, transferring between margin accounts — are gas-free. Gas only matters when you bridge USDC *into* Hyperliquid (you pay source-chain gas on Arbitrum, Solana, etc.) or *out*.
+
+ 
+
+For comparison: GMX v2 on Arbitrum (/blog/hyperliquid-vs-gmx/) charges $1–5 in gas per trade; dYdX v4 on Cosmos has minimal but non-zero gas. Hyperliquid has none.
+
+ 
+
+## 4. HLP / User Vault Fees
+
+ 
+
+If you deposit into Hyperliquid's HLP protocol vault or a third-party user vault, fees apply on the vault layer:
+
+ 
+ 
+- **HLP performance fee:** `10%` of profits to the protocol
+ 
+- **HLP management fee:** `0%` (no annual drag)
+ 
+- **User vault leader fee:** up to `10%` performance fee, set by the vault leader
+ 
+
+ 
+
+These are passive-income fees, not trading fees — they only apply if you deposit liquidity. *Fees and lockup terms as of April 2026; verify current parameters at `app.hyperliquid.xyz/vaults` before depositing.* For the full breakdown including 4-day withdrawal lockup and risk profile, see our Hyperliquid Vaults guide (/blog/hyperliquid-vaults-explained/).
+
+ 
+
+## How to Find Your Personal Fee Tier (Volume + HYPE Staking)
+
+ 
+
+Hyperliquid's default `0.0100% / 0.0350%` rates are the entry point. Two discount mechanisms reduce them: **volume tiers** (based on your 14-day rolling traded volume) and the **HYPE staking discount** (based on how much HYPE you have staked to a validator). Unlike Binance or Bybit, Hyperliquid does not publish a clean universal fee tier table — the schedule is account-specific and combines both factors. Here is how to check your personal tier and what to expect.
+
+ 
+
+## Where to Find Your Tier (3 Steps)
+
+ 
+ 
+- Open `app.hyperliquid.xyz` and connect your wallet
+ 
+- Navigate to the **Portfolio** page (left sidebar)
+ 
+- Scroll to the **Fee Tier** panel — it shows your current 14-day rolling volume, your tier, and your live maker/taker rates side by side
+ 
+
+ 
+
+## Volume-Based Tiers (Directional Estimates)
+
+ 
+
+Hyperliquid does not publish a public bracket schedule, but as a directional guide based on community-reported tier observations:
+
+ 
+ 
+- **Under ~$5M / 14d** (default): maker `0.0100%`, taker `0.0350%`
+ 
+- **~$5M–$25M / 14d** (active retail): maker drops toward `0.008%–0.006%`, taker toward `0.030%–0.025%`
+ 
+- **$25M+ / 14d** (institutional): meaningfully lower rates, but exact numbers are account-specific
+ 
+
+ 
+
+These are illustrative estimates — verify your actual rates in the Hyperliquid portfolio page. The key takeaway: meaningful tier improvement happens once you cross the ~$5M / 14-day threshold (roughly $10M/month). Below that, the default rates apply.
+
+ 
+
+## The HYPE Staking Discount
+
+ 
+
+Stake HYPE to a validator and unlock a percentage discount on every maker and taker fill. The discount stacks with the volume tier. The exact percentage scales with the amount of HYPE staked — check `app.hyperliquid.xyz/staking` for the live tier table tied to your wallet.
+
+ 
+ 
+
+## When Does HYPE Staking Pay Back?
+
+ 
+
+Take a trader doing `$5M / month` in volume, mostly maker (90%), at the default tier. Annual fee bill is approximately:
+ 
+
+`$5M &times; 12 months &times; (0.9 &times; 0.01% + 0.1 &times; 0.035%) = ~$7,200/yr`
+ 
+
+At any staker discount of **D%**, the annual fee saving is approximately `$7,200 &times; D / 100`. So a 10% discount saves $720/year, a 20% discount saves $1,440/year. Two extra factors in your favor: (1) staked HYPE also earns staking rewards on top, and (2) higher trading volume scales the saving linearly. Verify your personal discount tier in the staking page before computing payback — the published tier structure changes as the protocol matures.
+ 
+
+ 
+
+## How do perp fees compare to CFD fees?
+
+ 
+
+**Short answer:** on a $10,000 position held 30 days, Hyperliquid perp fees total roughly $7–$10 (taker fees + funding, which can even be a credit on flat funding days). The same position on a CFD broker like eToro, IG, or Plus500 typically costs $80–$130 in overnight financing alone — 8 to 13 times more. CFD overnight fees compound daily; perp funding is market-driven and can flip negative. The longer the hold, the wider the gap.
+
+ 
+
+The difference is structural. CFD brokers price overnight financing off interbank rates plus a 2–3% spread (their margin). Perp funding is a market-clearing rate between longs and shorts on the same venue, with zero broker markup. On flat days you pay nothing.
+
+ 
+
+## Hyperliquid vs CFD Brokers ($10K, 30 days) — the numbers
+
+ 
+
+Below is the same scenario with actual venue-published rates. Long $10,000 BTC, held 30 days, comparing Hyperliquid against three popular CFD brokers using their published overnight rates as of April 2026.
+
+ 
+ 
+ 
+ Venue 
+ Open Cost 
+ Hold (30d) 
+ Close Cost 
+ Total 
+ 
+ 
+ Hyperliquid (taker in, maker out) 
+ `$3.50` 
+ `$15–25` funding 
+ `$1.00` 
+ `~$25` 
+ 
+ 
+ eToro (CFD) 
+ `~$10` spread 
+ `~$104` overnight 
+ `~$10` spread 
+ `~$124` 
+ 
+ 
+ IG Markets (CFD) 
+ `~$8` spread 
+ `~$120` overnight 
+ `~$8` spread 
+ `~$136` 
+ 
+ 
+ Plus500 (CFD) 
+ `~$15` spread 
+ `~$165–250` overnight 
+ `~$15` spread 
+ `~$195–280` 
+ 
+ 
+ 
+
+ 
+
+Methodology: eToro overnight at ~0.0347%/day (~12.7% APR weekday rate, sourced from eToro fee page); IG Markets at ~0.040%/day on BTC CFDs; Plus500 uses a dynamic overnight premium that fluctuates with market conditions ($165–250/month range covers typical historical span). Verify the live rate at the broker's instrument page before comparing.
+
+ 
+
+**Hyperliquid is roughly 5–6&times; cheaper** on a typical 30-day BTC long, and the multiple stretches to **8–10&times;** on Plus500's peak overnight charges. The dominant cost on CFD brokers is the overnight financing — the spread is a small fraction of total cost when you hold for more than a few days. On Hyperliquid, funding can be much smaller (or paid to you) and the per-fill fee is structurally lower.
+
+ 
+
+The catch: if you flip your position daily, fee weight shifts toward per-fill costs, and the gap narrows (CFD spreads vs HL maker fees). For pure scalping under 24 hours, Hyperliquid is still cheaper but the multiple shrinks to ~2&times;. For multi-day or multi-week swing positions, the gap widens to **10&times;+** on the highest-cost CFD venues.
+
+ 
+
+For a deeper structural breakdown of the CFD vs perp economics — including margin treatment, liquidation differences, and tax handling — read RWA Perps vs CFD Brokers (/blog/rwa-perps-vs-cfd-brokers/).
+
+ 
+
+## Hyperliquid vs Binance, Bybit, OKX
+
+ 
+
+Compared to other crypto venues, Hyperliquid's advantage is smaller but still real. The default tiers on the major centralized exchanges:
+
+ 
+ 
+ 
+ Venue 
+ Maker 
+ Taker 
+ Funding Cadence 
+ Gas / Withdraw 
+ 
+ 
+ Hyperliquid 
+ `0.0100%` 
+ `0.0350%` 
+ Hourly 
+ Zero gas, free internal 
+ 
+ 
+ Binance Perp (standard)* 
+ `0.0200%` 
+ `0.0500%` 
+ 8h 
+ Network fee on withdraw 
+ 
+ 
+ Bybit Perp (standard) 
+ `0.0200%` 
+ `0.0550%` 
+ 8h 
+ Network fee on withdraw 
+ 
+ 
+ OKX Perp (VIP 0 / Tier 1) 
+ `0.0200%` 
+ `0.0500%` 
+ 8h 
+ Network fee on withdraw 
+ 
+ 
+ 
+
+ 
+
+*Binance standard rates without BNB discount. Holding BNB reduces them to approximately `0.018%/0.045%`. OKX VIP 1+ tiers and Bybit higher tiers offer lower rates — this row shows the entry tier any new account starts at. Verify at each venue's public fee page.
+
+ 
+
+Three observations:
+
+ 
+ 
+- **Hyperliquid is cheapest on both maker and taker** at the standard tier. Bybit's maker is 2&times; Hyperliquid's; Binance and OKX takers are 43% higher than Hyperliquid's.
+ 
+- **Hourly funding gives smoother carry.** An 8-hour funding window can swing aggressively at the moment of payment; hourly settlement averages out spikes. For traders who care about precise carry economics, this is a small but real edge.
+ 
+- **The free internal transfer matters more than people realize.** Moving USDC between Hyperliquid sub-accounts is free; on CEXes, frequent withdrawal/deposit cycling can hit fees and minimums. For copy-trading or multi-account strategies, this compounds.
+ 
+
+ 
+
+For a deeper DEX-vs-DEX comparison see Hyperliquid vs GMX v2 vs dYdX (/blog/hyperliquid-vs-gmx/) and the broader perp DEX landscape (/blog/perp-dex-wars-hyperliquid-lighter-aster/).
+
+ 
+
+## How Funding Rates Actually Work
+
+ 
+
+This section matters because **funding is not the same as a CFD swap fee**, and confusing the two leads to bad strategy decisions. Three differences to internalize:
+
+ 
+
+## Direction
+
+ 
+
+CFD swap fees always charge the holder. Hyperliquid funding flips with positioning — if shorts are crowded, you can hold a long and *be paid* to do so. This is the single most underappreciated structural feature of perps.
+
+ 
+
+## Source
+
+ 
+
+CFD swaps are set by the broker as a markup over interbank rates — the broker decides. Hyperliquid funding is purely market-driven: it comes from the difference between the perp mid-price and the underlying spot price. Hyperliquid uses an external price feed — called an **oracle** — to determine the fair spot price. When the perp trades above spot (more buyers than sellers), longs pay funding to pull the price back down. When it trades below spot, shorts pay. No broker is involved. No one sets the rate. The market does, hour by hour.
+
+ 
+
+## Cadence
+
+ 
+
+CFD brokers charge once per day at rollover (typically 5pm New York). Hyperliquid pays every hour. Conversion math you will use:
+
+ 
+ 
+
+## HL Hourly &rarr; Other Cadences
+
+ 
+ 
+- **HL hourly &rarr; CEX 8-hour:** multiply by 8
+ 
+- **HL hourly &rarr; CFD daily:** multiply by 24
+ 
+- **HL hourly &rarr; Annualized (APR):** multiply by `24 &times; 365`
+ 
+ 
+
+Example: an HL hourly rate of `+0.0006%` equals `+0.005%` per 8h, `+0.014%` per day, or `+5.2%` APR. A typical CFD overnight fee on BTC is `~0.02–0.03%`/day — so even moderate Hyperliquid funding is already cheaper, and you keep the option to flip onto the paying side.
+ 
+
+ 
+
+## 3 Trader Profiles — Real Monthly Cost
+
+ 
+
+To make the abstract concrete, here are three trader archetypes and their realistic monthly fee bill on Hyperliquid vs the closest CFD/CEX equivalent.
+
+ 
+
+## Profile A: The Day Trader
+
+ 
+ 
+- 50 round-trip trades per month, average $5,000 size
+ 
+- 50% maker / 50% taker
+ 
+- Hold time: 4–8 hours (negligible funding)
+ 
+
+ 
+
+**Hyperliquid:** `50 &times; $5,000 &times; 2 sides &times; (0.5 &times; 0.0001 + 0.5 &times; 0.00035) = ~$112/month`
+ 
+
+**Binance standard:** `50 &times; $5,000 &times; 2 sides &times; (0.5 &times; 0.0002 + 0.5 &times; 0.0005) = ~$175/month`
+ 
+
+**Saving: ~$63/month, ~36% lower.**
+
+ 
+
+## Profile B: The Swing Trader
+
+ 
+ 
+- 5 positions per month, average $20,000 size, average 20-day hold
+ 
+- 100% maker entries (limit orders at support/resistance)
+ 
+- Average funding rate paid: ~6% APR equivalent
+ 
+
+ 
+
+**Hyperliquid:** `5 &times; $20,000 &times; 2 &times; 0.0001 + funding (5 &times; $20,000 &times; (6%/365) &times; 20) = $20 + ~$329 = ~$349/month`
+ 
+
+**eToro CFD (typical 0.022% daily overnight):** `5 &times; ~$20 spread + 5 &times; $20,000 &times; 0.022% &times; 20 = $100 + $440 = ~$540/month`
+ 
+
+**Saving: ~$191/month, ~35% lower.**
+
+ 
+
+## Profile C: The Scalper
+
+ 
+ 
+- 1,000 trades/month, average $2,000 size (= $4M monthly notional, default tier)
+ 
+- 80% maker / 20% taker (high limit-order discipline)
+ 
+- Hold time: minutes (no funding)
+ 
+
+ 
+
+**Hyperliquid (default tier):** `1000 &times; $2000 &times; 2 &times; (0.8 &times; 0.0001 + 0.2 &times; 0.00035) = ~$600/month`
+ 
+
+**Hyperliquid (default tier + 15% HYPE staker discount):** `~$600 &times; 0.85 = ~$510/month`
+ 
+
+**Binance standard (no BNB discount):** `1000 &times; $2000 &times; 2 &times; (0.8 &times; 0.0002 + 0.2 &times; 0.0005) = ~$1,040/month`
+ 
+
+**Saving at default Hyperliquid: ~$440/month.** Saving with HYPE staking: **~$530/month.** A scalper at this volume scales the saving linearly — doubling trade size doubles the dollar saving.
+
+ 
+
+## Hidden Costs Most Articles Skip
+
+ 
+
+Five real costs that don't appear in the headline maker/taker rate:
+
+ 
+
+## 1. Slippage on Thin Books
+
+ 
+
+Major Hyperliquid markets (BTC, ETH, gold/XAU, oil/WTI, SOL) typically have `1–3 bps` spread (basis points — 1 bps = 0.01%) — tighter than most CEXes. Smaller altcoin perps can have `5–20 bps` spread — verify the order book depth at your size before sending a market order. For sizes above $50,000 on smaller markets, slippage often dwarfs the maker/taker difference.
+
+ 
+
+## 2. Bridge Fees (USDC In/Out)
+
+ 
+
+The native Hyperliquid bridge to Arbitrum is fast and cheap (~`$1`). Cross-chain bridges (LayerZero, deBridge) charge slightly more (~$2–5). One-time cost, but worth budgeting for if you cycle capital frequently.
+
+ 
+
+## 3. Source Chain Gas
+
+ 
+
+When you onramp from another chain, you pay that chain's gas to initiate the bridge. Solana is ~$0.01, Arbitrum is ~$0.20, Ethereum mainnet is $5–30 depending on congestion.
+
+ 
+
+## 4. Auto-Deleverage (ADL) Risk
+
+ 
+
+Hyperliquid (like all major perp DEXes) protects solvent traders from losing money when another trader is liquidated with a larger position than the insurance fund can cover. In rare extreme cases, profitable traders on the opposite side may have their position partially closed at the failed trader's liquidation price — not at their own stop-loss. This affects most retail traders essentially never. It's disclosed here because CFD brokers handle counterparty risk differently (the broker absorbs it as market maker), so this is a structural risk concept worth understanding when migrating from CFDs to perps.
+
+ 
+
+## 5. Frontend Fees (or Lack Thereof)
+
+ 
+
+The official Hyperliquid app, ARX, and trade.xyz are free frontends — they don't add a markup. Some third-party tools (trading bots, copy-trade aggregators) charge a subscription or take a cut of profit; verify before connecting. Hyperliquid's protocol design means liquidity is identical across all approved frontends — the order book you trade against is the same regardless of which interface you use, and the fees stay the same.
+
+ 
+
+## How to Minimize Your Fees
+
+ 
+
+Five levers, in order of impact for typical retail:
+
+ 
+ 
+- **Use limit orders (always).** Cuts trading fees by ~71% per fill. The single biggest lever.
+ 
+- **Stake HYPE.** Even modest staking unlocks the staker discount; the staked HYPE also earns yield, so the carry is positive even before fee savings.
+ 
+- **Climb volume tiers.** Track your 14-day rolling volume. If you're close to the next tier, slightly increasing activity for a week can drop you into the cheaper bracket and pay back the extra spread cost.
+ 
+- **Time entries around funding flips.** You can see the live funding rate and a countdown timer at `app.hyperliquid.xyz` on any instrument. Entering a position right after the hourly funding settles (when the countdown shows ~59 minutes remaining) means you hold the position for nearly a full hour before the next funding payment hits. For a multi-week swing trade, this saves a few basis points on entry — not life-changing, but the habit is zero-cost.
+ 
+- **Trade major markets.** Slippage on BTC, ETH, gold, oil, SOL is 5–10&times; lower than on small altcoin perps. Stay liquid for size.
+ 
+
+ 
+ 
+
+## Don't Optimize Funding by Holding the Wrong Position
+
+ 
+
+It is tempting to hold a position purely because funding is paying you. *Don't.* Funding is a small payment compared to directional moves — a 1% adverse price move dwarfs a +20% APR funding rate over a 30-day hold. Funding optimization is a minor tactical edge to layer on top of a sound directional view, not a strategy on its own.
+ 
+
+ 
+
+## Frequently Asked Questions
+
+ 
+ 
+ 
+
+## Are Hyperliquid fees cheaper than Binance?
+
+ 
+
+On the default tier, Hyperliquid (`0.01%/0.035%`) is cheaper than Binance standard (`0.020%/0.050%`); Binance is reduced to ~`0.018%/0.045%` only if you hold BNB for the discount. The HYPE staking discount widens the gap further. On funding, Hyperliquid's hourly cadence vs Binance's 8-hour cadence delivers smoother carry but similar long-run averages.
+ 
+ 
+ 
+
+## Does HYPE staking actually save money on fees?
+
+ 
+
+Yes — the more HYPE you stake to a validator, the larger the discount on every maker and taker fill. The break-even depends on your volume: high-volume traders ($1M+ monthly notional) recover their HYPE position in weeks via the discount alone. Lower-volume traders still benefit because staked HYPE also earns staking yield on top.
+ 
+ 
+ 
+
+## Do you pay overnight financing fees on Hyperliquid?
+
+ 
+
+No fixed overnight swap fee. Instead, perps have a market-driven funding rate that passes between longs and shorts every hour. In balanced markets it hovers near zero; in crowded markets, the unfavored side pays the favored side. You can structurally avoid paying funding by holding the side the market is paying you to take.
+ 
+ 
+ 
+
+## What is the cheapest way to trade on Hyperliquid?
+
+ 
+
+Use limit orders for the maker rebate (saves ~71% per fill vs market orders). Stake HYPE for the staker discount. Climb volume tiers if you're close to the next bracket. Trade major markets to keep slippage low. Switching from market to limit orders is the single biggest single lever for most retail traders.
+ 
+ 
+ 
+
+## How are Hyperliquid funding rates different from CFD swap rates?
+
+ 
+
+Three differences. (1) Direction: CFD swap fees always charge the holder; Hyperliquid funding can pay you if you're on the unfavored side. (2) Source: CFD swaps are set by the broker as a markup; Hyperliquid funding is market-driven by the perp-vs-spot difference. (3) Cadence: CFDs charge once per day at rollover; Hyperliquid pays every hour.
+ 
+ 
+ 
+
+## Are there hidden fees on Hyperliquid I should know about?
+
+ 
+
+No platform fee, no inactivity fee, no withdrawal fee, no spread markup. The only costs beyond maker/taker and funding are: bridge fees ($1–5 to onramp/offramp USDC), source-chain gas when bridging in, and market-maker spread on small altcoin perps (5–20bps; major markets are 1–3bps). Most major frontends are free or rebate fees back.
+ 
+ 
+ 
+
+## What are the gas fees on Hyperliquid?
+
+ 
+
+Zero. Hyperliquid runs on its own L1 chain, and trading actions are gas-free. Gas only applies on the source chain when you bridge USDC in or out. This is a structural advantage over Ethereum-based perp DEXes (GMX on Arbitrum has $1–5 per trade in gas).
+ 
+ 
+ 
+
+## How do Hyperliquid fees compare to dYdX and GMX?
+
+ 
+
+Per-fill: Hyperliquid (`0.01%/0.035%`) is cheaper than dYdX v4 (`0.02%/0.05%`) and dramatically cheaper than GMX v2 (`0.05–0.07%` open + close, both sides). Funding is market-driven on all three; cadence is hourly on both Hyperliquid and dYdX v4, continuous on GMX. Gas: HL is free; dYdX is minimal; GMX is meaningful. Hyperliquid is the cheapest of the three for most active traders.
+
+
+---
+
+
+# Why Copy Smart Money on Hyperliquid? The On-Chain Edge (2026)
+
+Source: https://arx.trade/blog/why-copy-trade-smart-money-hyperliquid/
+
+
+## Why copy smart money on Hyperliquid? Quick take
+
+ 
+
+ As of May 2026, centralized exchanges still run copy trading as a marketing product. The leaderboard you see on Bybit, Binance Futures, or eToro is curated by the venue: who appears, how PnL is calculated, and what counts as a "trade" are all decisions made by the platform. You cannot independently verify any of it.
+
+ 
+
+Hyperliquid is the opposite. Every order, fill, fee, funding payment, and liquidation settles on a public L1. Anyone can query the same data the team uses internally. Smart money (wallets with real, defensible long-term performance) is identifiable from public data, not from a marketing dashboard. **That is the structural reason copy trading works on Hyperliquid in a way it never quite worked on a CEX.**
+
+ 
+
+This post explains the difference, what smart money actually does that retail does not, the honest risks of copying it, and how to pick wallets that are worth following.
+
+ 
+
+## What's wrong with copy trading on Binance, Bybit, and eToro?
+
+ 
+
+CEX copy trading looks good on the surface. You log into Bybit or Binance, browse a leaderboard of "top traders," pick one, allocate capital, and your account mirrors theirs. Clean UX. Big numbers next to each profile. Easy onboarding.
+
+ 
+
+The issues show up once you ask what the numbers actually represent.
+
+ 
+
+**The leaderboard is filtered.** Exchanges apply eligibility rules: minimum trading days, ROI thresholds, follower counts, all determining who appears. The pool you see is selection-biased by construction, and the underlying full distribution of all signal providers is not published.
+
+ 
+
+**PnL is reported, not verified.** A leader's headline return is calculated from the exchange's own books, with no independent party able to audit the closed positions, the internal PnL calculation methodology, or whether the displayed account is the leader's only account. Multiple-account setups, where a trader hedges across two profiles and a copy platform can only verify one, are a structural blind spot for any centralized venue. You cannot rule it out from outside the platform.
+
+ 
+
+**Incentives are misaligned at the platform level.** The exchange earns fees on the copied flow, so its interest is in maximising the volume routed through copy trading, not in your risk-adjusted return. Cosmetic features like ROI badges and win-streak rankings push high-variance traders to the top of the page even when their drawdown profile is poor.
+
+ 
+
+None of this means CEX copy trading is fraud. Plenty of leaders are real and skilled. The point is that you cannot tell the real ones from the curated ones using only what the platform shows you.
+
+ 
+
+## What Smart Money Actually Means On-Chain
+
+ 
+
+"Smart money" is overused. On Hyperliquid, the term has a defensible definition because the data is public.
+
+ 
+
+A workable definition: a wallet whose realised PnL net of fees and funding is positive over a 90-day or longer window, with maximum drawdown under 25%, position sizing that scales sensibly with conviction, and a track record diversified across more than one asset and more than one regime. The numbers are arguable; the principle is not. You want consistency, risk management, and durability, not a single hero trade.
+
+ 
+
+Every component of that definition is checkable on-chain. You can pull a wallet's full position history from the Hyperliquid info API (https://hyperliquid.gitbook.io/hyperliquid-docs/for-developers/api/info-endpoint), compute its realised PnL after fees, measure its drawdown, and see exactly how it sized into and out of every market it touched. No leaderboard required.
+
+ 
+
+This shifts the question from "do I trust the platform's ranking?" to "does this wallet's history actually look like a skilled trader?" The first is a marketing problem. The second is a research problem you can solve.
+
+ 
+
+## Why Hyperliquid Is Structurally Different
+
+ 
+
+Hyperliquid is a purpose-built L1 that runs an order book on-chain. A few properties matter for copy trading.
+
+ 
+
+**Settlement is the source of truth.** When a wallet places a trade, the order, fill, fee, and funding are written to the same chain everyone else reads. There is no off-chain matching engine where the venue could selectively report results. The leader's book and the public's view of the leader's book are the same book.
+
+ 
+
+**Fees and funding are protocol-level.** The taker fee, maker rebate, and hourly funding rate are set at the chain level. Every wallet pays the same posted schedule, modulated only by the public volume-tier and HYPE-staking discount table. A leader cannot quietly pay a different rate than you. That removes one of the structural ways CEX leaders can show better-looking returns than the same trades would generate for a copier.
+
+ 
+
+**Front-ends are interchangeable.** Hyperliquid is a permissionless protocol. You can read the same wallet activity from arx.trade, app.hyperliquid.xyz (https://app.hyperliquid.xyz), third-party tools like HyperDash (https://hyperdash.info) and HypurrScan (https://hypurrscan.io), or the raw info API. There is no walled garden where a single platform owns the relationship with the leader.
+
+ 
+
+The summary: on Hyperliquid, the venue cannot help a leader look better than they are. That alone changes who survives at the top of the distribution.
+
+ 
+
+## What edges do you actually get from copying smart money?
+
+ 
+
+Copy trading the right wallets is not a free lunch. It does buy you a few real things.
+
+ 
+
+**Skill arbitrage.** A discretionary trader with a 90-day track record of disciplined sizing, regime awareness, and risk management is doing work you would otherwise have to do yourself. Copying gives you exposure to that work for the cost of fees and slippage.
+
+ 
+
+**Regime detection by proxy.** Skilled wallets tend to cut size during chop and lean in during expansion. You inherit their regime read without having to build your own framework. If you also use an explicit regime model, the two views become a confluence check rather than a single point of failure. The five regimes piece (/blog/what-is-market-regime-detection/) covers how that framework works.
+
+ 
+
+**Faster macro reaction.** Pros react to news and flow within seconds. Retail typically reads about a move on Twitter ten minutes later. Copy execution closes most of that gap, with the lag now bounded by your own infrastructure rather than your news consumption habits.
+
+ 
+
+**Free education.** Watching a skilled wallet size up, scale out, take profit, or sit in cash teaches more than reading a hundred Twitter threads. The decisions are recorded on-chain, with timestamps, and you can replay them.
+
+ 
+
+## What Smart Money Does Differently
+
+ 
+
+Pull the position histories of a few top Hyperliquid wallets and patterns repeat.
+
+ 
+
+Position sizing is disciplined. What quants call sub-Kelly: even on high-conviction trades, sizes stay well below the maximum the wallet's balance would technically support. Skilled wallets accept a lower compound rate as the price of surviving any single trade going wrong. A smaller position you can hold through a drawdown beats a maximum-size position you panic-close at the low. Retail does the opposite: biggest position on the trade with the strongest narrative, which is also usually the one closest to a top.
+
+ 
+
+Regime awareness shows up in trade frequency. Compression markets see size cut and trades shrunk. Trends see size restored. The leader is not always trading; periods of pure cash on Hyperliquid are common in the histories of the best wallets, and those periods are often the most profitable in the long run because they avoid the chop tax.
+
+ 
+
+Funding awareness is constant. When perpetual funding is paying you to hold a position, smart money holds. When funding is costing 30%+ APR to maintain, smart money flips, hedges, or closes. Retail usually does not even check the rate.
+
+ 
+
+Risk profiles are asymmetric. Stop losses are tight relative to take-profit targets. A wallet typically risks 0.5% of equity to make 2-3%, accepting a low hit rate as the cost of letting winners run. Retail compounds losers and clips winners, the exact opposite.
+
+ 
+
+## What are the honest risks of on-chain copy trading?
+
+ 
+
+Copy trading on Hyperliquid is not risk-free, and pretending otherwise would be the exact behaviour the post just criticised CEXes for.
+
+ 
+
+**Adverse selection.** The wallets at the top of any leaderboard at any given moment are the ones whose recent style worked. If you start copying right after a hot streak, you are statistically more likely to be at the back end of mean reversion than at the front of a continuation. Look for consistency across regimes, not recency.
+
+ 
+
+**Latency cost.** Your fill cannot match theirs. By the time your wallet executes the same trade, price has moved. On a fast-moving alt, that can be 10 to 50 basis points of slippage; on a slow gold or oil position, much less. Copy trading is best on lower-frequency, higher-conviction flow where the leader holds for hours or days, not minutes.
+
+ 
+
+**Correlation risk.** Multiple "different" wallets often run similar plays, especially during clear macro setups. If you copy four leaders and they all go long ETH, you have one position with four vendors' fee bills, not a diversified book. Read the actual trades, not the names.
+
+ 
+
+**Tax and compliance.** Every fill in your wallet is a taxable event in most jurisdictions, regardless of who initiated it. Hyperliquid does not issue tax forms. You will need to export your transaction history from the Hyperliquid app and reconcile via a crypto tax tool. Koinly (https://koinly.io/integrations/hyperliquid/) has the most developed Hyperliquid integration, though as of 2026 perpetual-futures fills and funding payments still require CSV upload rather than API sync. CoinTracker (https://www.cointracker.io/) and TokenTax (https://www.tokentax.co/) accept generic CSV imports. Talk to a qualified crypto tax professional if the capital scales.
+
+ 
+
+**Strategy drift.** A wallet that has run a clean, disciplined book for nine months can wake up tomorrow and put 50x leverage on a memecoin. There is no governance forcing them to stay disciplined. Active monitoring matters; set-and-forget copy trading is a worse idea than the marketing makes it look.
+
+ 
+
+## How to Pick Wallets to Follow
+
+ 
+
+The screening logic that holds up in practice:
+
+ 
+
+**Net realised PnL over 90+ days, after fees and funding.** Anything shorter is too noisy to separate skill from variance. Anything that excludes fees and funding is the headline number, not the lived return.
+
+ 
+
+**Maximum drawdown under 25%.** A wallet that compounded 200% but held a 60% drawdown along the way is unbearable to copy. You will close at the bottom and re-enter at the top. Lower drawdown wallets compound slower but are actually copyable.
+
+ 
+
+**Position concentration.** Look at the contribution to total PnL by asset and by trade. If one wallet's entire 90-day return came from one BTC position, that is a single-trade performance, not a strategy. You want PnL distributed across dozens of trades and at least two or three markets.
+
+ 
+
+**Time-in-market and distribution.** The wallet should be active enough that the track record reflects actual decision-making across market conditions. What you want: trades spread across multiple distinct market episodes, not clustered into one rally. A discretionary trader usually logs 30–50 trades in 90 days, sufficient if those trades span different regimes. A wallet with 20 trades clustered into a single two-week window is too thin regardless of the headline return. Tens of thousands suggests a market-making bot, which is a different product.
+
+ 
+
+Reject wallets with: track records under 90 days, single-asset returns, drawdowns above 25%, or PnL dominated by one outsized win. There are usually better candidates a few rows further down the leaderboard.
+
+ 
+
+## How does ARX approach on-chain copy trading?
+
+ 
+
+ARX is currently in pre-launch (join the waitlist below). When live, the product will be a Hyperliquid front-end that exposes the same shared state as any other client, with a curated wallet feed and copy-execution logic built specifically for the workflow above.
+
+ 
+ 
+- **Curated cohort.** We will screen wallets against the criteria in the previous section (90-day net PnL, drawdown caps, concentration limits, time-in-market) and surface only those that pass. The full screen will be documented; you can verify any candidate yourself on-chain.
+ 
+- **Proportional sizing with caps.** Copy execution will mirror the leader's sizing as a percentage of their book, scaled to your book. You set hard caps on per-trade risk and on total leverage, so a leader going aggressive does not cascade into your account.
+ 
+- **Regime-aware confidence.** Trades will be weighted by the prevailing regime (trending, compressing, transitioning) using a model independent of the leader's view. The regime detection guide (/blog/what-is-market-regime-detection/) covers the framework.
+ 
+- **One-tap exit.** You will be able to close the copy at any time. Positions sit in your own wallet, not in a custodial relationship with ARX. Self-custody is the default, not the upgrade.
+ 
+
+ 
+
+The full HL onboarding workflow (wallet, USDC bridge, choosing markets) is in the copy trading on Hyperliquid guide (/blog/how-to-copy-trade-on-hyperliquid/). If you are coming from a CFD broker rather than from crypto, start with RWA perps vs CFD brokers (/blog/rwa-perps-vs-cfd-brokers/) for the migration economics.
+
+ 
+
+## Frequently Asked Questions
+
+ 
+ 
+ 
+
+## What does smart money mean on Hyperliquid?
+
+ 
+
+A wallet with consistent, verifiable performance over a long enough window to be more than luck. Practical screen: 90+ days of trading history, positive realised PnL net of fees and funding, drawdown under 25%, and reasonable diversification across markets. Because Hyperliquid settles every trade on-chain, all of this is verifiable from public data.
+ 
+
+ 
+ 
+
+## How is copying smart money on Hyperliquid different from copy trading on Bybit or Binance?
+
+ 
+
+Centralised exchanges run their own copy trading leaderboards. The exchange controls who appears, how PnL is calculated, and what the leader is allowed to disclose. Hyperliquid runs no leaderboard. Every wallet's positions, fills, fees, and historical PnL are published on-chain and queryable by anyone via the Hyperliquid info API. You verify the track record yourself instead of trusting a marketing number.
+ 
+
+ 
+ 
+
+## Can I trust on-chain wallet leaderboards?
+
+ 
+
+More than centralised leaderboards, but they still need scrutiny. Genuine transparency means you can verify a wallet's history, but it does not stop wash-trading, sybil setups, or short-history wallets piggybacking a single lucky run. Stick to wallets with a 90-day or longer track record, drawdown under 25%, and trade frequency consistent with discretionary strategy rather than market-making bots.
+ 
+
+ 
+ 
+
+## What return is realistic when copying smart money on Hyperliquid?
+
+ 
+
+Realistic ranges depend on regime and how aggressively you size. Even the best wallets have drawdown periods, and your fills will lag theirs by seconds to minutes, which costs you in slippage. Treat the leader's reported return as a ceiling, not a target. A common pattern is to run multiple uncorrelated leaders at small size and aggregate; the goal is steady risk-adjusted return, not matching a single leader's headline number.
+ 
+
+ 
+ 
+
+## How do you pick which wallets to copy?
+
+ 
+
+Four metrics matter most. (1) Net realised PnL over 90+ days after fees and funding. (2) Maximum drawdown under 25%. (3) Position concentration: one wallet should not have all PnL coming from a single asset or single trade. (4) Time-in-market: a sensible number of trades over time, not 200x leverage on one perfect call. Reject short track records, single-asset hero trades, and wallets whose performance is dominated by one outsized win.
+ 
+
+ 
+ 
+
+## Are there tax implications when copy trading on Hyperliquid?
+
+ 
+
+Yes, and they are your responsibility. Every fill in your wallet is a taxable event in most jurisdictions, regardless of whether you initiated it directly or through copy trading. Hyperliquid does not issue tax forms. Export your transaction history from the Hyperliquid app and use a crypto tax tool. Koinly has the most developed Hyperliquid integration, though as of 2026 perpetual-futures fills and funding payments still require CSV upload rather than API sync; CoinTracker and TokenTax accept generic CSV imports. Treatment varies by country, so consult a qualified crypto tax professional before scaling capital.
+ 
+ 
+
+ 
+ 
+
+## Want the curated wallet feed at launch?
+
+ 
+
+Join the ARX waitlist for priority access to the cohort screen and one-tap copy execution. The Telegram drops daily on-chain reads and waitlist alerts first.
+ Join the ARX Waitlist (/#waitlist)
+ Join Telegram &rarr; (https://t.me/ARX_Trade_Official)
+
+
+---
+
+
+# The Honest RWA Perps vs CFD Brokers Comparison (2026)
+
+Source: https://arx.trade/blog/rwa-perps-vs-cfd-brokers/
+
+
+## RWA Perps vs CFD Brokers: The Hidden Cost of Holding
+
+ 
+
+If you hold a gold CFD position overnight on eToro or IG, you pay a swap fee. Every single night. It looks small — `0.01%` to `0.03%` per day — but compound that over a year and you are paying `3.65%` to `10.95%` of your position size just for the privilege of holding it. On a `$10,000` gold position, that is `$365` to `$1,095` per year in overnight fees alone. Most CFD traders never calculate this number. They should.
+
+ 
+
+Meanwhile, RWA perpetual contracts on Hyperliquid (/blog/perp-dex-wars-hyperliquid-lighter-aster/) charge zero overnight fees. The S&P 500 perpetual launched on Hyperliquid in March 2026, licensed by S&P Dow Jones Indices. Gold surpassed `$5,000` per ounce. RWA perps now represent over `20%` of total DEX open interest. The infrastructure for trading traditional assets on-chain is no longer theoretical — it is live, liquid, and growing fast.
+
+ 
+
+This article compares RWA perpetuals against traditional CFD brokers across fees, custody, access, pricing transparency, and trading hours. The goal is to give you concrete numbers so you can decide whether the switch makes financial sense for your trading style.
+
+ 
+
+## What Are RWA Perpetuals?
+
+ 
+
+RWA perpetuals are perpetual futures contracts on **real-world assets** — gold, silver, crude oil, and the S&P 500 — that trade on decentralized exchanges. They function exactly like crypto perpetuals: no expiry date, USDC-margined, and anchored to the underlying asset price through a funding rate mechanism.
+
+ 
+
+The funding rate is the key difference from overnight fees. Instead of a broker-set charge, it is a market-driven payment between longs and shorts. When more traders are long, longs pay shorts. When more are short, shorts pay longs. The rate fluctuates based on supply and demand, often hovering near zero — and sometimes you **get paid** to hold your position.
+
+ 
+
+Hyperliquid currently lists perpetual contracts for gold (XAU), silver (XAG), crude oil (WTI), and the S&P 500. The S&P 500 contract is officially licensed by S&P Dow Jones Indices, making it the first licensed S&P 500 derivative on a decentralized exchange. These markets have accumulated over `$15B` in cumulative volume with more than `$2.3B` in open interest.
+
+ 
+
+Every trade settles on-chain. Your margin stays in your wallet. There is no broker, no dealing desk, and no counterparty deciding whether to fill your order. The order book is transparent and verifiable by anyone.
+
+ 
+
+## What Are CFD Brokers?
+
+ 
+
+A Contract for Difference (CFD) is a derivative that lets you speculate on price movements without owning the underlying asset. When you buy gold on eToro, you do not own gold. You own a contract with eToro where they agree to pay you the difference if gold goes up — and you pay them if it goes down.
+
+ 
+
+The broker is your counterparty. This is the fundamental structural difference. eToro, IG, Plus500, Vantage — they are all on the other side of your trade. They set the spread, they set the overnight fee, and they hold your funds. Some use dealing desks that can reject or re-quote orders during volatility.
+
+ 
+
+CFD brokers generate revenue from three sources: the spread (bid-ask markup), overnight swap fees, and in some cases, direct profit from client losses. Industry data consistently shows that `70-80%` of retail CFD accounts lose money — a statistic brokers are required to disclose in many jurisdictions.
+
+ 
+
+The catch is not the spread or the commission. It is the overnight fee — a cost that compounds silently and erodes the profitability of any position held longer than a few hours.
+
+ 
+
+## The Real Cost of Overnight Fees
+
+ 
+
+CFD overnight swap fees are calculated based on interbank lending rates (like SOFR or EURIBOR) plus the broker's markup. The total typically ranges from `0.01%` to `0.03%` per day, depending on the broker, the asset, and the direction (long or short).
+
+ 
+
+Here is what that looks like in practice:
+
+ 
+
+## Example: $10,000 Gold CFD on eToro
+
+ 
+ 
+- **Daily overnight fee:** ~`$2–$3`
+ 
+- **Monthly cost:** ~`$60–$90`
+ 
+- **Annual cost:** ~`$730–$1,095`
+ 
+
+ 
+
+That is `7.3%` to `10.95%` of your position value per year, paid regardless of whether gold goes up or down. If gold returns `12%` in a year and you are paying `8%` in overnight fees, your net return is `4%`. The broker captured two-thirds of your upside.
+
+ 
+
+## Example: $10,000 Gold RWA Perp on Hyperliquid
+
+ 
+ 
+- **Daily funding cost:** ~`$0–$0.15` (varies by market balance)
+ 
+- **Monthly cost:** ~`$0–$5`
+ 
+- **Annual cost:** ~`$0–$60`
+ 
+
+ 
+
+The funding rate on RWA perps is market-driven and frequently near zero. During periods of balanced positioning, you may pay nothing. During periods when you are on the minority side, **you receive funding payments from the majority side**.
+
+ 
+ 
+ 
+ Cost Component 
+ CFD Broker (eToro) 
+ RWA Perp (Hyperliquid) 
+ 
+ 
+ Overnight / Funding (Annual) 
+ `$730–$1,095` 
+ `$0–$60` 
+ 
+ 
+ Trading Fee (per $10K trade) 
+ Spread: ~`$3–$5` 
+ Taker: `$3.50` 
+ 
+ 
+ Total Annual Cost (10 trades/month) 
+ `$790–$1,155` 
+ `$42–$102` 
+ 
+ 
+ 
+
+ 
+ 
+
+For any position held longer than a few days, overnight fees are the single largest cost of CFD trading. They dwarf spreads and commissions. RWA perps eliminate this cost entirely for most holding periods.
+ 
+
+ 
+
+## Self-Custody vs Broker Custody
+
+ 
+
+When you deposit funds with a CFD broker, the broker holds your money. You are trusting that the broker remains solvent, does not freeze your account, and processes withdrawals when you request them. This is counterparty risk — the same type of risk that wiped out billions when FTX collapsed in 2022.
+
+ 
+
+CFD brokers are regulated (in theory), but regulation varies wildly by jurisdiction. An FCA-regulated broker in the UK offers different protections than an offshore broker in Vanuatu. Even regulated brokers can impose withdrawal delays, freeze accounts during volatility, or become insolvent.
+
+ 
+
+RWA perps on Hyperliquid are **non-custodial**. Your funds stay in your wallet until you open a position, and your margin is held in a smart contract — not a broker's bank account. There is no dealing desk that can reject your withdrawal. When you close a position, your USDC is immediately available.
+
+ 
+
+On-chain transparency adds another layer. Every trade, every liquidation, every funding payment is recorded on the blockchain and verifiable by anyone. You do not have to trust the platform's internal accounting — you can verify it yourself. CFD brokers offer no equivalent transparency into their order execution or counterparty exposure.
+
+ 
+
+## 24/7 Trading vs Market Hours
+
+ 
+
+Gold CFDs on most brokers trade Monday through Friday with session breaks. The market closes for the weekend, creating **gap risk** — if a geopolitical event happens on Saturday, you cannot exit your position until Monday. The price may open significantly higher or lower, and your stop-loss may execute at a worse price than you set (slippage through the gap).
+
+ 
+
+RWA perpetuals on Hyperliquid trade `24/7/365`. No weekend gaps, no session breaks, no rollovers. If gold moves on a Sunday afternoon because of a central bank announcement, you can react immediately. Your stop-losses execute in real-time, not at Monday's open price.
+
+ 
+
+This matters most for leveraged positions. A `2%` weekend gap on a `10x` leveraged gold CFD is a `20%` drawdown that you had no ability to manage. On a 24/7 market, you always have the ability to exit, adjust, or hedge.
+
+ 
+
+## Transparent Pricing vs Dealing Desk
+
+ 
+
+CFD pricing is set by the broker. The spread you see is the broker's spread, not the market's spread. During high volatility — exactly when accurate pricing matters most — brokers can widen spreads, reject orders, or re-quote prices. Some brokers use dealing desk models where they manually decide whether to fill your order or pass it to a liquidity provider.
+
+ 
+
+RWA perps on Hyperliquid trade on an **on-chain order book**. Prices are determined by actual buy and sell orders from market participants. The spread is visible to everyone. No broker can widen it unilaterally. No dealing desk can reject your order.
+
+ 
+
+Funding rates are equally transparent. On a CFD broker, the overnight fee formula is buried in the terms of service, and the actual rate applied may differ from what is advertised. On Hyperliquid, the funding rate is calculated on-chain, published in real-time, and historical rates are verifiable by anyone. You can see exactly what every trader is paying or receiving.
+
+ 
+
+## Head-to-Head Comparison Table
+
+ 
+ 
+ 
+ Feature 
+ CFD Broker (eToro/IG) 
+ RWA Perps (Hyperliquid) 
+ 
+ 
+ Overnight Fees 
+ `3.65–10.95%` annually 
+ Funding rate: near `0%`, sometimes positive 
+ 
+ 
+ Custody 
+ Broker holds your funds 
+ Self-custody (your wallet) 
+ 
+ 
+ Trading Hours 
+ Mon–Fri with session breaks 
+ `24/7/365` 
+ 
+ 
+ Pricing 
+ Broker-set spread, dealing desk 
+ On-chain order book, transparent 
+ 
+ 
+ Leverage 
+ Up to `30x` (regulated) / `500x` (offshore) 
+ Up to `50x` (varies by asset) 
+ 
+ 
+ Minimum Deposit 
+ `$50–$500` 
+ No minimum (any USDC amount) 
+ 
+ 
+ Counterparty 
+ Broker (takes other side of trade) 
+ Market (other traders via order book) 
+ 
+ 
+ Regulation 
+ FCA, CySEC, ASIC (varies) 
+ Decentralized, no central regulator 
+ 
+ 
+ Withdrawal 
+ `1–5` business days 
+ Instant (on-chain) 
+ 
+ 
+ Transparency 
+ Broker internal records 
+ Fully on-chain, verifiable 
+ 
+ 
+ 
+
+ 
+
+## Who Should Consider Switching?
+
+ 
+
+## The Overnight Bleeders
+
+ 
+
+You already know overnight fees are eating your profits. You have seen the line items on your broker statements. You hold gold, oil, or index positions for days or weeks, and the swap fees compound relentlessly. For you, the switch is straightforward — the cost savings alone justify moving to RWA perps. Calculate your annual overnight fees and compare them to near-zero funding rates.
+
+ 
+
+## The Platform Loyalists
+
+ 
+
+You have been using eToro or IG for years. The interface is familiar, the broker is regulated, and switching feels like unnecessary risk. You need the **fee shock calculation**: pull your last 12 months of overnight fee charges from your broker statement, add them up, and see the total. Most traders who do this are genuinely surprised. Once you see that you paid `$800+` in overnight fees on a single gold position, the switching cost of learning a new platform suddenly looks trivial.
+
+ 
+
+## The Access-Constrained
+
+ 
+
+You live in a jurisdiction where CFD brokers are restricted or unavailable. Many countries limit CFD leverage to `2:1` or `5:1`, making the product nearly unusable for active trading. RWA perps on Hyperliquid have no geographic restrictions and no KYC — connect a wallet and trade. This is particularly relevant for traders in Southeast Asia, where smart signal tools (/blog/what-is-market-regime-detection/) are increasingly popular among the trading community.
+
+ 
+
+## The Crypto-Adjacent
+
+ 
+
+You already have a crypto wallet and hold USDC. You have traded crypto perps before. For you, RWA perps are the easiest conversion — same interface, same mechanics, just different underlying assets. You can diversify from crypto-only perps into gold, oil, and the S&P 500 without leaving the Hyperliquid ecosystem.
+
+ 
+
+## How to Get Started with RWA Perps
+
+ 
+ 
+- **Get a wallet.** Install MetaMask, Rabby, or any EVM-compatible wallet. This takes under 2 minutes.
+ 
+- **Fund with USDC.** Bridge USDC to Hyperliquid using the native bridge. You can buy USDC on any major exchange and transfer it, or bridge directly from Arbitrum.
+ 
+- **Trade on Hyperliquid.** Connect your wallet to Hyperliquid's trading interface. Select gold (XAU), silver (XAG), oil (WTI), or S&P 500. Set your leverage, size, and direction. Your first RWA perp trade executes in under a second.
+ 
+
+ 
+
+If you want more than raw execution, **ARX** adds a layer of intelligence on top of Hyperliquid's RWA perps. Copy trading (/blog/how-to-copy-trade-on-hyperliquid/) lets you follow top-performing wallets with customizable risk controls. Vault strategies (/blog/hyperliquid-vaults-explained/) let you earn yield passively. Regime-aware signals help you time entries based on market conditions rather than gut feel.
+
+ 
+ 
+
+## From Zero to Trading in 5 Minutes
+
+ 
+
+Unlike CFD brokers that require identity verification, proof of address, and a `1–5` day approval process, RWA perps on Hyperliquid require only a wallet connection. No personal data, no waiting period, no geographic restrictions.
+ 
+
+ 
+
+## Frequently Asked Questions
+
+ 
+ 
+ 
+
+## What are RWA perpetuals?
+
+ 
+
+RWA perpetuals are perpetual futures contracts on real-world assets like gold, oil, silver, and the S&P 500 that trade on decentralized exchanges. They use USDC as margin, have no expiry date, and use a funding rate mechanism to keep prices anchored to the underlying asset. Unlike CFDs, they trade on-chain with full transparency and self-custody.
+ 
+
+ 
+ 
+
+## How much do CFD overnight fees cost per year?
+
+ 
+
+CFD brokers charge overnight swap fees of `0.01–0.03%` per day, which compounds to `3.65–10.95%` annually. On a `$10,000` gold position, this means `$365–$1,095` per year in holding costs alone. RWA perps use a market-driven funding rate that often hovers near zero, making long-term position holding dramatically cheaper.
+ 
+
+ 
+ 
+
+## Are RWA perps safer than CFD brokers?
+
+ 
+
+RWA perps offer self-custody (your funds stay in your wallet) and on-chain transparency (every trade is verifiable). CFD brokers hold your funds and act as your counterparty, creating counterparty risk. However, RWA perps carry smart contract risk and are less regulated than licensed CFD brokers. Neither is categorically safer — they have different risk profiles. Evaluate based on which risks matter more to you.
+ 
+
+ 
+ 
+
+## Can I trade gold and oil on-chain?
+
+ 
+
+Yes. Hyperliquid lists perpetual contracts for gold (XAU), silver (XAG), crude oil (WTI), and the S&P 500. The S&P 500 contract is officially licensed by S&P Dow Jones Indices as of March 2026. These markets trade `24/7` with USDC margin, zero overnight fees, and full self-custody. Combined volume exceeds `$15B` with over `$2.3B` in open interest.
+ 
+
+ 
+ 
+
+## What is the difference between CFD swap fees and funding rates?
+
+ 
+
+CFD swap fees are set by the broker, typically based on interbank rates plus a markup, and are always charged to the trader holding overnight. Funding rates on RWA perps are market-driven — determined by the balance between longs and shorts. When funding is negative, short holders pay longs, meaning you can get paid to hold a position. Funding rates are transparent and visible to everyone on-chain, unlike broker-set swap fees.
+ 
+
+ 
+ 
+
+## Do I need a crypto wallet to trade RWA perps?
+
+ 
+
+Yes. You need a compatible crypto wallet (like MetaMask or Rabby) funded with USDC to trade RWA perps on Hyperliquid. The setup takes about `5` minutes: install a wallet, bridge USDC to Hyperliquid, and connect. No KYC, no account application, no waiting period.
+
+
+---
+
+
+# Is HLP Vault Worth It? 20% APY + 3x Airdrop Breakdown (2026)
+
+Source: https://arx.trade/blog/hyperliquid-vaults-explained/
+
+
+## What Are Hyperliquid Vaults?
+
+ 
+
+Hyperliquid vaults are on-chain investment pools where you deposit USDC and a vault leader trades with the combined capital. If the leader profits, you earn a proportional share. If the leader loses, you absorb a proportional loss. It is that simple — and that dangerous, if you pick the wrong vault.
+
+ 
+
+Unlike traditional DeFi yield vaults that passively rebalance between two assets, Hyperliquid vaults are **actively managed trading accounts**. The vault leader can open long and short perpetual positions, use leverage, trade multiple assets, and execute complex strategies. You are not lending or providing liquidity in the LP sense — you are backing a trader.
+
+ 
+
+The entire mechanism is non-custodial. Your USDC sits in a smart contract on Hyperliquid's L1, not in anyone's personal wallet. Deposits and withdrawals are on-chain transactions. The vault leader cannot withdraw your funds — they can only execute trades within the vault.
+
+ 
+ 
+
+Think of a Hyperliquid vault as backing a fund manager, except the fund is on-chain, the track record is fully transparent, and you can enter or exit in hours, not years.
+ 
+
+ 
+
+## Two Types of Vaults: HLP vs. User Vaults
+
+ 
+
+Hyperliquid has two fundamentally different vault categories, and confusing them is one of the most common mistakes new depositors make.
+
+ 
+ 
+ 
+ Feature 
+ HLP (Protocol Vault) 
+ User Vaults 
+ 
+ 
+ Operated by 
+ Hyperliquid protocol 
+ Individual traders or teams 
+ 
+ 
+ Strategy 
+ Market making, liquidations, fee accrual 
+ Any trading strategy the leader chooses 
+ 
+ 
+ Profit share to leader 
+ None (protocol-owned) 
+ 10% of profits 
+ 
+ 
+ Deposit lock-up 
+ 4 days 
+ 24 hours 
+ 
+ 
+ Leader skin in the game 
+ N/A 
+ Minimum 5% of vault TVL 
+ 
+ 
+ Risk profile 
+ Lower variance, steady returns 
+ Higher variance, depends on leader skill 
+ 
+ 
+ 
+
+ 
+
+The distinction matters for your capital allocation. HLP is closer to a **market-neutral yield product** — it earns from spreads, fees, and liquidations rather than directional bets. User vaults are closer to **managed trading accounts** — returns depend entirely on the leader's skill and strategy.
+
+ 
+
+## HLP: The Protocol Vault
+
+ 
+
+HLP stands for **Hyperliquidity Provider**. It is Hyperliquid's native protocol vault that serves three critical functions for the exchange.
+
+ 
+
+**1. Market making.** HLP provides liquidity across Hyperliquid's perpetual markets by placing bids and asks on the order book. It earns the spread between buy and sell prices. This is not passive LP — the protocol runs active market-making strategies tuned to market dynamics.
+
+ 
+
+**2. Liquidations.** When a trader's position gets liquidated, HLP absorbs and unwinds that position. Most liquidations are profitable because the vault acquires positions at distressed prices. This is HLP's primary source of outsized returns during volatile markets.
+
+ 
+
+**3. Fee accrual.** HLP receives a portion of Hyperliquid's trading fees and supplies USDC to Hyperliquid Earn, generating additional yield.
+
+ 
+
+## Historical Returns
+
+ 
+
+HLP has historically averaged approximately `1.75%` per month, or roughly `20%` annualized. But the return distribution is lumpy. During major liquidation events, daily returns can spike to `5%+` in a single day. In February 2026, HLP successfully processed a `$700 million` liquidation and captured approximately `$15 million` in profit for depositors.
+
+ 
+
+On the other side, HLP has experienced drawdowns. The most notable was in March 2025, when a whale strategically withdrew margin to force a liquidation that the vault struggled to absorb, resulting in approximately `$4 million` in temporary losses. Hyperliquid responded by capping BTC leverage at `40x` and ETH at `25x` to reduce this attack vector.
+
+ 
+
+The key insight: HLP returns are driven by **market volatility and liquidation volume**, not by directional market moves. It tends to perform best during chaotic markets — exactly when most traders are losing money.
+
+ 
+
+## HLP Airdrop Multiplier: Is It Worth It?
+
+ 
+
+Beyond trading returns, HLP depositors receive a `3x` HYPE airdrop multiplier on their deposited capital. This means every dollar in HLP earns three times the airdrop points compared to simply holding USDC in your Hyperliquid account.
+
+ 
+
+For many depositors, the airdrop multiplier is the primary reason to deposit into HLP — the vault yield is a bonus on top. During the HYPE token distribution phases, this multiplier can meaningfully increase the effective APY of an HLP deposit.
+
+ 
+
+However, consider the trade-off: the `4-day` lockup means your capital is illiquid. If you are depositing solely for the airdrop multiplier, make sure you are comfortable with HLP's volatility and lockup constraints. The multiplier does not protect you from vault drawdowns. For a complete breakdown of Season 2 points, multipliers, and strategies, see our Hyperliquid Airdrop Season 2 guide (/blog/hyperliquid-airdrop-season-2-guide/).
+
+ 
+
+## Can You Earn Passive Yield on Hyperliquid?
+
+ 
+
+Yes — Hyperliquid vaults are one of the few ways to earn passive yield on a DEX perps platform without actively trading. HLP functions as a **managed yield strategy** where your USDC earns returns from market making, liquidations, and fee accrual.
+
+ 
+
+Compared to other DeFi yield sources:
+
+ 
+ 
+- **Aave/Compound USDC lending:** `3–5%` APY — lower risk, lower returns
+ 
+- **HLP vault:** ~`20%` annualized historically — higher returns, but with liquidation risk and `4-day` lockup
+ 
+- **User vaults (passive strategies):** Varies widely — some market-neutral vaults target `10–30%` APY with managed risk
+ 
+
+ 
+
+If you want truly passive exposure, HLP is the closest thing Hyperliquid offers to a "savings account" — though calling it that understates the risk. User vaults running market-neutral or arbitrage strategies can also serve as passive yield products, but require more due diligence on the vault leader.
+
+ 
+
+## HLP vs GLP vs JLP: Protocol Vault Comparison
+
+ 
+
+HLP is not the only protocol vault in DeFi. GMX's GLP (/blog/hyperliquid-vs-gmx/) on Arbitrum and Jupiter's JLP on Solana serve similar roles for their respective DEXs. For a broader look at how Hyperliquid stacks up across the DEX perps competitive landscape (/blog/perp-dex-wars-hyperliquid-lighter-aster/), see our full analysis. Here is how the protocol vaults compare.
+
+ 
+ 
+ 
+ Feature 
+ HLP (Hyperliquid) 
+ GLP (GMX) 
+ JLP (Jupiter) 
+ 
+ 
+ Chain 
+ Hyperliquid L1 
+ Arbitrum / Avalanche 
+ Solana 
+ 
+ 
+ Strategy 
+ Market making + liquidations 
+ Passive LP (index of assets) 
+ Passive LP + perp market making 
+ 
+ 
+ Assets in Pool 
+ USDC only 
+ ETH, BTC, USDC, USDT, etc. 
+ SOL, ETH, BTC, USDC 
+ 
+ 
+ APY (approx) 
+ ~20% (variable) 
+ ~5–15% (variable) 
+ ~10–30% (variable) 
+ 
+ 
+ Lock Period 
+ 4 days 
+ None 
+ None 
+ 
+ 
+ Airdrop Multiplier 
+ **3x HYPE points** 
+ None 
+ None 
+ 
+ 
+ Risk Profile 
+ Directional risk (loses when traders win) 
+ IL + asset exposure 
+ IL + directional 
+ 
+ 
+ TVL (Apr 2026) 
+ **~$373M** 
+ ~$450M (GLV v2) 
+ ~$1.62B 
+ 
+ 
+ Min Deposit 
+ No minimum 
+ No minimum 
+ No minimum 
+ 
+ 
+ Fee Structure 
+ No performance fee 
+ 0.4% buy/sell for minting/burning 
+ Dynamic fees 
+ 
+ 
+ 
+
+ 
+ 
+
+Protocol vault TVL reflects depositor confidence and liquidity depth. As of April 2026:
+ 
+ 
+- **HLP (Hyperliquid):** ~`$373M` — USDC-only, market making + liquidations
+ 
+- **GLV (GMX v2, Arbitrum):** ~`$450M` — GMX's newer liquidity vault, multi-asset basket
+ 
+- **JLP (Jupiter, Solana):** ~`$1.62B` — largest protocol vault by TVL, SOL ecosystem dominance
+ 
+ 
+
+JLP's TVL lead reflects Solana's perp trading volume surge in 2025–2026. HLP's smaller TVL relative to JLP means each depositor's share of liquidation profits is proportionally higher — a smaller pool chasing the same fee revenue. TVL data is approximate and changes daily; verify at each protocol's app before depositing.
+ 
+
+ 
+
+The key distinction: HLP deposits USDC only, so you have no impermanent loss from holding volatile assets. GLP and JLP expose you to a basket of tokens, meaning your returns are partially determined by the price movement of ETH, BTC, SOL, and other pool assets — not just trading activity. HLP also market-makes RWA perps like oil (/blog/oil-perps-hormuz-crisis-trading-guide/), gold (/blog/gold-5500-on-chain-gold-perps/), and S&P 500, giving it a broader fee base than crypto-only vaults.
+
+ 
+
+The 3x HYPE airdrop multiplier (/blog/hyperliquid-airdrop-season-2-guide/) is unique to HLP and is often the deciding factor. Neither GLP nor JLP offers a comparable airdrop incentive in 2026. However, HLP's 4-day lock period is a meaningful trade-off compared to the instant redemption available on GLP and JLP.
+
+ 
+
+## What Can Go Wrong with HLP?
+
+ 
+
+HLP's ~20% historical APY does not come for free. Here are the specific risk vectors every depositor should understand before committing capital.
+
+ 
+ 
+
+## 1. Adverse Selection
+
+ 
+
+HLP acts as the counterparty to every trade on Hyperliquid. Sophisticated traders — quantitative funds, MEV bots, and professional market makers — can systematically extract value from HLP's market-making positions by trading on information advantages. When the smartest traders consistently take the opposite side, HLP absorbs the loss.
+
+ 
+
+## 2. Directional Risk
+
+ 
+
+HLP loses money when traders collectively win big. In a strong trending market where the majority of traders are correctly positioned, HLP is on the wrong side of those trades. The vault's profitability depends on enough traders losing to offset the winners — which is typical, but not guaranteed.
+
+ 
+
+## 3. Black Swan Events
+
+ 
+
+Extreme market events can cause outsized losses. The February 2026 `$700M` liquidation event happened to be profitable for HLP — it captured approximately `$15M`. But the outcome could have been the opposite if the liquidation cascade had overwhelmed the vault's capacity to absorb positions at favorable prices. The March 2025 whale manipulation incident proved this is not theoretical.
+
+ 
+
+## 4. Funding Rate Risk
+
+ 
+
+When HLP holds directional positions (as a result of absorbing liquidations or market making), it may be required to pay funding rates to the other side. During extended periods where HLP is positioned against the prevailing market direction, funding payments can erode returns even if the underlying positions eventually become profitable.
+
+ 
+
+## 5. Smart Contract Risk
+
+ 
+
+Hyperliquid L1 is closed-source. Unlike open-source protocols where the community and independent auditors can review the code, Hyperliquid's vault logic has not been publicly audited in the same way as Ethereum-based DeFi protocols. You are trusting the team's implementation without the ability to independently verify it. This is a meaningful consideration for larger deposits.
+
+ 
+
+## 6. Asset Delta Risk
+
+ 
+
+HLP absorbs liquidations across all Hyperliquid perp markets, including gold (/blog/why-trade-gold-on-chain/), oil, and S&P 500 RWA perps. When HLP absorbs a large liquidation, it takes on a directional position in that asset. If the liquidated position continues to move against HLP before it can unwind, the vault accumulates mark-to-market losses on those delta positions. The more RWA markets Hyperliquid adds, the broader this exposure becomes.
+
+ 
+
+## 7. Liquidation Cascade Risk
+
+ 
+
+During extreme volatility, multiple large positions can get liquidated simultaneously across correlated assets. HLP must absorb all of them at once. If the cascade outpaces the vault's ability to unwind positions at favorable prices — particularly in thin after-hours markets for RWA assets — the vault can experience rapid drawdowns. The March 2025 whale manipulation incident was a targeted, single-position version of this risk. A true multi-market cascade would be harder to contain.
+
+ 
+
+## 8. Geo-Blocking & Regulatory Risk
+
+ 
+
+Hyperliquid restricts access to users in certain jurisdictions, including the United States. If regulatory pressure expands geo-blocking to additional regions, depositors in affected countries could find themselves unable to access the platform to withdraw during the 4-day lockup period. Always verify that Hyperliquid is accessible in your jurisdiction before depositing. Regulatory status for DeFi protocols can change with little notice.
+ 
+
+ 
+ 
+
+None of these risks are reasons to avoid HLP entirely. They are reasons to size your position appropriately and not treat HLP as a risk-free savings account.
+ 
+
+ 
+
+## User Vaults: Following Individual Traders
+
+ 
+
+User vaults are created by individual traders or algorithmic strategy teams. Anyone with at least `5%` of the vault's total value in their own deposit can become a vault leader. This skin-in-the-game requirement ensures the leader has real capital at risk alongside depositors.
+
+ 
+
+The leader executes trades, and all depositors share the P&L proportionally. The leader takes a `10%` profit share — they only earn when depositors earn. If the vault loses money, the leader earns nothing and loses their own capital alongside you.
+
+ 
+
+## Strategy Diversity: Managed & Passive Strategies
+
+ 
+
+User vaults on Hyperliquid offer managed trading strategies across a wide range of approaches — from aggressive directional bets to passive, yield-focused strategies. Some of the most common categories include:
+
+ 
+ 
+- **Systematic short-biased** — Vaults that algorithmically short altcoins based on signals like funding rates, open interest, and momentum exhaustion. These tend to perform well in down markets.
+ 
+- **Momentum/trend following** — Aggressive long strategies that capture trending moves under strict risk controls. Higher variance, but potentially higher returns during bull runs.
+ 
+- **Market-neutral/arbitrage** — Funding rate arbitrage, basis trading, and other strategies designed to earn yield regardless of market direction. Lower returns but significantly lower drawdowns.
+ 
+- **Discretionary macro** — Human-driven strategies where the leader makes directional calls based on macro analysis, on-chain data, and market structure. Highest variance of all vault types.
+ 
+
+ 
+
+The on-chain nature of Hyperliquid means every trade is transparent. You can see exactly what the vault leader is trading, when they entered, what size, and at what leverage. This transparency is something no centralized copy trading platform can match.
+
+ 
+
+## How to Deposit into a Vault
+
+ 
+
+Depositing into a Hyperliquid vault takes under `2 minutes` if you already have USDC in your Hyperliquid account.
+
+ 
+
+**1.** Go to app.hyperliquid.xyz/vaults (https://app.hyperliquid.xyz/vaults) and browse the available vaults.
+
+ 
+
+**2.** Select a vault and review its performance history, current positions, and depositor count.
+
+ 
+
+**3.** Click **Deposit** and enter the amount of USDC you want to allocate. The funds are deducted from your Hyperliquid trading account.
+
+ 
+
+**4.** Your deposit begins earning (or losing) from the moment it is confirmed. You receive a proportional share of all future vault P&L.
+
+ 
+
+**5.** To withdraw, click **Withdraw**. Remember the lock-up: `4 days` for HLP, `24 hours` for user vaults. Your withdrawal is proportional — the system ensures remaining depositors' liquidation prices are not affected by your exit.
+
+ 
+
+If you do not already have USDC on Hyperliquid, you will need to bridge it from Arbitrum first. Our copy trading guide (/blog/how-to-copy-trade-on-hyperliquid/) covers the wallet setup and bridging process in detail.
+
+ 
+
+## How to Evaluate a Vault Before Depositing
+
+ 
+
+The vault page shows a P&L number. Most people stop there. That is a mistake. Here is what to actually evaluate.
+
+ 
+
+**Time-weighted returns, not just total P&L.** A vault showing `+$500K` total profit sounds impressive until you realize it has been running for `12 months` with `$50M` in deposits. That is a `1%` annual return. Look at percentage returns relative to vault size and age.
+
+ 
+
+**Maximum drawdown.** This is the single most important risk metric. A vault that returned `80%` but had a `-40%` drawdown along the way means depositors who entered at the wrong time could have lost almost half their capital before recovering. Drawdown under `15%` suggests disciplined risk management. Above `30%`, proceed with extreme caution.
+
+ 
+
+**Consistency of returns.** Is the vault grinding out steady gains, or is all the profit from one or two lucky trades? Check whether the P&L curve is smooth or jagged. Smooth curves indicate a repeatable edge. Jagged curves with long flat periods suggest the leader is gambling and occasionally winning.
+
+ 
+
+**Leader's deposit percentage.** The minimum is `5%`, but the best vault leaders keep significantly more of their own capital in the vault. A leader with `20-30%` of the vault in their own funds is meaningfully more aligned with your interests than one sitting at the `5%` minimum.
+
+ 
+
+**Current positions.** Check what the vault is currently holding. Is it sitting in cash? Running concentrated positions with high leverage? Spread across multiple assets with moderate sizing? The current portfolio tells you more about the leader's actual approach than any description they write.
+
+ 
+
+**Depositor count and TVL trend.** Is the vault growing or shrinking? A vault losing depositors is a signal worth investigating. It could mean the strategy is underperforming, or it could mean a profitable vault leader is rotating into a new strategy. Either way, understand why.
+
+ 
+
+## The Risks Nobody Talks About
+
+ 
+
+Vault marketing emphasizes returns. Here are the risks that deserve equal attention.
+
+ 
+
+**Strategy drift.** A vault leader who has been running a conservative market-neutral strategy can wake up one morning and decide to go `50x` long on a memecoin. There is no mechanism forcing them to maintain their historical strategy. The only constraint is their own capital at risk. Monitor actively.
+
+ 
+
+**Toxic liquidation events.** HLP and high-TVL vaults can be targeted by sophisticated actors. The March 2025 incident proved this. When a vault must absorb a massive liquidation during thin liquidity, it can be forced to sell at unfavorable prices. Hyperliquid has tightened leverage limits since, but this risk is structural to any market-making vault.
+
+ 
+
+**Correlation risk.** If you deposit into multiple user vaults that all run similar strategies (say, altcoin momentum), you are not diversified. You have concentrated exposure disguised as diversification. Check whether your vaults have correlated positions.
+
+ 
+
+**Lock-up risk.** The `4-day` HLP lock-up means you cannot exit during a crisis that unfolds faster than `4 days`. In crypto, that is a real constraint. The `24-hour` user vault lock-up is better, but still meaningful during flash crashes that resolve in hours.
+
+ 
+
+**Impermanent loss (for HLP).** HLP acts as a market maker, which means it takes the opposite side of trades. During strong trending markets, HLP can accumulate directional exposure that moves against it — similar to impermanent loss in AMM pools. This is not the same mechanism as Uniswap IL, but the result is similar: the vault can underperform during sustained one-directional moves. The effect typically reverses when volatility returns.
+
+ 
+
+**Survivorship bias.** The vaults you see on the leaderboard are the ones that survived. The vaults that blew up, lost all depositor capital, and were abandoned are not prominently displayed. Do not assume that the current list of vaults represents the average outcome of vault investing.
+
+ 
+ 
+
+The question is never "can I earn yield from this vault?" The question is "what is the maximum I can lose, and am I being compensated for that risk?"
+ 
+
+ 
+
+## Vaults vs. Copy Trading: Which Is Right for You?
+
+ 
+
+Vaults and copy trading (/blog/how-to-copy-trade-on-hyperliquid/) both let you benefit from another trader's skill. But they work differently, and the right choice depends on what you want to control.
+
+ 
+ 
+ 
+ Feature 
+ Vaults 
+ Copy Trading 
+ 
+ 
+ Capital control 
+ Deposited into vault contract 
+ Stays in your own account 
+ 
+ 
+ Position sizing 
+ Proportional (set by vault) 
+ You configure per-trade sizing 
+ 
+ 
+ Risk management 
+ Vault leader controls risk 
+ You set leverage caps, drawdown limits 
+ 
+ 
+ Transparency 
+ See all vault positions on-chain 
+ See all copied trades in real-time 
+ 
+ 
+ Exit speed 
+ 24h or 4-day lock-up 
+ Instant (close any position anytime) 
+ 
+ 
+ Granularity 
+ All-or-nothing with the vault 
+ Filter by asset, size, leverage per trader 
+ 
+ 
+ 
+
+ 
+
+**Vaults are better if** you want a hands-off experience, trust the vault leader's risk management, and do not need instant exit capability. They are also simpler — deposit and walk away.
+
+ 
+
+**Copy trading is better if** you want granular control over position sizing, leverage limits, and asset selection. With platforms like ARX (https://arx.trade/), you also get regime-aware signal scoring (/blog/what-is-market-regime-detection/) that adjusts confidence based on market conditions — something no vault offers.
+
+ 
+
+Many serious traders use both: HLP for steady, low-maintenance yield, and copy trading for targeted exposure to specific traders with full risk control.
+
+ 
+
+## Frequently Asked Questions
+
+ 
+ 
+ 
+
+## What is HLP on Hyperliquid?
+
+ 
+
+HLP (Hyperliquidity Provider) is Hyperliquid's native protocol vault. It provides market-making liquidity across all perpetual markets, absorbs trader liquidations, and earns a share of trading fees. Depositors supply USDC and receive a proportional share of the vault's profits. Unlike user vaults, HLP charges no performance fees and is operated by the Hyperliquid protocol itself, not an individual trader.
+ 
+
+ 
+ 
+
+## How much can you earn with HLP?
+
+ 
+
+HLP has historically averaged approximately `1.75%` per month, or roughly `20%` annualized. Returns are highly variable — during the February 2026 `$700M` liquidation event, HLP captured an estimated `$15 million` in profit in a single event. Conversely, HLP can produce negative returns when traders collectively win against the vault. Past performance does not guarantee future results.
+ 
+
+ 
+ 
+
+## What is the HLP lock period?
+
+ 
+
+HLP has a `4-day` lockup period — you cannot withdraw until `4 days` after your most recent deposit. User vaults have a shorter `24-hour` lockup. During the lockup, your funds remain in the vault and are subject to all trading activity, including potential losses. This means you cannot exit during a crisis that unfolds faster than 4 days.
+ 
+
+ 
+ 
+
+## Does HLP give you airdrop points?
+
+ 
+
+Yes. HLP depositors receive a `3x` HYPE airdrop multiplier on their deposited capital. Every dollar in HLP earns three times the airdrop points compared to simply holding USDC in your Hyperliquid account. For many depositors, the airdrop multiplier is the primary reason to deposit — the vault yield is a bonus on top. See our Airdrop Season 2 guide (/blog/hyperliquid-airdrop-season-2-guide/) for the full points breakdown.
+ 
+
+ 
+ 
+
+## What are the risks of HLP?
+
+ 
+
+HLP carries five key risks: (1) adverse selection from sophisticated traders extracting value, (2) directional risk when traders collectively win big, (3) black swan events like extreme liquidation cascades, (4) funding rate risk when positioned on the wrong side of the market, and (5) smart contract risk since Hyperliquid L1 is closed-source and has not been publicly audited in the same way as Ethereum-based DeFi protocols.
+ 
+
+ 
+ 
+
+## HLP vs user vaults: what's the difference?
+
+ 
+
+HLP (Hyperliquidity Provider) is the protocol vault that provides market-making liquidity, performs liquidations, and accrues a portion of trading fees. It charges no performance fees and has a `4-day` lockup. User vaults are created by individual traders or teams running their own strategies; the vault leader takes a `10%` profit share and the lockup is `24 hours`.
+ 
+ 
+
+ 
+
+## Other Common Questions
+
+ 
+
+## Does HLP have impermanent loss?
+
+ 
+
+HLP can experience a form of impermanent loss similar to AMM pools. As a market maker, HLP takes the opposite side of trades, which means it can accumulate directional exposure during strong trending markets. The effect typically reverses when volatility returns.
+
+ 
+
+## What is the minimum deposit for Hyperliquid vaults?
+
+ 
+
+HLP has no minimum. User vaults may set their own minimum, but most accept deposits starting from `$10` USDC. Very small deposits may not generate meaningful returns after gas on deposit and withdrawal.
+
+ 
+
+## How much does the vault leader fee cost?
+
+ 
+
+HLP charges `0%` — all profits go to depositors. User vaults charge a `10%` profit share: the leader takes `10%` of profits; depositors keep `90%`. No management fees, entry fees, or exit fees on either vault type.
+
+ 
+
+## Do you pay taxes on vault profits?
+
+ 
+
+In most jurisdictions, yes. In the US, HLP profits are typically taxed as ordinary income or capital gains depending on how your tax authority classifies DeFi yield. Australia, the UK, and Canada have issued guidance treating DeFi yield as ordinary income. Consult a qualified crypto tax professional; tools like Koinly, CoinTracker, and TokenTax can import Hyperliquid transaction history.
+
+ 
+
+## How do you report Hyperliquid HLP on taxes?
+
+ 
+
+Hyperliquid does not issue tax forms. Track your own cost basis: (1) record deposit amount and date, (2) record withdrawal amount and date, (3) calculate the difference as gain or loss. For US taxpayers, report on Schedule D (capital gains) or Schedule 1 (ordinary income) per your tax professional's guidance.
+
+
+---

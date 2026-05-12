@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HIP-3 — ARX Trading Glossary</title>
+<meta name="description" content="What is HIP-3? Hyperliquid's permissionless perpetual market listing standard that enabled RWA perps (gold, oil, S&P 500) on-chain. Full definition + how it works.">
+
+<link rel="canonical" href="https://arx.trade/glossary/hip-3/" />
+<meta name="robots" content="index, follow" />
+
+<meta property="og:title" content="HIP-3 — ARX Trading Glossary">
+<meta property="og:description" content="What is HIP-3? Hyperliquid's permissionless perpetual market listing standard that enabled RWA perps (gold, oil, S&P 500) on-chain. Full definition + how it works.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://arx.trade/glossary/hip-3/" />
+<meta property="og:image" content="https://arx.trade/og-image.png" />
+<meta property="og:site_name" content="ARX" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@ARX_TRADE" />
+<meta name="twitter:title" content="HIP-3 — ARX Glossary" />
+<meta name="twitter:description" content="What is HIP-3? Hyperliquid's permissionless perpetual market listing standard that enabled RWA perps (gold, oil, S&P 500) on-chain. Full definition + how it works." />
+<meta name="twitter:image" content="https://arx.trade/og-image.png" />
+
+<meta name="theme-color" content="#B38DF4" />
+<meta name="author" content="ARX Research" />
+
+<link rel="icon" type="image/png" href="/img/favicon.png" />
+<link rel="apple-touch-icon" href="/img/favicon.png" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "HIP-3 (Hyperliquid Improvement Proposal 3)",
+  "description": "HIP-3 is the Hyperliquid standard that allows approved deployers to list new perpetual markets without permission from the Hyperliquid team. It is the technical layer that made RWA perpetuals \u2014 gold, silver, oil, S&P 500, Tesla \u2014 tradable on Hyperliquid, with each market settling",
+  "author": {
+    "@type": "Person",
+    "name": "ARX Research",
+    "url": "https://arx.trade",
+    "jobTitle": "Derivatives Research",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "ARX",
+      "url": "https://arx.trade"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ARX",
+    "url": "https://arx.trade",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://arx.trade/logo.png"
+    }
+  },
+  "datePublished": "2026-05-12",
+  "dateModified": "2026-05-12",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://arx.trade/glossary/hip-3/"
+  },
+  "url": "https://arx.trade/glossary/hip-3/",
+  "image": "https://arx.trade/og-image.png",
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "HIP-3"
+    },
+    {
+      "@type": "Thing",
+      "name": "Hyperliquid"
+    },
+    {
+      "@type": "Thing",
+      "name": "Perpetual Futures"
+    },
+    {
+      "@type": "Thing",
+      "name": "RWA Perpetuals"
+    },
+    {
+      "@type": "Thing",
+      "name": "trade.xyz"
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is HIP-3?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "HIP-3 is the third formal Hyperliquid Improvement Proposal. It defines the rules and economics under which approved third-party deployers can list new perpetual contracts on the Hyperliquid L1 without case-by-case approval from the Hyperliquid team. HIP-1 handles spot token listings; HIP-2 handles spot liquidity provisioning; HIP-3 specifically governs perpetual market deployment, which was historically only possible by the Hyperliquid core team."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does HIP-3 matter for RWA perps?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "HIP-3 is the reason gold, silver, crude oil, the S&P 500, Tesla, and other real-world assets can be traded as perpetuals on Hyperliquid. Without HIP-3, these markets would require Hyperliquid's core team to deploy them one by one \u2014 a bottleneck. With HIP-3, third parties like trade.xyz can deploy an entire RWA market cluster while Hyperliquid retains technical and risk oversight. The trade-off: HIP-3 deployers post a bond and commit to oracle integrity; in return they earn a share of fees from their deployed markets."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who can deploy markets under HIP-3?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Deployer eligibility is gated by the Hyperliquid team. Approved deployers post a deposit, agree to listing standards, and integrate with vetted oracle sources. As of early 2026, trade.xyz is the most prominent third-party HIP-3 deployer, having launched the gold, silver, oil, and major equity perp markets. The exact deployer onboarding criteria are evolving and published in the Hyperliquid docs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do HIP-3 markets settle on the same chain as crypto perps?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. This is the structurally important fact. A HIP-3-deployed gold market and a Hyperliquid core BTC market live on the same L1, use the same order book engine, the same matching infrastructure, and the same settlement layer. Cross-frontends (ARX, app.hyperliquid.xyz, trade.xyz, third-party tools) all read and write to the same shared state. That means anything tradable via one frontend is tradable via any compliant frontend at the same price and depth."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the risks specific to HIP-3 markets?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Two risks differ from native Hyperliquid perps. First, oracle risk: HIP-3 markets rely on the deployer's selected oracle for spot reference price. A bad oracle feed could distort funding rates and trigger inappropriate liquidations. Second, delisting risk: if a deployer fails to maintain the market (oracle outage, regulatory issue, low volume), the market can be wound down on a defined notice period. Position holders are entitled to settlement at the fair price, but the market itself disappears. Hyperliquid documents this in the deployer-grade-of-service spec."
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://arx.trade/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Glossary",
+      "item": "https://arx.trade/glossary/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "HIP-3",
+      "item": "https://arx.trade/glossary/hip-3/"
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "DefinedTerm",
+  "name": "HIP-3",
+  "description": "Hyperliquid's permissionless market listing standard for perpetual contracts.",
+  "url": "https://arx.trade/glossary/hip-3/",
+  "inDefinedTermSet": {
+    "@type": "DefinedTermSet",
+    "name": "ARX Trading Glossary",
+    "url": "https://arx.trade/glossary/"
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg-base: #08060F; --bg-surface-1: #0F0B1A; --bg-surface-2: #1A1425; --bg-surface-3: #251E30;
+  --primary: #B38DF4; --primary-hover: #925BF0; --primary-glow: rgba(179, 141, 244, 0.3);
+  --cyan: #22D1EE;
+  --text-primary: #FFFFFF; --text-secondary: #A1A1AA; --text-muted: #71717A;
+  --border-subtle: rgba(255, 255, 255, 0.06); --border-medium: rgba(255, 255, 255, 0.1); --border-accent: rgba(179, 141, 244, 0.3);
+  --radius-sm: 8px; --radius-md: 12px; --radius-lg: 16px; --radius-full: 9999px;
+}
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; -webkit-font-smoothing:antialiased; }
+body { font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif; background:var(--bg-base); color:var(--text-primary); line-height:1.7; }
+a { color:inherit; text-decoration:none; }
+.container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+.mono { font-family: 'JetBrains Mono', monospace; }
+
+.navbar { position:fixed; top:12px; left:50%; transform:translateX(-50%); width:calc(100% - 48px); max-width:1100px; z-index:100; padding:8px 24px; backdrop-filter:blur(20px) saturate(1.5); background:rgba(8,6,15,0.5); border:1px solid rgba(255,255,255,0.12); border-radius:9999px; }
+.navbar .container { max-width:100%; display:flex; align-items:center; justify-content:space-between; padding:0; }
+.nav-logo img { height:40px; width:auto; display:block; }
+.nav-links { display:flex; align-items:center; gap:32px; list-style:none; }
+.nav-links a { font-size:14px; font-weight:500; color:var(--text-secondary); }
+.nav-links a:hover, .nav-links a.active { color:var(--text-primary); }
+.nav-links a.nav-cta { padding:7px 18px; background:var(--primary); color:#FFF; border-radius:var(--radius-full); font-weight:600; }
+
+.breadcrumb { padding: 100px 0 12px; font-size: 13px; color: var(--text-muted); }
+.breadcrumb a { color: var(--text-muted); }
+.breadcrumb a:hover { color: var(--text-primary); }
+.breadcrumb .sep { margin: 0 6px; }
+
+.glossary-header { padding: 12px 0 32px; border-bottom: 1px solid var(--border-subtle); margin-bottom: 32px; }
+.glossary-tag { display: inline-block; padding: 4px 12px; background: rgba(179,141,244,0.12); color: var(--primary); border-radius: var(--radius-full); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; }
+.glossary-header h1 { font-size: 32px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 14px; }
+.glossary-header .summary { font-size: 17px; color: var(--text-secondary); line-height: 1.6; }
+
+article h2 { font-size: 22px; font-weight: 700; margin: 40px 0 12px; letter-spacing: -0.01em; }
+article p { color: var(--text-secondary); margin-bottom: 14px; }
+article strong { color: var(--text-primary); }
+article a { color: var(--primary); }
+article a:hover { text-decoration: underline; }
+article ul { color: var(--text-secondary); margin: 8px 0 14px 22px; }
+article li { margin-bottom: 6px; }
+article code { font-family: 'JetBrains Mono', monospace; font-size: 0.92em; padding: 1px 6px; background: var(--bg-surface-2); border-radius: 4px; color: var(--cyan); }
+
+.related-glossary { padding: 32px 0; border-top: 1px solid var(--border-subtle); margin-top: 40px; }
+.related-glossary h3 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 12px; }
+.related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.related-card { padding: 14px 18px; background: var(--bg-surface-2); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); transition: border-color 0.2s; }
+.related-card:hover { border-color: var(--primary); }
+.related-card .label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.related-card .title { font-size: 14px; font-weight: 500; color: var(--text-primary); margin-top: 4px; }
+
+.cta-line { margin: 28px 0 12px; padding: 18px 22px; background: linear-gradient(135deg, rgba(179,141,244,0.08), rgba(34,209,238,0.04)); border-left: 3px solid var(--primary); border-radius: var(--radius-md); }
+.cta-line p { font-size: 14px; color: var(--text-primary); margin: 0; }
+.cta-line a { color: var(--primary); font-weight: 600; }
+
+.footer { padding: 32px 0; border-top: 1px solid var(--border-subtle); margin-top: 40px; }
+.footer p { font-size: 12px; color: var(--text-muted); text-align: center; }
+
+@media (max-width: 768px) {
+  .related-grid { grid-template-columns: 1fr; }
+  .glossary-header h1 { font-size: 26px; }
+  .navbar .nav-links li a:not(.nav-cta) { display: none; }
+  .navbar .nav-links { gap: 12px; }
+  .nav-logo img { height: 32px !important; }
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="/" class="nav-logo">
+      <img src="/img/Arx_Logo_Frost_white.svg" alt="ARX" height="40" width="73">
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/markets/">Markets</a></li>
+      <li><a href="/insights/">Insights</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/#waitlist" class="nav-cta">Join Waitlist</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+
+  <div class="breadcrumb">
+    <a href="/">Home</a><span class="sep">/</span>
+    <a href="/glossary/">Glossary</a><span class="sep">/</span>
+    <span>HIP-3</span>
+  </div>
+
+  <header class="glossary-header">
+    <span class="glossary-tag">Glossary</span>
+    <h1>HIP-3 (Hyperliquid Improvement Proposal 3)</h1>
+    <p class="summary">HIP-3 is the Hyperliquid standard that allows approved deployers to list new perpetual markets without permission from the Hyperliquid team. It is the technical layer that made RWA perpetuals — gold, silver, oil, S&P 500, Tesla — tradable on Hyperliquid, with each market settling on the same shared L1 state that crypto perps use.</p>
+  </header>
+
+  <article>
+
+  <h2>What is HIP-3?</h2>
+  <p>HIP-3 is the third formal Hyperliquid Improvement Proposal. It defines the rules and economics under which approved third-party deployers can list new perpetual contracts on the Hyperliquid L1 without case-by-case approval from the Hyperliquid team. HIP-1 handles spot token listings; HIP-2 handles spot liquidity provisioning; HIP-3 specifically governs perpetual market deployment, which was historically only possible by the Hyperliquid core team.</p>
+
+  <h2>Why does HIP-3 matter for RWA perps?</h2>
+  <p>HIP-3 is the reason gold, silver, crude oil, the S&amp;P 500, Tesla, and other real-world assets can be traded as perpetuals on Hyperliquid. Without HIP-3, these markets would require Hyperliquid's core team to deploy them one by one — a bottleneck. With HIP-3, third parties like trade.xyz can deploy an entire RWA market cluster while Hyperliquid retains technical and risk oversight. The trade-off: HIP-3 deployers post a bond and commit to oracle integrity; in return they earn a share of fees from their deployed markets.</p>
+
+  <h2>Who can deploy markets under HIP-3?</h2>
+  <p>Deployer eligibility is gated by the Hyperliquid team. Approved deployers post a deposit, agree to listing standards, and integrate with vetted oracle sources. As of early 2026, <a href='https://trade.xyz' target='_blank' rel='noopener'>trade.xyz</a> is the most prominent third-party HIP-3 deployer, having launched the gold, silver, oil, and major equity perp markets. The exact deployer onboarding criteria are evolving and published in the Hyperliquid docs.</p>
+
+  <h2>Do HIP-3 markets settle on the same chain as crypto perps?</h2>
+  <p>Yes. This is the structurally important fact. A HIP-3-deployed gold market and a Hyperliquid core BTC market live on the same L1, use the same order book engine, the same matching infrastructure, and the same settlement layer. Cross-frontends (ARX, app.hyperliquid.xyz, trade.xyz, third-party tools) all read and write to the same shared state. That means anything tradable via one frontend is tradable via any compliant frontend at the same price and depth.</p>
+
+  <h2>What are the risks specific to HIP-3 markets?</h2>
+  <p>Two risks differ from native Hyperliquid perps. First, <strong>oracle risk</strong>: HIP-3 markets rely on the deployer's selected oracle for spot reference price. A bad oracle feed could distort funding rates and trigger inappropriate liquidations. Second, <strong>delisting risk</strong>: if a deployer fails to maintain the market (oracle outage, regulatory issue, low volume), the market can be wound down on a defined notice period. Position holders are entitled to settlement at the fair price, but the market itself disappears. Hyperliquid documents this in the deployer-grade-of-service spec.</p>
+
+  </article>
+
+  <div class="cta-line">
+    <p>ARX is a Hyperliquid frontend exposing all HIP-3 markets. Browse live: <a href='/markets/'>arx.trade/markets/</a></p>
+  </div>
+
+  <div class="related-glossary">
+    <h3>Related</h3>
+    <div class="related-grid">
+    <a href="/glossary/rwa-perps/" class="related-card">
+      <div class="label">Glossary</div>
+      <div class="title">RWA Perpetuals</div>
+    </a>
+    <a href="/glossary/funding-rate/" class="related-card">
+      <div class="label">Glossary</div>
+      <div class="title">Funding Rate</div>
+    </a>
+    <a href="/blog/arx-vs-tradexyz-mobile-rwa-perps/" class="related-card">
+      <div class="label">Comparison</div>
+      <div class="title">ARX vs trade.xyz</div>
+    </a>
+    <a href="/blog/gold-perps-hyperliquid-complete-guide/" class="related-card">
+      <div class="label">Pillar</div>
+      <div class="title">Gold Perps Complete Guide</div>
+    </a>
+    </div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2026 ARX &mdash; <a href="/" style="color:var(--text-secondary);">arx.trade</a> &middot; <a href="/blog/" style="color:var(--text-secondary);">Blog</a> &middot; <a href="/glossary/" style="color:var(--text-secondary);">Glossary</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

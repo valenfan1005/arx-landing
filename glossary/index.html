@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trading Glossary — ARX</title>
+<meta name="description" content="Definitions of perpetual trading terms used in ARX content: funding rate, HIP-3, RWA perpetuals, on-chain copy trading.">
+<link rel="canonical" href="https://arx.trade/glossary/" />
+<meta name="robots" content="index, follow" />
+<meta property="og:title" content="ARX Trading Glossary">
+<meta property="og:description" content="Definitions of perpetual trading terms: funding rate, HIP-3, RWA perps, on-chain copy trading.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://arx.trade/glossary/" />
+<meta property="og:image" content="https://arx.trade/og-image.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="ARX Trading Glossary" />
+<meta name="twitter:description" content="Definitions of perpetual trading terms: funding rate, HIP-3, RWA perps, on-chain copy trading." />
+<meta name="theme-color" content="#B38DF4" />
+<link rel="icon" type="image/png" href="/img/favicon.png" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "DefinedTermSet",
+  "name": "ARX Trading Glossary",
+  "description": "Definitions of perpetual trading terms used in ARX content \u2014 funding rate, HIP-3, RWA perpetuals, on-chain copy trading.",
+  "url": "https://arx.trade/glossary/",
+  "hasDefinedTerm": [
+    {
+      "@type": "DefinedTerm",
+      "name": "Funding Rate (Perpetual)",
+      "description": "A periodic payment between perpetual contract longs and shorts that keeps the perp price tracking the underlying spot price.",
+      "url": "https://arx.trade/glossary/funding-rate/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "HIP-3",
+      "description": "Hyperliquid's permissionless market listing standard for perpetual contracts.",
+      "url": "https://arx.trade/glossary/hip-3/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "RWA Perpetuals",
+      "description": "Perpetual futures contracts on real-world assets (gold, oil, equities) that settle on-chain.",
+      "url": "https://arx.trade/glossary/rwa-perps/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "On-Chain Copy Trading",
+      "description": "Automatically mirroring another wallet's trades on a transparent blockchain, with self-custody and verifiable track records.",
+      "url": "https://arx.trade/glossary/copy-trading-on-chain/"
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://arx.trade/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Glossary",
+      "item": "https://arx.trade/glossary/"
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-base: #08060F; --bg-surface-1: #0F0B1A; --bg-surface-2: #1A1425; --bg-surface-3: #251E30;
+  --primary: #B38DF4; --primary-hover: #925BF0; --primary-glow: rgba(179, 141, 244, 0.3);
+  --cyan: #22D1EE;
+  --text-primary: #FFFFFF; --text-secondary: #A1A1AA; --text-muted: #71717A;
+  --border-subtle: rgba(255, 255, 255, 0.06); --border-medium: rgba(255, 255, 255, 0.1); --border-accent: rgba(179, 141, 244, 0.3);
+  --radius-sm: 8px; --radius-md: 12px; --radius-lg: 16px; --radius-full: 9999px;
+}
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; -webkit-font-smoothing:antialiased; }
+body { font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif; background:var(--bg-base); color:var(--text-primary); line-height:1.7; }
+a { color:inherit; text-decoration:none; }
+.container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+.mono { font-family: 'JetBrains Mono', monospace; }
+
+.navbar { position:fixed; top:12px; left:50%; transform:translateX(-50%); width:calc(100% - 48px); max-width:1100px; z-index:100; padding:8px 24px; backdrop-filter:blur(20px) saturate(1.5); background:rgba(8,6,15,0.5); border:1px solid rgba(255,255,255,0.12); border-radius:9999px; }
+.navbar .container { max-width:100%; display:flex; align-items:center; justify-content:space-between; padding:0; }
+.nav-logo img { height:40px; width:auto; display:block; }
+.nav-links { display:flex; align-items:center; gap:32px; list-style:none; }
+.nav-links a { font-size:14px; font-weight:500; color:var(--text-secondary); }
+.nav-links a:hover, .nav-links a.active { color:var(--text-primary); }
+.nav-links a.nav-cta { padding:7px 18px; background:var(--primary); color:#FFF; border-radius:var(--radius-full); font-weight:600; }
+
+.breadcrumb { padding: 100px 0 12px; font-size: 13px; color: var(--text-muted); }
+.breadcrumb a { color: var(--text-muted); }
+.breadcrumb a:hover { color: var(--text-primary); }
+.breadcrumb .sep { margin: 0 6px; }
+
+.glossary-header { padding: 12px 0 32px; border-bottom: 1px solid var(--border-subtle); margin-bottom: 32px; }
+.glossary-tag { display: inline-block; padding: 4px 12px; background: rgba(179,141,244,0.12); color: var(--primary); border-radius: var(--radius-full); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; }
+.glossary-header h1 { font-size: 32px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 14px; }
+.glossary-header .summary { font-size: 17px; color: var(--text-secondary); line-height: 1.6; }
+
+article h2 { font-size: 22px; font-weight: 700; margin: 40px 0 12px; letter-spacing: -0.01em; }
+article p { color: var(--text-secondary); margin-bottom: 14px; }
+article strong { color: var(--text-primary); }
+article a { color: var(--primary); }
+article a:hover { text-decoration: underline; }
+article ul { color: var(--text-secondary); margin: 8px 0 14px 22px; }
+article li { margin-bottom: 6px; }
+article code { font-family: 'JetBrains Mono', monospace; font-size: 0.92em; padding: 1px 6px; background: var(--bg-surface-2); border-radius: 4px; color: var(--cyan); }
+
+.related-glossary { padding: 32px 0; border-top: 1px solid var(--border-subtle); margin-top: 40px; }
+.related-glossary h3 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 12px; }
+.related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.related-card { padding: 14px 18px; background: var(--bg-surface-2); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); transition: border-color 0.2s; }
+.related-card:hover { border-color: var(--primary); }
+.related-card .label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.related-card .title { font-size: 14px; font-weight: 500; color: var(--text-primary); margin-top: 4px; }
+
+.cta-line { margin: 28px 0 12px; padding: 18px 22px; background: linear-gradient(135deg, rgba(179,141,244,0.08), rgba(34,209,238,0.04)); border-left: 3px solid var(--primary); border-radius: var(--radius-md); }
+.cta-line p { font-size: 14px; color: var(--text-primary); margin: 0; }
+.cta-line a { color: var(--primary); font-weight: 600; }
+
+.footer { padding: 32px 0; border-top: 1px solid var(--border-subtle); margin-top: 40px; }
+.footer p { font-size: 12px; color: var(--text-muted); text-align: center; }
+
+@media (max-width: 768px) {
+  .related-grid { grid-template-columns: 1fr; }
+  .glossary-header h1 { font-size: 26px; }
+  .navbar .nav-links li a:not(.nav-cta) { display: none; }
+  .navbar .nav-links { gap: 12px; }
+  .nav-logo img { height: 32px !important; }
+}
+
+.glossary-grid { display: grid; grid-template-columns: 1fr; gap: 16px; padding: 16px 0 40px; }
+@media (min-width: 640px) { .glossary-grid { grid-template-columns: 1fr 1fr; } }
+.related-card { padding: 20px 22px; }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="/" class="nav-logo">
+      <img src="/img/Arx_Logo_Frost_white.svg" alt="ARX" height="40" width="73">
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/markets/">Markets</a></li>
+      <li><a href="/insights/">Insights</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/#waitlist" class="nav-cta">Join Waitlist</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">Home</a><span class="sep">/</span>
+    <span>Glossary</span>
+  </div>
+  <header class="glossary-header">
+    <span class="glossary-tag">Reference</span>
+    <h1>ARX Trading Glossary</h1>
+    <p class="summary">Short, fact-anchored definitions of the perpetual trading terms used across ARX content. Each entry has its own page with full FAQ and citations. Use the index as a quick reference when reading the blog or insights.</p>
+  </header>
+
+  <div class="glossary-grid">
+    <a href="/glossary/funding-rate/" class="related-card">
+      <div class="label">Glossary</div>
+      <div class="title">Funding Rate (Perpetual)</div>
+      <p style="font-size: 13px; color: var(--text-secondary); margin-top: 6px; line-height: 1.5;">A periodic payment between perpetual contract longs and shorts that keeps the perp price tracking the underlying spot price.</p>
+    </a>
+    <a href="/glossary/hip-3/" class="related-card">
+      <div class="label">Glossary</div>
+      <div class="title">HIP-3</div>
+      <p style="font-size: 13px; color: var(--text-secondary); margin-top: 6px; line-height: 1.5;">Hyperliquid's permissionless market listing standard for perpetual contracts.</p>
+    </a>
+    <a href="/glossary/rwa-perps/" class="related-card">
+      <div class="label">Glossary</div>
+      <div class="title">RWA Perpetuals</div>
+      <p style="font-size: 13px; color: var(--text-secondary); margin-top: 6px; line-height: 1.5;">Perpetual futures contracts on real-world assets (gold, oil, equities) that settle on-chain.</p>
+    </a>
+    <a href="/glossary/copy-trading-on-chain/" class="related-card">
+      <div class="label">Glossary</div>
+      <div class="title">On-Chain Copy Trading</div>
+      <p style="font-size: 13px; color: var(--text-secondary); margin-top: 6px; line-height: 1.5;">Automatically mirroring another wallet's trades on a transparent blockchain, with self-custody and verifiable track records.</p>
+    </a>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2026 ARX &mdash; <a href="/" style="color:var(--text-secondary);">arx.trade</a> &middot; <a href="/blog/" style="color:var(--text-secondary);">Blog</a> &middot; <a href="/glossary/" style="color:var(--text-secondary);">Glossary</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
