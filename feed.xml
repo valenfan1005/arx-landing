@@ -6,12 +6,20 @@
   <description>Insights on DeFi copy trading, market regime detection, wallet intelligence, and Hyperliquid. Stay ahead with ARX.</description>
   <language>en</language>
   <atom:link href="https://arx.trade/feed.xml" rel="self" type="application/rss+xml"/>
-  <lastBuildDate>Mon, 11 May 2026 04:26:41 -0000</lastBuildDate>
+  <lastBuildDate>Tue, 12 May 2026 08:27:59 -0000</lastBuildDate>
   <image>
     <url>https://arx.trade/logo.png</url>
     <title>ARX Blog</title>
     <link>https://arx.trade/blog/</link>
   </image>
+
+  <item>
+    <title>The Bears Who Bet Against Trump Covered. Then Fink Got Invited to Beijing.</title>
+    <link>https://arx.trade/insights/#fink-beijing-trump-perp-shorts-2026-05-12</link>
+    <guid isPermaLink="true">https://arx.trade/insights/#fink-beijing-trump-perp-shorts-2026-05-12</guid>
+    <description>Three days ago, BTC perp bears on Hyperliquid were paying &amp;minus;5.94% APR (~$384K/day) to stay short through the Trump-Xi summit. BTC held above $80K. They covered on May 11 — funding returned to the neutral floor. Now Trump has confirmed BlackRock&apos;s Larry Fink (iShares IBIT, world&apos;s largest BTC ET</description>
+    <pubDate>Tue, 12 May 2026 08:20:00 +0000</pubDate>
+  </item>
 
   <item>
     <title>Iran Escalation Shrugged: Oil Surges, BTC Bears Cover, SUI Breaks +18%</title>
@@ -22,10 +30,18 @@
   </item>
 
   <item>
-    <title>Iran War Day 70: Gold -10%, Oil +37%, S&amp;P at ATH — RWA Playbook</title>
+    <title>The Complete Hyperliquid Genesis Airdrop HLP Recap (2024)</title>
+    <link>https://arx.trade/blog/hyperliquid-genesis-airdrop-hlp-recap/</link>
+    <guid isPermaLink="true">https://arx.trade/blog/hyperliquid-genesis-airdrop-hlp-recap/</guid>
+    <description>Did HLP depositors qualify for Hyperliquid</description>
+    <pubDate>Mon, 11 May 2026 00:00:00 +0000</pubDate>
+  </item>
+
+  <item>
+    <title>Iran War Day 70: Gold -10%, Oil +45%, S&amp;P at 7,399 ATH — RWA Playbook</title>
     <link>https://arx.trade/blog/iran-war-rwa-perp-playbook/</link>
     <guid isPermaLink="true">https://arx.trade/blog/iran-war-rwa-perp-playbook/</guid>
-    <description>Brent crude +37%, gold -10%, S&amp;P hit 7,230 ATH while Iran negotiations stall. Counter-intuitive RWA perp playbook for the next move on Hyperliquid.</description>
+    <description>Brent crude +45%, gold -10%, S&amp;P at 7,399 ATH while Iran negotiations stall. Counter-intuitive RWA perp playbook for the next move on Hyperliquid.</description>
     <pubDate>Mon, 11 May 2026 00:00:00 +0000</pubDate>
   </item>
 
@@ -286,10 +302,10 @@
   </item>
 
   <item>
-    <title>Hyperliquid Airdrop Season 2: HLP 3x Multiplier Secrets (2026)</title>
+    <title>Hyperliquid HLP 3x Multiplier (Season 2): Snapshot Dates &amp; Eligibility</title>
     <link>https://arx.trade/blog/hyperliquid-airdrop-season-2-guide/</link>
     <guid isPermaLink="true">https://arx.trade/blog/hyperliquid-airdrop-season-2-guide/</guid>
-    <description>Hyperliquid Season 2 airdrop secrets: HLP 3x multiplier math, eligibility, key snapshot dates, and how top farmers are stacking points in 2026.</description>
+    <description>HLP depositors get a 3x airdrop multiplier in Season 2. When are the snapshots? How much qualifies? Full eligibility math + farming strategy for 2026.</description>
     <pubDate>Wed, 01 Apr 2026 00:00:00 +0000</pubDate>
   </item>
 
@@ -329,7 +345,7 @@
     <title>Is HLP Vault Worth It? 20% APY + 3x Airdrop Breakdown (2026)</title>
     <link>https://arx.trade/blog/hyperliquid-vaults-explained/</link>
     <guid isPermaLink="true">https://arx.trade/blog/hyperliquid-vaults-explained/</guid>
-    <description>Hyperliquid HLP promises ~20% APY and a 3x HYPE airdrop multiplier. But is it worth the 4-day lockup and real risks? Honest 2026 breakdown.</description>
+    <description>HLP Vault APY runs ~20% in 2026 plus a 3x HYPE airdrop multiplier. Real yield math, 4-day lockup, risks, HLP vs GLP vs JLP — honest breakdown.</description>
     <pubDate>Sun, 22 Mar 2026 00:00:00 +0000</pubDate>
   </item>
 
