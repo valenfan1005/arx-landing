@@ -169,6 +169,43 @@
 }
 </script>
 
+<!-- Structured Data: HowTo (Pick Wallets) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to pick which on-chain wallets to copy on Hyperliquid",
+  "description": "A four-criterion screen for identifying smart-money wallets worth copying on Hyperliquid, using publicly verifiable on-chain data.",
+  "totalTime": "PT15M",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Verify a 90+ day net PnL track record after fees and funding",
+      "text": "Pull the wallet's full position history via the Hyperliquid info API or a third-party explorer. Compute realised PnL net of taker/maker fees and net of cumulative funding paid or received. Anything shorter than 90 days is too noisy to separate skill from variance."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Check maximum drawdown is under 25%",
+      "text": "Compute the largest peak-to-trough drawdown across the wallet's track record. Above 25% is psychologically unsustainable to copy — you will close at the bottom and re-enter at the top. Lower-drawdown wallets compound slower but are actually copyable."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Confirm position concentration is diversified",
+      "text": "Check that the wallet's PnL is distributed across multiple assets and multiple distinct trades. Reject wallets whose entire return came from one BTC position — that is single-trade performance, not a strategy."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 4,
+      "name": "Confirm time-in-market spans multiple regimes",
+      "text": "The wallet should be active across different market conditions (trending and ranging). A discretionary trader logging 30 to 50 trades over 90 days across regimes is the right shape. 20 trades clustered into a single rally is too thin."
+    }
+  ]
+}
+</script>
+
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -414,29 +451,29 @@ blockquote p { margin: 0; font-style: italic; color: var(--text-secondary); }
   <div class="toc-title">Contents</div>
   <ol>
     <li><a href="#tldr">Quick take</a></li>
-    <li><a href="#cex-problem">The Problem with CEX Copy Trading</a></li>
-    <li><a href="#smart-money">What Smart Money Actually Means On-Chain</a></li>
-    <li><a href="#hl-different">Why Hyperliquid Is Structurally Different</a></li>
-    <li><a href="#four-edges">Four Edges From Copying Smart Money</a></li>
-    <li><a href="#what-they-do">What Smart Money Does Differently</a></li>
-    <li><a href="#risks">The Honest Risks</a></li>
-    <li><a href="#picking">How to Pick Wallets to Follow</a></li>
-    <li><a href="#arx-approach">The ARX Approach</a></li>
+    <li><a href="#cex-problem">What's wrong with CEX copy trading?</a></li>
+    <li><a href="#smart-money">What does smart money actually mean on-chain?</a></li>
+    <li><a href="#hl-different">Why is Hyperliquid structurally different?</a></li>
+    <li><a href="#four-edges">What edges do you get from copying smart money?</a></li>
+    <li><a href="#what-they-do">What does smart money do differently?</a></li>
+    <li><a href="#risks">What are the honest risks?</a></li>
+    <li><a href="#picking">How do you pick wallets to follow?</a></li>
+    <li><a href="#arx-approach">How does ARX approach this?</a></li>
     <li><a href="#faq">Frequently Asked Questions</a></li>
   </ol>
 </nav>
 
 <article class="article-body">
 
-  <h2 id="tldr">Quick take</h2>
+  <h2 id="tldr">Why copy smart money on Hyperliquid? Quick take</h2>
 
-  <p>Centralized exchanges run copy trading as a marketing product. The leaderboard you see on Bybit, Binance Futures, or eToro is curated by the venue: who appears, how PnL is calculated, and what counts as a &ldquo;trade&rdquo; are all decisions made by the platform. You cannot independently verify any of it.</p>
+  <p><time datetime="2026-05-09">As of May 2026,</time> centralized exchanges still run copy trading as a marketing product. The leaderboard you see on Bybit, Binance Futures, or eToro is curated by the venue: who appears, how PnL is calculated, and what counts as a &ldquo;trade&rdquo; are all decisions made by the platform. You cannot independently verify any of it.</p>
 
   <p>Hyperliquid is the opposite. Every order, fill, fee, funding payment, and liquidation settles on a public L1. Anyone can query the same data the team uses internally. Smart money (wallets with real, defensible long-term performance) is identifiable from public data, not from a marketing dashboard. <strong>That is the structural reason copy trading works on Hyperliquid in a way it never quite worked on a CEX.</strong></p>
 
   <p>This post explains the difference, what smart money actually does that retail does not, the honest risks of copying it, and how to pick wallets that are worth following.</p>
 
-  <h2 id="cex-problem">The Problem with CEX Copy Trading</h2>
+  <h2 id="cex-problem">What's wrong with copy trading on Binance, Bybit, and eToro?</h2>
 
   <p>CEX copy trading looks good on the surface. You log into Bybit or Binance, browse a leaderboard of &ldquo;top traders,&rdquo; pick one, allocate capital, and your account mirrors theirs. Clean UX. Big numbers next to each profile. Easy onboarding.</p>
 
@@ -456,7 +493,7 @@ blockquote p { margin: 0; font-style: italic; color: var(--text-secondary); }
 
   <p>A workable definition: a wallet whose realised PnL net of fees and funding is positive over a 90-day or longer window, with maximum drawdown under 25%, position sizing that scales sensibly with conviction, and a track record diversified across more than one asset and more than one regime. The numbers are arguable; the principle is not. You want consistency, risk management, and durability, not a single hero trade.</p>
 
-  <p>Every component of that definition is checkable on-chain. You can pull a wallet&rsquo;s full position history from the Hyperliquid info API, compute its realised PnL after fees, measure its drawdown, and see exactly how it sized into and out of every market it touched. No leaderboard required.</p>
+  <p>Every component of that definition is checkable on-chain. You can pull a wallet&rsquo;s full position history from the <a href="https://hyperliquid.gitbook.io/hyperliquid-docs/for-developers/api/info-endpoint" target="_blank" rel="noopener">Hyperliquid info API</a>, compute its realised PnL after fees, measure its drawdown, and see exactly how it sized into and out of every market it touched. No leaderboard required.</p>
 
   <p>This shifts the question from &ldquo;do I trust the platform&rsquo;s ranking?&rdquo; to &ldquo;does this wallet&rsquo;s history actually look like a skilled trader?&rdquo; The first is a marketing problem. The second is a research problem you can solve.</p>
 
@@ -468,11 +505,11 @@ blockquote p { margin: 0; font-style: italic; color: var(--text-secondary); }
 
   <p><strong>Fees and funding are protocol-level.</strong> The taker fee, maker rebate, and hourly funding rate are set at the chain level. Every wallet pays the same posted schedule, modulated only by the public volume-tier and HYPE-staking discount table. A leader cannot quietly pay a different rate than you. That removes one of the structural ways CEX leaders can show better-looking returns than the same trades would generate for a copier.</p>
 
-  <p><strong>Front-ends are interchangeable.</strong> Hyperliquid is a permissionless protocol. You can read the same wallet activity from arx.trade, app.hyperliquid.xyz, third-party tools like HyperDash and HypurrScan, or the raw info API. There is no walled garden where a single platform owns the relationship with the leader.</p>
+  <p><strong>Front-ends are interchangeable.</strong> Hyperliquid is a permissionless protocol. You can read the same wallet activity from arx.trade, <a href="https://app.hyperliquid.xyz" target="_blank" rel="noopener">app.hyperliquid.xyz</a>, third-party tools like <a href="https://hyperdash.info" target="_blank" rel="noopener">HyperDash</a> and <a href="https://hypurrscan.io" target="_blank" rel="noopener">HypurrScan</a>, or the raw info API. There is no walled garden where a single platform owns the relationship with the leader.</p>
 
   <p>The summary: on Hyperliquid, the venue cannot help a leader look better than they are. That alone changes who survives at the top of the distribution.</p>
 
-  <h2 id="four-edges">Four Edges From Copying Smart Money</h2>
+  <h2 id="four-edges">What edges do you actually get from copying smart money?</h2>
 
   <p>Copy trading the right wallets is not a free lunch. It does buy you a few real things.</p>
 
@@ -494,9 +531,9 @@ blockquote p { margin: 0; font-style: italic; color: var(--text-secondary); }
 
   <p>Funding awareness is constant. When perpetual funding is paying you to hold a position, smart money holds. When funding is costing 30%+ APR to maintain, smart money flips, hedges, or closes. Retail usually does not even check the rate.</p>
 
-  <p>Risk profiles are asymmetric. Stop losses are tight relative to take-profit targets. A wallet might risk 0.5% of equity to make 2-3%, accepting a low hit rate as the cost of letting winners run. Retail compounds losers and clips winners, the exact opposite.</p>
+  <p>Risk profiles are asymmetric. Stop losses are tight relative to take-profit targets. A wallet typically risks 0.5% of equity to make 2-3%, accepting a low hit rate as the cost of letting winners run. Retail compounds losers and clips winners, the exact opposite.</p>
 
-  <h2 id="risks">The Honest Risks</h2>
+  <h2 id="risks">What are the honest risks of on-chain copy trading?</h2>
 
   <p>Copy trading on Hyperliquid is not risk-free, and pretending otherwise would be the exact behaviour the post just criticised CEXes for.</p>
 
@@ -506,7 +543,7 @@ blockquote p { margin: 0; font-style: italic; color: var(--text-secondary); }
 
   <p><strong>Correlation risk.</strong> Multiple &ldquo;different&rdquo; wallets often run similar plays, especially during clear macro setups. If you copy four leaders and they all go long ETH, you have one position with four vendors&rsquo; fee bills, not a diversified book. Read the actual trades, not the names.</p>
 
-  <p><strong>Tax and compliance.</strong> Every fill in your wallet is a taxable event in most jurisdictions, regardless of who initiated it. Hyperliquid does not issue tax forms. You will need to export your transaction history from the Hyperliquid app and reconcile via a crypto tax tool. Koinly has the most developed Hyperliquid integration, though as of 2026 perpetual-futures fills and funding payments still require CSV upload rather than API sync. CoinTracker and TokenTax accept generic CSV imports. Talk to a qualified crypto tax professional if the capital scales.</p>
+  <p><strong>Tax and compliance.</strong> Every fill in your wallet is a taxable event in most jurisdictions, regardless of who initiated it. Hyperliquid does not issue tax forms. You will need to export your transaction history from the Hyperliquid app and reconcile via a crypto tax tool. <a href="https://koinly.io/integrations/hyperliquid/" target="_blank" rel="noopener">Koinly</a> has the most developed Hyperliquid integration, though as of 2026 perpetual-futures fills and funding payments still require CSV upload rather than API sync. <a href="https://www.cointracker.io/" target="_blank" rel="noopener">CoinTracker</a> and <a href="https://www.tokentax.co/" target="_blank" rel="noopener">TokenTax</a> accept generic CSV imports. Talk to a qualified crypto tax professional if the capital scales.</p>
 
   <p><strong>Strategy drift.</strong> A wallet that has run a clean, disciplined book for nine months can wake up tomorrow and put 50x leverage on a memecoin. There is no governance forcing them to stay disciplined. Active monitoring matters; set-and-forget copy trading is a worse idea than the marketing makes it look.</p>
 
@@ -520,11 +557,11 @@ blockquote p { margin: 0; font-style: italic; color: var(--text-secondary); }
 
   <p><strong>Position concentration.</strong> Look at the contribution to total PnL by asset and by trade. If one wallet&rsquo;s entire 90-day return came from one BTC position, that is a single-trade performance, not a strategy. You want PnL distributed across dozens of trades and at least two or three markets.</p>
 
-  <p><strong>Time-in-market and distribution.</strong> The wallet should be active enough that the track record reflects actual decision-making across market conditions. What you want: trades spread across multiple distinct market episodes, not clustered into one rally. A discretionary trader might log 30&ndash;50 trades in 90 days; that is sufficient if they span different regimes. A wallet with 20 trades clustered into a single two-week window is too thin regardless of the headline return. Tens of thousands suggests a market-making bot, which is a different product.</p>
+  <p><strong>Time-in-market and distribution.</strong> The wallet should be active enough that the track record reflects actual decision-making across market conditions. What you want: trades spread across multiple distinct market episodes, not clustered into one rally. A discretionary trader usually logs 30&ndash;50 trades in 90 days, sufficient if those trades span different regimes. A wallet with 20 trades clustered into a single two-week window is too thin regardless of the headline return. Tens of thousands suggests a market-making bot, which is a different product.</p>
 
   <p>Reject wallets with: track records under 90 days, single-asset returns, drawdowns above 25%, or PnL dominated by one outsized win. There are usually better candidates a few rows further down the leaderboard.</p>
 
-  <h2 id="arx-approach">The ARX Approach</h2>
+  <h2 id="arx-approach">How does ARX approach on-chain copy trading?</h2>
 
   <p>ARX is currently in pre-launch (join the waitlist below). When live, the product will be a Hyperliquid front-end that exposes the same shared state as any other client, with a curated wallet feed and copy-execution logic built specifically for the workflow above.</p>
 

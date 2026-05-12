@@ -450,6 +450,7 @@ blockquote p { margin: 0; font-style: italic; color: var(--text-secondary); }
   <ol>
     <li><a href="#fee-anatomy">The 4 Components of Hyperliquid Fees</a></li>
     <li><a href="#fee-tier-table">The Fee Tier Table (Volume + HYPE Staking)</a></li>
+    <li><a href="#perp-vs-cfd-fees">How do perp fees compare to CFD fees?</a></li>
     <li><a href="#vs-cfd">Hyperliquid vs CFD Brokers ($10K, 30 days)</a></li>
     <li><a href="#vs-cex">Hyperliquid vs Binance, Bybit, OKX</a></li>
     <li><a href="#funding-explained">How Funding Rates Actually Work</a></li>
@@ -544,9 +545,15 @@ blockquote p { margin: 0; font-style: italic; color: var(--text-secondary); }
     <p>At any staker discount of <strong>D%</strong>, the annual fee saving is approximately <code>$7,200 &times; D / 100</code>. So a 10% discount saves $720/year, a 20% discount saves $1,440/year. Two extra factors in your favor: (1) staked HYPE also earns staking rewards on top, and (2) higher trading volume scales the saving linearly. Verify your personal discount tier in the staking page before computing payback &mdash; the published tier structure changes as the protocol matures.</p>
   </div>
 
-  <h2 id="vs-cfd">Hyperliquid vs CFD Brokers ($10K, 30 days)</h2>
+  <h2 id="perp-vs-cfd-fees">How do perp fees compare to CFD fees?</h2>
 
-  <p>This is where the structural advantage of perps over CFDs shows up most clearly. Take a hypothetical trade: <strong>long $10,000 BTC, hold 30 days</strong>. Compare the all-in cost on Hyperliquid against three popular CFD brokers, using each broker&rsquo;s published overnight rate as of April 2026.</p>
+  <p><strong>Short answer:</strong> on a $10,000 position held 30 days, Hyperliquid perp fees total roughly $7&ndash;$10 (taker fees + funding, which can even be a credit on flat funding days). The same position on a CFD broker like eToro, IG, or Plus500 typically costs $80&ndash;$130 in overnight financing alone — 8 to 13 times more. CFD overnight fees compound daily; perp funding is market-driven and can flip negative. The longer the hold, the wider the gap.</p>
+
+  <p>The difference is structural. CFD brokers price overnight financing off interbank rates plus a 2&ndash;3% spread (their margin). Perp funding is a market-clearing rate between longs and shorts on the same venue, with zero broker markup. On flat days you pay nothing.</p>
+
+  <h2 id="vs-cfd">Hyperliquid vs CFD Brokers ($10K, 30 days) &mdash; the numbers</h2>
+
+  <p>Below is the same scenario with actual venue-published rates. Long $10,000 BTC, held 30 days, comparing Hyperliquid against three popular CFD brokers using their published overnight rates as of April 2026.</p>
 
   <div class="comparison-table">
     <table>

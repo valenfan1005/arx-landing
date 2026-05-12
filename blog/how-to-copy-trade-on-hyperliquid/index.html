@@ -1050,6 +1050,29 @@ img { max-width: 100%; display: block; }
 
   <p>Compared to centralized copy trading platforms, there are no withdrawal gates, no frozen accounts, and no counterparty risk from the exchange itself. Your margin sits in a smart contract, not a company&rsquo;s bank account.</p>
 
+  <h3 id="copy-trading-features">Hyperliquid copy trading features at a glance</h3>
+
+  <p>For traders comparing platforms, here is the full feature surface that matters when you actually copy a leader on Hyperliquid:</p>
+
+  <div class="comparison-table">
+    <table>
+      <thead>
+        <tr><th>Feature</th><th>What it does</th><th>Why it matters for copy traders</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Proportional sizing</strong></td><td>Mirrors the leader&rsquo;s position as a % of their book, scaled to your book size</td><td>You match exposure, not raw notional &mdash; a $10K account can copy a $1M leader without breaking</td></tr>
+        <tr><td><strong>Per-trade risk caps</strong></td><td>Hard maximum on the % of your equity at risk per copied trade</td><td>Single bad trade by the leader cannot wipe you out</td></tr>
+        <tr><td><strong>Leverage caps</strong></td><td>Maximum leverage you accept on any copied position</td><td>Leader can use 50x; you cap at 5x</td></tr>
+        <tr><td><strong>Asset filters</strong></td><td>Whitelist or blacklist specific markets the copy executor will trade</td><td>Skip alts you don&rsquo;t want, only mirror BTC/ETH/RWA</td></tr>
+        <tr><td><strong>One-tap exit</strong></td><td>Close the copy relationship instantly; existing positions remain in your wallet</td><td>You stay in control of unwind timing</td></tr>
+        <tr><td><strong>On-chain verification</strong></td><td>Every leader&rsquo;s historical trade is publicly queryable via the Hyperliquid info API</td><td>You can verify the track record before allocating</td></tr>
+        <tr><td><strong>Self-custody</strong></td><td>Funds never leave your wallet</td><td>No platform freeze, no withdrawal gate, no counterparty risk</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Most of these features are available across ARX and other frontends, but the implementation differs: ARX adds regime-aware confidence scoring on top, weighting copy execution by current market state.</p>
+
   <h2 id="step-by-step">How to Copy Trade on Hyperliquid: Step-by-Step</h2>
 
   <div class="step-box" data-step="Step 1">
