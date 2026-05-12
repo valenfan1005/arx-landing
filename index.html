@@ -17,6 +17,8 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://arx.trade/" />
 <meta property="og:image" content="https://arx.trade/og-image.png" />
+<meta property="og:updated_time" content="2026-05-12T00:00:00+00:00" />
+<meta name="last-modified" content="2026-05-12" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:site_name" content="ARX" />
@@ -73,6 +75,26 @@
 }
 </script>
 
+<!-- Structured Data: WebPage (with dateModified for AI engine freshness signal) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "ARX — Trade Gold, Oil & S&P 500 Perps On-Chain",
+  "url": "https://arx.trade/",
+  "description": "Trade real-world assets and crypto perps on-chain on Hyperliquid. Zero overnight fees, smart signals, copy trading.",
+  "datePublished": "2026-03-01",
+  "dateModified": "2026-05-12",
+  "isPartOf": {"@type": "WebSite", "url": "https://arx.trade", "name": "ARX"},
+  "about": [
+    {"@type": "Thing", "name": "Hyperliquid"},
+    {"@type": "Thing", "name": "RWA Perpetuals"},
+    {"@type": "Thing", "name": "Copy Trading"},
+    {"@type": "Thing", "name": "DEX Perpetuals"}
+  ]
+}
+</script>
+
 <!-- Structured Data: SoftwareApplication -->
 <script type="application/ld+json">
 {
@@ -110,7 +132,7 @@
       "name": "How does ARX work?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "ARX is a trading frontend built on Hyperliquid. Connect your wallet, choose your market — gold, oil, S&P 500, or crypto perps — and trade directly on-chain. ARX adds smart signals, regime detection, and optional copy trading so you can follow top-performing wallets automatically."
+        "text": "ARX is a trading frontend built on Hyperliquid. Connect your wallet, choose your market (gold, oil, S&P 500, or crypto perps), and trade directly on-chain. ARX adds smart signals, regime detection, and optional copy trading so you can follow top-performing wallets automatically."
       }
     },
     {
@@ -118,7 +140,7 @@
       "name": "What are overnight fees and why does ARX have none?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Overnight fees (swap rates) are daily charges CFD brokers apply to open positions — often 0.01-0.03% per day, which compounds to 5-10% annually. On-chain perpetuals on Hyperliquid use transparent funding rates instead, which are market-driven and often near zero. No dealing desk, no hidden costs."
+        "text": "Overnight fees (swap rates) are daily charges CFD brokers apply to open positions, typically 0.01-0.03% per day, which compounds to 5-10% annually. On-chain perpetuals on Hyperliquid use transparent funding rates instead, which are market-driven and often near zero. No dealing desk, no hidden costs."
       }
     },
     {
@@ -126,7 +148,7 @@
       "name": "Is trading on ARX safe?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "ARX is fully non-custodial — we never hold your funds or private keys. All trades execute through Hyperliquid's on-chain infrastructure, so your assets remain in your wallet at all times. All trading carries risk: leveraged perps can lead to significant losses. ARX provides risk controls like position sizing and max drawdown limits."
+        "text": "ARX is fully non-custodial. We never hold your funds or private keys. All trades execute through Hyperliquid's on-chain infrastructure, so your assets remain in your wallet at all times. All trading carries risk: leveraged perps can lead to significant losses. ARX provides risk controls like position sizing and max drawdown limits."
       }
     },
     {
@@ -134,7 +156,7 @@
       "name": "Can I copy other traders on ARX?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. ARX tracks elite Hyperliquid wallets and lets you mirror their trades automatically. You choose which traders to follow, set your own risk parameters, and keep funds in your own wallet. Copy trading works across all markets — crypto perps and RWA perps alike."
+        "text": "Yes. ARX tracks elite Hyperliquid wallets and lets you mirror their trades automatically. You choose which traders to follow, set your own risk parameters, and keep funds in your own wallet. Copy trading works across all markets, both crypto perps and RWA perps alike."
       }
     },
     {
@@ -142,16 +164,46 @@
       "name": "How is ARX different from a CFD broker?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "CFD brokers act as your counterparty, charge overnight fees, and custody your funds. ARX connects you to Hyperliquid's on-chain order book — transparent pricing, zero overnight fees, self-custody, and 24/7 market access. You trade against the market, not against the broker."
+        "text": "CFD brokers act as your counterparty, charge overnight fees, and custody your funds. ARX connects you to Hyperliquid's on-chain order book: transparent pricing, zero overnight fees, self-custody, and 24/7 market access. You trade against the market, not against the broker."
       }
+    }
+  ]
+}
+</script>
+
+<!-- Structured Data: HowTo (Three Steps to Any Market) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to start trading RWA and crypto perps on ARX",
+  "description": "Three steps to go from zero to trading gold, oil, S&P 500, or crypto perps on Hyperliquid via ARX. Total time under two minutes.",
+  "totalTime": "PT2M",
+  "tool": [
+    {"@type": "HowToTool", "name": "Web3 wallet (MetaMask, Rabby, or Phantom)"},
+    {"@type": "HowToTool", "name": "USDC for collateral"}
+  ],
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Connect your wallet",
+      "text": "Link your Web3 wallet to ARX in seconds. No KYC, no dealing desk, full self-custody. Your funds never leave your wallet until a trade is signed.",
+      "url": "https://arx.trade/#how-it-works"
     },
     {
-      "@type": "Question",
-      "name": "Which markets can I trade on ARX?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "ARX supports all perpetual markets available on Hyperliquid, including crypto perps (BTC, ETH, and 100+ altcoins) and RWA perps (gold, silver, oil, S&P 500). New markets are added as Hyperliquid expands its listings."
-      }
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Choose your market",
+      "text": "Pick from gold (XAUUSDC), oil (WTIOIL), S&P 500 (kSP500), crypto perps (BTC, ETH, 100+ altcoins), and other Hyperliquid markets. RWA and crypto perps live on the same liquidity layer.",
+      "url": "https://arx.trade/markets/"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Trade or copy",
+      "text": "Execute manually with smart signals, or auto-follow top-performing on-chain wallets via copy trading. Zero overnight fees, transparent funding rates, regime-aware confidence scoring on every signal.",
+      "url": "https://arx.trade/#features"
     }
   ]
 }
@@ -207,7 +259,7 @@
         <span class="gradient-text">Always Open.</span>
       </h1>
       <p class="hero-sub">
-        Trade gold, oil, S&amp;P 500, and crypto perps on-chain. Powered by Hyperliquid with smart signals and copy trading.
+        Trade gold, oil, S&amp;P 500, and crypto perps on-chain. Powered by Hyperliquid with smart signals and copy trading. <time datetime="2026-05-12" style="color:var(--text-muted);font-size:0.85em;">Updated May 2026.</time>
       </p>
       <div class="hero-ctas">
         <a href="#waitlist" class="btn btn-primary btn-lg">Join the Waitlist</a>
@@ -315,7 +367,7 @@
     <div class="section-header reveal">
       <div class="section-label">Features</div>
       <h2 class="section-title">Everything you need.<br>Nothing you don't.</h2>
-      <p class="section-sub">RWA and crypto perps, smart signals, copy trading, and full self-custody — all on Hyperliquid.</p>
+      <p class="section-sub">RWA and crypto perps, smart signals, copy trading, and full self-custody, all on Hyperliquid.</p>
     </div>
     <div class="features-grid reveal">
       <div class="feature-card">
@@ -326,12 +378,12 @@
       <div class="feature-card">
         <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
         <h3>Zero Overnight Fees</h3>
-        <p>No swap rates, no hidden charges. On-chain funding rates replace broker overnight fees — often near zero.</p>
+        <p>No swap rates, no hidden charges. On-chain funding rates replace broker overnight fees, often near zero.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--pink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c2-3 4-5 6-5s4 4 6 4 4-5 6-5"/><path d="M2 18c2-3 4-5 6-5s4 4 6 4 4-5 6-5" opacity=".5"/><path d="M2 6c2-3 4-5 6-5s4 4 6 4 4-5 6-5" opacity=".5"/></svg></div>
         <h3>Regime Detection</h3>
-        <p>5 market states — Trending, Range-Bound, Transition, Compression, Crisis. Know the environment before you trade.</p>
+        <p>5 market states: Trending, Range-Bound, Transition, Compression, Crisis. Know the environment before you trade.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
@@ -346,7 +398,7 @@
       <div class="feature-card">
         <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--pink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
         <h3>24/7 Markets</h3>
-        <p>No market hours, no weekend gaps. Trade gold, oil, and crypto around the clock — on-chain never closes.</p>
+        <p>No market hours, no weekend gaps. Trade gold, oil, and crypto around the clock; on-chain never closes.</p>
       </div>
     </div>
   </div>
@@ -400,12 +452,12 @@
       <div class="value-card trader">
         <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
         <h3>Trade Any Market</h3>
-        <p class="subtitle">Gold, oil, S&P 500, crypto — all on-chain</p>
+        <p class="subtitle">Gold, oil, S&P 500, crypto. All on-chain</p>
         <ul>
-          <li><span class="check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> RWA perps — trade traditional assets 24/7 with zero overnight fees</li>
+          <li><span class="check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> RWA perps: trade traditional assets 24/7 with zero overnight fees</li>
           <li><span class="check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> 100+ crypto perps with deep on-chain liquidity</li>
           <li><span class="check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Smart signals with regime detection and confluence scoring</li>
-          <li><span class="check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Self-custody — your keys, your funds, always</li>
+          <li><span class="check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Self-custody: your keys, your funds, always</li>
         </ul>
         <a href="#waitlist" class="btn btn-primary">Start Trading →</a>
       </div>
@@ -415,7 +467,7 @@
         <p class="subtitle">Follow top wallets across every market</p>
         <ul>
           <li><span class="check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Verified top Hyperliquid wallets with full track records</li>
-          <li><span class="check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Copy across RWA and crypto perps — gold, BTC, oil, ETH</li>
+          <li><span class="check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Copy across RWA and crypto perps: gold, BTC, oil, ETH</li>
           <li><span class="check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> One-click follow with adjustable position sizing</li>
           <li><span class="check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Real-time P&L tracking and portfolio dashboard</li>
         </ul>
@@ -487,7 +539,7 @@
 
     <!-- Waitlist Rewards -->
     <div class="waitlist-rewards reveal">
-      <h3>Waitlist Rewards — Start Earning Before Launch</h3>
+      <h3>Waitlist Rewards: Start Earning Before Launch</h3>
       <div class="reward-tiers">
         <div class="reward-item">
           <div class="reward-count mono">3</div>
@@ -533,7 +585,7 @@
         <input type="email" class="form-input" id="email-input" placeholder="Your email address" autocomplete="email">
       </div>
       <div class="form-optional">
-        <input type="text" class="mono" id="wallet-input" placeholder="Wallet address — optional (0x...)" autocomplete="off">
+        <input type="text" class="mono" id="wallet-input" placeholder="Wallet address (optional) (0x...)" autocomplete="off">
       </div>
       <div class="form-ref">
         <input type="text" id="ref-input" placeholder="Referral code (optional)" autocomplete="off">
@@ -614,7 +666,7 @@
       <a href="/blog/hyperliquid-fees-explained-2026/" class="blog-preview-card">
         <span class="blog-preview-tag">Fees &amp; Costs</span>
         <h3>Hyperliquid Fees 2026: Tier Table + $10K Cost vs eToro, IG, Binance</h3>
-        <p>Maker 0.01%, taker 0.035%, HYPE staking discount, near-zero funding. See the $10K BTC long held 30 days &mdash; and why CFD brokers cost 5&ndash;6&times; more.</p>
+        <p>Maker 0.01%, taker 0.035%, HYPE staking discount, near-zero funding. See the $10K BTC long held 30 days. See why CFD brokers cost 5&ndash;6&times; more.</p>
         <span class="blog-preview-link">Read article &rarr;</span>
       </a>
       <a href="/blog/arx-vs-tradexyz-mobile-rwa-perps/" class="blog-preview-card">
@@ -626,13 +678,13 @@
       <a href="/blog/gold-perps-hyperliquid-complete-guide/" class="blog-preview-card">
         <span class="blog-preview-tag">RWA Trading</span>
         <h3>The Complete Guide to Gold Perps on Hyperliquid</h3>
-        <p>The definitive XAUUSDC playbook — specs, fees, hourly funding, leverage math, 5 strategies, and your first trade in 5 steps.</p>
+        <p>The definitive XAUUSDC playbook: specs, fees, hourly funding, leverage math, 5 strategies, and your first trade in 5 steps.</p>
         <span class="blog-preview-link">Read article &rarr;</span>
       </a>
       <a href="/blog/hyperliquid-airdrop-season-2-guide/" class="blog-preview-card">
         <span class="blog-preview-tag">Airdrop</span>
         <h3>HLP 3x Multiplier &amp; Hyperliquid Season 2: Dates, Eligibility</h3>
-        <p>HLP depositors get a 3x points multiplier in Hyperliquid Season 2. 238.8M HYPE allocated — eligibility, snapshot timing, and farming strategies.</p>
+        <p>HLP depositors get a 3x points multiplier in Hyperliquid Season 2. 238.8M HYPE allocated. Eligibility, snapshot timing, and farming strategies.</p>
         <span class="blog-preview-link">Read article &rarr;</span>
       </a>
       <a href="/blog/why-trade-gold-on-chain/" class="blog-preview-card">
@@ -671,27 +723,23 @@
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">How does ARX work?<span class="faq-icon"></span></button>
-        <div class="faq-answer" role="region"><div class="faq-answer-inner">ARX is a trading frontend built on Hyperliquid. Connect your wallet, choose your market — gold, oil, S&P 500, or crypto perps — and trade directly on-chain. ARX adds smart signals with <a href="/blog/what-is-market-regime-detection/">regime detection</a>, confluence scoring, and optional copy trading so you can follow top-performing wallets automatically.</div></div>
+        <div class="faq-answer" role="region"><div class="faq-answer-inner">ARX is a trading frontend built on Hyperliquid. Connect your wallet, choose your market (gold, oil, S&P 500, or crypto perps), and trade directly on-chain. ARX adds smart signals with <a href="/blog/what-is-market-regime-detection/">regime detection</a>, confluence scoring, and optional copy trading so you can follow top-performing wallets automatically.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">What are overnight fees and why does ARX have none?<span class="faq-icon"></span></button>
-        <div class="faq-answer" role="region"><div class="faq-answer-inner">Overnight fees (swap rates) are daily charges CFD brokers apply to open positions — often 0.01-0.03% per day, which compounds to 5-10% annually. On-chain perpetuals on Hyperliquid use transparent funding rates instead, which are market-driven and often near zero. No dealing desk, no hidden costs.</div></div>
+        <div class="faq-answer" role="region"><div class="faq-answer-inner">Overnight fees (swap rates) are daily charges CFD brokers apply to open positions, typically 0.01-0.03% per day, which compounds to 5-10% annually. On-chain perpetuals on Hyperliquid use transparent funding rates instead, which are market-driven and often near zero. No dealing desk, no hidden costs.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">Is trading on ARX safe?<span class="faq-icon"></span></button>
-        <div class="faq-answer" role="region"><div class="faq-answer-inner">ARX is fully non-custodial — we never hold your funds or private keys. All trades execute through Hyperliquid's on-chain infrastructure, so your assets remain in your wallet at all times. All trading carries risk: leveraged perps can lead to significant losses. ARX provides risk controls like position sizing and max drawdown limits to help you manage exposure.</div></div>
+        <div class="faq-answer" role="region"><div class="faq-answer-inner">ARX is fully non-custodial. We never hold your funds or private keys. All trades execute through Hyperliquid's on-chain infrastructure, so your assets remain in your wallet at all times. All trading carries risk: leveraged perps can lead to significant losses. ARX provides risk controls like position sizing and max drawdown limits to help you manage exposure.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">Can I copy other traders on ARX?<span class="faq-icon"></span></button>
-        <div class="faq-answer" role="region"><div class="faq-answer-inner">Yes. ARX tracks elite Hyperliquid wallets and lets you mirror their trades automatically. You choose which traders to follow, set your own risk parameters, and keep funds in your own wallet. <a href="/blog/how-to-copy-trade-on-hyperliquid/">Copy trading</a> works across all markets — crypto perps and RWA perps alike.</div></div>
+        <div class="faq-answer" role="region"><div class="faq-answer-inner">Yes. ARX tracks elite Hyperliquid wallets and lets you mirror their trades automatically. You choose which traders to follow, set your own risk parameters, and keep funds in your own wallet. <a href="/blog/how-to-copy-trade-on-hyperliquid/">Copy trading</a> works across all markets, both crypto perps and RWA perps alike.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">How is ARX different from a CFD broker?<span class="faq-icon"></span></button>
-        <div class="faq-answer" role="region"><div class="faq-answer-inner">CFD brokers act as your counterparty, charge overnight fees, and custody your funds. ARX connects you to Hyperliquid's on-chain order book — transparent pricing, zero overnight fees, self-custody, and 24/7 market access. You trade against the market, not against the broker.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">Which markets can I trade on ARX?<span class="faq-icon"></span></button>
-        <div class="faq-answer" role="region"><div class="faq-answer-inner">ARX supports all perpetual markets available on Hyperliquid, including crypto perps (BTC, ETH, and 100+ altcoins) and RWA perps (gold, silver, oil, S&P 500). New markets are added as <a href="/blog/hyperliquid-vaults-explained/">Hyperliquid</a> expands its listings. Join the waitlist to stay updated.</div></div>
+        <div class="faq-answer" role="region"><div class="faq-answer-inner">CFD brokers act as your counterparty, charge overnight fees, and custody your funds. ARX connects you to Hyperliquid's on-chain order : transparent pricing, zero overnight fees, self-custody, and 24/7 market access. You trade against the market, not against the broker.</div></div>
       </div>
     </div>
   </div>
