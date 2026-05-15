@@ -6,12 +6,20 @@
   <description>Insights on DeFi copy trading, market regime detection, wallet intelligence, and Hyperliquid. Stay ahead with ARX.</description>
   <language>en</language>
   <atom:link href="https://arx.trade/feed.xml" rel="self" type="application/rss+xml"/>
-  <lastBuildDate>Thu, 14 May 2026 12:52:27 -0000</lastBuildDate>
+  <lastBuildDate>Fri, 15 May 2026 04:24:07 -0000</lastBuildDate>
   <image>
     <url>https://arx.trade/logo.png</url>
     <title>ARX Blog</title>
     <link>https://arx.trade/blog/</link>
   </image>
+
+  <item>
+    <title>HYPE +22% in 24h: Alt Season Opens as Bessent Calls Disinflation</title>
+    <link>https://arx.trade/insights/#hype-22pct-alt-season-disinflation-2026-05-15</link>
+    <guid isPermaLink="true">https://arx.trade/insights/#hype-22pct-alt-season-disinflation-2026-05-15</guid>
+    <description>Hyperliquid&apos;s native token HYPE surged +22% on $860M volume in 24 hours — 10x the move of BTC (+2.2%) and ETH (+0.9%). That&apos;s not thin retail chop: HYPE traded comparable volume to ETH itself. Treasury Secretary Bessent called &amp;ldquo;substantial disinflation&amp;rdquo; ahead as Warsh took the Fed chair,</description>
+    <pubDate>Fri, 15 May 2026 04:30:00 +0000</pubDate>
+  </item>
 
   <item>
     <title>Moody&apos;s Aaa for BlackRock&apos;s BUIDL. JPMorgan +174% on IBIT. Institutions Are Loading.</title>
