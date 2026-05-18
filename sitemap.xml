@@ -3,6 +3,12 @@
 <!-- Update this as you add new pages (blog posts, features, etc.) -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://arx.trade/insights/btc-etf-exodus-perp-longs-2026-05-18/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://arx.trade/glossary/</loc>
     <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
