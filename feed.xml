@@ -6,7 +6,7 @@
   <description>Insights on DeFi copy trading, market regime detection, wallet intelligence, and Hyperliquid. Stay ahead with ARX.</description>
   <language>en</language>
   <atom:link href="https://arx.trade/feed.xml" rel="self" type="application/rss+xml"/>
-  <lastBuildDate>Mon, 18 May 2026 03:22:22 -0000</lastBuildDate>
+  <lastBuildDate>Thu, 21 May 2026 08:22:58 -0000</lastBuildDate>
   <image>
     <url>https://arx.trade/logo.png</url>
     <title>ARX Blog</title>
@@ -14,11 +14,27 @@
   </image>
 
   <item>
+    <title>HYPE +20% — Futures Traders Aren&apos;t Chasing</title>
+    <link>https://arx.trade/insights/#hype-20pct-low-funding-2026-05-21</link>
+    <guid isPermaLink="true">https://arx.trade/insights/#hype-20pct-low-funding-2026-05-21</guid>
+    <description>HYPE is up +20.67% in 24 hours with $1.35B in open interest — yet perp funding sits at just +3.36% APR. A 20% surge with near-flat funding means spot buyers are driving the move, not leveraged traders piling in. Spot-driven rallies are historically more durable.</description>
+    <pubDate>Thu, 21 May 2026 08:30:00 +0000</pubDate>
+  </item>
+
+  <item>
     <title>$1B ETF Exodus — BTC Perp Longs Haven&apos;t Blinked</title>
     <link>https://arx.trade/insights/#btc-etf-exodus-perp-longs-2026-05-18</link>
     <guid isPermaLink="true">https://arx.trade/insights/#btc-etf-exodus-perp-longs-2026-05-18</guid>
     <description>Bitcoin spot ETFs bled $1B last week — snapping a six-week inflow streak — while BTC perp funding on Hyperliquid holds at +3.1% APR. TradFi is cashing out; perp traders haven&apos;t blinked. ETH is at &amp;minus;4.5% APR and SOL at &amp;minus;8.6% APR — alts being actively shorted, not just sold.</description>
     <pubDate>Mon, 18 May 2026 03:30:00 +0000</pubDate>
+  </item>
+
+  <item>
+    <title>Fed Hike 32%, BTC $77K, S&amp;P 7,408: Stagflation Playbook (May 2026)</title>
+    <link>https://arx.trade/blog/fed-hike-iran-war-btc-sp500-stagflation-playbook-2026/</link>
+    <guid isPermaLink="true">https://arx.trade/blog/fed-hike-iran-war-btc-sp500-stagflation-playbook-2026/</guid>
+    <description>Markets price 32% Fed hike risk by year-end. Iran war Day 80, April ceasefire failing. BTC $76.9K, S&amp;P off Thursday</description>
+    <pubDate>Mon, 18 May 2026 00:00:00 +0000</pubDate>
   </item>
 
   <item>
