@@ -1,0 +1,233 @@
+/* ============================================================================
+   ARX — Colours & Type foundations
+   Source of truth: "ARX Guidelines" Figma + ARX brand kit + Launch Teaser.
+   Language: "Markets without a middle." — on-chain, non-custodial RWA + perps.
+   Aesthetic: midnight-dark first, single violet accent, electric-cyan support,
+   iridescent orb imagery, mono numerics. Bilingual EN / KR.
+   ----------------------------------------------------------------------------
+   Load this once, then use the CSS variables + semantic classes below.
+   ========================================================================== */
+
+/* ---- Webfonts -------------------------------------------------------------
+   Plus Jakarta Sans ships locally (brand kit, /fonts). Inter, JetBrains Mono,
+   Space Mono, Geist Mono and Noto Sans KR load from Google Fonts.
+   SUBSTITUTIONS (flagged to user): "Raptor V3" (guideline section titles) →
+   Plus Jakarta Sans; "Spoqa Han Sans Neo" (KR UI) → Noto Sans KR.            */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Geist+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  src: url('fonts/PlusJakartaSans-Light.ttf') format('truetype');
+  font-weight: 300; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  src: url('fonts/PlusJakartaSans-Regular.ttf') format('truetype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  src: url('fonts/PlusJakartaSans-Medium.ttf') format('truetype');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  src: url('fonts/PlusJakartaSans-SemiBold.ttf') format('truetype');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  src: url('fonts/PlusJakartaSans-Bold.ttf') format('truetype');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  src: url('fonts/PlusJakartaSans-ExtraBold.ttf') format('truetype');
+  font-weight: 800; font-style: normal; font-display: swap;
+}
+
+:root {
+  /* ===== BRAND · Purple (primary — Pantone 2685 C) =====
+     The deepest, most authoritative brand colour. Backgrounds, fills, lockups. */
+  --purple:        #3B1B81;   /* primary brand purple */
+  --purple-900:    #190b36;   /* deepest */
+  --purple-800:    #24114f;
+  --purple-700:    #2f1668;
+  --purple-600:    #3B1B81;   /* = base */
+  --purple-500:    #4d2ba0;
+  --purple-400:    #6a45c0;
+
+  /* ===== BRAND · Violet (accent — the chromatic voice of ARX) =====
+     The ONE accent. CTAs, links, active states, focus, eyebrows, data highlights. */
+  --violet-100:    #e7dcfc;
+  --violet-200:    #dccbfa;
+  --violet-300:    #ccb3f8;   /* bright accent — text/icon on midnight */
+  --violet-400:    #c2a4f6;
+  --violet-500:    #b38df4;   /* BASE — the truest violet */
+  --violet-600:    #a380de;   /* defined, NOT in active use */
+  --violet-800:    #624e86;
+  --violet-900:    #4b3b66;
+  --violet:        var(--violet-500);
+  --violet-deep:   #7e50c7;   /* pressed / gradient partner (violet-deep) */
+
+  /* ===== BRAND · Electric (supporting accent — cyan) =====
+     Used sparingly: orb imagery, charts, "live" / data-positive moments. */
+  --electric-300:  #7ee6f5;
+  --electric-500:  #22d1ee;   /* base electric cyan */
+  --electric-700:  #137b8c;
+  --electric-900:  #0e5864;
+
+  /* ===== NEUTRAL · Midnight (dark — Pantone Black C) =====
+     Default canvas + surfaces. ARX is midnight-first. */
+  --midnight-50:   #e6e6e7;
+  --midnight-100:  #b2b2b4;
+  --midnight-200:  #8d8d90;
+  --midnight-300:  #59595d;
+  --midnight-400:  #39393d;
+  --midnight-500:  #101012;
+  --midnight-700:  #07070d;   /* Pantone Black C — primary surface */
+  --midnight-800:  #050509;
+  --midnight-900:  #030305;   /* deepest canvas */
+
+  /* ===== NEUTRAL · Frost (light — Pantone 663 C) =====
+     Light-mode canvas + cool off-whites. */
+  --frost-500:     #e9eafd;   /* Pantone 663 C — light canvas */
+  --frost-600:     #d4d5e6;
+  --frost-700:     #b2b2b4;
+  --frost-800:     #8e98a8;
+  --frost-900:     #62626a;
+  --white:         #fdfdff;   /* true near-white text on midnight */
+
+  /* ===== SEMANTIC · trading P&L (markets) ===== */
+  --gain:          #6ee2a8;   /* up / long / profit */
+  --gain-deep:     #2f9e6a;
+  --loss:          #ff7a90;   /* down / short / loss / problem */
+  --loss-deep:     #c64a5e;
+  --warning:       #f5c451;
+  --info:          var(--electric-500);
+
+  /* ===== THEME ALIASES — DARK (default) ===== */
+  --bg:            var(--midnight-900);     /* page canvas */
+  --surface:       var(--midnight-700);     /* cards, panels */
+  --surface-2:     var(--midnight-500);     /* elevated / inputs */
+  --surface-3:     #16161a;                 /* hover row / nested */
+  --fg:            var(--white);            /* primary text */
+  --fg-2:          var(--midnight-100);     /* secondary text */
+  --fg-3:          var(--midnight-200);     /* tertiary / captions */
+  --fg-on-accent:  var(--midnight-900);     /* text on violet fills */
+  --border:        #1c1c22;                 /* hairline dividers */
+  --border-2:      var(--midnight-400);     /* input / stronger border */
+  --border-accent: rgba(179,141,244,0.22);  /* violet-tinted border */
+  --accent:        var(--violet-500);
+  --accent-soft:   rgba(179,141,244,0.12);  /* tint fill */
+  --accent-soft-2: rgba(179,141,244,0.20);
+  --grid-line:     rgba(179,141,244,0.06);  /* masked bg grid */
+  --glow:          rgba(179,141,244,0.30);  /* radial bloom */
+
+  /* ===== TYPE FAMILIES ===== */
+  --font-display:  'Plus Jakarta Sans', system-ui, sans-serif; /* headlines, hero */
+  --font-ui:       'Inter', system-ui, sans-serif;             /* body, UI, labels */
+  --font-mono:     'JetBrains Mono', ui-monospace, monospace;  /* numerals, data (slashed 0) */
+  --font-data:     'Geist Mono', ui-monospace, monospace;      /* numerals fallback (oval 0) */
+  --font-label:    'Space Mono', ui-monospace, monospace;      /* eyebrows, section labels */
+  --font-kr:       'Noto Sans KR', sans-serif;                 /* Korean (display + body) */
+
+  /* ===== TYPE SCALE (px) — display = Plus Jakarta Sans, bold ===== */
+  --t-display:  64px;  /* hero headline · 700 · 120% */
+  --t-h1:       48px;  /* 700 · 120% */
+  --t-h2:       36px;  /* 700 · 130% */
+  --t-h3:       28px;  /* 700 · 130% */
+  --t-h4:       22px;  /* 700 · 130% */
+  --t-section:  40px;  /* section title (Raptor→PJS) · 600 · +1% */
+  --t-lg:       16px;  /* body large · Inter 400 · 160% */
+  --t-md:       14px;  /* body medium · Inter 400 · 160% */
+  --t-sm:       12px;  /* body small · Inter 400 · 140% */
+  --t-caption:  11px;  /* caption · Inter 400 · 120% */
+  --t-data-lg:  14px;  /* UI data large · mono · 140% */
+  --t-data-sm:  12px;  /* UI data small · mono · 140% */
+
+  /* ===== SPACING — 4px base grid ===== */
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 20px; --sp-6: 24px; --sp-8: 32px; --sp-10: 40px;
+  --sp-12: 48px; --sp-16: 64px; --sp-20: 80px; --sp-24: 96px;
+
+  /* ===== RADII ===== */
+  --r-xs: 6px;   /* chips, badges, buttons */
+  --r-sm: 8px;   /* inputs */
+  --r-md: 10px;  /* nested cards */
+  --r-lg: 12px;  /* cards, panels */
+  --r-xl: 16px;  /* large surfaces, sheets */
+  --r-2xl: 24px; /* hero containers */
+  --r-pill: 999px;
+
+  /* ===== ELEVATION / SHADOW (dark-first) ===== */
+  --shadow-1: 0 1px 2px rgba(0,0,0,0.40);
+  --shadow-2: 0 8px 24px -6px rgba(0,0,0,0.55);
+  --shadow-3: 0 24px 64px -12px rgba(0,0,0,0.70);
+  --shadow-glow: 0 0 40px -8px rgba(179,141,244,0.45); /* violet bloom on key CTAs */
+
+  /* ===== MOTION ===== */
+  --ease-out:   cubic-bezier(0.23, 1, 0.32, 1);     /* enters, reveals */
+  --ease-in-out:cubic-bezier(0.4, 0, 0.2, 1);       /* interactive */
+  --ease-spring:cubic-bezier(0.34, 1.56, 0.64, 1);  /* playful pops */
+  --dur-fast: 120ms;  --dur: 200ms;  --dur-slow: 300ms;  --dur-reveal: 600ms;
+}
+
+/* ===== LIGHT THEME (Frost) — secondary. Apply .theme-frost on a wrapper. ==== */
+.theme-frost {
+  --bg:            var(--frost-500);
+  --surface:       var(--white);
+  --surface-2:     #f3f3fb;
+  --surface-3:     #ececf7;
+  --fg:            var(--midnight-700);
+  --fg-2:          var(--frost-900);
+  --fg-3:          var(--frost-800);
+  --fg-on-accent:  var(--white);
+  --border:        var(--frost-600);
+  --border-2:      #c4c5d8;
+  --border-accent: rgba(59,27,129,0.18);
+  --accent:        var(--purple);          /* on light, the deeper purple reads as the accent */
+  --accent-soft:   rgba(59,27,129,0.08);
+  --accent-soft-2: rgba(59,27,129,0.14);
+  --grid-line:     rgba(59,27,129,0.06);
+}
+
+/* ============================================================================
+   SEMANTIC TYPOGRAPHY CLASSES
+   ========================================================================== */
+.arx-display {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: var(--t-display); line-height: 1.0;
+  letter-spacing: -0.03em; color: var(--fg);
+}
+.arx-h1 { font-family: var(--font-display); font-weight: 700; font-size: var(--t-h1); line-height: 1.2; letter-spacing: -0.02em; color: var(--fg); }
+.arx-h2 { font-family: var(--font-display); font-weight: 700; font-size: var(--t-h2); line-height: 1.3; letter-spacing: -0.015em; color: var(--fg); }
+.arx-h3 { font-family: var(--font-display); font-weight: 700; font-size: var(--t-h3); line-height: 1.3; letter-spacing: -0.01em; color: var(--fg); }
+.arx-h4 { font-family: var(--font-display); font-weight: 700; font-size: var(--t-h4); line-height: 1.3; color: var(--fg); }
+.arx-section-title { font-family: var(--font-display); font-weight: 600; font-size: var(--t-section); line-height: 1.05; letter-spacing: 0.01em; color: var(--fg); }
+
+.arx-body-lg { font-family: var(--font-ui); font-weight: 400; font-size: var(--t-lg); line-height: 1.6; color: var(--fg-2); }
+.arx-body    { font-family: var(--font-ui); font-weight: 400; font-size: var(--t-md); line-height: 1.6; color: var(--fg-2); }
+.arx-body-sm { font-family: var(--font-ui); font-weight: 400; font-size: var(--t-sm); line-height: 1.4; color: var(--fg-2); }
+.arx-caption { font-family: var(--font-ui); font-weight: 400; font-size: var(--t-caption); line-height: 1.2; color: var(--fg-3); }
+
+/* Eyebrow / kicker — mono, wide tracking, violet. The brand's signature label. */
+.arx-eyebrow {
+  font-family: var(--font-label); font-weight: 400; font-size: var(--t-caption);
+  text-transform: uppercase; letter-spacing: 0.22em; color: var(--accent);
+  display: inline-flex; align-items: center; gap: 12px;
+}
+.arx-eyebrow::before { content: ""; width: 24px; height: 2px; background: currentColor; }
+
+/* Section label (guideline-style, tighter tracking) */
+.arx-label {
+  font-family: var(--font-label); font-weight: 400; font-size: var(--t-md);
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--fg-3);
+}
+
+/* Numeric / data — always tabular */
+.arx-data    { font-family: var(--font-mono); font-weight: 500; font-variant-numeric: tabular-nums; letter-spacing: -0.01em; color: var(--fg); }
+.arx-data-lg { font-family: var(--font-mono); font-weight: 600; font-size: var(--t-data-lg); font-variant-numeric: tabular-nums; }
+.arx-data-sm { font-family: var(--font-mono); font-weight: 500; font-size: var(--t-data-sm); font-variant-numeric: tabular-nums; }
+.arx-gain { color: var(--gain); }
+.arx-loss { color: var(--loss); }

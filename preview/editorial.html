@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>ARX — Homepage · 01 Editorial (Internal Preview)</title>
+  <link rel="icon" href="assets/logos/favicon.png" />
+  <link rel="stylesheet" href="assets/colors_and_type.css" />
+  <link rel="stylesheet" href="arx-hero.css" />
+  <link rel="stylesheet" href="rwa.css" />
+  <link rel="stylesheet" href="app-showcase.css" />
+  <link rel="stylesheet" href="copytrade.css" />
+  <link rel="stylesheet" href="blog.css" />
+  <link rel="stylesheet" href="cta.css" />
+  <link rel="stylesheet" href="faq.css" />
+  <link rel="stylesheet" href="footer.css" />
+  <style>
+    html, body { margin: 0; padding: 0; background: var(--bg); }
+    /* The standalone page renders ONE Stage as a normal scrolling document —
+       no design-canvas, no pan/zoom. Stage provides the midnight grid + grain
+       + vignette background and carries the theme/accent/grid modifier classes. */
+
+    /* Minimal review control (Night/Day · EN/KR). The Day theme drives the
+       Glass-HUD-panel treatment on cards — keep it so reviewers see both. */
+    .rev {
+      position: fixed; top: 14px; right: 14px; z-index: 9999;
+      display: flex; gap: 12px; align-items: center;
+      padding: 8px 12px; border-radius: 12px;
+      background: rgba(7,7,13,0.86); backdrop-filter: blur(14px);
+      border: 1px solid rgba(179,141,244,0.22);
+      box-shadow: 0 12px 40px -10px rgba(0,0,0,0.6);
+    }
+    .rev .g { display: flex; gap: 6px; align-items: center; }
+    .rev .l { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: #8d8d90; }
+    .rev .seg { display: inline-flex; border: 1px solid #1c1c22; border-radius: 7px; overflow: hidden; }
+    .rev .seg button { appearance: none; border: 0; background: transparent; cursor: pointer; padding: 5px 10px; font-family: 'Space Mono', monospace; font-size: 10px; color: #8d8d90; }
+    .rev .seg button.on { background: rgba(179,141,244,0.16); color: #fdfdff; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="arx-blob.js"></script>
+  <script src="wordmark.js"></script>
+  <script type="text/babel" src="header.jsx"></script>
+  <script type="text/babel" src="heroes.jsx"></script>
+  <script type="text/babel" src="app-showcase.jsx"></script>
+  <script type="text/babel" src="rwa.jsx"></script>
+  <script type="text/babel" src="copytrade.jsx"></script>
+  <script type="text/babel" src="blog.jsx"></script>
+  <script type="text/babel" src="cta.jsx"></script>
+  <script type="text/babel" src="faq.jsx"></script>
+  <script type="text/babel" src="footer.jsx"></script>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    function Stage({ children, grid, accent, theme }) {
+      return (
+        <div className={"stage stage--page" + (grid ? "" : " no-grid") + (accent ? " accent-bright" : "") + (theme === "day" ? " theme-frost" : "")}>
+          <div className="stage-grain" />
+          <div className="stage-vignette" />
+          {children}
+        </div>
+      );
+    }
+
+    function Page01() {
+      const [lang, setLang] = useState("en");
+      const [theme, setTheme] = useState("night");
+      const Seg = ({ v, set, opts }) => (
+        <div className="seg">{opts.map(([k, l]) => <button key={k} className={v === k ? "on" : ""} onClick={() => set(k)}>{l}</button>)}</div>
+      );
+      return (
+        <React.Fragment>
+          <div className="rev">
+            <div className="g"><span className="l">Theme</span><Seg v={theme} set={setTheme} opts={[["night","Night"],["day","Day"]]} /></div>
+            <div className="g"><span className="l">Lang</span><Seg v={lang} set={setLang} opts={[["en","EN"],["kr","KR"]]} /></div>
+          </div>
+          <Stage grid={true} accent={false} theme={theme}>
+            <ArxHeader lang={lang} active="" />
+            <HeroEditorial lang={lang} accent={false} />
+            <AppShowcase lang={lang} variant="editorial" />
+            <RWASection variant="editorial" />
+            <CopyTradeSection variant="editorial" />
+            <BlogSection variant="editorial" />
+            <FaqSection variant="editorial" />
+            <CtaBand variant="editorial" />
+            <Footer variant="editorial" lang={lang} />
+          </Stage>
+        </React.Fragment>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<Page01 />);
+  </script>
+</body>
+</html>

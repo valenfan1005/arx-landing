@@ -1,0 +1,118 @@
+/* ============================================================================
+   FAQ SECTION — ARX-native accordion
+   (content + IA per arx.trade FAQ reference; designed in the ARX system)
+   ============================================================================ */
+
+.faq {
+  position: relative; z-index: 4;
+  padding: 120px 40px 130px;
+  display: flex; flex-direction: column; align-items: center;
+}
+.faq-inner { width: 100%; max-width: 960px; margin: 0 auto; }
+
+/* header block */
+.faq-eyebrow {
+  display: block; text-align: center;
+  font-family: var(--font-label); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--violet-300);
+}
+.faq-h2 {
+  text-align: center; margin: 22px auto 0;
+  font-family: var(--font-display); font-weight: 800; font-size: 48px;
+  line-height: 1.08; letter-spacing: -0.02em; color: var(--fg); text-wrap: balance;
+}
+.faq-sub {
+  text-align: center; margin: 22px auto 0; max-width: 620px;
+  font-family: var(--font-ui); font-weight: 400; font-size: 18px;
+  line-height: 1.6; color: var(--fg-2); text-wrap: pretty;
+}
+
+/* accordion list */
+.faq-list { margin-top: 56px; border-top: 1px solid var(--border); }
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-q {
+  width: 100%; cursor: pointer; background: transparent; border: 0;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  padding: 28px 8px; text-align: left;
+  font-family: var(--font-display); font-weight: 700; font-size: 21px;
+  letter-spacing: -0.01em; color: var(--fg);
+  transition: color var(--dur) var(--ease-out);
+}
+.faq-q:hover { color: var(--electric-300); }
+.faq-item.open .faq-q { color: var(--electric-300); }
+
+/* +/× toggle icon */
+.faq-ic { position: relative; flex-shrink: 0; width: 22px; height: 22px; }
+.faq-ic::before, .faq-ic::after {
+  content: ""; position: absolute; background: currentColor; border-radius: 2px;
+  transition: transform var(--dur) var(--ease-out), opacity var(--dur);
+}
+.faq-ic::before { left: 0; top: 50%; width: 22px; height: 2px; transform: translateY(-50%); }
+.faq-ic::after { left: 50%; top: 0; width: 2px; height: 22px; transform: translateX(-50%); }
+.faq-q { position: relative; }
+.faq-item.open .faq-ic::after { transform: translateX(-50%) scaleY(0); opacity: 0; }
+.faq-item.open .faq-ic { color: var(--electric-300); }
+
+/* answer panel — grid-rows trick for smooth height auto animation */
+.faq-a {
+  display: grid; grid-template-rows: 0fr;
+  transition: grid-template-rows var(--dur-reveal) var(--ease-out);
+}
+.faq-item.open .faq-a { grid-template-rows: 1fr; }
+.faq-a-inner { overflow: hidden; min-height: 0; }
+.faq-a-text {
+  margin: 0; padding: 0 60px 30px 8px;
+  font-family: var(--font-ui); font-size: 16.5px; line-height: 1.66;
+  color: var(--fg-2); text-wrap: pretty;
+}
+.faq-a-text b { color: var(--fg); font-weight: 600; }
+
+/* footer prompt */
+.faq-foot {
+  margin-top: 52px; display: flex; align-items: center; justify-content: center; gap: 10px;
+  font-family: var(--font-ui); font-size: 15px; color: var(--fg-3);
+}
+.faq-foot a {
+  display: inline-flex; align-items: center; gap: 7px;
+  color: var(--violet-300); text-decoration: none; font-weight: 600;
+  transition: color var(--dur);
+}
+.faq-foot a:hover { color: var(--electric-300); }
+
+/* ---------------------------------------------------------------------------
+   Frost / Day overrides
+   --------------------------------------------------------------------------- */
+.stage.theme-frost .faq-eyebrow,
+.stage.theme-frost .faq-foot a { color: var(--purple); }
+.stage.theme-frost .faq-q:hover,
+.stage.theme-frost .faq-item.open .faq-q,
+.stage.theme-frost .faq-item.open .faq-ic,
+.stage.theme-frost .faq-foot a:hover { color: var(--electric-700); }
+
+/* ---------------------------------------------------------------------------
+   v03 "type" variant — left-aligned, uppercase header
+   --------------------------------------------------------------------------- */
+.faq--type .faq-eyebrow { text-align: left; }
+.faq--type .faq-h2 {
+  text-align: left; margin: 18px 0 0;
+  text-transform: uppercase; font-weight: 800; font-size: 60px;
+  line-height: 0.96; letter-spacing: -0.035em;
+}
+.faq--type .faq-sub { text-align: left; margin: 24px 0 0; }
+.faq--type .faq-q { text-transform: uppercase; letter-spacing: -0.005em; font-size: 20px; }
+.faq--type .faq-foot { justify-content: flex-start; }
+
+/* ---------------------------------------------------------------------------
+   responsive
+   --------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+  .faq-h2 { font-size: 32px; }
+  .faq--type .faq-h2 { font-size: 40px; }
+  .faq-q { font-size: 18px; padding: 22px 4px; }
+  .faq-a-text { padding-right: 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-a { transition: none; }
+  .faq-ic::before, .faq-ic::after, .faq-q { transition: none; }
+}

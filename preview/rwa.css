@@ -1,0 +1,227 @@
+/* ============================================================================
+   RWA SPOTLIGHT SECTION — ARX-native styling
+   (content + IA from RWA spec Part B; visuals per ARX design system)
+   ============================================================================ */
+
+.rwa {
+  position: relative; z-index: 4;
+  padding: 120px 40px;
+  display: flex; flex-direction: column; align-items: center;
+}
+.rwa-inner { width: 100%; max-width: 1180px; margin: 0 auto; }
+
+/* header block */
+.rwa-eyebrow {
+  display: block; text-align: center;
+  font-family: var(--font-label); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--violet-300);
+}
+.rwa-h2 {
+  text-align: center; margin: 22px auto 0; max-width: 880px;
+  font-family: var(--font-display); font-weight: 800; font-size: 48px;
+  line-height: 1.08; letter-spacing: -0.02em; color: var(--fg); text-wrap: balance;
+}
+.rwa-h2 .accent {
+  background: linear-gradient(115deg, var(--violet-300) 0%, var(--electric-500) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.rwa-sub {
+  text-align: center; margin: 24px auto 0; max-width: 720px;
+  font-family: var(--font-ui); font-weight: 400; font-size: 18px;
+  line-height: 1.6; color: var(--fg-2);
+}
+
+/* trust strip — GRVT-style horizontal: icon left, number + label right */
+.rwa-trust { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 56px; }
+.rwa-stat {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg);
+  padding: 24px 26px; display: flex; align-items: center; gap: 18px; text-align: left;
+}
+.rwa-stat-ic {
+  flex-shrink: 0; width: 44px; height: 44px;
+  display: grid; place-items: center; color: var(--violet-300);
+}
+.rwa-stat-ic svg { width: 44px; height: 44px; }
+.rwa-stat-body { display: flex; flex-direction: column; gap: 6px; }
+.rwa-stat-num {
+  font-family: var(--font-mono); font-weight: 600; font-size: 36px;
+  letter-spacing: -0.02em; color: var(--violet-300); font-variant-numeric: tabular-nums; line-height: 1;
+}
+.rwa-stat-cap { font-family: var(--font-ui); font-size: 13px; color: var(--fg-3); }
+.rwa-source { margin-top: 16px; text-align: center; font-family: var(--font-label); font-size: 10px; letter-spacing: 0.06em; color: var(--fg-3); opacity: 0.8; }
+
+/* asset cards */
+.rwa-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+/* ---- 3D flip deck (auto-flips RWA tickers <-> crypto tickers every 4s) ---- */
+.flip-status {
+  margin: 72px auto 0; width: max-content;
+  display: inline-flex; align-items: center; gap: 14px;
+}
+.rwa--type .flip-status { margin-left: 0; margin-right: auto; }
+.flip-label {
+  font-family: var(--font-label); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-3);
+  transition: color var(--dur-reveal) var(--ease-in-out);
+}
+.flip-label.on { color: var(--violet-300); }
+.flip-dots { display: inline-flex; gap: 6px; }
+.flip-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--border-2);
+  transition: background var(--dur-reveal) var(--ease-in-out), transform var(--dur-reveal) var(--ease-in-out);
+}
+.flip-dot.on { background: var(--violet-400); transform: scale(1.25); }
+.stage.theme-frost .flip-label.on { color: var(--purple); }
+.stage.theme-frost .flip-dot.on { background: var(--purple); }
+.flip-scene { margin-top: 28px; perspective: 2600px; }
+.flip-deck {
+  position: relative; transform-style: preserve-3d;
+  transition: transform 0.9s cubic-bezier(.6,.04,.2,1);
+}
+.flip-deck.flipped { transform: rotateY(180deg); }
+.flip-face { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.flip-face.back { position: absolute; inset: 0; transform: rotateY(180deg); }
+
+.rwa-card {
+  position: relative; background: var(--surface);
+  border: 1px solid var(--border-accent); border-radius: var(--r-xl);
+  padding: 24px; display: flex; flex-direction: column;
+  transition: transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out), border-color var(--dur);
+}
+.rwa-card.active:hover { transform: translateY(-4px); box-shadow: var(--shadow-2), var(--shadow-glow); border-color: var(--violet-400); }
+.rwa-card.coming { opacity: 0.72; border-color: var(--border); }
+.rwa-card-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.rwa-tok { display: flex; align-items: center; gap: 11px; }
+.rwa-disc {
+  width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center;
+  font-family: var(--font-display); font-weight: 700; font-size: 13px; color: #fff; flex-shrink: 0;
+}
+.rwa-name { font-family: var(--font-ui); font-weight: 700; font-size: 15px; color: var(--fg); letter-spacing: 0.01em; }
+.rwa-ticker { font-family: var(--font-mono); font-size: 11px; color: var(--fg-3); letter-spacing: 0.02em; }
+.rwa-tagline { margin-top: 18px; font-family: var(--font-display); font-weight: 700; font-size: 18px; line-height: 1.25; color: var(--fg); }
+.rwa-body { margin-top: 10px; font-family: var(--font-ui); font-size: 13px; line-height: 1.55; color: var(--fg-3); flex: 1; }
+.rwa-card-div { height: 1px; background: var(--border); margin: 20px 0 16px; }
+.rwa-data { display: flex; align-items: baseline; gap: 16px; }
+.rwa-px { font-family: var(--font-mono); font-weight: 600; font-size: 22px; color: var(--fg); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+.rwa-chg { font-family: var(--font-mono); font-weight: 600; font-size: 13px; font-variant-numeric: tabular-nums; }
+.rwa-oi { margin-left: auto; font-family: var(--font-mono); font-size: 12px; color: var(--fg-3); font-variant-numeric: tabular-nums; }
+.rwa-data-labels { display: flex; gap: 16px; margin-top: 5px; }
+.rwa-data-labels span { font-family: var(--font-label); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-3); }
+.rwa-data-labels span:last-child { margin-left: auto; }
+.rwa-coming-row { font-family: var(--font-mono); font-weight: 600; font-size: 15px; color: var(--fg-3); letter-spacing: 0.02em; }
+.rwa-cta {
+  margin-top: 20px; align-self: flex-start; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--font-ui); font-weight: 600; font-size: 13px; color: var(--violet-300);
+  background: transparent; border: 0; padding: 0; transition: gap var(--dur) var(--ease-out), color var(--dur);
+}
+.rwa-card.active:hover .rwa-cta { gap: 11px; }
+.rwa-cta:hover { color: var(--violet-200); }
+.rwa-ribbon {
+  position: absolute; top: 16px; right: -2px;
+  padding: 5px 12px; border-radius: var(--r-pill) 0 0 var(--r-pill);
+  background: var(--accent-soft); border: 1px solid var(--border-accent); border-right: 0;
+  font-family: var(--font-label); font-size: 9px; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--violet-300);
+}
+
+/* structural advantage — 4 bullets */
+.rwa-compare { margin-top: 88px; }
+.rwa-compare-eyebrow { display: block; text-align: center; font-family: var(--font-label); font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--fg-3); }
+.rwa-compare-h { text-align: center; margin: 14px auto 0; font-family: var(--font-display); font-weight: 700; font-size: 30px; letter-spacing: -0.015em; color: var(--fg); }
+.rwa-bullets { margin-top: 44px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.rwa-bullet {
+  display: flex; align-items: flex-start; gap: 18px;
+  padding: 26px 28px; border-radius: var(--r-xl);
+  background: var(--surface); border: 1px solid var(--border);
+  transition: border-color var(--dur) var(--ease-out), transform var(--dur) var(--ease-out);
+}
+.rwa-bullet:hover { border-color: var(--border-accent); transform: translateY(-2px); }
+.rwa-bullet-num {
+  flex-shrink: 0; font-family: var(--font-mono); font-weight: 600; font-size: 14px;
+  color: var(--violet-300); font-variant-numeric: tabular-nums;
+  width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--accent-soft); border: 1px solid var(--border-accent);
+}
+.rwa-bullet-text {
+  margin: 5px 0 0; font-family: var(--font-ui); font-size: 15px; line-height: 1.6;
+  color: var(--fg-2); text-wrap: pretty;
+}
+.rwa-bullet-text b { color: var(--fg); font-weight: 700; }
+.stage.theme-frost .rwa-bullet-num { color: var(--purple); }
+
+/* ---- Day/Frost: feature cards adopt the ARX Glass HUD panel treatment ----
+   (uses the shared --glass-* tokens defined per-theme in arx-hero.css) */
+.stage.theme-frost .rwa-bullet {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--r-sm);
+  box-shadow: var(--glass-shadow);
+}
+.stage.theme-frost .rwa-bullet:hover {
+  border-color: rgba(59,27,129,0.18);
+  background: rgba(255,255,255,0.82);
+  box-shadow: 0 24px 50px rgba(40,30,80,0.18);
+}
+.stage.theme-frost .rwa-bullet-num {
+  background: rgba(59,27,129,0.06); border-color: rgba(59,27,129,0.18);
+}
+
+/* footer */
+.rwa-foot { margin-top: 88px; text-align: center; }
+.rwa-foot-p { max-width: 640px; margin: 0 auto; font-family: var(--font-ui); font-size: 17px; line-height: 1.6; color: var(--fg-2); text-wrap: balance; }
+.rwa-foot-p b { color: var(--fg); font-weight: 600; }
+.rwa-foot-cta {
+  margin-top: 32px; display: inline-flex; align-items: center; gap: 9px; cursor: pointer;
+  height: 52px; padding: 0 30px; border: 1px solid transparent; border-radius: var(--r-md);
+  background: var(--accent); color: var(--fg-on-accent);
+  font-family: var(--font-ui); font-weight: 600; font-size: 16px; text-decoration: none;
+  transition: background var(--dur) var(--ease-out), box-shadow var(--dur), transform var(--dur);
+}
+.rwa-foot-cta:hover { background: var(--violet-300); box-shadow: var(--shadow-glow); transform: translateY(-1px); }
+.rwa-foot-cta:active { transform: scale(0.98); }
+.rwa-links { margin-top: 30px; display: flex; flex-wrap: wrap; justify-content: center; gap: 28px; }
+.rwa-link { font-family: var(--font-ui); font-size: 13px; color: var(--fg-3); text-decoration: none; transition: color var(--dur); display: inline-flex; align-items: center; gap: 6px; }
+.rwa-link:hover { color: var(--violet-300); }
+
+/* Day / Frost overrides */
+.stage.theme-frost .rwa-stat-num { color: var(--purple); }
+.stage.theme-frost .rwa-stat-ic { color: var(--purple); }
+.stage.theme-frost .rwa-h2 .accent { background: linear-gradient(115deg, var(--purple) 0%, var(--electric-700) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.stage.theme-frost .rwa-eyebrow, .stage.theme-frost .rwa-cta { color: var(--purple); }
+.stage.theme-frost .rwa-link:hover, .stage.theme-frost .rwa-cta:hover { color: var(--violet-500); }
+
+/* ---- v03 "type" variant — echoes the typographic hero (left, uppercase, outlined) ---- */
+.rwa--type .rwa-inner { max-width: 1180px; }
+.rwa--type .rwa-eyebrow,
+.rwa--type .rwa-compare-eyebrow { text-align: left; }
+.rwa--type .rwa-h2 {
+  text-align: left; margin: 18px 0 0; max-width: none;
+  text-transform: uppercase; font-weight: 800; font-size: 68px;
+  line-height: 0.92; letter-spacing: -0.035em;
+}
+.rwa--type .rwa-h2 .accent {
+  -webkit-text-stroke: 1.4px var(--violet-400); color: transparent;
+  background: none; -webkit-background-clip: border-box; background-clip: border-box;
+}
+.rwa--type .rwa-sub { text-align: left; margin: 26px 0 0; }
+.rwa--type .rwa-source { text-align: left; }
+.rwa--type .rwa-compare-h {
+  text-align: left; text-transform: uppercase; font-weight: 800;
+  font-size: 40px; letter-spacing: -0.025em; line-height: 0.95; margin: 14px 0 0;
+}
+.rwa--type .rwa-foot { text-align: left; }
+.rwa--type .rwa-foot-p { margin: 0; max-width: 760px; }
+.rwa--type .rwa-links { justify-content: flex-start; }
+.stage.theme-frost .rwa--type .rwa-h2 .accent { -webkit-text-stroke-color: var(--purple); background: none; }
+
+/* responsive */
+@media (max-width: 1023px) {
+  .rwa-cards { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 720px) {
+  .rwa-h2 { font-size: 32px; }
+  .rwa-trust { grid-template-columns: 1fr; }
+  .rwa-bullets { grid-template-columns: 1fr; }
+}

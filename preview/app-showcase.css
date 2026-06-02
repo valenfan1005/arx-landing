@@ -1,0 +1,106 @@
+/* ============================================================================
+   APP SHOWCASE — three floating phone screens (ARX-styled, 3D)
+   Sits between hero and RWA. Screens are user-fillable image slots.
+   ============================================================================ */
+
+.show {
+  position: relative; z-index: 4;
+  padding: 110px 40px 120px;
+  display: flex; flex-direction: column; align-items: center;
+}
+.show-inner { width: 100%; max-width: 1180px; margin: 0 auto; text-align: center; }
+.show-eyebrow {
+  display: block; font-family: var(--font-label); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--violet-300);
+}
+.show-h2 {
+  margin: 22px auto 0; max-width: 820px;
+  font-family: var(--font-display); font-weight: 800; font-size: 46px;
+  line-height: 1.08; letter-spacing: -0.02em; color: var(--fg); text-wrap: balance;
+}
+.show-sub {
+  margin: 22px auto 0; max-width: 600px;
+  font-family: var(--font-ui); font-size: 17px; line-height: 1.6; color: var(--fg-2);
+}
+
+/* 3D stage with three floating phones (start stacked, fan out) */
+.show-stage {
+  position: relative; margin-top: 64px; height: 600px;
+  perspective: 2200px;
+}
+.show-bloom {
+  position: absolute; z-index: 0; width: 720px; height: 720px; left: 50%; top: 50%;
+  transform: translate(-50%,-50%); border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, var(--glow) 0%, rgba(179,141,244,0.08) 40%, transparent 70%);
+  filter: blur(10px);
+}
+.phone {
+  position: absolute; left: 50%; top: 50%; transform-style: preserve-3d;
+  border-radius: 40px; padding: 11px;
+  background: linear-gradient(155deg, #1c1c22 0%, #0a0a0f 60%);
+  border: 1px solid var(--border-2);
+  box-shadow: var(--shadow-3), inset 0 1px 0 rgba(255,255,255,0.05);
+  transition: transform 0.9s var(--ease-out), box-shadow 0.9s var(--ease-out);
+}
+.phone-screen {
+  position: relative; border-radius: 30px; overflow: hidden;
+  background: var(--midnight-800); display: block;
+}
+.phone-screen image-slot { display: block; width: 100%; height: 100%; }
+.phone-img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top center; user-select: none; -webkit-user-drag: none; }
+/* notch */
+.phone::before {
+  content: ""; position: absolute; top: 11px; left: 50%; transform: translateX(-50%);
+  width: 38%; height: 24px; background: #0a0a0f; border-radius: 0 0 16px 16px; z-index: 3;
+}
+
+/* center phone — upright, forward, largest, always centered */
+.phone--center {
+  z-index: 3; transform: translate(-50%,-50%) scale(1.02);
+}
+.phone--center .phone-screen { width: 282px; height: 612px; }
+
+/* side phones — rest at FANNED positions; an intro animation plays them
+   from stacked (overlapped behind center) out to the sides on every render
+   (pure CSS so it also runs in the static focus-mode clone). */
+.phone--left {
+  z-index: 2; transform: translate(calc(-50% - 248px), -50%) rotateY(8deg) rotateZ(-11deg) scale(0.9);
+}
+.phone--right {
+  z-index: 1; transform: translate(calc(-50% + 248px), -50%) rotateY(-8deg) rotateZ(11deg) scale(0.9);
+}
+.phone--left .phone-screen,
+.phone--right .phone-screen { width: 252px; height: 546px; }
+
+/* center phone gentle hover lift */
+.show-stage:hover .phone--center { transform: translate(-50%,-50%) translateY(-10px) scale(1.04); }
+
+/* screen caption chip — side chips fade in as the screens fan out (driven by
+   the --fan progress the rAF loop writes on .show-stage). */
+.phone-tag {
+  position: absolute; left: 50%; bottom: -14px; transform: translateX(-50%);
+  z-index: 4; white-space: nowrap; opacity: 1;
+  padding: 6px 14px; border-radius: var(--r-pill);
+  background: rgba(7,7,13,0.9); border: 1px solid var(--border-accent);
+  font-family: var(--font-label); font-size: 10px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--violet-300);
+}
+.phone--left .phone-tag,
+.phone--right .phone-tag { opacity: var(--fan, 1); }
+
+/* Day / Frost */
+.stage.theme-frost .show-eyebrow { color: var(--purple); }
+.stage.theme-frost .phone { background: linear-gradient(155deg,#cfd0ee 0%,#aeb0d8 60%); border-color: rgba(59,27,129,0.16); }
+.stage.theme-frost .phone::before { background: #aeb0d8; }
+.stage.theme-frost .phone-screen { background: var(--frost-700); }
+.stage.theme-frost .phone-tag { background: rgba(255,255,255,0.92); color: var(--purple); }
+
+/* v03 type variant — left aligned heads */
+.show--type .show-inner { text-align: left; }
+.show--type .show-h2 { margin-left: 0; text-transform: uppercase; font-weight: 800; font-size: 60px; line-height: 0.94; letter-spacing: -0.035em; }
+.show--type .show-sub { margin-left: 0; }
+
+@media (max-width: 900px) {
+  .show-stage { height: 560px; }
+  .phone--left, .phone--right { display: none; }
+}

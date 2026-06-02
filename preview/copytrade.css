@@ -1,0 +1,354 @@
+/* ============================================================================
+   COPY TRADING + SMART MONEY SECTION — ARX-native styling
+   (content + IA from copy-trading-section.md; visuals per ARX design system)
+   ============================================================================ */
+
+.ct {
+  position: relative; z-index: 4;
+  padding: 120px 40px;
+  display: flex; flex-direction: column; align-items: center;
+}
+.ct-inner { width: 100%; max-width: 1180px; margin: 0 auto; }
+
+/* header block (mirrors .rwa header) */
+.ct-eyebrow {
+  display: block; text-align: center;
+  font-family: var(--font-label); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--violet-300);
+}
+.ct-h2 {
+  text-align: center; margin: 22px auto 0; max-width: 900px;
+  font-family: var(--font-display); font-weight: 800; font-size: 48px;
+  line-height: 1.08; letter-spacing: -0.02em; color: var(--fg); text-wrap: balance;
+}
+.ct-h2 .accent {
+  background: linear-gradient(115deg, var(--violet-300) 0%, var(--electric-500) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.ct-sub {
+  text-align: center; margin: 24px auto 0; max-width: 720px;
+  font-family: var(--font-ui); font-weight: 400; font-size: 18px;
+  line-height: 1.6; color: var(--fg-2); text-wrap: pretty;
+}
+.ct-sub b { color: var(--fg); font-weight: 600; }
+
+/* ---------------------------------------------------------------------------
+   OLD WAY vs ARX WAY — two semantic columns
+   --------------------------------------------------------------------------- */
+.ct-compare { margin-top: 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: stretch; }
+.ct-col {
+  position: relative; border-radius: var(--r-xl);
+  background: var(--surface); border: 1px solid var(--border);
+  padding: 32px 32px 30px;
+}
+.ct-col.arx {
+  border-color: var(--border-accent);
+  background:
+    radial-gradient(120% 120% at 100% 0%, rgba(179,141,244,0.07), transparent 60%),
+    var(--surface);
+  box-shadow: var(--shadow-glow);
+}
+.ct-col-head {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-display); font-weight: 700; font-size: 19px;
+  letter-spacing: -0.01em; color: var(--fg);
+}
+.ct-col.old .ct-col-head { color: var(--fg-3); }
+.ct-col-tag {
+  font-family: var(--font-label); font-size: 9px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 3px 9px; border-radius: var(--r-pill);
+  border: 1px solid var(--border);
+}
+.ct-col.old .ct-col-tag { color: var(--loss); border-color: rgba(255,122,144,0.28); }
+.ct-col.arx .ct-col-tag { color: var(--violet-300); border-color: var(--border-accent); background: var(--accent-soft); }
+.ct-col-div { height: 1px; background: var(--border); margin: 22px 0 4px; }
+.ct-list { list-style: none; margin: 0; padding: 0; }
+.ct-li {
+  display: flex; align-items: flex-start; gap: 13px;
+  padding: 16px 0; border-bottom: 1px solid var(--border);
+}
+.ct-li:last-child { border-bottom: 0; padding-bottom: 4px; }
+.ct-li-ic { flex-shrink: 0; margin-top: 1px; }
+.ct-li-text {
+  font-family: var(--font-ui); font-size: 14.5px; line-height: 1.55;
+  color: var(--fg-2); text-wrap: pretty;
+}
+.ct-col.old .ct-li-text { color: var(--fg-3); }
+.ct-li-text b { color: var(--fg); font-weight: 600; }
+
+/* ---------------------------------------------------------------------------
+   SMART MONEY teaser — 3 compact wallet cards + prominent link-out
+   --------------------------------------------------------------------------- */
+.ct-smart { margin-top: 64px; }
+.ct-smart-head {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+}
+.ct--type .ct-smart-head { justify-content: flex-start; }
+.ct-smart-eyebrow {
+  font-family: var(--font-label); font-size: 10px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--fg-3);
+}
+.ct-live {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--font-label); font-size: 9px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--gain);
+}
+.ct-live-dot {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--gain);
+  box-shadow: 0 0 0 0 rgba(110,226,168,0.6); animation: ct-pulse 2s var(--ease-in-out) infinite;
+}
+@keyframes ct-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(110,226,168,0.55); }
+  70% { box-shadow: 0 0 0 7px rgba(110,226,168,0); }
+  100% { box-shadow: 0 0 0 0 rgba(110,226,168,0); }
+}
+
+.ct-wallets { margin-top: 26px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.ct-wallet {
+  background: var(--surface); border: 1px solid var(--border-accent); border-radius: var(--r-xl);
+  padding: 22px 22px 20px; display: flex; flex-direction: column;
+  transition: transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out), border-color var(--dur);
+}
+.ct-wallet:hover { transform: translateY(-4px); box-shadow: var(--shadow-2), var(--shadow-glow); border-color: var(--violet-400); }
+
+/* head — avatar · address · favorite star */
+.ct-wallet-head { display: flex; align-items: center; gap: 12px; }
+.ct-avatar {
+  width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+  display: grid; place-items: center;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+}
+.ct-addr {
+  display: inline-flex; align-items: center; gap: 8px; cursor: pointer;
+  background: transparent; border: 0; padding: 0; margin-right: auto;
+  font-family: var(--font-mono); font-size: 15px; font-weight: 600; color: var(--fg);
+  letter-spacing: 0.01em; transition: color var(--dur);
+}
+.ct-addr code { font-family: inherit; }
+.ct-addr:hover { color: var(--violet-300); }
+.ct-addr svg { color: var(--fg-3); transition: color var(--dur); }
+.ct-addr:hover svg { color: var(--violet-300); }
+.ct-fav {
+  flex-shrink: 0; width: 30px; height: 30px; display: grid; place-items: center; cursor: pointer;
+  background: transparent; border: 0; border-radius: var(--r-sm); color: var(--fg-3);
+  transition: color var(--dur), background var(--dur);
+}
+.ct-fav:hover { color: var(--fg-2); background: var(--surface-2); }
+.ct-fav.on { color: var(--warning); }
+
+/* badges — venue · smart-money score */
+.ct-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.ct-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 24px; padding: 0 10px; border-radius: var(--r-sm);
+  border: 1px solid var(--border); background: var(--surface-2);
+  font-family: var(--font-label); font-size: 10px; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--fg-2);
+}
+.ct-badge.venue svg { color: var(--electric-500); }
+.ct-badge.score { border-color: var(--border-accent); background: var(--accent-soft); color: var(--violet-300); }
+.ct-badge.score b { color: var(--fg); font-family: var(--font-mono); font-weight: 700; }
+
+/* ROI hero number */
+.ct-roi { margin-top: 18px; display: flex; flex-direction: column; gap: 4px; }
+.ct-roi-label {
+  font-family: var(--font-label); font-size: 9px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-3);
+}
+.ct-roi-val {
+  font-family: var(--font-mono); font-weight: 700; font-size: 38px; line-height: 1;
+  letter-spacing: -0.02em; color: var(--gain); font-variant-numeric: tabular-nums;
+}
+
+.ct-wallet-div { height: 1px; background: var(--border); margin: 20px 0 16px; }
+
+/* 3-up metric row */
+.ct-metrics { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+.ct-metric { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
+.ct-metric-r { text-align: right; align-items: flex-end; }
+.ct-metric-label {
+  font-family: var(--font-label); font-size: 9px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-3); white-space: nowrap;
+}
+.ct-metric-val {
+  font-family: var(--font-mono); font-weight: 600; font-size: 15px; line-height: 1;
+  color: var(--fg); font-variant-numeric: tabular-nums; letter-spacing: -0.01em;
+  transition: background-color 0.45s var(--ease-out); border-radius: 4px; padding: 1px 3px; margin: -1px -3px;
+}
+.ct-metric-val.gain { color: var(--gain); }
+.ct-metric-val.flash { background-color: rgba(110,226,168,0.18); }
+
+/* AUM + copiers row */
+.ct-aum {
+  margin-top: 18px; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 11px 13px; border-radius: var(--r-md); background: var(--surface-2); border: 1px solid var(--border);
+}
+.ct-aum-l, .ct-aum-r {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--font-mono); font-size: 12px; color: var(--fg-3); font-variant-numeric: tabular-nums;
+}
+.ct-aum-l svg, .ct-aum-r svg { color: var(--fg-3); }
+.ct-aum-l b { color: var(--fg); font-weight: 600; }
+.ct-aum-r { color: var(--fg-2); }
+.ct-aum-slots { color: var(--fg-3); }
+
+/* per-card actions — Copy (primary) + Reverse (ghost) */
+.ct-wallet-actions { margin-top: 16px; display: grid; grid-template-columns: 1fr; gap: 10px; }
+.ct-follow {
+  display: inline-flex; align-items: center; justify-content: center; height: 44px; cursor: pointer;
+  border-radius: var(--r-md); text-decoration: none; white-space: nowrap;
+  font-family: var(--font-ui); font-weight: 600; font-size: 14px;
+  transition: background var(--dur) var(--ease-out), box-shadow var(--dur), border-color var(--dur), color var(--dur), transform var(--dur);
+}
+.ct-follow.primary { background: var(--accent); color: var(--fg-on-accent); padding: 0 18px; }
+.ct-follow.primary:hover { background: var(--violet-300); box-shadow: var(--shadow-glow); }
+.ct-follow.primary:active { transform: scale(0.98); }
+.ct-follow.ghost { padding: 0 16px; background: transparent; color: var(--fg-2); border: 1px solid var(--border-2); }
+.ct-follow.ghost:hover { border-color: var(--violet-400); color: var(--violet-300); }
+
+/* prominent link-out — card-style CTA, full width under the wallets */
+.ct-board-link {
+  margin-top: 22px; display: flex; align-items: center; justify-content: space-between; gap: 20px;
+  padding: 22px 28px; border-radius: var(--r-xl); text-decoration: none;
+  background:
+    radial-gradient(140% 180% at 0% 50%, rgba(179,141,244,0.10), transparent 55%),
+    var(--surface-2);
+  border: 1px solid var(--border-accent);
+  transition: border-color var(--dur) var(--ease-out), transform var(--dur) var(--ease-out), box-shadow var(--dur);
+}
+.ct-board-link:hover { border-color: var(--violet-400); transform: translateY(-2px); box-shadow: var(--shadow-glow); }
+.ct-board-link-l { display: flex; flex-direction: column; gap: 5px; }
+.ct-board-link-k { font-family: var(--font-label); font-size: 10px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--violet-300); }
+.ct-board-link-t { font-family: var(--font-display); font-weight: 700; font-size: 19px; letter-spacing: -0.01em; color: var(--fg); }
+.ct-board-link-r {
+  flex-shrink: 0; display: inline-flex; align-items: center; gap: 9px;
+  font-family: var(--font-ui); font-weight: 600; font-size: 14px; color: var(--violet-300);
+  transition: gap var(--dur) var(--ease-out);
+}
+.ct-board-link:hover .ct-board-link-r { gap: 13px; }
+
+/* ---------------------------------------------------------------------------
+   ARX advantages — 3 bullets
+   --------------------------------------------------------------------------- */
+.ct-adv { margin-top: 84px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.ct-adv-card {
+  padding: 28px 28px 30px; border-radius: var(--r-xl);
+  background: var(--surface); border: 1px solid var(--border);
+  transition: border-color var(--dur) var(--ease-out), transform var(--dur) var(--ease-out);
+}
+.ct-adv-card:hover { border-color: var(--border-accent); transform: translateY(-2px); }
+.ct-adv-ic {
+  width: 42px; height: 42px; border-radius: var(--r-md);
+  display: grid; place-items: center; color: var(--violet-300);
+  background: var(--accent-soft); border: 1px solid var(--border-accent); margin-bottom: 20px;
+}
+.ct-adv-lead { font-family: var(--font-display); font-weight: 700; font-size: 17px; letter-spacing: -0.01em; color: var(--fg); margin: 0; }
+.ct-adv-body { margin: 11px 0 0; font-family: var(--font-ui); font-size: 14.5px; line-height: 1.6; color: var(--fg-3); text-wrap: pretty; }
+
+/* ---------------------------------------------------------------------------
+   CTA + secondary link
+   --------------------------------------------------------------------------- */
+.ct-foot { margin-top: 72px; display: flex; flex-direction: column; align-items: center; }
+.ct-cta {
+  display: inline-flex; align-items: center; gap: 9px; cursor: pointer;
+  height: 54px; padding: 0 34px; border: 1px solid transparent; border-radius: var(--r-md);
+  background: var(--accent); color: var(--fg-on-accent);
+  font-family: var(--font-ui); font-weight: 600; font-size: 16px; text-decoration: none;
+  transition: background var(--dur) var(--ease-out), box-shadow var(--dur), transform var(--dur);
+}
+.ct-cta:hover { background: var(--violet-300); box-shadow: var(--shadow-glow); transform: translateY(-1px); }
+.ct-cta:active { transform: scale(0.98); }
+.ct-secondary {
+  margin-top: 20px; display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--font-ui); font-size: 14px; color: var(--fg-3); text-decoration: none;
+  transition: color var(--dur);
+}
+.ct-secondary:hover { color: var(--violet-300); }
+
+/* toast */
+.ct-toast {
+  position: fixed; left: 50%; bottom: 32px; transform: translateX(-50%) translateY(14px);
+  z-index: 99999; pointer-events: none; opacity: 0;
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 11px 18px; border-radius: var(--r-md);
+  background: rgba(7,7,13,0.92); backdrop-filter: blur(12px);
+  border: 1px solid var(--border-accent); box-shadow: var(--shadow-2);
+  font-family: var(--font-mono); font-size: 12px; color: var(--fg);
+  transition: opacity var(--dur) var(--ease-out), transform var(--dur) var(--ease-out);
+}
+.ct-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.ct-toast svg { color: var(--gain); }
+
+/* ---------------------------------------------------------------------------
+   Day / Frost overrides
+   --------------------------------------------------------------------------- */
+.stage.theme-frost .ct-eyebrow,
+.stage.theme-frost .ct-board-link-k,
+.stage.theme-frost .ct-board-link-r,
+.stage.theme-frost .ct-addr:hover,
+.stage.theme-frost .ct-secondary:hover,
+.stage.theme-frost .ct-col.arx .ct-col-tag,
+.stage.theme-frost .ct-badge.score,
+.stage.theme-frost .ct-follow.ghost:hover { color: var(--purple); }
+.stage.theme-frost .ct-badge.score b { color: var(--fg); }
+
+/* ---- Day/Frost: wallet cards adopt the ARX Glass HUD panel treatment ----
+   (uses the shared --glass-* tokens defined per-theme in arx-hero.css) */
+.stage.theme-frost .ct-wallet {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--r-sm);
+  box-shadow: var(--glass-shadow);
+}
+.stage.theme-frost .ct-wallet:hover {
+  border-color: rgba(59,27,129,0.18);
+  background: rgba(255,255,255,0.82);
+  box-shadow: 0 24px 50px rgba(40,30,80,0.18);
+  transform: translateY(-4px);
+}
+.stage.theme-frost .ct-h2 .accent {
+  background: linear-gradient(115deg, var(--purple) 0%, var(--electric-700) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+/* ---------------------------------------------------------------------------
+   v03 "type" variant — echoes the typographic hero (left, uppercase, outlined)
+   --------------------------------------------------------------------------- */
+.ct--type .ct-eyebrow { text-align: left; }
+.ct--type .ct-h2 {
+  text-align: left; margin: 18px 0 0; max-width: none;
+  text-transform: uppercase; font-weight: 800; font-size: 64px;
+  line-height: 0.94; letter-spacing: -0.035em;
+}
+.ct--type .ct-h2 .accent {
+  -webkit-text-stroke: 1.4px var(--violet-400); color: transparent;
+  background: none; -webkit-background-clip: border-box; background-clip: border-box;
+}
+.stage.theme-frost .ct--type .ct-h2 .accent { -webkit-text-stroke-color: var(--purple); background: none; }
+.ct--type .ct-sub { text-align: left; margin: 26px 0 0; }
+.ct--type .ct-foot { align-items: flex-start; }
+
+/* ---------------------------------------------------------------------------
+   responsive
+   --------------------------------------------------------------------------- */
+@media (max-width: 1023px) {
+  .ct-adv { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .ct-wallets { grid-template-columns: 1fr; }
+}
+@media (max-width: 767px) {
+  .ct-h2 { font-size: 32px; }
+  .ct-compare { grid-template-columns: 1fr; }
+  .ct-col.old { order: 1; }   /* ARX column lands second in reading flow */
+  .ct-col.arx { order: 2; }
+  .ct-board-link { flex-direction: column; align-items: flex-start; gap: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ct-live-dot { animation: none; }
+  .ct-pnl.flash { background-color: transparent; }
+  .ct-wallet, .ct-adv-card, .ct-board-link, .ct-col { transition: none; }
+}
