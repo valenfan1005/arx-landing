@@ -7,7 +7,7 @@
   position: relative;
   width: 100%; height: 100%;
   background: var(--bg);
-  overflow: hidden;
+  overflow: clip;
   isolation: isolate;
   display: flex; flex-direction: column;
 }
@@ -129,7 +129,7 @@
   --glass-shadow: 0 20px 40px rgba(40,30,80,.14);
 }
 .navwrap {
-  position: relative; z-index: 100; width: 100%;
+  position: sticky; top: 0; z-index: 100; width: 100%;
   border-bottom: 1px solid var(--border);
   background: rgba(7,7,13,0.72);
   backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
