@@ -19,6 +19,42 @@ function Ext() {
   );
 }
 
+// Lucide "languages" glyph — the translate cue
+function LangGlyph() {
+  return (
+    <svg className="nav-lang-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="m5 8 6 6" /><path d="m4 14 6-6 2-3" /><path d="M2 5h12" /><path d="M7 2h1" />
+      <path d="m22 22-5-10-5 10" /><path d="M14 18h6" />
+    </svg>
+  );
+}
+function Check() {
+  return (
+    <svg className="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M20 6 9 17l-5-5" />
+    </svg>
+  );
+}
+// "Translated by Google" attribution mark — four-dot motif (no wordmark)
+function GTMark() {
+  return (
+    <svg className="gt-mark" viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="6" cy="6" r="3" fill="#4285F4" /><circle cx="18" cy="6" r="3" fill="#EA4335" />
+      <circle cx="6" cy="18" r="3" fill="#34A853" /><circle cx="18" cy="18" r="3" fill="#FBBC05" />
+    </svg>
+  );
+}
+
+// pseudo Google-Translate languages (compliance: a translation widget, not a locale switch)
+const LANGS = [
+  { code: "en", native: "English", en: "English", short: "EN" },
+  { code: "ko", native: "한국어", en: "Korean", short: "KO" },
+  { code: "zh", native: "简体中文", en: "Chinese (Simplified)", short: "ZH" },
+  { code: "vi", native: "Tiếng Việt", en: "Vietnamese", short: "VI" },
+];
+
 // bilingual labels (project is bilingual; Tweaks bar drives `lang`)
 const NAV = {
   en: { markets: "Markets", trade: "Trade", blog: "Blog", more: "More", cta: "Join Waitlist" },
@@ -50,8 +86,10 @@ const SOCIALS = [
 
 function ArxHeader({ lang = "en", active = "" }) {
   const t = NAV[lang] || NAV.en;
-  const [open, setOpen] = useState(null); // "trade" | "more" | null
+  const [open, setOpen] = useState(null); // "trade" | "more" | "lang" | null
+  const [trans, setTrans] = useState(lang === "kr" ? "ko" : "en"); // pseudo-translate selection
   const closeTimer = useRef(null);
+  const transLabel = lang === "kr" ? "번역" : "Translate";
   const wrapRef = useRef(null);
 
   const enter = (key) => { clearTimeout(closeTimer.current); setOpen(key); };
@@ -69,7 +107,7 @@ function ArxHeader({ lang = "en", active = "" }) {
   return (
     <div className="navwrap" ref={wrapRef}>
       <nav className="navcap" aria-label="Primary">
-        <a className="nav-brand" href="/" aria-label="ARX Home">
+        <a className="nav-brand" href="/preview/editorial.html" aria-label="ARX Home">
           <span className="wordmark" aria-label="ARX">
             <svg viewBox="0 0 1280 700" width="100%" height="100%" aria-hidden="true">
               <path d={window.ARX_WORDMARK_D} fill="currentColor" fillRule="evenodd" />
@@ -122,7 +160,35 @@ function ArxHeader({ lang = "en", active = "" }) {
           </div>
         </div>
 
-        <a className="nav-cta" href="/#waitlist">{t.cta}</a>
+        <div className="nav-right">
+          <div className="nav-item nav-lang-item" onMouseEnter={() => enter("lang")} onMouseLeave={leave}>
+            <button className="nav-lang" aria-haspopup="true" aria-expanded={open === "lang"} onClick={() => toggle("lang")} aria-label={transLabel}>
+              <LangGlyph />
+              <span className="nav-lang-cur">{(LANGS.find((l) => l.code === trans) || LANGS[0]).short}</span>
+              <Caret />
+            </button>
+            <div className={"nav-panel lang" + (open === "lang" ? " open" : "")} role="menu">
+              <div className="nav-group-label">{transLabel}</div>
+              {LANGS.map((l) => (
+                <button
+                  className={"nav-opt nav-opt-lang" + (trans === l.code ? " sel" : "")}
+                  role="menuitemradio" aria-checked={trans === l.code} key={l.code}
+                  onClick={() => { setTrans(l.code); setOpen(null); }}
+                >
+                  <span>
+                    <span className="lang-native">{l.native}</span>
+                    <span className="lang-en" style={{ display: "block" }}>{l.en}</span>
+                  </span>
+                  <Check />
+                </button>
+              ))}
+              <div className="nav-divider" />
+              <div className="nav-translate-foot"><GTMark />Translated by Google</div>
+            </div>
+          </div>
+
+          <a className="nav-cta" href="/#waitlist">{t.cta}</a>
+        </div>
       </nav>
     </div>
   );

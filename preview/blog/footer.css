@@ -1,0 +1,104 @@
+/* ============================================================================
+   SITE FOOTER — ARX-native
+   Midnight canvas, hairline top border, mono labels, wordmark + non-custodial
+   disclaimer. Supports "editorial" + "type" variants.
+   ============================================================================ */
+
+.ftr {
+  position: relative; z-index: 4;
+  border-top: 1px solid var(--border);
+  padding: 80px 40px 40px;
+  background:
+    radial-gradient(120% 140% at 50% 0%, rgba(179,141,244,0.05), transparent 55%),
+    transparent;
+}
+.ftr-inner { width: 100%; max-width: 1180px; margin: 0 auto; }
+
+/* top grid: brand block + link columns */
+.ftr-top {
+  display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px;
+  padding-bottom: 56px; border-bottom: 1px solid var(--border);
+}
+.ftr-brand { max-width: 320px; }
+.ftr-mark { display: inline-block; height: 26px; color: var(--fg); }
+.ftr-mark svg { height: 100%; width: auto; display: block; }
+.ftr-tag {
+  margin: 20px 0 0; font-family: var(--font-display); font-weight: 700;
+  font-size: 19px; line-height: 1.25; letter-spacing: -0.01em; color: var(--fg); text-wrap: balance;
+}
+.ftr-note {
+  margin: 14px 0 0; font-family: var(--font-ui); font-size: 13.5px; line-height: 1.6; color: var(--fg-3);
+}
+
+/* socials */
+.ftr-social { margin-top: 24px; display: flex; gap: 10px; }
+.ftr-soc {
+  width: 38px; height: 38px; border-radius: var(--r-sm); display: grid; place-items: center;
+  border: 1px solid var(--border); color: var(--fg-2); text-decoration: none;
+  transition: border-color var(--dur) var(--ease-out), color var(--dur), background var(--dur);
+}
+.ftr-soc:hover { border-color: var(--border-accent); color: var(--violet-300); background: var(--accent-soft); }
+
+/* link columns */
+.ftr-col-h {
+  font-family: var(--font-label); font-size: 10px; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--fg-3); margin: 4px 0 18px;
+}
+.ftr-links { display: flex; flex-direction: column; gap: 13px; }
+.ftr-link {
+  display: inline-flex; align-items: center; gap: 6px; width: fit-content;
+  font-family: var(--font-ui); font-size: 14.5px; color: var(--fg-2); text-decoration: none;
+  transition: color var(--dur);
+}
+.ftr-link:hover { color: var(--violet-300); }
+.ftr-link .ext { color: var(--fg-3); }
+.ftr-link:hover .ext { color: var(--violet-300); }
+
+/* bottom bar */
+.ftr-bottom {
+  margin-top: 28px; display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  flex-wrap: wrap;
+}
+.ftr-meta {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-family: var(--font-mono); font-size: 12px; color: var(--fg-3); font-variant-numeric: tabular-nums;
+}
+.ftr-meta .dot { color: var(--border-2); }
+.ftr-built { display: inline-flex; align-items: center; gap: 7px; }
+.ftr-built svg { color: var(--electric-500); }
+.ftr-legal { display: inline-flex; align-items: center; gap: 22px; }
+.ftr-legal a {
+  font-family: var(--font-ui); font-size: 13px; color: var(--fg-3); text-decoration: none;
+  transition: color var(--dur);
+}
+.ftr-legal a:hover { color: var(--violet-300); }
+
+/* ---------------------------------------------------------------------------
+   Frost / Day overrides
+   --------------------------------------------------------------------------- */
+.stage.theme-frost .ftr-link:hover,
+.stage.theme-frost .ftr-soc:hover,
+.stage.theme-frost .ftr-legal a:hover { color: var(--purple); }
+
+/* ---------------------------------------------------------------------------
+   v03 "type" variant — uppercase headings, square social tiles
+   --------------------------------------------------------------------------- */
+.ftr--type .ftr-tag { text-transform: uppercase; letter-spacing: -0.02em; font-weight: 800; font-size: 22px; line-height: 1.1; }
+.ftr--type .ftr-soc { border-radius: 0; }
+.ftr--type .ftr-col-h { letter-spacing: 0.2em; }
+
+/* ---------------------------------------------------------------------------
+   responsive
+   --------------------------------------------------------------------------- */
+@media (max-width: 920px) {
+  .ftr-top { grid-template-columns: 1fr 1fr; gap: 36px 28px; }
+  .ftr-brand { grid-column: 1 / -1; max-width: none; }
+}
+@media (max-width: 560px) {
+  .ftr-top { grid-template-columns: 1fr; }
+  .ftr-bottom { flex-direction: column; align-items: flex-start; gap: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ftr-soc, .ftr-link, .ftr-legal a { transition: none; }
+}

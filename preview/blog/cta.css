@@ -1,0 +1,29 @@
+/* ============================================================================
+   CLOSING CTA BAND — ARX-native styling
+   Stripped to a single CTA button on the midnight canvas.
+   ============================================================================ */
+
+.cta-band {
+  position: relative; z-index: 4;
+  padding: 130px 40px 150px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.cta-band-btn {
+  display: inline-flex; align-items: center; gap: 11px; cursor: pointer;
+  height: 60px; padding: 0 40px; border: 1px solid transparent; border-radius: var(--r-md);
+  background: var(--accent); color: var(--fg-on-accent);
+  font-family: var(--font-ui); font-weight: 600; font-size: 17px; text-decoration: none;
+  transition: background var(--dur) var(--ease-out), box-shadow var(--dur), transform var(--dur);
+}
+.cta-band-btn:hover { background: var(--violet-300); box-shadow: var(--shadow-glow); transform: translateY(-1px); }
+.cta-band-btn:active { transform: scale(0.98); }
+.cta-band-btn svg { transition: transform var(--dur) var(--ease-out); }
+.cta-band-btn:hover svg { transform: translateX(4px); }
+
+/* v03 "type" variant — left-aligned, square corners */
+.cta-band--type { align-items: flex-start; }
+.cta-band--type .cta-band-btn { border-radius: 0; height: 64px; padding: 0 44px; font-size: 18px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-band-btn, .cta-band-btn svg { transition: none; }
+}
