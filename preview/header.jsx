@@ -48,6 +48,10 @@ const SOCIALS = [
   { t: "Telegram", href: "https://t.me/ARX_Trade_Official" },
 ];
 
+// Trade dropdown temporarily disabled (no sub-pages yet). Set true to restore
+// the Spot/Perpetual/RWA/Copy Trade/On-chain Signal dropdown panel below.
+const TRADE_DROPDOWN_ENABLED = false;
+
 function ArxHeader({ lang = "en", active = "" }) {
   const t = NAV[lang] || NAV.en;
   const [open, setOpen] = useState(null); // "trade" | "more" | null
@@ -57,6 +61,16 @@ function ArxHeader({ lang = "en", active = "" }) {
   const enter = (key) => { clearTimeout(closeTimer.current); setOpen(key); };
   const leave = () => { closeTimer.current = setTimeout(() => setOpen(null), 100); };
   const toggle = (key) => setOpen((o) => (o === key ? null : key));
+
+  // Scroll a same-page section into view (used while sub-pages don't exist yet).
+  // NOTE: native "smooth" behavior is cancelled by the App Showcase scroll-bound
+  // rAF loop on this page, so we use instant scroll which reliably lands + persists.
+  const scrollToSection = (e, id) => {
+    e.preventDefault();
+    setOpen(null);
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "instant", block: "start" });
+  };
 
   useEffect(() => {
     const onKey = (e) => { if (e.key === "Escape") setOpen(null); };
@@ -79,22 +93,28 @@ function ArxHeader({ lang = "en", active = "" }) {
 
         <div className="nav-items">
           <div className="nav-item">
-            <a className={"nav-link" + (active === "markets" ? " on" : "")} href="/markets/">{t.markets}</a>
+            <a className={"nav-link" + (active === "markets" ? " on" : "")} href="#app-showcase" onClick={(e) => scrollToSection(e, "app-showcase")}>{t.markets}</a>
           </div>
 
-          <div className="nav-item" onMouseEnter={() => enter("trade")} onMouseLeave={leave}>
-            <button className="nav-trigger" aria-haspopup="true" aria-expanded={open === "trade"} onClick={() => toggle("trade")}>
-              {t.trade}<Caret />
-            </button>
-            <div className={"nav-panel trade" + (open === "trade" ? " open" : "")} role="menu">
-              {TRADE_ITEMS[lang].map((it, i) => (
-                <a className="nav-opt" role="menuitem" href={it.href} key={i}>
-                  <div className="nav-opt-title">{it.t}</div>
-                  <div className="nav-opt-desc">{it.d}</div>
-                </a>
-              ))}
+          {TRADE_DROPDOWN_ENABLED ? (
+            <div className="nav-item" onMouseEnter={() => enter("trade")} onMouseLeave={leave}>
+              <button className="nav-trigger" aria-haspopup="true" aria-expanded={open === "trade"} onClick={() => toggle("trade")}>
+                {t.trade}<Caret />
+              </button>
+              <div className={"nav-panel trade" + (open === "trade" ? " open" : "")} role="menu">
+                {TRADE_ITEMS[lang].map((it, i) => (
+                  <a className="nav-opt" role="menuitem" href={it.href} key={i}>
+                    <div className="nav-opt-title">{it.t}</div>
+                    <div className="nav-opt-desc">{it.d}</div>
+                  </a>
+                ))}
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className="nav-item">
+              <a className="nav-link" href="#copy-trade" onClick={(e) => scrollToSection(e, "copy-trade")}>{t.trade}</a>
+            </div>
+          )}
 
           <div className="nav-item">
             <a className={"nav-link" + (active === "blog" ? " on" : "")} href="/preview/blog/">{t.blog}</a>

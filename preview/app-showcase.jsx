@@ -94,7 +94,7 @@ function AppShowcase({ lang = "en", variant }) {
   }, []);
 
   return (
-    <section className={"show" + (variant === "type" ? " show--type" : "")}>
+    <section id="app-showcase" className={"show" + (variant === "type" ? " show--type" : "")}>
       <div className="show-inner">
         <span className="show-eyebrow">{t.eyebrow}</span>
         <h2 className="show-h2">{t.h2}</h2>

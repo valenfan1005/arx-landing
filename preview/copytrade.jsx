@@ -198,7 +198,7 @@ function CopyTradeSection({ variant }) {
     toastTimer.current = setTimeout(() => setToast(false), 2200);
   };
   return (
-    <section className={"ct" + (variant === "type" ? " ct--type" : " ct--editorial")}>
+    <section id="copy-trade" className={"ct" + (variant === "type" ? " ct--type" : " ct--editorial")}>
       <div className="ct-inner">
         <span className="ct-eyebrow">Copy trading · Powered by on-chain signals</span>
         <h2 className="ct-h2">
