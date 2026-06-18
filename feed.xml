@@ -6,12 +6,20 @@
   <description>Insights on DeFi copy trading, market regime detection, wallet intelligence, and Hyperliquid. Stay ahead with ARX.</description>
   <language>en</language>
   <atom:link href="https://arx.trade/feed.xml" rel="self" type="application/rss+xml"/>
-  <lastBuildDate>Thu, 21 May 2026 08:22:58 -0000</lastBuildDate>
+  <lastBuildDate>Thu, 18 Jun 2026 02:59:32 -0000</lastBuildDate>
   <image>
     <url>https://arx.trade/logo.png</url>
     <title>ARX Blog</title>
     <link>https://arx.trade/blog/</link>
   </image>
+
+  <item>
+    <title>Warsh + Iran Drove Traders Into BTC Shorts. They&apos;re Now Paying 7.4% APR.</title>
+    <link>https://arx.trade/insights/#btc-shorts-paying-warsh-fear-2026-06-18</link>
+    <guid isPermaLink="true">https://arx.trade/insights/#btc-shorts-paying-warsh-fear-2026-06-18</guid>
+    <description>BTC funding sits at -7.38% APR with $2B in open interest — the market is net short. Warsh FOMC hawkish signals + Trump Iran comments crowded the short side. Meanwhile ETH carries +10.95% APR funding despite falling a similar amount. Two assets, same selloff, completely different positioning stories.</description>
+    <pubDate>Thu, 18 Jun 2026 03:00:00 +0000</pubDate>
+  </item>
 
   <item>
     <title>HYPE +20% — Futures Traders Aren&apos;t Chasing</title>
