@@ -6,12 +6,20 @@
   <description>Insights on DeFi copy trading, market regime detection, wallet intelligence, and Hyperliquid. Stay ahead with ARX.</description>
   <language>en</language>
   <atom:link href="https://arx.trade/feed.xml" rel="self" type="application/rss+xml"/>
-  <lastBuildDate>Thu, 18 Jun 2026 02:59:32 -0000</lastBuildDate>
+  <lastBuildDate>Fri, 03 Jul 2026 06:02:07 -0000</lastBuildDate>
   <image>
     <url>https://arx.trade/logo.png</url>
     <title>ARX Blog</title>
     <link>https://arx.trade/blog/</link>
   </image>
+
+  <item>
+    <title>SEC-Aligned Tokenized Stocks Just Launched. On Hyperliquid, HYPE OI Exceeds Ethereum.</title>
+    <link>https://arx.trade/insights/#tokenized-stocks-sec-hype-oi-eth-2026-07-03</link>
+    <guid isPermaLink="true">https://arx.trade/insights/#tokenized-stocks-sec-hype-oi-eth-2026-07-03</guid>
+    <description>Ondo Finance launched the first SEC-framework-aligned tokenized BlackRock ETF shares and Micron stock on July 2, underpinned by Broadridge and Oasis Pro. The same day, the IMF endorsed tokenization for financial settlement. On Hyperliquid: HYPE OI = $1.42B now exceeds ETH&apos;s $1.23B.</description>
+    <pubDate>Fri, 03 Jul 2026 06:00:00 +0000</pubDate>
+  </item>
 
   <item>
     <title>Warsh + Iran Drove Traders Into BTC Shorts. They&apos;re Now Paying 7.4% APR.</title>
