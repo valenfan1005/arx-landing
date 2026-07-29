@@ -6,12 +6,20 @@
   <description>Insights on DeFi copy trading, market regime detection, wallet intelligence, and Hyperliquid. Stay ahead with ARX.</description>
   <language>en</language>
   <atom:link href="https://arx.trade/feed.xml" rel="self" type="application/rss+xml"/>
-  <lastBuildDate>Wed, 29 Jul 2026 08:29:05 -0000</lastBuildDate>
+  <lastBuildDate>Wed, 29 Jul 2026 16:31:50 -0000</lastBuildDate>
   <image>
     <url>https://arx.trade/logo.png</url>
     <title>ARX Blog</title>
     <link>https://arx.trade/blog/</link>
   </image>
+
+  <item>
+    <title>Dow Down 800 Points on Fed Day. Visa, BNY, and Morgan Stanley Are All Building on Blockchain.</title>
+    <link>https://arx.trade/insights/#visa-bny-tradfi-blockchain-btc-fed-2026-07-29</link>
+    <guid isPermaLink="true">https://arx.trade/insights/#visa-bny-tradfi-blockchain-btc-fed-2026-07-29</guid>
+    <description>The Dow fell over 800 points in the countdown to the Fed&amp;#39;s rate decision. At the same moment, Visa outlined a stablecoin strategy on its Q3 earnings call, BNY Mellon announced plans to target the $8.6T transfer agency market on blockchain rails, and Morgan Stanley executives said the 9-to-5 bank</description>
+    <pubDate>Wed, 29 Jul 2026 16:17:00 +0000</pubDate>
+  </item>
 
   <item>
     <title>BTC and ETH Longs on Hyperliquid Paying $1.2M/Day. Citadel, Per CoinDesk, Bet on a Rate Hike.</title>
