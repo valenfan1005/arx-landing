@@ -6,12 +6,20 @@
   <description>Insights on DeFi copy trading, market regime detection, wallet intelligence, and Hyperliquid. Stay ahead with ARX.</description>
   <language>en</language>
   <atom:link href="https://arx.trade/feed.xml" rel="self" type="application/rss+xml"/>
-  <lastBuildDate>Wed, 29 Jul 2026 04:27:29 -0000</lastBuildDate>
+  <lastBuildDate>Wed, 29 Jul 2026 08:29:05 -0000</lastBuildDate>
   <image>
     <url>https://arx.trade/logo.png</url>
     <title>ARX Blog</title>
     <link>https://arx.trade/blog/</link>
   </image>
+
+  <item>
+    <title>BTC and ETH Longs on Hyperliquid Paying $1.2M/Day. Citadel, Per CoinDesk, Bet on a Rate Hike.</title>
+    <link>https://arx.trade/insights/#fed-rate-hike-btc-longs-carry-2026-07-29</link>
+    <guid isPermaLink="true">https://arx.trade/insights/#fed-rate-hike-btc-longs-carry-2026-07-29</guid>
+    <description>BTC longs on Hyperliquid are paying 9.7% APR (~$620K/day) in carry costs at $64,347. ETH longs add another 10.95% APR (~$575K/day) at $1,915. Combined: $1.2M/day flowing from long holders to shorts across the two largest perp markets on Hyperliquid.</description>
+    <pubDate>Wed, 29 Jul 2026 08:17:00 +0000</pubDate>
+  </item>
 
   <item>
     <title>ETH Shorts Paying $600K/Day. BlackRock and Goldman Just Backed the Clarity Act.</title>
