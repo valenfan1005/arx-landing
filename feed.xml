@@ -6,12 +6,20 @@
   <description>Insights on DeFi copy trading, market regime detection, wallet intelligence, and Hyperliquid. Stay ahead with ARX.</description>
   <language>en</language>
   <atom:link href="https://arx.trade/feed.xml" rel="self" type="application/rss+xml"/>
-  <lastBuildDate>Wed, 29 Jul 2026 16:31:50 -0000</lastBuildDate>
+  <lastBuildDate>Wed, 29 Jul 2026 20:27:05 -0000</lastBuildDate>
   <image>
     <url>https://arx.trade/logo.png</url>
     <title>ARX Blog</title>
     <link>https://arx.trade/blog/</link>
   </image>
+
+  <item>
+    <title>Fed Holds. BTC Longs Cut Carry. HYPE Bulls Doubled Down.</title>
+    <link>https://arx.trade/insights/#hype-bulls-doubled-fomc-btc-cut-carry-2026-07-29</link>
+    <guid isPermaLink="true">https://arx.trade/insights/#hype-bulls-doubled-fomc-btc-cut-carry-2026-07-29</guid>
+    <description>In the four hours after Warsh held rates for the fifth time, BTC perp funding on Hyperliquid fell from +10.4% to +6.4% APR — longs reduced their daily carry cost from $651K to $391K. HYPE did the opposite: funding more than doubled from +5.02% to +10.95% APR as price slipped 1.5%, meaning longs accu</description>
+    <pubDate>Wed, 29 Jul 2026 20:17:00 +0000</pubDate>
+  </item>
 
   <item>
     <title>Dow Down 800 Points on Fed Day. Visa, BNY, and Morgan Stanley Are All Building on Blockchain.</title>
