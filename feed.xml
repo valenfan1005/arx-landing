@@ -6,12 +6,20 @@
   <description>Insights on DeFi copy trading, market regime detection, wallet intelligence, and Hyperliquid. Stay ahead with ARX.</description>
   <language>en</language>
   <atom:link href="https://arx.trade/feed.xml" rel="self" type="application/rss+xml"/>
-  <lastBuildDate>Fri, 03 Jul 2026 06:02:07 -0000</lastBuildDate>
+  <lastBuildDate>Wed, 29 Jul 2026 04:27:29 -0000</lastBuildDate>
   <image>
     <url>https://arx.trade/logo.png</url>
     <title>ARX Blog</title>
     <link>https://arx.trade/blog/</link>
   </image>
+
+  <item>
+    <title>ETH Shorts Paying $600K/Day. BlackRock and Goldman Just Backed the Clarity Act.</title>
+    <link>https://arx.trade/insights/#eth-shorts-clarity-act-btc-longs-2026-07-29</link>
+    <guid isPermaLink="true">https://arx.trade/insights/#eth-shorts-clarity-act-btc-longs-2026-07-29</guid>
+    <description>ETH perpetual shorts on Hyperliquid are paying 11.7% APR (~$607K/day) to hold short positions while ETH trades near $1,888, up just 0.48%. BTC longs are on the opposite side: paying 8.3% APR (~$513K/day). Same flat market, completely opposite crowds.</description>
+    <pubDate>Wed, 29 Jul 2026 04:17:00 +0000</pubDate>
+  </item>
 
   <item>
     <title>SEC-Aligned Tokenized Stocks Just Launched. On Hyperliquid, HYPE OI Exceeds Ethereum.</title>
